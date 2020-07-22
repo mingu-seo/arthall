@@ -4,9 +4,7 @@ import java.util.List;
 
 
 
-public class AdminService {
+public interface AdminService {
 
-	public List<AdminVO> list(AdminVO param) {
-		return null;
-	}
+	public List<AdminVO> adminList();
 }

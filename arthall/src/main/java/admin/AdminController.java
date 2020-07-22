@@ -1,5 +1,9 @@
 package admin;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +40,13 @@ public class AdminController {
 	@RequestMapping("/admin/board/list.do")
 	public String list() {
 		return "admin/board/index";
+	}
+	@RequestMapping("/admin/adminList.do")
+	public String adminList(HttpServletRequest req) {
+		List<AdminVO> adminList = 
+				adminService.adminList();
+		req.setAttribute("adminList", adminList);
+		return "admin/admin/adminList";
 	}
 	
 	
