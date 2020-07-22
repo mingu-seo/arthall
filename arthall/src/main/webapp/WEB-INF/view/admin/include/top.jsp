@@ -69,12 +69,14 @@ $(window).load(function(){
 		
 		<div id="menu">
   			<ul class="menu">
-  				<li><a href="<%=request.getContextPath()%>/manage/member/index.do" class="parent"><span>회원관리</span></a></li>
+  				<li><a href="<%=request.getContextPath()%>/admin/member/index.do" class="parent"><span>회원관리</span></a></li>
+  				<li><a href="<%=request.getContextPath()%>/admin/reservation/index.do" class="parent"><span>예약관리</span></a></li>
 				<li><a href="<%=request.getContextPath()%>/manage/movie/index.do" class="parent"><span>상품관리</span></a></li>
 				<li><a href="<%=request.getContextPath()%>/manage/board/notice/index.do" class="parent"><span>게시판</span></a>
 					<div class="standard_left">
 					<ul>
 						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>공지사항</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>질문게시판</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>Q&A</span></a></li>
 					</ul>
 					</div>
