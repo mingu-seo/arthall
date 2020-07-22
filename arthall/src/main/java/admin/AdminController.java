@@ -1,10 +1,16 @@
 package admin;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+
 @Controller
 public class AdminController {
+	
+	@Autowired
+	private AdminService adminService;
 
 	@RequestMapping("/admin/index.do")
 	public String index() {
@@ -13,6 +19,7 @@ public class AdminController {
 	
 	@RequestMapping("/admin/board/index.do")
 	public String bardIndex() {
+		
 		return "admin/board/index";
 	}
 	
@@ -21,8 +28,15 @@ public class AdminController {
 		return "admin/board/view";
 	}
 	
-	@RequestMapping("/admin/board/write.do")
-	public String bardWrite() {
-		return "admin/board/write";
+//	@RequestMapping("/admin/board/write.do")
+//	public String bardWrite() {
+//		return "admin/board/write";
+//	}
+	
+	@RequestMapping("/admin/board/list.do")
+	public String list() {
+		return "admin/board/index";
 	}
+	
+	
 }

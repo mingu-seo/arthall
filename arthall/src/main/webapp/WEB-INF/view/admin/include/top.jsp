@@ -75,9 +75,15 @@ $(window).load(function(){
 				<li><a href="<%=request.getContextPath()%>/manage/board/notice/index.do" class="parent"><span>게시판</span></a>
 					<div class="standard_left">
 					<ul>
+						<!--  
 						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>공지사항</span></a></li>
+						-->
+						<li><a href="<%=request.getContextPath()%>/admin/board/list.do"><span>공지사항</span></a></li>
+						<!-- 
 						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>질문게시판</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>뉴스</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>Q&A</span></a></li>
+						 -->
 					</ul>
 					</div>
 				</li>
