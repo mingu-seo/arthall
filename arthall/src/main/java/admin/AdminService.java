@@ -2,13 +2,15 @@ package admin;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.ui.Model;
+
 
 
 public interface AdminService {
 
-<<<<<<< HEAD
+	public List<AdminVO> list();
 	
-=======
-	public List<AdminVO> adminList();
->>>>>>> branch 'master' of https://github.com/mingu-seo/arthall.git
+	public String login(Model model, HttpServletRequest req,AdminVO param);
 }
