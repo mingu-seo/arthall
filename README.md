@@ -36,20 +36,15 @@ ENGINE=InnoDB
 
 Eclipse IDE Enterprice for Java Developers   
 
->src/main/java 
-
->	>admin 
-
->	>member 
-
->	>board   
->	>	>notice   
->	>	>news   
+>src/main/java   
+>	>admin    
+>	>member    
+>	>board      
+>	>	>notice      
+>	>	>news    
 >	>	>qna   
->	>	>faq
-
->	>play  
-
+>	>	>faq   
+>	>play     
 >	>reserv   
 
 Controller(경로이름 가이드)      
