@@ -1,9 +1,9 @@
 # arthall
 충무아트홀 웹프로젝트 포트폴리오
 
-##초기 설정 
+## 초기 설정 
 
-##DATABASE 설정
+## DATABASE 설정
 
 HeidiSQL
 > user: root, password: root1234
@@ -32,7 +32,7 @@ ENGINE=InnoDB
 
 생성 코드
 
-##ECLIPSE 경로설정   
+## ECLIPSE 경로설정   
 
 Eclipse IDE Enterprice for Java Developers   
 
