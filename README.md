@@ -66,7 +66,8 @@ ex) 공지사항 리스트 컨트롤러 메서드
 
 
 >>>/admin 
->>>>/list.jsp   
+>>>>/list.jsp 
+
 >>>/member 
 
 >>>/board   
@@ -76,6 +77,7 @@ ex) 공지사항 리스트 컨트롤러 메서드
 >>>>/faq
 
 >>>/play
+
 >>>/reserv   
 
 
