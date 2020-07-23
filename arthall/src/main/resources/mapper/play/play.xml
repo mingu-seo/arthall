@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="play">
+
+	<insert id = "addPlay" parameterType="play.PlayVO" useGeneratedKeys="true">
+		INSERT INTO play
+			(playName, startDate, lastDate, hallNo, actor, content,
+			fileName, priceA, priceB, priceC, exhPrice)
+		VALUES
+			(#{playName}, #{startDate}, #{lastDate}, ${hallNo},
+			#{actor}, #{content}, #{fileName}, ${priceA}, ${priceB},
+			${priceC}, ${exhPrice});
+			
+		<selectKey keyProperty="playNo" resultType="Integer" order="AFTER">
+			SELECT last_insert_id();
+		</selectKey>
+	</insert>
+	
+</mapper>
