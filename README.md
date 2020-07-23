@@ -63,18 +63,19 @@ ex) 공지사항 리스트 컨트롤러 메서드
 
 >WEB-INF/view   
 >>/admin   
->>>/list.jsp   
 
->>/admin   
->>/member 
 
->>/board   
->>>/notice   
->>>/news   
->>>/qna   
->>>/faq
+>>>/admin 
+>>>>/list.jsp   
+>>>/member 
 
->>/play
->>/reserv   
+>>>/board   
+>>>>/notice   
+>>>>/news   
+>>>>/qna   
+>>>>/faq
+
+>>>/play
+>>>/reserv   
 
 
