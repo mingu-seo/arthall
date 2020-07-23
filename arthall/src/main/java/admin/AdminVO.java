@@ -12,6 +12,8 @@ public class AdminVO {
 	private Timestamp moddate;
 	private int read_cnt;
 	private String content;
+	
+	
 	public int getNotice_no() {
 		return notice_no;
 	}

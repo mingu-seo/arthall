@@ -9,6 +9,7 @@
 
 	<context:component-scan base-package="test" />
 	<context:component-scan base-package="admin" />
+	<context:component-scan base-package="board" />
 	
 	<mvc:annotation-driven/> <!-- annotation 활성화 -->
  	<mvc:default-servlet-handler/>
