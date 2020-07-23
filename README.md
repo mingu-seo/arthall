@@ -42,8 +42,7 @@ Eclipse IDE Enterprice for Java Developers
 
 >	>member 
 
->	>board 
-
+>	>board   
 >	>	>notice   
 >	>	>news   
 >	>	>qna   
