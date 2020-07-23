@@ -1,4 +1,4 @@
-package admin.admin;
+package admin;
 
 import java.util.List;
 
@@ -18,6 +18,10 @@ public class AdminDAO {
 	
 	public AdminVO login(AdminVO param) {
 		return sqlSession.selectOne("admin.login", param);
+	}
+	
+	public int regist(AdminVO param) {
+		return sqlSession.selectOne("admin.regist", param);
 	}
 
 }

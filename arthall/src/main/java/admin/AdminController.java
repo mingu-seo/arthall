@@ -1,8 +1,9 @@
-package admin.admin;
+package admin;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,14 +24,13 @@ public class AdminController {
 	}
 	@RequestMapping("/admin/login.do")
 	public String login(Model model, HttpServletRequest req, AdminVO param) {
-		System.out.println(param.getAdmin_id());
-		System.out.println(param.getPassword());
+		
 		String pageName = adminService.login(model, req, param);
 		return pageName;
 	}
 	
 
-	@RequestMapping("/admin/list.do")
+	@RequestMapping("/admin/admin/list.do")
 	public String list(HttpServletRequest req) {
 		List<AdminVO> list = 
 				adminService.list();
@@ -38,5 +38,24 @@ public class AdminController {
 		return "admin/admin/list";
 	}
 	
+	@RequestMapping("/admin/logout.do")
+	public String logout(Model model, HttpServletRequest req) {
+		HttpSession sess= req.getSession();
+		sess.removeAttribute("authAdmin");
+		
+		model.addAttribute("msg", "관리자 로그아웃되었습니다.");
+		model.addAttribute("url", "/admin");
+		
+		return "common/alert";
+	}
+	
+	@RequestMapping("/admin/admin/regist.do")
+	public String regist(Model model, AdminVO param) {
+		System.out.println(param.getName());
+		String pageName = adminService.regist(model, param);
+		
+		return pageName;
+	}
+//	
 	
 }

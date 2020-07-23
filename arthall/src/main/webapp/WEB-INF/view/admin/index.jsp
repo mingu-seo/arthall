@@ -33,11 +33,11 @@ function userid_chk() {
 	var useridname = CookieVal("cookie_userid");
 	
 	if (useridname=="null"){	
-		f.admin_id.focus();
-		f.admin_id.value="";
+		f.id.focus();
+		f.id.value="";
 	} else {
 		f.password.focus();
-		f.admin_id.value=useridname;
+		f.id.value=useridname;
 		f.reg.checked=true;
 	}
 }
@@ -72,7 +72,7 @@ function CookieVal(cookieName) {
 							<label for="id"><strong>아이디</strong></label>
 						</dt>
 						<dd>
-							<input type="text" id="id" name="admin_id" title="아이디를 입력해주세요." style="ime-mode:inactive" value = ""/>
+							<input type="text" id="id" name="id" title="아이디를 입력해주세요." style="ime-mode:inactive" value = ""/>
 						</dd>
 					</dl>
 					<dl>

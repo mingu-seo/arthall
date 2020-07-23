@@ -1,4 +1,4 @@
-package admin.admin;
+package admin;
 
 import java.util.List;
 
@@ -13,4 +13,6 @@ public interface AdminService {
 	public List<AdminVO> list();
 	
 	public String login(Model model, HttpServletRequest req,AdminVO param);
+	public String regist(Model model, AdminVO param);
+	
 }

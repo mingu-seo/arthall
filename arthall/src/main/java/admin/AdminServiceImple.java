@@ -1,4 +1,4 @@
-package admin.admin;
+package admin;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class AdminServiceImple implements AdminService {
 		 String pageName = "";
 		 if(adminVO != null) {
 			 req.getSession().setAttribute("authAdmin", adminVO);
-			 pageName = "redirect:/admin/list.do";
+			 pageName = "redirect:/admin/admin/list.do";
 		 }else {
 			 model.addAttribute("msg", "아이디와 비밀번호를 확인해주세요.");
 			 model.addAttribute("url", "/admin");
@@ -33,6 +33,22 @@ public class AdminServiceImple implements AdminService {
 			 pageName = "common/alert";
 		 }
 		 return pageName;
+	}
+
+	@Override
+	public String regist(Model model, AdminVO param) {
+		int numReg = adminDao.regist(param);
+		String pageName = "";
+		if(numReg != 0) {
+			model.addAttribute("msg", "관리자"+numReg+"명이 등록되었습니다.");
+			model.addAttribute("url", "");
+			pageName = "common/alert";
+		} else {
+			model.addAttribute("msg", "관리자 등록 실패");
+			model.addAttribute("url", "");
+			pageName = "common/alert";
+		}
+		return pageName;
 	}
 
 }
