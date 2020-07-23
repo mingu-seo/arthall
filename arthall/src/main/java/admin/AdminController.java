@@ -3,51 +3,61 @@ package admin;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+
 
 
 
 @Controller
 public class AdminController {
-	
+//	
 	@Autowired
 	private AdminService adminService;
 
-	@RequestMapping("/admin/index.do")
+	@RequestMapping("/admin")
 	public String index() {
 		return "admin/index";
 	}
-	
-	@RequestMapping("/admin/board/index.do")
-	public String bardIndex() {
+	@RequestMapping("/admin/login.do")
+	public String login(Model model, HttpServletRequest req, AdminVO param) {
 		
-		return "admin/board/index";
+		String pageName = adminService.login(model, req, param);
+		return pageName;
 	}
 	
-	@RequestMapping("/admin/board/view.do")
-	public String bardView() {
-		return "admin/board/view";
+
+	@RequestMapping("/admin/admin/list.do")
+	public String list(HttpServletRequest req) {
+		List<AdminVO> list = 
+				adminService.list();
+		req.setAttribute("list", list);
+		return "admin/admin/list";
 	}
 	
-//	@RequestMapping("/admin/board/write.do")
-//	public String bardWrite() {
-//		return "admin/board/write";
-//	}
-	
-	@RequestMapping("/admin/board/list.do")
-	public String list() {
-		return "admin/board/index";
-	}
-	@RequestMapping("/admin/adminList.do")
-	public String adminList(HttpServletRequest req) {
-		List<AdminVO> adminList = 
-				adminService.adminList();
-		req.setAttribute("adminList", adminList);
-		return "admin/admin/adminList";
+	@RequestMapping("/admin/logout.do")
+	public String logout(Model model, HttpServletRequest req) {
+		HttpSession sess= req.getSession();
+		sess.removeAttribute("authAdmin");
+		
+		model.addAttribute("msg", "관리자 로그아웃되었습니다.");
+		model.addAttribute("url", "/admin");
+		
+		return "common/alert";
 	}
 	
+	@RequestMapping("/admin/admin/regist.do")
+	public String regist(Model model, AdminVO param) {
+		System.out.println(param.getName());
+		String pageName = adminService.regist(model, param);
+		
+		return pageName;
+	}
+//	
 	
 }

@@ -72,22 +72,25 @@ $(window).load(function(){
   				<li><a href="<%=request.getContextPath()%>/admin/member/index.do" class="parent"><span>회원관리</span></a></li>
   				<li><a href="<%=request.getContextPath()%>/admin/reservation/index.do" class="parent"><span>예약관리</span></a></li>
 				<li><a href="<%=request.getContextPath()%>/manage/movie/index.do" class="parent"><span>상품관리</span></a></li>
-				<li><a href="<%=request.getContextPath()%>/manage/board/notice/index.do" class="parent"><span>게시판</span></a>
+				  
+				<li><a href="<%=request.getContextPath()%>/admin/board/notice/list.do" class="parent"><span>게시판</span></a>
+				<!--  
+				<li><a href="<%=request.getContextPath()%>/admin/notice/index.do" class="parent"><span>게시판</span></a>
+			    -->
 					<div class="standard_left">
 					<ul>
 						<!--  
 						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>공지사항</span></a></li>
 						-->
-						<li><a href="<%=request.getContextPath()%>/admin/board/list.do"><span>공지사항</span></a></li>
-						<!-- 
-						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>질문게시판</span></a></li>
-						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>뉴스</span></a></li>
-						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>Q&A</span></a></li>
-						 -->
+						<li><a href="<%=request.getContextPath()%>/admin/board/notice.do"><span>공지사항</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/news.do"><span>뉴스</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/faq.do"><span>FAQ</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/qna.do"><span>Q&A</span></a></li>
+						
 					</ul>
 					</div>
 				</li>
-				<li><a href="<%=request.getContextPath()%>/admin/adminList.do" class="parent"><span>관리자관리</span></a></li>
+				<li><a href="<%=request.getContextPath()%>/admin/admin/list.do" class="parent"><span>관리자관리</span></a></li>
 			</ul>
 		</div>
 		<!--//gnb-->
