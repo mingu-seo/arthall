@@ -6,11 +6,11 @@
 ## DATABASE 설정
 
 HeidiSQL
-> user: root, password: root1234
-> port: 3306, batabase: arthall
-> 테이블명
-  -admin, member, notice, news, qna, faq, play, reserv
-> 테이블 생성 코드
+> user: root, password: root1234   
+> port: 3306, batabase: arthall   
+> 테이블명   
+  -admin, member, notice, news, qna, faq, play, reserv   
+> 테이블 생성 코드   
 
 -admin
 
