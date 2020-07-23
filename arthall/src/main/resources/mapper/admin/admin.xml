@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin"><!-- test.memberList -->
+	<select id="list" resultType="admin.AdminVO">
+		SELECT * FROM admin 
+	</select>
+	<select id="login" parameterType="admin.AdminVO" resultType="admin.AdminVO">
+		SELECT * FROM admin WHERE id = #{id} AND PASSWORD = PASSWORD(#{password})
+	</select>
+	<insert id = "regist" parameterType="admin.AdminVO">
+		INSERT INTO admin (id, password, name, tel, email, birth, regdate)
+		VALUES (#{id}, PASSWORD(#{password}), #{name}, #{tel}, #{email}, #{birth}, NOW())
+	</insert>
+</mapper>

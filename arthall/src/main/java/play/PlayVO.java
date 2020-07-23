@@ -4,33 +4,43 @@ import java.sql.Timestamp;
 
 public class PlayVO {
 
-	private int playNo;
-	private Timestamp startDay;
-	private Timestamp lastDay;
+	private String playNo;
+	private String playName;
+	private Timestamp startDate;
+	private Timestamp endDate;
 	private int hallNo;
 	private String actor;
-	private int cost;
-	private String seatType;
-	private String textContents;
-	private String imageContents;
+	private String content;
+	private String fileName;
+	private int priceA;
+	private int priceB;
+	private int priceC;
+	private int exhPrice;
 	
-	public int getPlayNo() {
+	
+	public String getPlayNo() {
 		return playNo;
 	}
-	public void setPlayNo(int playNo) {
+	public void setPlayNo(String playNo) {
 		this.playNo = playNo;
 	}
-	public Timestamp getStartDay() {
-		return startDay;
+	public String getPlayName() {
+		return playName;
 	}
-	public void setStartDay(Timestamp startDay) {
-		this.startDay = startDay;
+	public void setPlayName(String playName) {
+		this.playName = playName;
 	}
-	public Timestamp getLastDay() {
-		return lastDay;
+	public Timestamp getStartDate() {
+		return startDate;
 	}
-	public void setLastDay(Timestamp lastDay) {
-		this.lastDay = lastDay;
+	public void setStartDate(Timestamp startDate) {
+		this.startDate = startDate;
+	}
+	public Timestamp getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Timestamp endDate) {
+		this.endDate = endDate;
 	}
 	public int getHallNo() {
 		return hallNo;
@@ -44,31 +54,42 @@ public class PlayVO {
 	public void setActor(String actor) {
 		this.actor = actor;
 	}
-	public int getCost() {
-		return cost;
+	public String getContent() {
+		return content;
 	}
-	public void setCost(int cost) {
-		this.cost = cost;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getSeatType() {
-		return seatType;
+	public String getFileName() {
+		return fileName;
 	}
-	public void setSeatType(String seatType) {
-		this.seatType = seatType;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
-	public String getTextContents() {
-		return textContents;
+	public int getPriceA() {
+		return priceA;
 	}
-	public void setTextContents(String textContents) {
-		this.textContents = textContents;
+	public void setPriceA(int priceA) {
+		this.priceA = priceA;
 	}
-	public String getImageContents() {
-		return imageContents;
+	public int getPriceB() {
+		return priceB;
 	}
-	public void setImageContents(String imageContents) {
-		this.imageContents = imageContents;
+	public void setPriceB(int priceB) {
+		this.priceB = priceB;
 	}
-	
+	public int getPriceC() {
+		return priceC;
+	}
+	public void setPriceC(int priceC) {
+		this.priceC = priceC;
+	}
+	public int getExhPrice() {
+		return exhPrice;
+	}
+	public void setExhPrice(int exhPrice) {
+		this.exhPrice = exhPrice;
+	}
 	
 	
 	

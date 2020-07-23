@@ -12,8 +12,16 @@ public class AdminDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public List<AdminVO> adminList() {
-		return sqlSession.selectList("admin.adminList");
+	public List<AdminVO> list() {
+		return sqlSession.selectList("admin.list");
+	}
+	
+	public AdminVO login(AdminVO param) {
+		return sqlSession.selectOne("admin.login", param);
+	}
+	
+	public int regist(AdminVO param) {
+		return sqlSession.selectOne("admin.regist", param);
 	}
 
 }
