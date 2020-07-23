@@ -34,16 +34,16 @@ ENGINE=InnoDB
 
 Eclipse IDE Enterprice for Java Developers   
 
-src/main/java   
-  >admin   
-  >member   
-  >board   
-  >	>notice   
-       news   
-      	qna   
-      	aq   
-  > 	>play   
-  >	>reserv   
+>src/main/java   
+>	>admin   
+>	>member   
+>	>board   
+>	>	>notice   
+>	>	>news   
+>	>	>qna   
+>	>	>faq   
+>	>play   
+>	>reserv   
 
 Controller(경로이름 가이드)      
 
