@@ -39,9 +39,9 @@ src/main/java
   >member   
   >board   
   >	>notice   
-       >news   
-      >qna   
-      >aq   
+       	>news   
+      	>qna   
+      	>aq   
   >play   
   >reserv   
 
