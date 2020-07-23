@@ -39,11 +39,11 @@ src/main/java
   >member   
   >board   
   >	>notice   
-       	>news   
-      	>qna   
-      	>aq   
-  >play   
-  >reserv   
+       news   
+      	qna   
+      	aq   
+  > 	>play   
+  >	>reserv   
 
 Controller(경로이름 가이드)      
 
