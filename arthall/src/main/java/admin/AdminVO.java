@@ -7,8 +7,9 @@ public class AdminVO {
 	private int notice_no;
 	private String admin_id;
 	private String admin_name;
-	private String title;
+	private String password;
 	private Timestamp regdate;
+	private String title;
 	private Timestamp moddate;
 	private int read_cnt;
 	private String content;
@@ -61,6 +62,12 @@ public class AdminVO {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

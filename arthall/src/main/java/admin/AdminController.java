@@ -40,7 +40,21 @@ public class AdminController {
 //		return "admin/board/write";
 //	}
 	
+<<<<<<< HEAD
 
+=======
+	@RequestMapping("/admin/board/list.do")
+	public String list() {
+		return "admin/board/index";
+	}
+	@RequestMapping("/admin/adminList.do")
+	public String adminList(HttpServletRequest req) {
+		List<AdminVO> adminList = 
+				adminService.adminList();
+		req.setAttribute("adminList", adminList);
+		return "admin/admin/adminList";
+	}
+>>>>>>> branch 'master' of https://github.com/mingu-seo/arthall.git
 	
 	
 }

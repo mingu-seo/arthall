@@ -1,4 +1,4 @@
-package admin;
+package play;
 
 import java.util.List;
 
@@ -7,13 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class AdminDAO {
+public class PlayDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public List<AdminVO> adminList() {
-		return sqlSession.selectList("admin.adminList");
+	
+	public int addPlay(PlayVO param) {
+		return sqlSession.insert("play.addPlay", param);
 	}
 
+	
 }
