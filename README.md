@@ -14,6 +14,7 @@ HeidiSQL
 
 -admin
 
+```
 CREATE TABLE `admin` (
 	`admin_id` VARCHAR(50) NULL DEFAULT NULL,
 	`admin_name` VARCHAR(50) NULL DEFAULT NULL,
@@ -24,6 +25,7 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
 
+```
 예시)
 
 -테이블명
@@ -34,15 +36,21 @@ ENGINE=InnoDB
 
 Eclipse IDE Enterprice for Java Developers   
 
->src/main/java   
->	>admin   
->	>member   
->	>board   
+>src/main/java 
+
+>	>admin 
+
+>	>member 
+
+>	>board 
+
 >	>	>notice   
 >	>	>news   
 >	>	>qna   
 >	>	>faq
->	>play   
+
+>	>play  
+
 >	>reserv   
 
 Controller(경로이름 가이드)      
