@@ -35,38 +35,38 @@ ENGINE=InnoDB
 Eclipse IDE Enterprice for Java Developers   
 
 src/main/java   
-  -admin   
-  -member   
-  -board   
-      -notice   
-      -news   
-      -qna   
-      -faq   
-  -play   
-  -reserv   
+  >admin   
+  >member   
+  >board   
+  >	>notice   
+       >news   
+      >qna   
+      >aq   
+  >play   
+  >reserv   
 
 Controller(경로이름 가이드)      
 
 -@RequestMapping("admin/패키지이름/페이지이름.do")    
 ex) 공지사항 리스트 컨트롤러 메서드    
-  @RequestMapping("admin/board/notice/list.do")   
+  >@RequestMapping("admin/board/notice/list.do")   
 
 페이지이름.jsp(페이지 이름 가이드)   
 
   /admin/상위패키지이름/하위패키지이름/페이지이름.jsp   
   ex) 공지사항리스트 페이지   
-      -/admin/board/notice/list.jsp   
+      >/admin/board/notice/list.jsp   
 
   WEB-INF/view   
-     /admin   
-        /list.jsp   
-        /admin   
-        /member   
-        /board   
-            /notice   
-            /news   
-            /qna   
-            /faq   
-        /reserv   
+     >/admin   
+      >	>  /list.jsp   
+       > >/admin   
+        >>/member   
+        >>/board   
+          >>>  /notice   
+            >>>/news   
+            >>>/qna   
+            >>>/faq   
+        >>/reserv   
 
 
