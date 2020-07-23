@@ -50,26 +50,26 @@ Eclipse IDE Enterprice for Java Developers
 >>/reserv   
 
 ### Controller(경로이름 가이드) 
-'''
--@RequestMapping("admin/패키지이름/페이지이름.do")    
-ex) 공지사항 리스트 컨트롤러 메서드    
-  >@RequestMapping("admin/board/notice/list.do") 
-''' 
+
+	-@RequestMapping("admin/패키지이름/페이지이름.do")    
+	-ex) 공지사항 리스트 컨트롤러 메서드    
+	 -@RequestMapping("admin/board/notice/list.do") 
+
  admin/member
-''' 
- >사용자_패키지명+클래스명.java   
- ex) 관리자/회원 예약 컨트롤러 클래스명 예시   
-  > Ad_ReservController.java
-  > Mem_ReservController.java
-''' 
+
+	 사용자_패키지명+클래스명.java   
+	 ex) 관리자/회원 예약 컨트롤러 클래스명 예시   
+	 Ad_ReservController.java
+	 Mem_ReservController.java
+
 
 페이지이름.jsp(페이지 이름 가이드)   
 
-'''
-  /admin/상위패키지이름/하위패키지이름/페이지이름.jsp   
-  ex) 공지사항리스트 페이지   
-      >/admin/board/notice/list.jsp   
-'''
+
+	  /admin/상위패키지이름/하위패키지이름/페이지이름.jsp   
+	  ex) 공지사항리스트 페이지   
+	  /admin/board/notice/list.jsp   
+
 >WEB-INF/view   
 >>/admin   
 
