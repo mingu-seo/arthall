@@ -37,15 +37,17 @@ ENGINE=InnoDB
 Eclipse IDE Enterprice for Java Developers   
 
 >src/main/java   
->	>admin    
->	>member    
->	>board      
->	>	>notice      
->	>	>news    
->	>	>qna   
->	>	>faq   
->	>play     
->	>reserv   
+>>/admin    
+>>/member  
+
+>>/board       
+>>>/notice      
+>>>/news    
+>>>/qna   
+>>>/faq   
+
+>>/play     
+>>/reserv   
 
 Controller(경로이름 가이드)      
 
@@ -59,16 +61,17 @@ ex) 공지사항 리스트 컨트롤러 메서드
   ex) 공지사항리스트 페이지   
       >/admin/board/notice/list.jsp   
 
-  WEB-INF/view   
-     >/admin   
-      >	>  /list.jsp   
-       > >/admin   
-        >>/member   
-        >>/board   
-          >>>  /notice   
-            >>>/news   
-            >>>/qna   
-            >>>/faq   
-        >>/reserv   
+>WEB-INF/view   
+>>/admin   
+>>/list.jsp   
+>>/admin   
+>>/member   
+>>/board   
+>>>/notice   
+>>>/news   
+>>>/qna   
+>>>/faq
+>>/play
+>>/reserv   
 
 
