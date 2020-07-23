@@ -42,7 +42,6 @@ Eclipse IDE Enterprice for Java Developers
 >	>	>news   
 >	>	>qna   
 >	>	>faq
-
 >	>play   
 >	>reserv   
 
