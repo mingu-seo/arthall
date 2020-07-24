@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,8 +26,6 @@ function loginCheck(){
 	}
 	return true;
 }
-
-
 
 function userid_chk() {
 	var f=document.board;
@@ -99,7 +98,7 @@ function CookieVal(cookieName) {
 	</form>
 	</div>
 	<div class="footer">
-		Copyrights (c) 2020 <a href="#" target="_blank">SAMPLE</a>. All Rights Reserved.  
+		Copyrights (c) 2020 <a href="#" target="_blank">관리자 페이지</a>. All Rights Reserved.  
 	</div>
 </div>
 </body>

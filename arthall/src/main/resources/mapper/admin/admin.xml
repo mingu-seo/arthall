@@ -7,8 +7,15 @@
 	<select id="login" parameterType="admin.AdminVO" resultType="admin.AdminVO">
 		SELECT * FROM admin WHERE id = #{id} AND PASSWORD = PASSWORD(#{password})
 	</select>
+	<select id="select" parameterType="admin.AdminVO" resultType="admin.AdminVO">
+		SELECT * FROM admin WHERE id = #{id}
+	</select>
 	<insert id = "regist" parameterType="admin.AdminVO">
 		INSERT INTO admin (id, password, name, tel, email, birth, regdate)
 		VALUES (#{id}, PASSWORD(#{password}), #{name}, #{tel}, #{email}, #{birth}, NOW())
 	</insert>
+	<delete id="delete" parameterType="String">
+		DELETE FROM admin WHERE id = #{id};
+	</delete>
+	
 </mapper>
