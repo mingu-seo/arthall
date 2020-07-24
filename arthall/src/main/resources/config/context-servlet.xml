@@ -36,6 +36,25 @@
  	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
  		<constructor-arg index="0" ref="sqlSession"/>
  	</bean>
+ 	<mvc:interceptors>
+ 	<!-- 인터셉터 
+ 		<mvc:interceptor>
+ 			<mvc:mapping path="/member/changePwdForm.do"/>
+ 			<mvc:mapping path="/member/changePwd.do"/> 
+ 			<mvc:mapping path="/mypage/**"/> 
+ 			<mvc:mapping path="/article/writeForm.do"/> 
+ 			<mvc:mapping path="/article/write.do"/> 
+ 			<bean class="interceptor.UserLoginInterceptor"></bean>
+ 	</mvc:interceptor>
+ 	-->
+ 	<mvc:interceptor>
+ 			<mvc:mapping path="/admin/**"/>
+ 			<mvc:exclude-mapping path="/admin/index.do"/>  
+ 			<mvc:exclude-mapping path="/admin"/>  
+ 			<mvc:exclude-mapping path="/admin/login.do"/>  
+ 			<bean class="interceptor.AdminLoginInterceptor"></bean>
+ 		</mvc:interceptor>
+ 	</mvc:interceptors>
 
 
 	<!-- 파일업로드 -->

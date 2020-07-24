@@ -6,29 +6,31 @@
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 <script type="text/javascript">
 	$(function(){
-				
+			
 		$("#delete").click(function(){
-		$("#frm").attr('action', '/admin/admin/delete.do');
-		$("#frm").submit();	
-		})
+			if($('.checkSingle:checked').size()>0 
+					&& confirm('정말로 삭제하시겠습니까?')){
+				
+				$("#frm").attr('action', '/admin/admin/delete.do');
+				$("#frm").submit();	
+			} else{
+				alert('삭제할 계정을 선택해주세요.')
+			}
+		});
 		
-		
-	})
+		$("#checkedAll").change(function() {
+	        if (this.checked) {
+	            $(".checkSingle").each(function() {
+	                this.checked=true;
+	            });
+	        } else {
+	            $(".checkSingle").each(function() {
+	                this.checked=false;
+	            });
+	        }
+	    });
+	});
 	
-	$(document).ready(function() {
-    $("#checkedAll").change(function() {
-        if (this.checked) {
-            $(".checkSingle").each(function() {
-                this.checked=true;
-            });
-        } else {
-            $(".checkSingle").each(function() {
-                this.checked=false;
-            });
-        }
-    });
-
-});	
 	
 
 </script>
@@ -45,7 +47,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공지사항 - [목록]</h2>
+					<h2>관리자 관리</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
@@ -94,7 +96,7 @@
 							</table>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" id = "delete" href="#" onclick=""><strong>삭제</strong> </a>
+									<a class="btns" id = "delete" href="#" ><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
 									<a class="wbtn" id = "regist" href="/admin/admin/registForm.do"><strong>신규등록</strong> </a>

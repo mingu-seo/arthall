@@ -19,7 +19,10 @@ public class AdminController {
 	private AdminService adminService;
 
 	@RequestMapping("/admin")
-	public String index() {
+	public String index(HttpServletRequest req, HttpServletResponse res) {
+		if (req.getSession().getAttribute("authAdmin") != null) {
+			return "redirect:/admin/admin/list.do";
+		}
 		return "admin/index";
 	}
 
@@ -42,10 +45,9 @@ public class AdminController {
 	public String logout(Model model, HttpServletRequest req) {
 		HttpSession sess = req.getSession();
 		sess.removeAttribute("authAdmin");
-
 		model.addAttribute("msg", "관리자 로그아웃되었습니다.");
 		model.addAttribute("url", "/admin");
-
+		
 		return "common/alert";
 	}
 
@@ -76,8 +78,7 @@ public class AdminController {
 		int numDeleted = 0;
 		if (req.getParameterValues("chkd") != null) {
 			for (String idCheckedStr : req.getParameterValues("chkd")) {
-				System.out.println(idCheckedStr);
-				numDeleted = adminService.delete(idCheckedStr);
+				numDeleted += adminService.delete(idCheckedStr);
 			}
 		}
 		model.addAttribute("msg", numDeleted + "개 관리자 계정이 삭제되었습니다.");
