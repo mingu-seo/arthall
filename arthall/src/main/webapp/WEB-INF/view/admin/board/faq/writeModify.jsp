@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 $(function() {
 	var oEditors = [];
@@ -18,7 +19,7 @@ $(function() {
 				
 			}
 		}, //boolean
-		fOnAppLoad : function(){
+		fOnAppLoad : function(){ 
 			//예제 코드
 			//oEditors.getById["contents"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
 		},
@@ -41,14 +42,14 @@ $(function() {
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>FAQ - [쓰기]</h2>
+					<h2>FAQ - [수정]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="write.do" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="modify.do?no=${vo.no}" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -62,19 +63,25 @@ $(function() {
 									<tr>
 										<th scope="row"><label for="">*제목</label></th>
 										<td colspan="10">
-											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요"  />	
+											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요" value="${vo.title} " />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<textarea id="content" name="content" title="내용을 입력해주세요" style="width:100%;"></textarea>	
+											<textarea id="content" name="content" title="내용을 입력해주세요" style="width:100%;">${vo.content}</textarea>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">첨부파일</label></th>
 										<td colspan="10">
-											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요." />	
+										
+										<c:if test="${vo.filename == null}">
+											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요."/>	
+										</c:if>
+										<c:if test="${vo.filename != null}">
+											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" value="${vo.filename}" />	
+										</c:if>
 										</td>
 									</tr>
 								</tbody>

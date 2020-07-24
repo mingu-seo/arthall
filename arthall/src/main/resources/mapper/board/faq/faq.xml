@@ -5,13 +5,62 @@
 	<select id="count" parameterType="board.faq.FaqVO" resultType="Integer">
 
 		SELECT COUNT(*) FROM faq
-	
+	 	<where>
+            <if test="sval != null and sval !='' and stype != 'all'" >
+                ${stype} LIKE '%${sval}%'
+            </if>
+            <if test="sval != null and sval !='' and stype == 'all'">
+            	title LIKE '%${sval}%'
+            	or no in 
+				(SELECT no FROM faq WHERE content LIKE '%${sval}%')
+            </if>
+         </where>
 	</select>
-
-
 	<select id="list" parameterType="board.faq.FaqVO" resultType="board.faq.FaqVO">
 		
 		SELECT * FROM faq
-	 
+		<where>
+         <if test="sval != null and sval !='' and stype != 'all'">
+             ${stype} like '%${sval}%'
+         </if>
+         <if test="sval != null and sval !='' and stype == 'all'">
+            	title LIKE '%${sval}%'
+            	or no in 
+				(SELECT no FROM faq WHERE content LIKE '%${sval}%')
+          </if>
+      	</where>
+	 	ORDER BY no DESC LIMIT #{startRow}, #{size}
 	</select>
+	
+	<!-- 20200724 추가 -->
+	<insert id="write" parameterType="board.faq.FaqVO" useGeneratedKeys="true">
+		INSERT INTO faq
+			(writer, title, content , regdate, moddate, filename)
+		VALUES
+			(#{writer}, #{title}, #{content}, now(), now(), #{filename})
+			 
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<select id="view" parameterType="board.faq.FaqVO" resultType="board.faq.FaqVO">
+		SELECT
+			no, writer, title, content, regdate, filename
+		FROM faq
+		where no=#{no}
+	</select>
+	
+	<update id="modify" parameterType="board.faq.FaqVO">
+		UPDATE faq SET
+			title = #{title} , content = #{content}, moddate = now(), filename=#{filename}
+		WHERE no=#{no}	
+	</update>
+	
+	
+	<update id="delete" parameterType="Integer">
+		DELETE FROM faq
+		WHERE no=#{no}
+	</update>
+	
 </mapper>
