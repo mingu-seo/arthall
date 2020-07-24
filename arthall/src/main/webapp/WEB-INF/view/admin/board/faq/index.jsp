@@ -4,7 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp"%>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+	function del() {
+	   if (confirm('정말로 삭제하시겠습니까?')) {
+		   $("#frm").submit();
+	   }
+	   else{
+		   return;
+	   }
+	}
+	
+</script>
+
+
 </head>
+
 <body>
 	<div id="wrap">
 		<!-- canvas -->
@@ -17,7 +32,7 @@
 			<div id="container">
 				<div id="content">
 					<div class="con_tit">
-						<h2>공지사항 - [목록]</h2>
+						<h2>FAQ - [목록]</h2>
 					</div>
 					<!-- //con_tit -->
 					<div class="con">
@@ -25,9 +40,9 @@
 						<div id="bbs">
 							<div id="blist">
 								<p>
-									<span><strong>총 111개</strong> | 1/12페이지</span>
+									<span><strong>총 ${vo.totalCount} 개</strong> | ${vo.page }/${vo.totalPage}페이지</span>
 								</p>
-								<form name="frm" id="frm" action="process.do" method="post">
+								<form name="frm" id="frm" action="delete.do" method="post">
 									<table width="100%" border="0" cellspacing="0" cellpadding="0"
 										summary="관리자 관리목록입니다.">
 										<colgroup>
@@ -41,7 +56,7 @@
 											<tr>
 												<th scope="col" class="first"><input type="checkbox"
 													name="allChk" id="allChk"
-													onClick="check(this, document.frm.no)" /></th>
+													onClick="check(this, document.frm.num)" /></th>
 												<th scope="col">번호</th>
 												<th scope="col">제목</th>
 												<th scope="col">작성일</th>
@@ -60,8 +75,8 @@
 											<c:forEach var="faq" items="${list}">
 												<tbody>
 													<tr>
-														<td class="first"><input type="checkbox" name="no"
-															id="no" value="" /></td>
+														<td class="first"><input type="checkbox" name="num"
+															id="num" value="${faq.no}"  /></td>
 														<td>${faq.no }</td>
 														<td class="title"><a
 															href="view.do?no=${faq.no}&page=${vo.page}"> <c:out
@@ -80,10 +95,10 @@
 								</form>
 								<div class="btn">
 									<div class="btnLeft">
-										<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+										<a class="btns" href="#" onclick="del();"><strong>삭제</strong> </a>
 									</div>
 									<div class="btnRight">
-										<a class="wbtn" href="write.do"><strong>등록</strong> </a>
+										<a class="wbtn" href="writeForm.do"><strong>등록</strong> </a>
 									</div>
 								</div>
 								<!--//btn-->
@@ -103,16 +118,16 @@
 								</div>
 
 								<!-- //페이징 처리 -->
-								<form name="searchForm" id="searchForm" action="index.do"
-									method="post">
+								<form name="searchForm" id="searchForm" action="faq.do" method="post">
 									<div class="search">
 										<select name="stype" title="검색을 선택해주세요">
-											<option value="all">전체</option>
-											<option value="title">제목</option>
-											<option value="contents">내용</option>
-										</select> <input type="text" name="sval" value=""
-											title="검색할 내용을 입력해주세요" /> <input type="image"
-											src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
+											<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>
+											<option value="title" <c:if test="${vo.stype=='title'}">selected</c:if>>제목</option>
+											<option value="content" <c:if test="${vo.stype=='content'}">selected</c:if>>내용</option>
+										</select> 
+										
+										<input type="text" name="sval" value="${vo.sval }"	title="검색할 내용을 입력해주세요" /> 
+										<input type="image"	src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
 											class="sbtn" alt="검색" />
 									</div>
 								</form>
