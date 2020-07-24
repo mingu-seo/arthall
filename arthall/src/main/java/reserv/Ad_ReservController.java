@@ -14,12 +14,12 @@ public class Ad_ReservController {
 	private ReservService reservService;
 
 		
-		@RequestMapping("/admin/reservation/index.do")
-		public String index(Model moedel, ReservVo param) {
+		@RequestMapping("/admin/reserv/list.do")
+		public String list(Model moedel, ReservVo param) {
 			List<ReservVo> list = reservService.list(param);
 			
 			moedel.addAttribute("vo",param);
 			moedel.addAttribute("list",list);
-			return "admin/reserv/index";
+			return "admin/reserv/list";
 		}
 }

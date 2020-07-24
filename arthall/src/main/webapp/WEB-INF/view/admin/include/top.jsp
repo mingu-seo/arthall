@@ -70,8 +70,8 @@ $(window).load(function(){
 		<div id="menu">
   			<ul class="menu">
   				<li><a href="<%=request.getContextPath()%>/admin/member/index.do" class="parent"><span>회원관리</span></a></li>
-  				<li><a href="<%=request.getContextPath()%>/admin/reservation/index.do" class="parent"><span>예약관리</span></a></li>
-				<li><a href="<%=request.getContextPath()%>/manage/movie/index.do" class="parent"><span>상품관리</span></a></li>
+  				<li><a href="<%=request.getContextPath()%>/admin/reserv/list.do" class="parent"><span>예약관리</span></a></li>
+				<li><a href="<%=request.getContextPath()%>/admin/paly/list.do" class="parent"><span>공연관리</span></a></li>
 				  
 				<li><a href="<%=request.getContextPath()%>/admin/board/notice/list.do" class="parent"><span>게시판</span></a>
 				<!--  
