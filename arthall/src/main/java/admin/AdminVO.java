@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class AdminVO {
 	
-	
+	private int no;
 	private String id;
 	private String password;
 	private String name;
@@ -55,6 +55,12 @@ public class AdminVO {
 	}
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
 	}
 	
 	

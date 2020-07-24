@@ -80,7 +80,7 @@
 								</thead>
 								<tbody>
 									<c:forEach var="admin" items="${list}">
-										<tr>
+										<tr class = 'detail' onclick="location.href='modifyForm.do?no=${admin.no}';">
 											<td class="first"><input type="checkbox" class = "checkSingle" name="chkd" id="chkd" value="${admin.id}"/></td>
 											<td>${admin.id}</td>
 											<td>${admin.name}</td>
@@ -96,10 +96,11 @@
 							</table>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" id = "delete" href="#" ><strong>삭제</strong> </a>
+									<a class="btns" id = "delete" href="#" ><strong>계정 삭제</strong> </a>
+									<a class="btns" id = "modify" href="#" ><strong>정보 수정</strong> </a>
 								</div>
 								<div class="btnRight">
-									<a class="wbtn" id = "regist" href="/admin/admin/registForm.do"><strong>신규등록</strong> </a>
+									<a class="wbtn" id = "regist" href="/admin/admin/registForm.do"><strong>계정 등록</strong> </a>
 								</div>
 							</div>
 							</form>

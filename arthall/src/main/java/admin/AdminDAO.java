@@ -30,8 +30,12 @@ public class AdminDAO {
 		
 	}
 
-	public int delete(String id) {
-		return sqlSession.delete("admin.delete", id);
+	public int delete(int no) {
+		return sqlSession.delete("admin.delete", no);
+		
+	}
+	public int modify(AdminVO param) {
+		return sqlSession.update("admin.modify", param);
 		
 	}
 

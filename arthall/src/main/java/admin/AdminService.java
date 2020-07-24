@@ -16,5 +16,8 @@ public interface AdminService {
 	public String regist(Model model, AdminVO param);
 	public String dup(HttpServletRequest req, AdminVO param);
 	public int delete(String idCheckedStr);
+	public String modify(Model model, AdminVO param);
+
+	public AdminVO selectOne(AdminVO param);
 	
 }

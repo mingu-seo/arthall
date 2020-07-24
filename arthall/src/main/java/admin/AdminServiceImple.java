@@ -72,7 +72,29 @@ public class AdminServiceImple implements AdminService {
 
 	@Override
 	public int delete(String idCheckedStr) {
-		return adminDao.delete(idCheckedStr);
+		int no = Integer.parseInt(idCheckedStr);
+		return adminDao.delete(no);
+	}
+
+	@Override
+	public String modify(Model model, AdminVO param) {
+		int numMod = adminDao.modify(param);
+		
+		if(numMod > 0) {
+			model.addAttribute("msg", "정보 수정을 성공했습니다.");
+			model.addAttribute("url", "list.do");
+		}else {
+			model.addAttribute("msg", "정보 수정에 문제가 있었습니다. 다시 시도해주세요.");
+			model.addAttribute("url", "modifyForm.do");
+			
+		}
+		return "common/alert";
+	}
+
+	@Override
+	public AdminVO selectOne(AdminVO param) {
+	
+		return adminDao.selectOne(param);
 	}
 
 }
