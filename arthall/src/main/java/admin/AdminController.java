@@ -26,7 +26,8 @@ public class AdminController {
 	}
 	@RequestMapping("/admin/login.do")
 	public String login(Model model, HttpServletRequest req, AdminVO param) {
-		
+		System.out.println(param.getPassword());
+		System.out.println(param.getId());
 		String pageName = adminService.login(model, req, param);
 		return pageName;
 	}
@@ -57,6 +58,10 @@ public class AdminController {
 		String pageName = adminService.regist(model, param);
 		
 		return pageName;
+	}
+	@RequestMapping("/admin/admin/registForm.do")
+	public String registForm() {
+		return "admin/admin/registForm";
 	}
 //	
 	

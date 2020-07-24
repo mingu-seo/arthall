@@ -55,6 +55,36 @@ ENGINE=InnoDB
 ;
 
 ```
+-reserv
+```
+CREATE TABLE `reserv` (
+	`reservNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`playName` VARCHAR(50) NULL DEFAULT NULL,
+	`name` VARCHAR(50) NULL DEFAULT NULL,
+	`hallNo` INT(11) NULL DEFAULT NULL,
+	`playDay` DATE NULL DEFAULT NULL,
+	`runtime` INT(11) NULL DEFAULT NULL,
+	`reservDay` DATE NULL DEFAULT NULL,
+	PRIMARY KEY (`reservNo`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+```
+-ticket
+```
+CREATE TABLE `ticket` (
+	`ticketNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`reservNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`seatType` VARCHAR(50) NULL DEFAULT NULL COMMENT 'null이면 전시회',
+	`price` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`ticketNo`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+```
 예시)
 
 -테이블명

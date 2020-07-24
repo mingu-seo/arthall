@@ -61,15 +61,7 @@
 											
 										</tr>
 									</c:forEach>
-										<tr>
-											<td class="first"></td>
-											<td><input type="text" name="id" value=""/></td>
-											<td><input type="text" name="name" value=""/></td>
-											<td><input type="text" name="tel" value=""/></td>
-											<td><input type="text" name="email" value=""/></td>
-											<td><input type="text" name="birth" value=""/></td>
-											<td><input type="password" name="password" value=""/></td>
-										</tr>
+										
 								</tbody>
 							</table>
 							<div class="btn">
@@ -77,7 +69,7 @@
 									<a class="btns" href="/admin/admin/delete.do" onclick=""><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
-									<a class="wbtn" href="/admin/admin/regist.do"><strong>신규등록</strong> </a>
+									<a class="wbtn" href="/admin/admin/registForm.do"><strong>신규등록</strong> </a>
 								</div>
 							</div>
 							</form>
