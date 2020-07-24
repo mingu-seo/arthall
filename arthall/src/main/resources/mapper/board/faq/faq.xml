@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="faq">
+
+	<select id="count" parameterType="board.faq.FaqVO" resultType="Integer">
+
+		SELECT COUNT(*) FROM faq
+	
+	</select>
+
+
+	<select id="list" parameterType="board.faq.FaqVO" resultType="board.faq.FaqVO">
+		
+		SELECT * FROM faq
+	 
+	</select>
+</mapper>
