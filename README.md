@@ -61,7 +61,7 @@ CREATE TABLE `reserv` (
 	`no` VARCHAR(50) NOT NULL DEFAULT '\'\'',
 	`name` VARCHAR(50) NULL DEFAULT NULL,
 	`reservDay` DATE NULL DEFAULT NULL,
-	`playNo` VARCHAR(50) NULL DEFAULT NULL,
+	`playNo` INT(11) NULL DEFAULT NULL,
 	`playName` VARCHAR(50) NULL DEFAULT NULL,
 	`playDay` DATE NULL DEFAULT NULL,
 	`runtime` INT(11) NULL DEFAULT NULL,
@@ -71,6 +71,7 @@ CREATE TABLE `reserv` (
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
+
 
 ```
 -ticket
