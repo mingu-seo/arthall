@@ -4,11 +4,26 @@
 
 	<select id="count" parameterType="reserv.ReservVo" resultType="Integer">
 		SELECT COUNT(*) FROM reserv
+			<where>
+				<if test="sval != null and sval !=''">
+				 	title like '%${sval}%'
+				</if>
+			</where>
 	</select>
 
 	<select id="list" parameterType="reserv.ReservVo" resultType="reserv.ReservVo">
-		select * from reserv
+		SELECT * FROM reserv
+			<where>
+			<if test="sval != null and sval !=''">
+			 	title like '%${sval}%'
+			</if>
+		</where>
 		LIMIT #{startRow},#{size}
 	</select>
+	
+	<delete id="delete" parameterType="reserv.ReservVo">
+		DELETE FROM reserv
+			WHERE no=#{no}
+	</delete>
 	
 </mapper>

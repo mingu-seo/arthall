@@ -4,6 +4,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<script>
+function del() {
+	if (confirm('정말로 삭제하시겠습니까?')) {
+		location.href="delete.do";
+	}
+}
+
+function search() {
+	location.href="list.do";
+}
+</script>
 </head>
 <body> 
 <div id="wrap">
@@ -25,7 +36,7 @@
                <div id="bbs">
                   <div id="blist">
                      <p><span><strong>총 "${vo.totalCount}"개</strong>  |  1/12페이지</span></p>
-                     <form name="frm" id="frm" action="index.do" method="post">
+                     <form name="frm" id="frm" action="delete.do" method="post">
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
                         <colgroup>
                            <col class="" />
@@ -40,7 +51,7 @@
                         </colgroup>
                         <thead>
                            <tr>
-                              <th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
+                              <th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)" /></th>
                               <th scope="col">예약번호</th>
                               <th scope="col">예약자명</th> 
                               <th scope="col">예약일자</th> 
@@ -60,7 +71,7 @@
                            <c:if test="${vo.totalCount > 0}">
                               <c:forEach var="reserv" items="${list}">
                               <tr>
-                                 <td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
+                                 <td class="first"><input type="checkbox" name="no" id="no" value="${reserv.no}"/></td>
                                  <td class="title"><a href="view.do">${reserv.no}</a></td>
                                  <td>${reserv.name}</td>   
                                  <td>${reserv.reservDay}</td>
@@ -77,7 +88,7 @@
                      </form>
                      <div class="btn">
                         <div class="btnLeft">
-                           <a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+                           <a class="btns" href="javascript:$('#frm').submit();" onclick="del();"><strong>삭제</strong> </a>
                         </div>
                         <div class="btnRight">
                            <a class="wbtn" href="write.do"><strong>등록</strong> </a>
@@ -97,15 +108,15 @@
 						</c:if>
                      </div>
                      <!-- //페이징 처리 -->
-                     <form name="searchForm" id="searchForm" action="index.do"  method="post">
+                     <form name="searchForm" id="searchForm" action="list.do"  method="post">
                         <div class="search">
                            <select name="stype" title="검색을 선택해주세요">
                               <option value="all">전체</option>
                               <option value="title">제목</option>
                               <option value="contents">내용</option>
                            </select>
-                           <input type="text" name="sval" value="" title="검색할 내용을 입력해주세요" />
-                           <input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />
+                           <input type="text" name="sval" value="" title="검색할 내용을 입력해주세요"/>	
+                           <input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" onclick="search();"/>
                         </div>
                      </form>
                      <!-- //search --> 

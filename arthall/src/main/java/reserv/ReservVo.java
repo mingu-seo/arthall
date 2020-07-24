@@ -2,6 +2,8 @@ package reserv;
 
 import java.sql.Date;
 
+import util.Parameter;
+
 public class ReservVo extends Parameter {
    
    private String no;
@@ -12,6 +14,8 @@ public class ReservVo extends Parameter {
    private Date playDay;
    private int runtime;
    private String hallNo;
+   
+
    
    ReservVo() {
       super.setPage(1);
