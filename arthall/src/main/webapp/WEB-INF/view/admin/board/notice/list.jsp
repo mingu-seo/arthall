@@ -58,7 +58,7 @@
 										<td>${notice.no}</td>
 										
 										<td class="title">
-											<a href=view.do?no=${notice.no}">
+											<a href="view.do?no=${notice.no}">
 												 
 												<c:out value="${notice.title}"/>
 												 

@@ -34,13 +34,9 @@ public class Ad_noticeController {
 	@RequestMapping("/admin/board/notice/writeForm.do")
 	public String writeForm() {
 		
-		return "admin/board/write";
+		return "admin/board/notice/write";
 	}
 	
-	@RequestMapping("/admin/board/notice/view.do")
-	public String view(){
-		return "admin/board/view";
-	}
 
 	@RequestMapping("/admin/board/notice/write.do")
 	public String write(HttpServletRequest req, NoticeVO param) {
@@ -48,6 +44,19 @@ public class Ad_noticeController {
 		String pageName = noticeservice.write(req, param);
 		
 		return pageName;
+	}
+	
+	@RequestMapping("/admin/board/notice/view.do")
+	public String view(Model model, HttpServletRequest req, NoticeVO param) {
+		
+		NoticeVO data = noticeservice.view(param);
+		
+		model.addAttribute("vo",param);
+		model.addAttribute("data",data);
+		
+		return "admin/board/notice/view";
+	
+		
 	}
 
 	

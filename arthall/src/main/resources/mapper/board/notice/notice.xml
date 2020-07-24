@@ -22,14 +22,12 @@
 			(#{no},#{writer},#{title},now(),0,#{content})
 	</insert>
 
-<!--  	<insert id="writeContent" parameterType="board.notice.NoticeVO">
-		INSERT INTO notice
-			(content)
-		VALUES
-			(#{content})
-		
-	</insert>
--->
+	<select id ="view" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
+		SELECT
+			no, writer, title, content, regdate
+		FROM notice
+		where no=#{no}
+	</select>
 
 
 

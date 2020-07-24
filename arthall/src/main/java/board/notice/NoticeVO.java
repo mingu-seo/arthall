@@ -13,6 +13,7 @@ public class NoticeVO extends Parameter {
 	private String title; // 제목
 	private String content; // 내용
 	private Timestamp regDate; //작성일
+	private String filename;
 	
 	
 	NoticeVO() {
@@ -67,5 +68,15 @@ public class NoticeVO extends Parameter {
 	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	
+	
 
 }

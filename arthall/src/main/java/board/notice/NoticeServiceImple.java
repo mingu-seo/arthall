@@ -60,6 +60,12 @@ public class NoticeServiceImple implements NoticeService {
 	
 	}
 
+	@Override
+	public NoticeVO view(NoticeVO param) {
+		
+		return noticeDao.view(param);
+	}
+
 
 
 
