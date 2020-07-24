@@ -2,7 +2,7 @@ package reserv;
 
 public class Parameter {
 
-	private String searchword;
+	private String sval;
 	private String contentword;
 	private int page;
 	private int startRow;
@@ -18,12 +18,12 @@ public class Parameter {
 	public void setContentword(String contentword) {
 		this.contentword = contentword;
 	}
-	
-	public String getSearchword() {
-		return searchword;
+
+	public String getSval() {
+		return sval;
 	}
-	public void setSearchword(String searchword) {
-		this.searchword = searchword;
+	public void setSval(String sval) {
+		this.sval = sval;
 	}
 	public int getPage() {
 		return page;

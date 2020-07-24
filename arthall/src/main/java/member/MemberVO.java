@@ -13,10 +13,10 @@ public class MemberVO {
 	private String birth;
 	private Timestamp regDate;
 	
-	public String getMemberNo() {
+	public String getNo() {
 		return no;
 	}
-	public void setMemberNo(String no) {
+	public void setNo(String no) {
 		this.no = no;
 	}
 	public String getId() {
