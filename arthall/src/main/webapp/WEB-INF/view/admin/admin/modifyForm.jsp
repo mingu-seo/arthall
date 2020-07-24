@@ -39,7 +39,7 @@
 		$("input:not(#id)").keyup(empty).click(empty);
 
 		$("#reg_btn").click(function() {
-			$("#frm").attr('action', '/admin/admin/regist.do');
+			$("#frm").attr('action', '/admin/admin/modify.do');
 			$("#frm").submit();
 		});
 
@@ -81,8 +81,9 @@
 												
 												<th scope="row"><label for="">관리자 아이디</label></th>
 												<td colspan="10">
-													<input type="text" id="id" name="id"
-													class="w10" title="아이디를 입력해주세요" value = "${adminVO.id}"/> 
+													<input type="hidden" id="no" name="no"
+													class="w10"  value ="${adminVO.no}"/> 
+													${adminVO.id}
 													<span id="idCheckText"></span>
 												</td>
 												
@@ -97,7 +98,7 @@
 											<tr>
 												<th scope="row"><label for="">관리자 비밀번호</label></th>
 												<td colspan="10"><input type="password" id="password"
-													name="password" class="w10" title="비밀번호를 입력해주세요" />
+													name="password" class="w10" title="비밀번호를 입력해주세요" value = "" />
 													<span class = "info"></span>
 												</td>
 											</tr>
@@ -105,7 +106,14 @@
 												<th scope="row"><label for="">관리자 비밀번호 확인</label></th>
 												<td colspan="10"><input type="password"
 													id="confirmPassword" name="confirmPassword" class="w10"
-													title="비밀번호를 입력해주세요" />
+													title="비밀번호를 입력해주세요" value = ""/>
+													<span class = "info"></span>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row"><label for="">생년월일</label></th>
+												<td colspan="10"><input type="date" id="birth"
+													name="birth" class="w10" title="생년월일을 입력해주세요" value = "${adminVO.birth}"/>
 													<span class = "info"></span>
 												</td>
 											</tr>
@@ -120,13 +128,6 @@
 												<th scope="row"><label for="">이메일</label></th>
 												<td colspan="10"><input type="text" id="email"
 													name="email" class="w10" title="이메일을 입력해주세요" value = "${adminVO.email}"/>
-													<span class = "info"></span>
-												</td>
-											</tr>
-											<tr>
-												<th scope="row"><label for="">생년월일</label></th>
-												<td colspan="10"><input type="text" id="birth"
-													name="birth" class="w10" title="생년월일을 입력해주세요" value = "${adminVO.birth}"/>
 													<span class = "info"></span>
 												</td>
 											</tr>

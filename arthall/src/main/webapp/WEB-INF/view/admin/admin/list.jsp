@@ -30,10 +30,25 @@
 	        }
 	    });
 	});
+	function mouseOver() {
+		$('#frm').style.color = 'black'
+	};
+
+	function mouseOut() {
+		$(this).style.color = "white";
+	};
 	
 	
 
 </script>
+
+<style style="text/css">
+
+    table tr:hover:not(#thead){
+          background-color: #eeeff0;
+    }
+
+</style>
 </head>
 <body> 
 <div id="wrap">
@@ -67,7 +82,7 @@
 									
 								</colgroup>
 								<thead>
-									<tr>
+									<tr id = "thead">
 										<th scope="col" class="first"><input type="checkbox" name="checkedAll" id="checkedAll" /></th>
 										<th scope="col">아이디</th>
 										<th scope="col">이름</th> 
@@ -80,7 +95,9 @@
 								</thead>
 								<tbody>
 									<c:forEach var="admin" items="${list}">
-										<tr class = 'detail' onclick="location.href='modifyForm.do?no=${admin.no}';">
+										<tr class = 'detail' 
+										onmouseover="mouseOver()" onmouseout="mouseOut()"
+										onclick="location.href='modifyForm.do?no=${admin.no}';">
 											<td class="first"><input type="checkbox" class = "checkSingle" name="chkd" id="chkd" value="${admin.id}"/></td>
 											<td>${admin.id}</td>
 											<td>${admin.name}</td>
@@ -97,7 +114,7 @@
 							<div class="btn">
 								<div class="btnLeft">
 									<a class="btns" id = "delete" href="#" ><strong>계정 삭제</strong> </a>
-									<a class="btns" id = "modify" href="#" ><strong>정보 수정</strong> </a>
+									
 								</div>
 								<div class="btnRight">
 									<a class="wbtn" id = "regist" href="/admin/admin/registForm.do"><strong>계정 등록</strong> </a>

@@ -19,7 +19,10 @@
 	</delete>
 	<update id="modify" parameterType="admin.AdminVO">
 		UPDATE admin
-		SET password = PASSWORD(#{password}), NAME = ${name}, tel = ${tel}, email = ${email}
-		WHERE id = ${id};
+		SET NAME = #{name}, birth= #{birth}, tel = #{tel}, email = #{email}
+		<if test ="password != null">
+			, PASSWORD = PASSWORD(#{password})
+		</if>
+		WHERE no = #{no};
 	</update>
 </mapper>

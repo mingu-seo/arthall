@@ -110,6 +110,13 @@
 												</td>
 											</tr>
 											<tr>
+												<th scope="row"><label for="">생년월일</label></th>
+												<td colspan="10"><input type="date" id="birth"
+													name="birth" class="w10" title="생년월일을 입력해주세요" value = "${adminVO.birth}"/>
+													<span class = "info"></span>
+												</td>
+											</tr>
+											<tr>
 												<th scope="row"><label for="">전화번호</label></th>
 												<td colspan="10"><input type="text" id="tel" name="tel"
 													class="w10" title="전화번호를 입력해주세요" value = "${adminVO.tel}" />
@@ -120,13 +127,6 @@
 												<th scope="row"><label for="">이메일</label></th>
 												<td colspan="10"><input type="text" id="email"
 													name="email" class="w10" title="이메일을 입력해주세요" value = "${adminVO.email}"/>
-													<span class = "info"></span>
-												</td>
-											</tr>
-											<tr>
-												<th scope="row"><label for="">생년월일</label></th>
-												<td colspan="10"><input type="text" id="birth"
-													name="birth" class="w10" title="생년월일을 입력해주세요" value = "${adminVO.birth}"/>
 													<span class = "info"></span>
 												</td>
 											</tr>

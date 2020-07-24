@@ -35,6 +35,7 @@ public class AdminDAO {
 		
 	}
 	public int modify(AdminVO param) {
+		System.out.println(param.getPassword());
 		return sqlSession.update("admin.modify", param);
 		
 	}
