@@ -71,6 +71,20 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
 ```
+-ticket
+```
+CREATE TABLE `ticket` (
+	`ticketNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`reservNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`seatType` VARCHAR(50) NULL DEFAULT NULL COMMENT 'null이면 전시회',
+	`price` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`ticketNo`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+```
 예시)
 
 -테이블명
