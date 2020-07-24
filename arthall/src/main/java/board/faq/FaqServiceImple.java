@@ -2,8 +2,11 @@ package board.faq;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FaqServiceImple implements FaqService {
@@ -13,8 +16,6 @@ public class FaqServiceImple implements FaqService {
 	
 	@Override
 	public List<FaqVO> list(FaqVO param) {
-		System.out.println("잘들어가고 서비스고");
-		// TODO Auto-generated method stub
 		int startRow = (param.getPage()-1) * param.getSize(); // limit 시작값
 		int totalCount = faqDao.count(param); // 총갯수
 		int totalPage = totalCount / param.getSize(); // 총페이지수
@@ -38,5 +39,55 @@ public class FaqServiceImple implements FaqService {
 		
 		return list;
 	}
+	
+	@Override
+	public String write(HttpServletRequest req, FaqVO param, MultipartFile file) {
+		//HttpSession sess = req.getSession();
+		//AdminVO sessVo = (AdminVO)sess.getAttribute("authUser");
+		param.setWriter("임한철");
+		
+		// 파일 저장
+		/*MyFileRenamePolicy fu = new MyFileRenamePolicy();
+		fu.fileUpload(file, req.getRealPath("/upload/article/"));
+		param.setFilename(fu.fileName);
+		*/
+		String pageName = "";
+		int r = faqDao.write(param);
+		pageName = "redirect:faq.do";
+		
+		System.out.println("추가된 번호 : " + r);
+		 /*else {
+			req.setAttribute("emptyTitle", true);
+			pageName = "admin/board/faq/index";
+		}*/
+		return pageName;
+	}
+
+	@Override
+	public FaqVO view(FaqVO param) {
+		
+		return faqDao.view(param);
+	}
+	
+	@Override
+	public String modify(FaqVO param) {
+		
+		faqDao.view(param);
+		faqDao.modify(param);
+		
+		return "redirect:faq.do";
+	}
+
+	@Override
+	public String delete(String[] param) {
+		
+		for (int i = 0 ; i < param.length ;i++) {
+			faqDao.delete(Integer.parseInt(param[i]));
+		}
+		
+		return "redirect:faq.do";
+	}
+	
+	
 
 }

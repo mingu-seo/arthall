@@ -9,21 +9,26 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class ReservDao {
+public class ReservDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public int count(ReservVo param) {
+	public int count(ReservVO param) {
 		return sqlSession.selectOne("reserv.count", param);
 	}
 	
-	public List<ReservVo> list(ReservVo param) {
+	public List<ReservVO> list(ReservVO param) {
 		return sqlSession.selectList("reserv.list", param);
 	}
 	
-	public int delete(ReservVo param) {
+	public int delete(ReservVO param) {
 		return sqlSession.delete("reserv.delete", param);
+	}
+	
+	// Ticket
+	public List<TicketVO> ticketlist(TicketVO param) {
+		return sqlSession.selectList("reserv.ticketlist", param);
 	}
 	
 }

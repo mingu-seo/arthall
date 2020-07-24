@@ -2,28 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reserv">
 
-	<select id="count" parameterType="reserv.ReservVo" resultType="Integer">
+	<select id="count" parameterType="reserv.ReservVO" resultType="Integer"> 
 		SELECT COUNT(*) FROM reserv
 			<where>
-				<if test="sval != null and sval !=''">
-				 	title like '%${sval}%'
+				<if test="sval != null and sval !=''" >
+				 	${stype} like '%${sval}%'
 				</if>
 			</where>
 	</select>
 
-	<select id="list" parameterType="reserv.ReservVo" resultType="reserv.ReservVo">
+	<select id="list" parameterType="reserv.ReservVO" resultType="reserv.ReservVO">
 		SELECT * FROM reserv
-			<where>
+		<where>
 			<if test="sval != null and sval !=''">
-			 	title like '%${sval}%'
+			 	${stype} like '%${sval}%'
 			</if>
 		</where>
 		LIMIT #{startRow},#{size}
 	</select>
 	
-	<delete id="delete" parameterType="reserv.ReservVo">
+	<delete id="delete" parameterType="reserv.ReservVO">
 		DELETE FROM reserv
 			WHERE no=#{no}
 	</delete>
+	
+	
+	<!-- ticket 조인.. -form 정준 -->
+	<select id="ticketlist" parameterType="reserv.TicketVO" resultType="reserv.TicketVO">
+		SELECT
+			*
+		FROM ticket
+		WHERE reservNo = #{reservNo}
+	</select>
+	
 	
 </mapper>

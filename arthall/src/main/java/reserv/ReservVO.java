@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import util.Parameter;
 
-public class ReservVo extends Parameter {
+public class ReservVO extends Parameter {
    
    private String no;
    private String name;
@@ -17,7 +17,7 @@ public class ReservVo extends Parameter {
    
 
    
-   ReservVo() {
+   ReservVO() {
       super.setPage(1);
       super.setSize(10);
    }

@@ -16,10 +16,11 @@ public class Ad_ReservController {
 
 		
 		@RequestMapping("/admin/reserv/list.do")
-		public String list(Model moedel, ReservVo param) {
+		public String list(Model moedel, ReservVO param) {
+			System.out.println(param.getStype());
+			System.out.println(param.getSval());
 			
-			List<ReservVo> list = reservService.list(param);
-			
+			List<ReservVO> list = reservService.list(param);
 			
 			moedel.addAttribute("vo",param);
 			moedel.addAttribute("list",list);
@@ -27,7 +28,7 @@ public class Ad_ReservController {
 		}
 		
 		@RequestMapping("/admin/reserv/delete.do")
-		public String view(Model model, @RequestParam("no") String[] nono, ReservVo param) {
+		public String view(Model model, @RequestParam("no") String[] nono, ReservVO param) {
 			
 			for (int i = 0; i < nono.length; i++) {
 				System.out.println(nono[i]);
@@ -37,4 +38,16 @@ public class Ad_ReservController {
 
 			return pageName;
 		}
+		
+		
+		// Ticket
+		@RequestMapping("/admin/reserv/ticketlist.do")
+		public String ticketlist(Model model, TicketVO param) {
+			
+			List<TicketVO> ticketlist = reservService.ticketlist(param);
+			
+			model.addAttribute("ticketlist",ticketlist);
+			return "admin/reserv/ticketlist";
+		}
+		
 }

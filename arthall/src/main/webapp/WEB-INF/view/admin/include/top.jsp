@@ -82,10 +82,10 @@ $(window).load(function(){
 						<!--  
 						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>공지사항</span></a></li>
 						-->
-						<li><a href="<%=request.getContextPath()%>/admin/board/notice.do"><span>공지사항</span></a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/board/news.do"><span>뉴스</span></a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/board/faq.do"><span>FAQ</span></a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/board/qna.do"><span>Q&A</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/notice/list.do"><span>공지사항</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/notice/news.do"><span>뉴스</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/notice/faq.do"><span>FAQ</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/notice/qna.do"><span>Q&A</span></a></li>
 						
 					</ul>
 					</div>
