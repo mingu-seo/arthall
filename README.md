@@ -24,7 +24,7 @@ CREATE TABLE `admin` (
 	`email` VARCHAR(50) NULL DEFAULT NULL,
 	`birth` TIMESTAMP NULL DEFAULT NULL,
 	`regdate` TIMESTAMP NOT NULL DEFAULT  ON UPDATE NOW(),
-	PRIMARY KEY (`adminNo`)
+	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
@@ -48,7 +48,7 @@ CREATE TABLE `play` (
 	`priceB` INT(11) NULL DEFAULT NULL,
 	`priceC` INT(11) NULL DEFAULT NULL,
 	`exhPrice` INT(11) NULL DEFAULT NULL,
-	PRIMARY KEY (`playNo`)
+	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
@@ -65,7 +65,7 @@ CREATE TABLE `reserv` (
 	`playDay` DATE NULL DEFAULT NULL,
 	`runtime` INT(11) NULL DEFAULT NULL,
 	`reservDay` DATE NULL DEFAULT NULL,
-	PRIMARY KEY (`reservNo`)
+	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
@@ -78,7 +78,7 @@ CREATE TABLE `ticket` (
 	`reservNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
 	`seatType` VARCHAR(50) NULL DEFAULT NULL COMMENT 'null이면 전시회',
 	`price` INT(11) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`ticketNo`)
+	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
