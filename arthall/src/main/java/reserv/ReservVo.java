@@ -2,6 +2,8 @@ package reserv;
 
 import java.sql.Date;
 
+import util.Parameter;
+
 public class ReservVo extends Parameter {
    
    private String no;
