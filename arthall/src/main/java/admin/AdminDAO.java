@@ -21,7 +21,18 @@ public class AdminDAO {
 	}
 	
 	public int regist(AdminVO param) {
-		return sqlSession.selectOne("admin.regist", param);
+		return sqlSession.insert("admin.regist", param);
+	}
+
+	public AdminVO selectOne(AdminVO param) {
+		
+		return sqlSession.selectOne("admin.select", param);
+		
+	}
+
+	public int delete(String id) {
+		return sqlSession.delete("admin.delete", id);
+		
 	}
 
 }
