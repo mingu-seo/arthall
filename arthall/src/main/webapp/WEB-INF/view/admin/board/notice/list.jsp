@@ -46,76 +46,28 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:if test="${notice.totaCount ==0}">
+								<c:if test="${vo.totalCount ==0}">
 								<tr>
 									<td colspan="4">게시글이 없습니다.</td>
 								</tr>
 								</c:if>
-								<c:if test="${notice.totalCount > 0}">
+								<c:if test="${vo.totalCount > 0}">
 								<c:forEach var="notice" items="${list}">
 								<tr>
 										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-										<td>${notice.no}</td>
+										<td>${notice.noticeNo}</td>
 										<td class="title"><a href="view.do">
 										
 											<c:out value="${notice.title}"/>
 										
 										</a></td>
-										<td>"${notice.day}"</td>
-										<td>"${notice.writer}</td>
-										<td class="last">9</td>
+										<td>"${notice.regDate}"</td>
+										<td>"${notice.writer}"</td>
+										<td class="last">"${notice.readCnt}"</td>
 									</tr>
 								</c:forEach>
 								</c:if>
-								
-								<!-- 
-								<tbody>
-									
-									<tr>
-										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-										<td>111</td>
-										<td class="title"><a href="view.do">제목입니다.</a></td>
-										<td>2020-01-01 11:11:11</td>
-										<td>홍길동</td>
-										<td class="last">9</td>
-									</tr>
-									<tr>
-										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-										<td>111</td>
-										<td class="title"><a href="view.do">제목입니다.</a></td>
-										<td>2020-01-01 11:11:11</td>
-										<td>홍길동</td>
-										<td class="last">9</td>
-									</tr>
-									<tr>
-										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-										<td>111</td>
-										<td class="title"><a href="view.do">제목입니다.</a></td>
-										<td>2020-01-01 11:11:11</td>
-										<td>홍길동</td>
-										<td class="last">9</td>
-									</tr>
-									<tr>
-										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-										<td>111</td>
-										<td class="title"><a href="view.do">제목입니다.</a></td>
-										<td>2020-01-01 11:11:11</td>
-										<td>홍길동</td>
-										<td class="last">9</td>
-									</tr>
-									<tr>
-										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-										<td>111</td>
-										<td class="title"><a href="view.do">제목입니다.</a></td>
-										<td>2020-01-01 11:11:11</td>
-										<td>홍길동</td>
-										<td class="last">9</td>
-									</tr>
-								</tbody>
-								 -->
-							
 						
-							
 						
 							</tbody>
 							</table>
