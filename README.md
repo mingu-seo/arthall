@@ -59,17 +59,19 @@ ENGINE=InnoDB
 ```
 CREATE TABLE `reserv` (
 	`no` VARCHAR(50) NOT NULL DEFAULT '\'\'',
-	`playName` VARCHAR(50) NULL DEFAULT NULL,
 	`name` VARCHAR(50) NULL DEFAULT NULL,
-	`hallNo` INT(11) NULL DEFAULT NULL,
+	`reservDay` DATE NULL DEFAULT NULL,
+	`playNo` VARCHAR(50) NULL DEFAULT NULL,
+	`playName` VARCHAR(50) NULL DEFAULT NULL,
 	`playDay` DATE NULL DEFAULT NULL,
 	`runtime` INT(11) NULL DEFAULT NULL,
-	`reservDay` DATE NULL DEFAULT NULL,
+	`hallNo` INT(11) NULL DEFAULT NULL,
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
+
 ```
 -ticket
 ```
@@ -83,6 +85,7 @@ CREATE TABLE `ticket` (
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
+
 
 ```
 예시)
