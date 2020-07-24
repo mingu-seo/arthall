@@ -4,20 +4,20 @@ import java.security.Timestamp;
 
 public class MemberVO {
 
-	private String memberNo;
+	private String no;
 	private String id;
 	private String password;
 	private String name;
-	private String tell;
+	private String tel;
 	private String email;
 	private String birth;
 	private Timestamp regDate;
 	
 	public String getMemberNo() {
-		return memberNo;
+		return no;
 	}
-	public void setMemberNo(String memberNo) {
-		this.memberNo = memberNo;
+	public void setMemberNo(String no) {
+		this.no = no;
 	}
 	public String getId() {
 		return id;
@@ -37,11 +37,11 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getTell() {
-		return tell;
+	public String getTel() {
+		return tel;
 	}
-	public void setTell(String tell) {
-		this.tell = tell;
+	public void setTell(String tel) {
+		this.tel = tel;
 	}
 	public String getEmail() {
 		return email;

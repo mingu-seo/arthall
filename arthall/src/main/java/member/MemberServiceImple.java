@@ -37,9 +37,9 @@ public class MemberServiceImple implements MemberService{
 	}
 
 	@Override
-	public String login(HttpServletRequest req, String memberid, String password) {
+	public String login(HttpServletRequest req, String id, String password) {
 		String pageName = "";
-		MemberVO vo = memberDao.login(memberid, password);
+		MemberVO vo = memberDao.login(id, password);
 		if (vo == null) {
 			pageName = "admin/member/loginForm";
 		} else {

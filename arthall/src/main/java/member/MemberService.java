@@ -6,7 +6,7 @@ public interface MemberService {
 
 	public String regist(MemberVO param, HttpServletRequest req);
 	
-	public String login(HttpServletRequest req, String memberid, String password);
+	public String login(HttpServletRequest req, String id, String password);
 	
-	public String changePwd(HttpServletRequest req, String memberid, String password);
+	public String changePwd(HttpServletRequest req, String id, String password);
 }
