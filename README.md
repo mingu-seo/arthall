@@ -55,6 +55,22 @@ ENGINE=InnoDB
 ;
 
 ```
+-reserv
+```
+CREATE TABLE `reserv` (
+	`reservNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`playName` VARCHAR(50) NULL DEFAULT NULL,
+	`name` VARCHAR(50) NULL DEFAULT NULL,
+	`hallNo` INT(11) NULL DEFAULT NULL,
+	`playDay` DATE NULL DEFAULT NULL,
+	`runtime` INT(11) NULL DEFAULT NULL,
+	`reservDay` DATE NULL DEFAULT NULL,
+	PRIMARY KEY (`reservNo`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+```
 예시)
 
 -테이블명
