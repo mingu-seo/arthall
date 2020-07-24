@@ -8,7 +8,7 @@
 				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<context:component-scan base-package="test" />
-	<context:component-scan base-package="admin" />
+	<context:component-scan base-package="admin" /> 
 	<context:component-scan base-package="member" />
 	<context:component-scan base-package="reserv" />
 	<context:component-scan base-package="/admin/board" />
