@@ -10,7 +10,7 @@ public class MemberVO {
 	private String name;
 	private String tell;
 	private String email;
-	private Timestamp birth;
+	private String birth;
 	private Timestamp regDate;
 	
 	public String getMemberNo() {
@@ -49,10 +49,10 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Timestamp getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Timestamp birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public Timestamp getRegDate() {
