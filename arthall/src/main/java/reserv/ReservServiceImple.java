@@ -4,17 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Service
 public class ReservServiceImple implements ReservService{
 	
 	@Autowired
-	private ReservDao reservDao;
+	private ReservDAO reservDao;
 
 	@Override
-	public List<ReservVo> list(ReservVo param) {
+	public List<ReservVO> list(ReservVO param) {
 		
 		
 		int startRow = (param.getPage()-1) * param.getSize(); // limit 시작값
@@ -36,13 +35,13 @@ public class ReservServiceImple implements ReservService{
 		param.setEndPage(endPage);
 		param.setTotalCount(totalCount);
 		param.setTotalPage(totalPage);
-		List<ReservVo> list = reservDao.list(param);
+		List<ReservVO> list = reservDao.list(param);
 		
 		return list;
 	}
 
 	@Override
-	public String delete(String[] nono, ReservVo param) {
+	public String delete(String[] nono, ReservVO param) {
 		
 		for (int i = 0; i < nono.length; i++) {
 			param.setNo(nono[i]);

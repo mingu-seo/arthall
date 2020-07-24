@@ -11,9 +11,6 @@ function del() {
 	}
 }
 
-function search() {
-	location.href="list.do";
-}
 </script>
 </head>
 <body> 
@@ -35,7 +32,7 @@ function search() {
                <!-- 내용 : s -->
                <div id="bbs">
                   <div id="blist">
-                     <p><span><strong>총 "${vo.totalCount}"개</strong>  |  1/12페이지</span></p>
+                     <p><span><strong>총 ${vo.totalCount}개</strong>  |  ${vo.page}/${vo.endPage}페이지</span></p>
                      <form name="frm" id="frm" action="delete.do" method="post">
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
                         <colgroup>
@@ -65,7 +62,7 @@ function search() {
                         <tbody>
                            <c:if test="${vo.totalCount == 0}">
                               <tr>
-                                 <td colspan="4">게시글이 없습니다.</td>
+                                 <td colspan="100%">게시글이 없습니다.</td>
                               </tr>
                            </c:if>
                            <c:if test="${vo.totalCount > 0}">
@@ -90,9 +87,6 @@ function search() {
                         <div class="btnLeft">
                            <a class="btns" href="javascript:$('#frm').submit();" onclick="del();"><strong>삭제</strong> </a>
                         </div>
-                        <div class="btnRight">
-                           <a class="wbtn" href="write.do"><strong>등록</strong> </a>
-                        </div>
                      </div>
                      <!--//btn-->
                      <!-- 페이징 처리 -->
@@ -111,12 +105,13 @@ function search() {
                      <form name="searchForm" id="searchForm" action="list.do"  method="post">
                         <div class="search">
                            <select name="stype" title="검색을 선택해주세요">
-                              <option value="all">전체</option>
-                              <option value="title">제목</option>
-                              <option value="contents">내용</option>
+                              <option value="name" <c:if test="${vo.stype=='name'}">selected</c:if>>예약자명</option>
+                              <option value="playName" <c:if test="${vo.stype=='playName'}">selected</c:if>>공연명</option>
+                              <option value="playDay" <c:if test="${vo.stype=='playDay'}">selected</c:if>>공연일자</option>
+                              <option value="hallNo" <c:if test="${vo.stype=='hallNo'}">selected</c:if>>공연홀</option>
                            </select>
-                           <input type="text" name="sval" value="" title="검색할 내용을 입력해주세요"/>	
-                           <input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" onclick="search();"/>
+                           <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요"/>	
+                           <input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색"/>
                         </div>
                      </form>
                      <!-- //search --> 
