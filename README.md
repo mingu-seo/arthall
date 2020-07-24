@@ -111,6 +111,27 @@ AUTO_INCREMENT=3
 
 
 ```
+// 오게이 예아 20200724 임한철
+board/faq
+```
+CREATE TABLE `faq` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(255) NULL DEFAULT NULL,
+	`content` TEXT NULL DEFAULT NULL,
+	`regdate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`moddate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`readcnt` INT(11) NOT NULL DEFAULT 0,
+	`writer` VARCHAR(50) NOT NULL DEFAULT '0',
+	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1;
+
+```
+
+
 예시)
 
 -테이블명
