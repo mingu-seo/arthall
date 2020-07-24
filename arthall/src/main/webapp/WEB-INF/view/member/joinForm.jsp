@@ -10,9 +10,9 @@
 <script>
 $(function() {
 	$("#btn_join").click(function() {
-		if ($("#memberid").val() == "") {
+		if ($("#id").val() == "") {
 			alert("아이디를 입력해 주세요");
-			$("#memberid").focus();
+			$("#id").focus();
 			return;
 		}
 		if ($("#password").val() == "") {
@@ -30,7 +30,7 @@ $(function() {
 			$("#password").focus();
 			return;
 		}
-		if ($("input[name=name]").val() == '') {
+		if ($("#name").val() == '') {
 			alert('이름을 입력해 주세요');
 			return false;
 		}
@@ -59,7 +59,7 @@ $(function() {
 <%-- ${isDup} / <%=request.getAttribute("isDup") == null ? "" : request.getAttribute("isDup") %> --%>
 <form action="join.do" method="post" id="frm">
 	<p>
-		아이디:<br><input type="text" name="memberid" id="memberid" value="${param.memberid }">
+		아이디:<br><input type="text" name="id" id="id">
 		<c:if test="${isDup == 'true' }">이미 사용중인 아이디입니다.</c:if>
 	</p>
 	<p>
@@ -69,7 +69,7 @@ $(function() {
 		확인:<br><input type="password" name="confirmPassword" id="confirmPassword">
 	</p>
 	<p>
-		이름:<br><input type="text" name="name" value="${param.name }">
+		이름:<br><input type="text" name="name">
 	</p>
 	<p>
 		생년월일:<br><input type="text" name="birth" id="birth">

@@ -23,16 +23,16 @@ public class User_MemberController {
 		return "admin/member/joinForm";
 	}
 	
-	@RequestMapping("/member/join.do")
+	@RequestMapping("admin/member/join.do")
 	public String join(HttpServletRequest req, MemberVO param) {
 		String pageName = memberService.regist(param, req);
-		
+		System.out.println("컨트롤러 값 : " + param.getTel());
 		return pageName;
 	}
 	
-	@RequestMapping("/member/joinSuccess.do")
+	@RequestMapping("admin/member/joinSuccess.do")
 	public String joinSuccess() {
-		return "member/joinSuccess";
+		return "admin/member/joinSuccess";
 	}
 	
 	@RequestMapping("/member/loginForm.do")
@@ -41,10 +41,10 @@ public class User_MemberController {
 	}
 	
 	@RequestMapping("/member/login.do")
-	public String login(HttpServletRequest req, @RequestParam("id") String memberid, 
+	public String login(HttpServletRequest req, @RequestParam("id") String id, 
 						@RequestParam("password") String password) {
 		
-		String pageName = memberService.login(req, memberid, password);
+		String pageName = memberService.login(req, id, password);
 		
 		return pageName;
 	}

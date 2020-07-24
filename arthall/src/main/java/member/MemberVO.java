@@ -2,7 +2,9 @@ package member;
 
 import java.security.Timestamp;
 
-public class MemberVO {
+import util.Parameter;
+
+public class MemberVO extends Parameter{
 
 	private String no;
 	private String id;
@@ -12,6 +14,11 @@ public class MemberVO {
 	private String email;
 	private String birth;
 	private Timestamp regDate;
+	
+	MemberVO() {
+		super.setPage(1);
+		super.setSize(10);
+	}
 	
 	public String getNo() {
 		return no;
@@ -40,7 +47,7 @@ public class MemberVO {
 	public String getTel() {
 		return tel;
 	}
-	public void setTell(String tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public String getEmail() {
