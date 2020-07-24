@@ -16,7 +16,7 @@ HeidiSQL
 
 ```
 CREATE TABLE `admin` (
-	`adminNo` INT(11) NOT NULL AUTO_INCREMENT,
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
 	`id` VARCHAR(50) NOT NULL,
 	`password` VARCHAR(50) NOT NULL,
 	`name` VARCHAR(50) NOT NULL,
@@ -36,7 +36,7 @@ AUTO_INCREMENT=5
 
 ```
 CREATE TABLE `play` (
-	`playNo` VARCHAR(20) NOT NULL,
+	`no` VARCHAR(20) NOT NULL,
 	`playName` VARCHAR(50) NULL DEFAULT NULL,
 	`startDate` DATE NULL DEFAULT NULL,
 	`endDate` DATE NULL DEFAULT NULL,
@@ -58,7 +58,7 @@ ENGINE=InnoDB
 -reserv
 ```
 CREATE TABLE `reserv` (
-	`reservNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`no` VARCHAR(50) NOT NULL DEFAULT '\'\'',
 	`playName` VARCHAR(50) NULL DEFAULT NULL,
 	`name` VARCHAR(50) NULL DEFAULT NULL,
 	`hallNo` INT(11) NULL DEFAULT NULL,
@@ -70,6 +70,20 @@ CREATE TABLE `reserv` (
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
+```
+-ticket
+```
+CREATE TABLE `ticket` (
+	`no` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`reservNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`seatType` VARCHAR(50) NULL DEFAULT NULL COMMENT 'null이면 전시회',
+	`price` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`ticketNo`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
 ```
 예시)
 
