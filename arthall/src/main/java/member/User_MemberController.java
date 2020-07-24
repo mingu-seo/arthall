@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class Mem_MemberController {
+public class User_MemberController {
 
 	@Autowired
 	MemberService memberService;
