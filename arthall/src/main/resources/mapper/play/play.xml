@@ -2,6 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="play">
 
+	<select id = "count" parameterType="play.PlayVO" resultType="Integer">
+		SELECT COUNT(*) FROM play
+		<where>
+			<if test="searchword != null and searchword != ''">
+			playName LIKE '%${searchword}%'
+			OR playNo IN
+			(SELECT playNo FROM play WHERE content LIKE '%${searchword}%')
+			</if>
+		</where>
+	</select>
+	
+	<select id = "list" parameterType="play.PlayVO" resultType="play.PlayVO">
+		SELECT * FROM play 
+		<where>
+			<if test="searchword != null and searchword != ''">
+			playName LIKE '%${searchword}%'
+			OR playNo IN
+			(SELECT playNo FROM play WHERE content LIKE '%${searchword}%')
+			</if>
+		</where>
+		ORDER BY regDate DESC LIMIT #{startRow}, #{size}
+	</select>
+	
 	<insert id = "addPlay" parameterType="play.PlayVO" useGeneratedKeys="true">
 		INSERT INTO play
 			(playName, startDate, lastDate, hallNo, actor, content,

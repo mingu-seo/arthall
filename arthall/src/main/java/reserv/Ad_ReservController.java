@@ -22,4 +22,9 @@ public class Ad_ReservController {
 			moedel.addAttribute("list",list);
 			return "admin/reserv/list";
 		}
+		
+		@RequestMapping("/admin/reserv/view.do")
+		public String view(Model model, ReservVo param) {
+			return "admin/reserv/view";
+		}
 }

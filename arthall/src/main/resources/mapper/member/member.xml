@@ -9,7 +9,7 @@
 	<insert id="insert" parameterType="member.MemberVO">
 		insert into member (id, password, name, tel, email, birth, regDate)
 		values
-		(#{id}, #{password}, #{name}, #{tel}, #{email}, #{birth}, now())
+		( #{id}, #{password}, #{name}, #{tel}, #{email}, #{birth}, now())
 	</insert>
 	
 	<select id="login" parameterType="java.util.Map" resultType="member.MemberVO">

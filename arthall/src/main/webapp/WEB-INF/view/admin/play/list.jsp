@@ -4,6 +4,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<script>
+function del() {
+   if (confirm('정말로 삭제하시겠습니까?')) {
+      location.href='delete.do?article_no=${data.article_no}';
+   }
+}
+</script>
 </head>
 <body> 
 <div id="wrap">
@@ -41,14 +48,15 @@
                         <thead>
                            <tr>
                               <th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
-                              <th scope="col">예약번호</th>
-                              <th scope="col">예약자명</th> 
-                              <th scope="col">예약일자</th> 
-                              <th scope="col">공연번호</th> 
-                              <th scope="col">공연명</th>
-                              <th scope="col">공연일자</th> 
-                              <th scope="col">공연시간</th>
-                              <th scope="col" class="last">공연홀</th>
+                              <th scope="col">공연번호</th>
+                              <th scope="col">홀번호</th>
+                              <th scope="col">공연명</th> 
+                              <th scope="col">시작일</th> 
+                              <th scope="col">종료일</th> 
+                              <th scope="col">출연진</th> 
+                              <th scope="col">공연내용</th>
+                              <th scope="col">가격(공연)</th>
+                              <th scope="col" class="last">가격(전시회)</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -62,12 +70,17 @@
                               <tr>
                                  <td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
                                  <td class="title"><a href="view.do">${reserv.no}</a></td>
-                                 <td>${reserv.name}</td>   
-                                 <td>${reserv.reservDay}</td>
-                                 <td>${reserv.playNo}</td>
-                                 <td>${reserv.playName}</td>
-                                 <td>${reserv.playDay}</td>
-                                 <td>${reserv.runtime}</td>
+                                 <td>${play.no}</td>   
+                                 <td>${play.hallNo}</td>
+                                 <td>${play.startDate}</td>
+                                 <td>${play.endDate}</td>
+                                 <td>${play.actor}</td>
+                                 <td>${play.content}</td>
+                                 <!-- 가격>하위 ABC를 둬야할 것 같은데?
+                                 <td>${play.priceA}</td>
+                                 <td>${play.priceB}</td>
+                                 <td>${play.priceC}</td>-->
+                                 <td>${play.exhPrice}</td>
                                  <td class="last">${reserv.hallNo}</td>
                               </tr>
                               </c:forEach>
@@ -77,7 +90,7 @@
                      </form>
                      <div class="btn">
                         <div class="btnLeft">
-                           <a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+                           <a class="btns" href="#" onclick="del();"><strong>삭제</strong> </a>
                         </div>
                         <div class="btnRight">
                            <a class="wbtn" href="write.do"><strong>등록</strong> </a>
@@ -87,14 +100,14 @@
                      <!-- 페이징 처리 -->
                      <div class='page'>
                         <c:if test="${vo.startPage > 5}">
-							<a href="list.do?page=${vo.startPage-5}">[이전]</a>
-						</c:if>
-						<c:forEach var="pNo" begin="${vo.startPage}" end="${vo.endPage}">
-							<a href="list.do?page=${pNo}">[${pNo}]</a>
-						</c:forEach>
-						<c:if test="${vo.endPage < vo.totalPage}">
-							<a href="list.do?page=${vo.startPage+5}">[다음]</a>
-						</c:if>
+                     <a href="list.do?page=${vo.startPage-5}">[이전]</a>
+                  </c:if>
+                  <c:forEach var="pNo" begin="${vo.startPage}" end="${vo.endPage}">
+                     <a href="list.do?page=${pNo}">[${pNo}]</a>
+                  </c:forEach>
+                  <c:if test="${vo.endPage < vo.totalPage}">
+                     <a href="list.do?page=${vo.startPage+5}">[다음]</a>
+                  </c:if>
                      </div>
                      <!-- //페이징 처리 -->
                      <form name="searchForm" id="searchForm" action="index.do"  method="post">

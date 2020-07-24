@@ -7,7 +7,8 @@
 	</select>
 
 	<select id="list" parameterType="reserv.ReservVo" resultType="reserv.ReservVo">
-		select * from reserv 
+		select * from reserv
+		LIMIT #{startRow},#{size}
 	</select>
 	
 </mapper>

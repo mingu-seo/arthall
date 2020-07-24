@@ -25,9 +25,9 @@ public class MemberDAO {
 	}
 
 	// 로그인
-	public MemberVO login(String memberid, String password) {
+	public MemberVO login(String id, String password) {
 		Map<String, Object> m = new HashMap<String, Object>();
-		m.put("id", memberid);
+		m.put("id", id);
 		m.put("pwd", password);
 		
 		return sqlSession.selectOne("member.login", m);

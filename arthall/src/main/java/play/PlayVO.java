@@ -2,7 +2,7 @@ package play;
 
 import java.sql.Timestamp;
 
-public class PlayVO {
+public class PlayVO extends util.Parameter{
 
 	private String playNo;
 	private String playName;
@@ -11,12 +11,19 @@ public class PlayVO {
 	private int hallNo;
 	private String actor;
 	private String content;
-	private String fileName;
 	private int priceA;
 	private int priceB;
 	private int priceC;
 	private int exhPrice;
 	
+	private String filename;
+	private Timestamp regdate;
+	private Timestamp moddate;
+	
+	public PlayVO(){
+		super.setPage(1);
+		super.setSize(10);
+	}
 	
 	public String getPlayNo() {
 		return playNo;
@@ -60,12 +67,6 @@ public class PlayVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getFileName() {
-		return fileName;
-	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
 	public int getPriceA() {
 		return priceA;
 	}
@@ -89,6 +90,24 @@ public class PlayVO {
 	}
 	public void setExhPrice(int exhPrice) {
 		this.exhPrice = exhPrice;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
+	}
+	public Timestamp getModdate() {
+		return moddate;
+	}
+	public void setModdate(Timestamp moddate) {
+		this.moddate = moddate;
 	}
 	
 	
