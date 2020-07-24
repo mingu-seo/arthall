@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<!-- 관리자 페이지 -->
+	<!-- 총 회원 수 카운트 -->
+	<select id="count" parameterType="member.MemberVO" resultType="Integer">
+		SELECT COUNT(*) FROM member
+		<where>
+			<if test="searchword != null and searchword != ''">
+			id LIKE '%${searchword}%'
+			OR member.no IN
+			(SELECT no FROM member.name WHERE name LIKE '%${searchword}')
+			</if>
+		</where>
+	</select>
+	
+	<select id="list" parameterType="member.MemberVO" resultType="member.MemberVO">
+		SELECT * FROM member
+		<where>
+			<if test="searchword != null and searchword != ''"> 
+			id LIKE '%${searchword}%'
+			OR member.no IN
+			(SELECT no FROM member.name WHERE name LIKE '%${searchword}')
+			</if>
+		</where>
+		ORDER BY regDate DESC LIMIT #{startRow}, #{size}
+	</select>
+	
+	
+	<!-- 회원 페이지 -->
+	<select id="selectOne" parameterType="String" resultType="member.MemberVO">
+		select * from member where id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="member.MemberVO">
+		insert into member (id, password, name, tel, email, birth, regDate)
+		values
+		( #{id}, #{password}, #{name}, #{tel}, #{email}, #{birth}, now())
+	</insert>
+	
+	<select id="login" parameterType="java.util.Map" resultType="member.MemberVO">
+		select * from member where id=#{id} and password=#{password}
+	</select>
+	
+	<update id="changePwd" parameterType="member.MemberVO">
+		UPDATE member SET
+			password=#{password}
+		WHERE id=#{id}			
+	</update>
+	
+	
+</mapper>

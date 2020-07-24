@@ -12,6 +12,13 @@ public class PlayDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	public List<PlayVO> list(PlayVO param){
+		return sqlSession.selectList("play.list", param);
+	}
+	
+	public int count(PlayVO param) {
+		return sqlSession.selectOne("play.count", param);
+	}
 	
 	public int addPlay(PlayVO param) {
 		return sqlSession.insert("play.addPlay", param);

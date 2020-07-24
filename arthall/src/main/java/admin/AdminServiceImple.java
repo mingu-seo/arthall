@@ -37,18 +37,42 @@ public class AdminServiceImple implements AdminService {
 
 	@Override
 	public String regist(Model model, AdminVO param) {
-		int numReg = adminDao.regist(param);
+		int numReg = 0;
+		
+		AdminVO vo = adminDao.selectOne(param);
+
+		if (vo == null) {	
+			numReg = adminDao.regist(param);
+		}
 		String pageName = "";
 		if(numReg != 0) {
 			model.addAttribute("msg", "관리자"+numReg+"명이 등록되었습니다.");
-			model.addAttribute("url", "");
+			model.addAttribute("url", "list.do");
 			pageName = "common/alert";
 		} else {
 			model.addAttribute("msg", "관리자 등록 실패");
-			model.addAttribute("url", "");
+			model.addAttribute("url", "list.do");
 			pageName = "common/alert";
 		}
 		return pageName;
+	}
+	
+	@Override
+	public String dup(HttpServletRequest req, AdminVO param) {
+		
+		// TODO 아이디를 중복체크하고, 중복이 안되는 경우에만 db에 등록
+		// 아이디 중복확인
+		AdminVO vo = adminDao.selectOne(param);
+		String r = "true";
+		if (vo != null) {
+			r = "false";
+		} 
+		return r;
+	}
+
+	@Override
+	public int delete(String idCheckedStr) {
+		return adminDao.delete(idCheckedStr);
 	}
 
 }

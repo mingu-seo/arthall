@@ -16,19 +16,96 @@ HeidiSQL
 
 ```
 CREATE TABLE `admin` (
-	`adminNo` INT(11) NOT NULL AUTO_INCREMENT,
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
 	`id` VARCHAR(50) NOT NULL,
 	`password` VARCHAR(50) NOT NULL,
 	`name` VARCHAR(50) NOT NULL,
 	`tel` VARCHAR(50) NULL DEFAULT NULL,
 	`email` VARCHAR(50) NULL DEFAULT NULL,
-	`birth` TIMESTAMP NULL DEFAULT NULL,
+	`birth` VARCHAR(50) NULL DEFAULT NULL,
 	`regdate` TIMESTAMP NOT NULL DEFAULT  ON UPDATE NOW(),
-	PRIMARY KEY (`adminNo`)
+	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 AUTO_INCREMENT=5
+;
+
+```
+-play
+
+```
+CREATE TABLE `play` (
+	`no` VARCHAR(20) NOT NULL,
+	`playName` VARCHAR(50) NULL DEFAULT NULL,
+	`startDate` DATE NULL DEFAULT NULL,
+	`endDate` DATE NULL DEFAULT NULL,
+	`hallNo` INT(11) NULL DEFAULT NULL,
+	`actor` TEXT NULL DEFAULT NULL,
+	`content` TEXT NULL DEFAULT NULL,
+	`fileName` VARCHAR(50) NULL DEFAULT NULL,
+	`priceA` INT(11) NULL DEFAULT NULL,
+	`priceB` INT(11) NULL DEFAULT NULL,
+	`priceC` INT(11) NULL DEFAULT NULL,
+	`exhPrice` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+```
+-reserv
+```
+CREATE TABLE `reserv` (
+	`no` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`name` VARCHAR(50) NULL DEFAULT NULL,
+	`reservDay` DATE NULL DEFAULT NULL,
+	`playNo` INT(11) NULL DEFAULT NULL,
+	`playName` VARCHAR(50) NULL DEFAULT NULL,
+	`playDay` DATE NULL DEFAULT NULL,
+	`runtime` INT(11) NULL DEFAULT NULL,
+	`hallNo` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+
+```
+-ticket
+```
+CREATE TABLE `ticket` (
+	`no` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`reservNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`seatType` VARCHAR(50) NULL DEFAULT NULL COMMENT 'null이면 전시회',
+	`price` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+```
+board/notice
+```
+
+
+CREATE TABLE `notice` (
+	`noticeNo` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(50) NULL DEFAULT NULL,
+	`regDate` TIMESTAMP NULL DEFAULT NULL,
+	`readCnt` INT(11) NULL DEFAULT NULL,
+	`writer` VARCHAR(50) NULL DEFAULT NULL,
+	`filename` VARCHAR(50) NULL DEFAULT NULL,
+	`modDate` VARCHAR(50) NULL DEFAULT NULL,
+	`content` TEXT NULL DEFAULT NULL,
+	PRIMARY KEY (`noticeNo`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=3
 ;
 
 
@@ -62,12 +139,12 @@ Eclipse IDE Enterprice for Java Developers
 	-ex) 공지사항 리스트 컨트롤러 메서드    
 	 -@RequestMapping("admin/board/notice/list.do") 
 
- admin/member
-
-	 사용자_패키지명+클래스명.java   
+ admin/User   
+	
+	  >사용자_패키지명+클래스명.java   
 	 ex) 관리자/회원 예약 컨트롤러 클래스명 예시   
-	 Ad_ReservController.java
-	 Mem_ReservController.java
+	  > Ad_ReservController.java
+	  > User_ReservController.java
 
 
 페이지이름.jsp(페이지 이름 가이드)   

@@ -1,29 +1,35 @@
-package reserv;
+package util;
 
+/*
+ * 20200723 18:05 임한철 : faq 페이지 처리를 위한 파라메터 삽입  
+ * 
+ *
+ */
 public class Parameter {
+	private String sval;
+	private String stype;
+	
+	
+	private int page; // 요청페이지번호
+	private int startRow; // 시작로우(limit 앞)
+	private int size;	// 페이지당 갯수(limit 뒤)
+	private int startPage; // 페이지하단에 시작페이지
+	private int endPage; // 페이지하단에 마지막페이지
+	private int totalCount; // 전체갯수
+	private int totalPage; // 총페이지수
+	
 
-	private String searchword;
-	private String contentword;
-	private int page;
-	private int startRow;
-	private int size;
-	private int startPage;
-	private int endPage;
-	private int totalCount;
-	private int totalPage;
-	
-	public String getContentword() {
-		return contentword;
+	public String getStype() {
+		return stype;
 	}
-	public void setContentword(String contentword) {
-		this.contentword = contentword;
+	public void setStype(String stype) {
+		this.stype = stype;
 	}
-	
-	public String getSearchword() {
-		return searchword;
+	public String getSval() {
+		return sval;
 	}
-	public void setSearchword(String searchword) {
-		this.searchword = searchword;
+	public void setSval(String sval) {
+		this.sval = sval;
 	}
 	public int getPage() {
 		return page;
@@ -67,4 +73,7 @@ public class Parameter {
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
+	
+	
+
 }

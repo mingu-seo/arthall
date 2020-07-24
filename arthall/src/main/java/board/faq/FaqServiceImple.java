@@ -1,25 +1,22 @@
-package reserv;
+package board.faq;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Service
-public class ReservServiceImple implements ReservService{
-	
-	@Autowired
-	private ReservDao reservDao;
+public class FaqServiceImple implements FaqService {
 
+	@Autowired
+	private FaqDAO faqDao;
+	
 	@Override
-	public List<ReservVo> list(ReservVo param) {
-		
-		
+	public List<FaqVO> list(FaqVO param) {
+		System.out.println("잘들어가고 서비스고");
+		// TODO Auto-generated method stub
 		int startRow = (param.getPage()-1) * param.getSize(); // limit 시작값
-		int totalCount = reservDao.count(param); // 총갯수
-		System.out.println(totalCount);
+		int totalCount = faqDao.count(param); // 총갯수
 		int totalPage = totalCount / param.getSize(); // 총페이지수
 		if (totalCount % param.getSize() > 0) totalPage++;
 		
@@ -36,20 +33,10 @@ public class ReservServiceImple implements ReservService{
 		param.setEndPage(endPage);
 		param.setTotalCount(totalCount);
 		param.setTotalPage(totalPage);
-		List<ReservVo> list = reservDao.list(param);
+		
+		List<FaqVO> list = faqDao.list(param);
 		
 		return list;
-	}
-
-	@Override
-	public String delete(String[] nono, ReservVo param) {
-		
-		for (int i = 0; i < nono.length; i++) {
-			param.setNo(nono[i]);
-			reservDao.delete(param);
-		}
-		
-		return "redirect:list.do";
 	}
 
 }

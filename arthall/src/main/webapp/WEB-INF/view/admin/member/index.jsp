@@ -17,53 +17,75 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공지사항 - [목록]</h2>
+					<h2>회원관리 - [목록]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="blist">
-							<p><span><strong>총 "${vo.totalCount}"개</strong>  |  1/12페이지</span></p>
-							<form name="frm" id="frm" action="index.do" method="post">
+							<p><span><strong>총 111개</strong>  |  1/12페이지</span></p>
+							<form name="frm" id="frm" action="process.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
-									<col class="w3" />
 									<col class="w4" />
-									<col class="" />
-									<col class="w10" />
 									<col class="w5" />
-									<col class="w6" />
+									<col class="w12" />
+									<col class="w12" />
+									<col class="w8" />
+									<col class="w15" />
+									<col class="w25" />
+									<col class="w12" />
+									<col class="" />
 								</colgroup>
 								<thead>
 									<tr>
 										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
-										<th scope="col">예약 번호</th>
-										<th scope="col">이름</th> 
-										<th scope="col">공연명</th> 
-										<th scope="col">공연일</th> 
-										<th scope="col" class="last">공연시간</th>
+										<th scope="col">번호</th>
+										<th scope="col">아이디</th> 
+										<th scope="col">패스워드</th> 
+										<th scope="col">이름</th>
+										<th scope="col">연락처</th>
+										<th scope="col">이메일</th>
+										<th scope="col">생년월일</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:if test="${vo.totalCount == 0}">
-										<tr>
-											<td colspan="4">게시글이 없습니다.</td>
-										</tr>
-									</c:if>
-									<c:if test="${vo.totalCount > 0}">
-										<c:forEach var="article" items="${list}">
-										<tr>
-											<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-											<td>${article.reservNo}</td>
-											<td class="title"><a href="view.do">${article.name}</a></td>
-											<td>${article.playName}</td>
-											<td>${article.playDay}</td>
-											<td class="last">${article.runtime}</td>
-										</tr>
-										</c:forEach>
-									</c:if>
+								
+								<!-- =========================================================================================== -->
+								<c:if test="${vo.totalCount == 0}">
+								<tr>
+									<td colspan="4">게시글이 없습니다.</td>
+								</tr>
+								</c:if>
+								<c:if test="${vo.totalCount > 0}">
+	
+								
+								<c:forEach var="member" items="${list}">
+								<tr>
+									<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
+									<td>${member.no }</td>
+									<td>${member.id }</td>
+									<td>${member.password }</td>
+									<td>${member.name }</td>
+									<td>${member.tel }</td>
+									<td>${member.email }</td>
+									<td>${member.birth }</td>
+								</tr>	
+								</c:forEach>
+
+								</c:if>
 								</tbody>
+								<!-- 검색기능
+								<tr>
+									<td colspan="4" align="center">
+										<form action="list.do">
+											<input type="text" name="searchword" value="${vo.searchword }"> 
+											<input type="submit" value="검색">
+										</form>
+									</td>
+								</tr> -->
+								<!-- =========================================================================================== -->
 							</table>
 							</form>
 							<div class="btn">
@@ -77,11 +99,23 @@
 							<!--//btn-->
 							<!-- 페이징 처리 -->
 							<div class='page'>
-								<strong>1</strong>
-								<a href="">2</a>
-								<a href="">3</a>
-								<a href="">4</a>
+							
+								<tr>
+									<td colspan="4">
+										<c:if test="${vo.startPage > 5}">
+										<a href="index.do?page=${vo.startPage-5}">[이전]</a>
+										</c:if>
+										<c:forEach var="pNo" begin="${vo.startPage}" end="${vo.endPage}">
+										<a href="index.do?page=${pNo}">${pNo}</a>
+										</c:forEach>
+										<c:if test="${vo.endPage < vo.totalPage}">
+										<a href="index.do?page=${vo.startPage+5}">[다음]</a>
+										</c:if>
+									</td>
+								</tr> 
 							</div>
+							
+							
 							<!-- //페이징 처리 -->
 							<form name="searchForm" id="searchForm" action="index.do"  method="post">
 								<div class="search">

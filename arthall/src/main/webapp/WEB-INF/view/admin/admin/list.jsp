@@ -4,6 +4,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<script type="text/javascript">
+	$(function(){
+			
+		$("#delete").click(function(){
+			if($('.checkSingle:checked').size()>0 
+					&& confirm('정말로 삭제하시겠습니까?')){
+				
+				$("#frm").attr('action', '/admin/admin/delete.do');
+				$("#frm").submit();	
+			} else{
+				alert('삭제할 계정을 선택해주세요.')
+			}
+		});
+		
+		$("#checkedAll").change(function() {
+	        if (this.checked) {
+	            $(".checkSingle").each(function() {
+	                this.checked=true;
+	            });
+	        } else {
+	            $(".checkSingle").each(function() {
+	                this.checked=false;
+	            });
+	        }
+	    });
+	});
+	
+	
+
+</script>
 </head>
 <body> 
 <div id="wrap">
@@ -17,7 +47,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공지사항 - [목록]</h2>
+					<h2>관리자 관리</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
@@ -38,7 +68,7 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
+										<th scope="col" class="first"><input type="checkbox" name="checkedAll" id="checkedAll" /></th>
 										<th scope="col">아이디</th>
 										<th scope="col">이름</th> 
 										<th scope="col">전화번호</th> 
@@ -51,7 +81,7 @@
 								<tbody>
 									<c:forEach var="admin" items="${list}">
 										<tr>
-											<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
+											<td class="first"><input type="checkbox" class = "checkSingle" name="chkd" id="chkd" value="${admin.id}"/></td>
 											<td>${admin.id}</td>
 											<td>${admin.name}</td>
 											<td>${admin.tel}</td>
@@ -61,47 +91,21 @@
 											
 										</tr>
 									</c:forEach>
-										<tr>
-											<td class="first"></td>
-											<td><input type="text" name="id" value=""/></td>
-											<td><input type="text" name="name" value=""/></td>
-											<td><input type="text" name="tel" value=""/></td>
-											<td><input type="text" name="email" value=""/></td>
-											<td><input type="text" name="birth" value=""/></td>
-											<td><input type="password" name="password" value=""/></td>
-										</tr>
+										
 								</tbody>
 							</table>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="/admin/admin/delete.do" onclick=""><strong>삭제</strong> </a>
+									<a class="btns" id = "delete" href="#" ><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
-									<a class="wbtn" href="/admin/admin/regist.do"><strong>신규등록</strong> </a>
+									<a class="wbtn" id = "regist" href="/admin/admin/registForm.do"><strong>신규등록</strong> </a>
 								</div>
 							</div>
 							</form>
 							<!--//btn-->
-							<!-- 페이징 처리 -->
-							<div class='page'>
-								<strong>1</strong>
-								<a href="">2</a>
-								<a href="">3</a>
-								<a href="">4</a>
-							</div>
-							<!-- //페이징 처리 -->
-							<form name="searchForm" id="searchForm" action="index.do"  method="post">
-								<div class="search">
-									<select name="stype" title="검색을 선택해주세요">
-										<option value="all">전체</option>
-										<option value="title">제목</option>
-										<option value="contents">내용</option>
-									</select>
-									<input type="text" name="sval" value="" title="검색할 내용을 입력해주세요" />
-									<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />
-								</div>
-							</form>
-							<!-- //search --> 
+							
+							
 						</div>
 						<!-- //blist -->
 					</div>

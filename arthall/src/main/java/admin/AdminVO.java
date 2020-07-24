@@ -1,5 +1,6 @@
 package admin;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class AdminVO {
@@ -10,7 +11,7 @@ public class AdminVO {
 	private String name;
 	private String tel;
 	private String email;
-	private Timestamp birth;
+	private String birth;
 	private Timestamp regdate;
 	
 	public String getId() {
@@ -43,10 +44,10 @@ public class AdminVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Timestamp getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Timestamp birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public Timestamp getRegdate() {

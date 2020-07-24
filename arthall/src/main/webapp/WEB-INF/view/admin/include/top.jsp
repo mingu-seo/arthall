@@ -56,12 +56,12 @@ $(window).load(function(){
 </script>
 <div id="header">
 	<div class="header_inner">
-		<h1>SAMPLE</h1>
+		<h1>관리자 페이지</h1>
 		<p class="login_name"></p>
 		<!-- util : s -->
 		<div class="util">
 			<ul>
-				<li class="frist"><a href="#" onclick="">Home</a></li>
+				<li class="frist"><a href="<%=request.getContextPath()%>/admin" onclick="">Home</a></li>
 				<li><a href="<%=request.getContextPath()%>/admin/logout.do">LogOut</a></li>
 			</ul>
 		</div>
@@ -70,8 +70,8 @@ $(window).load(function(){
 		<div id="menu">
   			<ul class="menu">
   				<li><a href="<%=request.getContextPath()%>/admin/member/index.do" class="parent"><span>회원관리</span></a></li>
-  				<li><a href="<%=request.getContextPath()%>/admin/reservation/index.do" class="parent"><span>예약관리</span></a></li>
-				<li><a href="<%=request.getContextPath()%>/manage/movie/index.do" class="parent"><span>상품관리</span></a></li>
+  				<li><a href="<%=request.getContextPath()%>/admin/reserv/list.do" class="parent"><span>예약관리</span></a></li>
+				<li><a href="<%=request.getContextPath()%>/admin/play/list.do" class="parent"><span>공연관리</span></a></li>
 				  
 				<li><a href="<%=request.getContextPath()%>/admin/board/notice/list.do" class="parent"><span>게시판</span></a>
 				<!--  

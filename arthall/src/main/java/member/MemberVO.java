@@ -2,22 +2,29 @@ package member;
 
 import java.security.Timestamp;
 
-public class MemberVO {
+import util.Parameter;
 
-	private String memberNo;
+public class MemberVO extends Parameter{
+
+	private String no;
 	private String id;
 	private String password;
 	private String name;
-	private String tell;
+	private String tel;
 	private String email;
-	private Timestamp birth;
+	private String birth;
 	private Timestamp regDate;
 	
-	public String getMemberNo() {
-		return memberNo;
+	MemberVO() {
+		super.setPage(1);
+		super.setSize(10);
 	}
-	public void setMemberNo(String memberNo) {
-		this.memberNo = memberNo;
+	
+	public String getNo() {
+		return no;
+	}
+	public void setNo(String no) {
+		this.no = no;
 	}
 	public String getId() {
 		return id;
@@ -37,11 +44,11 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getTell() {
-		return tell;
+	public String getTel() {
+		return tel;
 	}
-	public void setTell(String tell) {
-		this.tell = tell;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 	public String getEmail() {
 		return email;
@@ -49,10 +56,10 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Timestamp getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Timestamp birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public Timestamp getRegDate() {
@@ -61,8 +68,5 @@ public class MemberVO {
 	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
-	
-	
-	
 	
 }
