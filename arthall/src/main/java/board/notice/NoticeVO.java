@@ -6,7 +6,7 @@ import util.Parameter;
 
 public class NoticeVO extends Parameter {
 	
-	private int noticeNo; //번호
+	private int no; //번호
 	private int readCnt;  //조회수
 	private String modDate; //수정날짜
 	private String writer; // 작성자
@@ -22,12 +22,15 @@ public class NoticeVO extends Parameter {
 
 	
 	
-	public int getNoticeNo() {
-		return noticeNo;
+	public int getNo() {
+		return no;
 	}
-	public void setNoticeNo(int noticeNo) {
-		this.noticeNo = noticeNo;
+
+	public void setNo(int no) {
+		this.no = no;
 	}
+
+
 	public int getReadCnt() {
 		return readCnt;
 	}

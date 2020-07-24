@@ -1,6 +1,10 @@
 package board.notice;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +41,23 @@ public class NoticeServiceImple implements NoticeService {
 		List<NoticeVO> list = noticeDao.list(param);
 		
 		return list;
+	}
+
+	@Override
+	public String write(HttpServletRequest req, NoticeVO param) {
+		
+		String pageName = "";
+		int r = noticeDao.write(param);
+		if (r > 0) {
+			pageName = "redirect:list.do";
+			
+		} else {
+			req.setAttribute("emptyTitle", true);
+		
+			pageName = "board/notice/writeForm";
+		}
+		return pageName;
+	
 	}
 
 

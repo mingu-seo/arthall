@@ -14,5 +14,23 @@
 		SELECT * FROM notice 
 	 
 	</select>
+	
+	<insert id="write" parameterType="board.notice.NoticeVO" useGeneratedKeys="true">
+		INSERT INTO notice
+			(no,writer,title,regDate,readCnt,content)
+		VALUES
+			(#{no},#{writer},#{title},now(),0,#{content})
+	</insert>
+
+<!--  	<insert id="writeContent" parameterType="board.notice.NoticeVO">
+		INSERT INTO notice
+			(content)
+		VALUES
+			(#{content})
+		
+	</insert>
+-->
+
+
 </mapper>
 

@@ -24,7 +24,7 @@
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="blist">
-							<p><span><strong>총 111개</strong>  |  1/12페이지</span></p>
+							<p><span><strong></strong>  |  </span></p>
 							<form name="frm" id="frm" action="process.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
@@ -55,12 +55,16 @@
 								<c:forEach var="notice" items="${list}">
 								<tr>
 										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-										<td>${notice.noticeNo}</td>
-										<td class="title"><a href="view.do">
+										<td>${notice.no}</td>
 										
-											<c:out value="${notice.title}"/>
-										
-										</a></td>
+										<td class="title">
+											<a href=view.do?no=${notice.no}">
+												 
+												<c:out value="${notice.title}"/>
+												 
+											
+											</a>
+										</td>
 										<td>"${notice.regDate}"</td>
 										<td>"${notice.writer}"</td>
 										<td class="last">"${notice.readCnt}"</td>
@@ -77,7 +81,7 @@
 									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
-									<a class="wbtn" href="write.do"><strong>등록</strong> </a>
+									<a class="wbtn" href="writeForm.do"><strong>등록</strong> </a>
 								</div>
 							</div>
 							<!--//btn-->
@@ -89,7 +93,7 @@
 								<a href="">4</a>
 							</div>
 							<!-- //페이징 처리 -->
-							<form name="searchForm" id="searchForm" action="index.do"  method="post">
+							<form name="searchForm" id="searchForm" action="write.do"  method="post">
 								<div class="search">
 									<select name="stype" title="검색을 선택해주세요">
 										<option value="all">전체</option>
