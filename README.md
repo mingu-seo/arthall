@@ -111,8 +111,8 @@ AUTO_INCREMENT=3
 
 
 ```
-// 오게이 예아 20200724 임한철
-board/faq
+
+board/faq  // 오게이 예아 20200724 임한철
 ```
 CREATE TABLE `faq` (
 	`no` INT(11) NOT NULL AUTO_INCREMENT,
