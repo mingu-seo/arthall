@@ -3,9 +3,10 @@ package reserv;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
-
+@Service
 public class ReservServiceImple implements ReservService{
 	
 	@Autowired
@@ -16,6 +17,7 @@ public class ReservServiceImple implements ReservService{
 		
 		int startRow = (param.getPage()-1) * param.getSize(); // limit 시작값
 		int totalCount = reservDao.count(param); // 총갯수
+		System.out.println(totalCount);
 		int totalPage = totalCount / param.getSize(); // 총페이지수
 		if (totalCount % param.getSize() > 0) totalPage++;
 		
@@ -33,6 +35,7 @@ public class ReservServiceImple implements ReservService{
 		param.setTotalCount(totalCount);
 		param.setTotalPage(totalPage);
 		List<ReservVo> list = reservDao.list(param);
+		
 		return list;
 	}
 

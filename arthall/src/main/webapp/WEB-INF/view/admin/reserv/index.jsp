@@ -24,8 +24,8 @@
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="blist">
-							<p><span><strong>총 "${list.totalCount}"개</strong>  |  1/12페이지</span></p>
-							<form name="frm" id="frm" action="process.do" method="post">
+							<p><span><strong>총 "${vo.totalCount}"개</strong>  |  1/12페이지</span></p>
+							<form name="frm" id="frm" action="index.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
 									<col class="w3" />
@@ -46,20 +46,20 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:if test="${list.totalCount == 0}">
+									<c:if test="${vo.totalCount == 0}">
 										<tr>
 											<td colspan="4">게시글이 없습니다.</td>
 										</tr>
 									</c:if>
-									<c:if test="${list.totalCount > 0}">
+									<c:if test="${vo.totalCount > 0}">
 										<c:forEach var="article" items="${list}">
 										<tr>
 											<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-											<td>"${list.reservNo}"</td>
-											<td class="title"><a href="view.do">"${list.name}"</a></td>
-											<td>"${list.playName}"</td>
-											<td>"${list.playDay}"</td>
-											<td class="last">"${list.runtime}"</td>
+											<td>${article.reservNo}</td>
+											<td class="title"><a href="view.do">${article.name}</a></td>
+											<td>${article.playName}</td>
+											<td>${article.playDay}</td>
+											<td class="last">${article.runtime}</td>
 										</tr>
 										</c:forEach>
 									</c:if>
