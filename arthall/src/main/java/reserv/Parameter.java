@@ -3,6 +3,7 @@ package reserv;
 public class Parameter {
 
 	private String sval;
+	private String stype;
 	private String contentword;
 	private int page;
 	private int startRow;
@@ -12,6 +13,12 @@ public class Parameter {
 	private int totalCount;
 	private int totalPage;
 	
+	public String getStype() {
+		return stype;
+	}
+	public void setStype(String stype) {
+		this.stype = stype;
+	}
 	public String getContentword() {
 		return contentword;
 	}

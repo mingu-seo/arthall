@@ -6,7 +6,7 @@ package util;
  *
  */
 public class Parameter {
-	private String searchword;
+	private String sval;
 	
 	private int page; // 요청페이지번호
 	private int startRow; // 시작로우(limit 앞)
@@ -16,11 +16,12 @@ public class Parameter {
 	private int totalCount; // 전체갯수
 	private int totalPage; // 총페이지수
 	
-	public String getSearchword() {
-		return searchword;
+
+	public String getSval() {
+		return sval;
 	}
-	public void setSearchword(String searchword) {
-		this.searchword = searchword;
+	public void setSval(String sval) {
+		this.sval = sval;
 	}
 	public int getPage() {
 		return page;

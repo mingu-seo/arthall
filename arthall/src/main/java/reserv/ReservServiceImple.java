@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Service
@@ -14,6 +15,7 @@ public class ReservServiceImple implements ReservService{
 
 	@Override
 	public List<ReservVo> list(ReservVo param) {
+		
 		
 		int startRow = (param.getPage()-1) * param.getSize(); // limit 시작값
 		int totalCount = reservDao.count(param); // 총갯수
@@ -37,6 +39,17 @@ public class ReservServiceImple implements ReservService{
 		List<ReservVo> list = reservDao.list(param);
 		
 		return list;
+	}
+
+	@Override
+	public String delete(String[] nono, ReservVo param) {
+		
+		for (int i = 0; i < nono.length; i++) {
+			param.setNo(nono[i]);
+			reservDao.delete(param);
+		}
+		
+		return "redirect:list.do";
 	}
 
 }

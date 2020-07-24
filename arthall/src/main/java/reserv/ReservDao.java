@@ -22,4 +22,8 @@ public class ReservDao {
 		return sqlSession.selectList("reserv.list", param);
 	}
 	
+	public int delete(ReservVo param) {
+		return sqlSession.delete("reserv.delete", param);
+	}
+	
 }

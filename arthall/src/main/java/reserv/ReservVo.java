@@ -13,6 +13,8 @@ public class ReservVo extends Parameter {
    private int runtime;
    private String hallNo;
    
+
+   
    ReservVo() {
       super.setPage(1);
       super.setSize(10);
