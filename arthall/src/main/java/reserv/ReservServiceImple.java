@@ -51,4 +51,12 @@ public class ReservServiceImple implements ReservService{
 		return "redirect:list.do";
 	}
 
+	
+	// Ticket
+	@Override
+	public List<TicketVO> ticketlist(TicketVO param) {
+		List<TicketVO> ticketlist = reservDao.ticketlist(param);
+		return ticketlist;
+	}
+
 }

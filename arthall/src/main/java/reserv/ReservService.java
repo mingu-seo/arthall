@@ -10,4 +10,7 @@ public interface ReservService {
 	
 	public String delete(@RequestParam("no") String[] nono, ReservVO param);
 
+	// Ticket
+	public List<TicketVO> ticketlist(TicketVO param);
+	
 }

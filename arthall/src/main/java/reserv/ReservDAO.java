@@ -26,4 +26,9 @@ public class ReservDAO {
 		return sqlSession.delete("reserv.delete", param);
 	}
 	
+	// Ticket
+	public List<TicketVO> ticketlist(TicketVO param) {
+		return sqlSession.selectList("reserv.ticketlist", param);
+	}
+	
 }

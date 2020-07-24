@@ -69,7 +69,8 @@ function del() {
                               <c:forEach var="reserv" items="${list}">
                               <tr>
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${reserv.no}"/></td>
-                                 <td class="title"><a href="view.do">${reserv.no}</a></td>
+                                 <!-- 티켓리스트 페이지로 이동 -->
+                                 <td class="title"><a href="ticketlist.do?reservNo=${reserv.no}">${reserv.no}</a></td>
                                  <td>${reserv.name}</td>   
                                  <td>${reserv.reservDay}</td>
                                  <td>${reserv.playNo}</td>
@@ -78,7 +79,7 @@ function del() {
                                  <td>${reserv.runtime}</td>
                                  <td class="last">${reserv.hallNo}</td>
                               </tr>
-                              </c:forEach>
+                              </c:forEach>                             
                            </c:if>
                         </tbody>
                      </table>
