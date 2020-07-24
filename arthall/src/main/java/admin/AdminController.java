@@ -97,5 +97,4 @@ public class AdminController {
 		model.addAttribute("url", "/admin/admin/list.do");
 		return "common/alert";
 	}
-
 }
