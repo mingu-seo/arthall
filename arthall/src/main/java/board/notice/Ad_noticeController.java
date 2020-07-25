@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -53,7 +54,33 @@ public class Ad_noticeController {
 		model.addAttribute("data",data);
 		
 		return "admin/board/notice/view";
+	}
 	
+	@RequestMapping("/admin/board/notice/modifyForm.do")
+	public String modifyForm(Model model, NoticeVO param) {
+		
+		NoticeVO vo = noticeservice.view(param);
+		
+		model.addAttribute("vo",vo);
+		
+		return "admin/board/notice/writeModify";
+		
+	}
+	
+	@RequestMapping("/admin/board/notice/modify.do")
+	public String modify(Model model, NoticeVO param) {
+		
+		String pageName = noticeservice.modify(param);
+		
+		return pageName;
+	}
+	
+	@RequestMapping("/admin/board/notice/delete.do")
+	public String delete(@RequestParam("num") String[] chk) {
+		
+		String pageName = noticeservice.delete(chk);
+		
+		return pageName;
 		
 	}
 

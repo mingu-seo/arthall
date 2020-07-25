@@ -37,13 +37,13 @@
 									<tr>
 										<th scope="row"><label for="">제목</label></th>
 										<td colspan="10">
-											<c:out value="${vo.title}"/>
+											<c:out value="${data.title}"/>
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">내용</label></th>
 										<td colspan="10">
-											<c:out value="${vo.content}"/>
+											<c:out value="${data.content}"/>
 										</td>
 									</tr>
 									<tr>

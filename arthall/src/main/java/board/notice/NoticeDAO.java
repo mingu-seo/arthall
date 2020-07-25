@@ -28,6 +28,15 @@ public class NoticeDAO {
 	public NoticeVO view(NoticeVO param) {
 		return sqlSession.selectOne("notice.view",param);
 	}
+
+	public int modify(NoticeVO param) {
+		
+		return sqlSession.update("notice.modify", param);
+	}
+
+	public int delete(int noticeno) {
+		return sqlSession.delete("notice.delete",noticeno);
+	}
 	
 	
 	

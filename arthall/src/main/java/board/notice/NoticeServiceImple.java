@@ -66,6 +66,22 @@ public class NoticeServiceImple implements NoticeService {
 		return noticeDao.view(param);
 	}
 
+	@Override
+	public String modify(NoticeVO param) {
+		noticeDao.view(param);
+		noticeDao.modify(param);
+		
+		return "redirect:list.do";
+	}
+
+	@Override
+	public String delete(String[] param) {
+		for (int i = 0; i< param.length; i++) {
+			noticeDao.delete(Integer.parseInt(param[i]));
+		}
+		return "redirect:list.do";
+	}
+
 
 
 
