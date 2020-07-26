@@ -4,7 +4,18 @@
 
 	<select id="count" parameterType="board.notice.NoticeVO" resultType="Integer">
 
-		SELECT COUNT(*) FROM notice  
+		SELECT COUNT(*) FROM notice 
+		<where>
+			<if test="sval != null and sval !='' and stype != 'all'">
+				${stype} LIKE '%${sval}%'
+			</if>
+			<if test="sval != null and sval !='' and stype == 'all'">
+				title LIKE '%${sval}%'
+				or no in
+				(SELECT no FROM notice WHERE content LIKE '%${sval)%')
+			</if>
+		</where>
+		
 	
 	</select>
 
@@ -12,6 +23,17 @@
 	<select id="list" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
 		
 		SELECT * FROM notice 
+		<where>
+		<if test="sval != null and sval !='' and stype != 'all'">
+			${stype} like '%${sval}%'
+		</if>
+		<if test="sval != null and sval !='' and stype == 'all'">
+				title LIKE '%${sval}%'
+				or no in
+				(SELECT no FROM notice WHERE content LIKE '%${sval}%')
+		</if>
+		</where>
+		ORDER BY no DESC LIMIT #{startRow}, #{size}
 	 
 	</select>
 	
@@ -28,6 +50,13 @@
 		FROM notice
 		where no=#{no}
 	</select>
+	<update id ="readCnt" parameterType="board.notice.NoticeVO">
+		UPDATE notice SET
+			readCnt=#{readCnt}+1
+		WHERE no=#{no}
+	</update>
+	
+	
 	
 	<update id="modify" parameterType="board.notice.NoticeVO">
 		UPDATE notice SET

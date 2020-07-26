@@ -38,6 +38,10 @@ public class NoticeDAO {
 		return sqlSession.delete("notice.delete",noticeno);
 	}
 	
+	public int readCnt(NoticeVO param) {
+		return sqlSession.update("article.readCnt",param);
+	}
+	
 	
 	
 }
