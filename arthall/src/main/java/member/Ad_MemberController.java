@@ -21,6 +21,7 @@ public class Ad_MemberController {
 		List<MemberVO> list = memberService.list(param);
 		
 		model.addAttribute("vo", param);
+		System.out.println(param.getRegDate());
 		model.addAttribute("list", list);
 		
 		return "admin/member/index";

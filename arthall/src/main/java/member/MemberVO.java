@@ -12,8 +12,12 @@ public class MemberVO extends Parameter{
 	private String name;
 	private String tel;
 	private String email;
+	private String addr;
 	private String birth;
 	private Timestamp regDate;
+	private String searchword;
+	private String lastVisit;
+
 	
 	MemberVO() {
 		super.setPage(1);
@@ -63,10 +67,35 @@ public class MemberVO extends Parameter{
 		this.birth = birth;
 	}
 	public Timestamp getRegDate() {
+		System.out.println("reggggggggggg :"+ regDate);
 		return regDate;
 	}
 	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
+	}
+
+	public String getSearchword() {
+		return searchword;
+	}
+
+	public void setSearchword(String searchword) {
+		this.searchword = searchword;
+	}
+
+	public String getLastVisit() {
+		return lastVisit;
+	}
+
+	public void setLastVisit(String lastVisit) {
+		this.lastVisit = lastVisit;
+	}
+
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 	
 }

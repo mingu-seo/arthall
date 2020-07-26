@@ -11,6 +11,10 @@ function del() {
 	}
 }
 
+function move() {
+	location.href="reservForm.do"
+}
+
 </script>
 </head>
 <body> 
@@ -115,6 +119,7 @@ function del() {
                            <input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색"/>
                         </div>
                      </form>
+                     <input type="submit" value="예약 페이지 이동" onclick="move();">
                      <!-- //search --> 
                   </div>
                   <!-- //blist -->
