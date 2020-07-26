@@ -23,7 +23,7 @@
 			(SELECT no FROM member.name WHERE name LIKE '%${searchword}')
 			</if>
 		</where>
-		ORDER BY regDate DESC LIMIT #{startRow}, #{size}
+		ORDER BY memberNo *1 DESC LIMIT #{startRow}, #{size}
 	</select>
 	
 	
