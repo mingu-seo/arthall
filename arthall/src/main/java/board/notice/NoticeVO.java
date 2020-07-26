@@ -23,6 +23,7 @@ public class NoticeVO extends Parameter {
 
 	
 	
+	
 	public int getNo() {
 		return no;
 	}

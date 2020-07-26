@@ -2,6 +2,8 @@ package reserv;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 public interface ReservService {
@@ -12,5 +14,9 @@ public interface ReservService {
 
 	// Ticket
 	public List<TicketVO> ticketlist(TicketVO param);
+	
+	
+	// User 예약
+	public String reservOne( ReservVO param);
 	
 }

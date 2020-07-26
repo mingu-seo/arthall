@@ -7,8 +7,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/smarteditor/js/HuskyEZCreator.js"></script>
 <script>
+var oEditors = [];
 $(function() {
-	var oEditors = [];
+	
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
 		elPlaceHolder: "ct", // textarea ID
@@ -29,11 +30,11 @@ $(function() {
 	});
 });
 
-function check() {
+
 	function check() {
 		 oEditors.getById['ct'].exec('UPDATE_CONTENTS_FIELD',[]);
 		}
-	}
+
 
 </script>
 </head>
@@ -76,8 +77,8 @@ function check() {
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<textarea id=ct namde="content" title="내용을 입력해주세요" style="width:100%;" value="${data.content}">
-												 ${data.content}
+											<textarea id=ct name="contents" title="내용을 입력해주세요" style="width:100%;">
+												${data.content}
 											</textarea>	
 										</td>
 									</tr>

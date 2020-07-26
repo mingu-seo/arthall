@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -38,10 +39,11 @@ public class Ad_noticeController {
 	
 
 	@RequestMapping("/admin/board/notice/write.do")
-	public String write(HttpServletRequest req, NoticeVO param) {
+	public String write(HttpServletRequest req, NoticeVO param, @RequestParam("filename_tmp") MultipartFile file) {
 		
-		String pageName = noticeservice.write(req, param);
-		System.out.println(param.getContent());
+		String pageName = noticeservice.write(req, param,file);
+	
+		System.out.println("write"+param.getContent());
 		return pageName;
 	}
 	
@@ -52,6 +54,7 @@ public class Ad_noticeController {
 		
 		model.addAttribute("vo",param);
 		model.addAttribute("data",data);
+		System.out.println("view"+data.getContent());
 		
 		return "admin/board/notice/view";
 	}

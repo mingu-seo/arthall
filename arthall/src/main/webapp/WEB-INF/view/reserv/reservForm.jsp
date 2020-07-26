@@ -9,10 +9,17 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ticketing.css">
     <script src="<%=request.getContextPath()%>/js/jquery-1.11.3.min.js"></script>
+    
+    <script>
+	    function reserv() {
+	    	if (confirm('예약하시겠습니까?')) {
+	    		location.href="reserv.do";
+	    	}
+	    }
+    </script>
 </head>
 
 <body>
-<%=request.getContextPath()%> 아니 왜 경로가 안나오는데 보고싶다...
     <div id="wrap">
         <a href="#main" id="gomain">본문바로가기</a>
         <header>
@@ -356,7 +363,7 @@
                                 </article>
                                 <article class="ticketBox__ticketBoxInner tiketInfo">
                                     <h5 class="ticketBoxInner__tit">나의 예매현황</h5>
-                                    <form method="post" action="#" name="tiket__form" id="tiket__form" class="tiketInfo__form">
+                                    <form method="post" action="list.do" name="tiket__form" id="tiket__form" class="tiketInfo__form">
                                         <fieldset>
                                             <legend>예매현황</legend>
                                             <p class="form__resultBox">
@@ -365,7 +372,7 @@
                                                 <input type="text" id="resultBox__class" value="VIP석 1매" required disabled>
                                                 <input type="text" id="resultBox__price" value="150,000원" required disabled>
                                             </p>
-                                            <button type="submit" class="form__submit">다음단계로</button>
+                                            <button type="submit" class="form__submit" onclick="reserv();">다음단계로</button>
                                         </fieldset>
                                     </form>
                                     <!--<p class="tiketInfo__resultBox">
