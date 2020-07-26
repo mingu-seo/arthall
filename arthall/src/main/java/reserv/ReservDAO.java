@@ -2,6 +2,8 @@ package reserv;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,6 +31,11 @@ public class ReservDAO {
 	// Ticket
 	public List<TicketVO> ticketlist(TicketVO param) {
 		return sqlSession.selectList("reserv.ticketlist", param);
+	}
+	
+	// User 예약
+	public int reservOne(ReservVO param) {
+		return sqlSession.insert("reserv.reservOne", param);
 	}
 	
 }

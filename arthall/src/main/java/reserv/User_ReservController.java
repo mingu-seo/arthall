@@ -1,6 +1,6 @@
 package reserv;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +14,16 @@ public class User_ReservController {
 	private ReservService reservService;
 	
 	@RequestMapping("/admin/reserv/reservForm.do")
-	public String list(Model moedel, ReservVO param) {
-
+	public String reservForm() {
 		return "reserv/reservForm";
 	}
 
+	@RequestMapping("/admin/reserv/reserv.do")
+	public String reservOne(Model moedel, ReservVO param) {
+
+		String pageName = reservService.reservOne(param);
+		return pageName;
+	}
+	
+	
 }
