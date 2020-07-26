@@ -41,7 +41,7 @@ public class Ad_noticeController {
 	public String write(HttpServletRequest req, NoticeVO param) {
 		
 		String pageName = noticeservice.write(req, param);
-		
+		System.out.println(param.getContent());
 		return pageName;
 	}
 	

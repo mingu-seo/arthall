@@ -39,9 +39,17 @@
 	
 	<insert id="write" parameterType="board.notice.NoticeVO" useGeneratedKeys="true">
 		INSERT INTO notice
-			(no,writer,title,regDate,readCnt,content)
+			(no,writer,title,regDate,readCnt)
 		VALUES
-			(#{no},#{writer},#{title},now(),0,#{content})
+			(#{no},#{writer},#{title},now(),0)
+	</insert>
+	
+	
+	<insert id="writeContent" parameterType="board.notice.NoticeVO">
+		INSERT INTO notice
+			(no, content)
+		VALUES
+			(#{no}, #{content})
 	</insert>
 
 	<select id ="view" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
