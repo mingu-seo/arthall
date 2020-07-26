@@ -24,10 +24,21 @@
 
 	<select id ="view" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
 		SELECT
-			no, writer, title, content, regdate
+			no, writer, title, content, regdate, filename
 		FROM notice
 		where no=#{no}
 	</select>
+	
+	<update id="modify" parameterType="board.notice.NoticeVO">
+		UPDATE notice SET
+			title = #{title} , content = #{content}, moddate = now(), filename=#{filename}
+		where no=#{no}
+	</update>
+	
+	<update id="delete" parameterType="Integer">
+		DELETE FROM notice
+		WHERE no=#{no}
+	</update>
 
 
 
