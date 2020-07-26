@@ -26,4 +26,10 @@ public class Ad_MemberController {
 		
 		return "admin/member/index";
 	}
+	
+	@RequestMapping("admin/include/searchBox.do")
+	public String searchBox() {
+	
+		return "admin/include/searchBox";
+	}
 }
