@@ -28,13 +28,16 @@
 							<form name="frm" id="frm" action="process.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
-									<col class="w4" />
 									<col class="w5" />
-									<col class="w12" />
-									<col class="w12" />
-									<col class="w8" />
-									<col class="w15" />
-									<col class="w25" />
+									<col class="w5" />
+									<col class="w5" />
+									<col class="w5" />
+									<col class="w5" />
+									<col class="w5" />
+									<col class="w5" />
+									<col class="w5" />
+									<col class="w5" />
+									<col class="w5" />
 									<col class="" />
 
 								</colgroup>
@@ -47,7 +50,9 @@
 										<th scope="col">이름</th>
 										<th scope="col">연락처</th>
 										<th scope="col">이메일</th>
+										<th scope="col">주소</th>
 										<th scope="col">생년월일</th>
+										<th scope="col">가입일</th>
 										<th scope="col">마지막 방문</th>
 									</tr>
 								</thead>
@@ -71,8 +76,10 @@
 									<td>${member.name }</td>
 									<td>${member.tel }</td>
 									<td>${member.email }</td>
+									<td>${member.addr }</td>
 									<td>${member.birth }</td>
-									<td></td>
+									<td>${member.regDate }</td>
+									<td>${member.lastVisit }</td>
 								</tr>	
 								</c:forEach>
 
