@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<%=request.getContextPath()%> 아니 왜 경로가 안나오는데 
+<%=request.getContextPath()%> 아니 왜 경로가 안나오는데 보고싶다...
     <div id="wrap">
         <a href="#main" id="gomain">본문바로가기</a>
         <header>
