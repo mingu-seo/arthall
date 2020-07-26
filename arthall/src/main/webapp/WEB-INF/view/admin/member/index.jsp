@@ -78,7 +78,7 @@
 									<td>${member.email }</td>
 									<td>${member.addr }</td>
 									<td>${member.birth }</td>
-									<td>${member.regDate }</td>
+									<td>${member.joinDate }</td>
 									<td>${member.lastVisit }</td>
 								</tr>	
 								</c:forEach>
