@@ -33,7 +33,7 @@ AUTO_INCREMENT=5
 
 
 ```
--play
+-play (07-26 19시 수정)
 
 ```
 CREATE TABLE `play` (
