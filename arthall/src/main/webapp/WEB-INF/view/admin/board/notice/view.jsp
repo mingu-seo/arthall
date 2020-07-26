@@ -1,9 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 </head>
 <body> 
 <div id="wrap">
@@ -36,11 +37,11 @@
 								<tbody>
 									<tr>
 										<th scope="row"><label for="">제목</label></th>
-										<td colspan="10">${data.title}</td>
+										<td colspan="10">${data.title }</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">내용</label></th>
-										<td colspan="10">${data.content}</td>
+										<td colspan="10">${data.content }</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">첨부파일</label></th>
@@ -67,7 +68,7 @@
 								</div>
 								<div class="btnRight">
 									<a class="btns" style="cursor:pointer;" href="modifyForm.do?no=${data.no}"><strong>수정</strong></a>
-									<a class="btns" style="cursor:pointer;" href=""><strong>답변</strong></a>
+				
 								</div>
 							</div>
 							<!--//btn-->
