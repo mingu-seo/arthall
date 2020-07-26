@@ -4,7 +4,18 @@
 
 	<select id="count" parameterType="board.notice.NoticeVO" resultType="Integer">
 
-		SELECT COUNT(*) FROM notice  
+		SELECT COUNT(*) FROM notice 
+		<where>
+			<if test="sval != null and sval !='' and stype != 'all'">
+				${stype} LIKE '%${sval}%'
+			</if>
+			<if test="sval != null and sval !='' and stype == 'all'">
+				title LIKE '%${sval}%'
+				or no in
+				(SELECT no FROM notice WHERE content LIKE '%${sval)%')
+			</if>
+		</where>
+		
 	
 	</select>
 
@@ -12,14 +23,33 @@
 	<select id="list" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
 		
 		SELECT * FROM notice 
+		<where>
+		<if test="sval != null and sval !='' and stype != 'all'">
+			${stype} like '%${sval}%'
+		</if>
+		<if test="sval != null and sval !='' and stype == 'all'">
+				title LIKE '%${sval}%'
+				or no in
+				(SELECT no FROM notice WHERE content LIKE '%${sval}%')
+		</if>
+		</where>
+		ORDER BY no DESC LIMIT #{startRow}, #{size}
 	 
 	</select>
 	
 	<insert id="write" parameterType="board.notice.NoticeVO" useGeneratedKeys="true">
 		INSERT INTO notice
-			(no,writer,title,regDate,readCnt,content)
+			(no,writer,title,regDate,readCnt)
 		VALUES
-			(#{no},#{writer},#{title},now(),0,#{content})
+			(#{no},#{writer},#{title},now(),0)
+	</insert>
+	
+	
+	<insert id="writeContent" parameterType="board.notice.NoticeVO">
+		INSERT INTO notice
+			(no, content)
+		VALUES
+			(#{no}, #{content})
 	</insert>
 
 	<select id ="view" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
@@ -28,6 +58,13 @@
 		FROM notice
 		where no=#{no}
 	</select>
+	<update id ="readCnt" parameterType="board.notice.NoticeVO">
+		UPDATE notice SET
+			readCnt=#{readCnt}+1
+		WHERE no=#{no}
+	</update>
+	
+	
 	
 	<update id="modify" parameterType="board.notice.NoticeVO">
 		UPDATE notice SET

@@ -11,7 +11,7 @@ $(function() {
 	var oEditors = [];
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
-		elPlaceHolder: "contents", // textarea ID
+		elPlaceHolder: "ct", // textarea ID
 		sSkinURI: "<%=request.getContextPath()%>/smarteditor/SmartEditor2Skin.html",	
 		htParams : {
 			bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -31,9 +31,10 @@ $(function() {
 
 function check() {
 	function check() {
-		 oEditors.getById['content'].exec('UPDATE_CONTENTS_FIELD',[]);
+		 oEditors.getById['ct'].exec('UPDATE_CONTENTS_FIELD',[]);
 		}
-}
+	}
+
 </script>
 </head>
 <body> 
@@ -54,7 +55,7 @@ function check() {
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="write.do" onsubmit="return check();" enctype="multipart/form-data">
+							<form method="post" name="frm" id="fm" action="write.do" onsubmit="return check()" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -75,8 +76,8 @@ function check() {
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<textarea id=content name="content" title="내용을 입력해주세요" style="width:100%;">
-												${data.content }
+											<textarea id=ct namde="content" title="내용을 입력해주세요" style="width:100%;" value="${data.content}">
+												 ${data.content}
 											</textarea>	
 										</td>
 									</tr>
@@ -96,7 +97,7 @@ function check() {
 									<a class="btns" href="list.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
-									<a class="btns" style="cursor:pointer;" href="javascript:$('#frm').submit();"><strong>저장</strong></a>
+									<a class="btns" style="cursor:pointer;" href="javascript:$('#fm').submit();"><strong>저장</strong></a>
 								</div>
 							</div>
 							<!--//btn-->

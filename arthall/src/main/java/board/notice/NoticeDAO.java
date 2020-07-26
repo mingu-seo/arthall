@@ -25,6 +25,10 @@ public class NoticeDAO {
 		return sqlSession.insert("notice.write", param);
 	}
 	
+	public int writeContent(NoticeVO param) {
+		return sqlSession.insert("notice.writeContent", param);
+	}
+	
 	public NoticeVO view(NoticeVO param) {
 		return sqlSession.selectOne("notice.view",param);
 	}
@@ -36,6 +40,10 @@ public class NoticeDAO {
 
 	public int delete(int noticeno) {
 		return sqlSession.delete("notice.delete",noticeno);
+	}
+	
+	public int readCnt(NoticeVO param) {
+		return sqlSession.update("article.readCnt",param);
 	}
 	
 	

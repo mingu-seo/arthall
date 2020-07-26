@@ -46,6 +46,8 @@ public class NoticeServiceImple implements NoticeService {
 	@Override
 	public String write(HttpServletRequest req, NoticeVO param) {
 		
+		param.setWriter("황동민");
+		
 		String pageName = "";
 		int r = noticeDao.write(param);
 		if (r > 0) {
@@ -62,6 +64,7 @@ public class NoticeServiceImple implements NoticeService {
 
 	@Override
 	public NoticeVO view(NoticeVO param) {
+		
 		
 		return noticeDao.view(param);
 	}
