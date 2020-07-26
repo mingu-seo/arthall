@@ -14,6 +14,8 @@ public class MemberVO extends Parameter{
 	private String email;
 	private String birth;
 	private Timestamp regDate;
+	private String searchword;
+
 	
 	MemberVO() {
 		super.setPage(1);
@@ -67,6 +69,14 @@ public class MemberVO extends Parameter{
 	}
 	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
+	}
+
+	public String getSearchword() {
+		return searchword;
+	}
+
+	public void setSearchword(String searchword) {
+		this.searchword = searchword;
 	}
 	
 }
