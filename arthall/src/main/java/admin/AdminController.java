@@ -21,7 +21,7 @@ public class AdminController {
 	public String index(HttpServletRequest req, HttpServletResponse res) {
 		if (req.getSession().getAttribute("authAdmin") != null) {
 			return "redirect:/admin/admin/list.do";
-		}
+		} 
 		return "admin/index";
 	}
 

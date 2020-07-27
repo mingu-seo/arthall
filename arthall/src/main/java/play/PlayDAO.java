@@ -20,9 +20,11 @@ public class PlayDAO {
 		return sqlSession.selectOne("play.count", param);
 	}
 	
-	public int addPlay(PlayVO param) {
-		return sqlSession.insert("play.addPlay", param);
+	public int write(PlayVO param) {
+		return sqlSession.insert("play.write", param);
 	}
 
-	
+	public int delete(PlayVO param) {
+		return sqlSession.delete("play.delete", param);
+	}
 }

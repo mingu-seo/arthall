@@ -1,6 +1,5 @@
 package member;
 
-
 import java.sql.Timestamp;
 
 import util.Parameter;
@@ -16,8 +15,9 @@ public class MemberVO extends Parameter{
 	private String addr;
 	private String birth;
 	private Timestamp joinDate;
+
 	private Timestamp lastVisit;
-	private int banMem;
+
 	
 	//검색 필터
 	private String memId;
@@ -26,6 +26,7 @@ public class MemberVO extends Parameter{
 	private String memEmail;
 	private String memAddr;
 	private String memBirth;
+	private String banMem;
 	
 	MemberVO() {
 		super.setPage(1);
@@ -98,11 +99,11 @@ public class MemberVO extends Parameter{
 		this.addr = addr;
 	}
 
-	public int getBanMem() {
+	public String getBanMem() {
 		return banMem;
 	}
 
-	public void setBanMem(int banMem) {
+	public void setBanMem(String banMem) {
 		this.banMem = banMem;
 	}
 

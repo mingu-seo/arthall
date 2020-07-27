@@ -13,8 +13,10 @@ public class User_ReservController {
 	@Autowired
 	private ReservService reservService;
 	
+	// 공연, 전시 구분해서 페이지 보여주기
 	@RequestMapping("/admin/reserv/reservForm.do")
-	public String reservForm() {
+	public String playReservForm(Model model) {
+		model.addAttribute("vo", reservService.playList());
 		return "reserv/reservForm";
 	}
 
@@ -24,6 +26,7 @@ public class User_ReservController {
 		String pageName = reservService.reservOne(param);
 		return pageName;
 	}
+	
 	
 	
 }

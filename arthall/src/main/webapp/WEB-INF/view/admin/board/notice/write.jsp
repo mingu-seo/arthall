@@ -77,7 +77,7 @@ $(function() {
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<textarea id=ct name="contents" title="내용을 입력해주세요" style="width:100%;">
+											<textarea id=ct name="content" title="내용을 입력해주세요" style="width:100%;">
 												${data.content}
 											</textarea>	
 										</td>

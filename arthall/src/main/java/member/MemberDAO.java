@@ -10,6 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class MemberDAO {
 
@@ -60,8 +61,22 @@ public class MemberDAO {
 		return sqlSession.update("member.changePwd", param);
 	}
 	
+
 	
+	// 회원정지
+	public int banMem(MemberVO param) {
+		return sqlSession.update("member.banMem", param);		
+	}
+
+	public int detail(MemberVO param) {
+		return sqlSession.update("member.detail", param);
+	}
 	
+	public MemberVO memberdetail(MemberVO param) {
+		return sqlSession.selectOne("member.memberdetail", param);
+	}
+	
+
 
 	
 }

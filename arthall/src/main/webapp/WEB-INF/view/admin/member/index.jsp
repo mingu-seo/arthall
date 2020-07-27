@@ -4,18 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<%@ include file="/WEB-INF/view/admin/include/headHtml.jsp"%>
 </head>
 
 <script type="text/javascript">
 function allchk() {
-	if($("#allChk").is(':checked')) {
-		$("input[name=chkrow]").prop("checked", true);			
-	} else {
-		$("input[name=chkrow]").prop("checked", false);
-	}
+	   if($("#allChk").is(':checked')) {
+	      $("input[name=chk]").prop("checked", true);         
+	   } else {
+	      $("input[name=chk]").prop("checked", false);
+	   }
+	};
+function mouseOver() {
+	$('#frm').style.color = 'black'
 };
 
+function mouseOut() {
+	$(this).style.color = "white";
+};
+	
 
 function banSelect() {
 	var v = $("#banSelect").val();
@@ -28,6 +35,14 @@ function banSelect() {
 	}
 }
 </script>
+
+<style style="text/css">
+
+    table tr:hover:not(#thead){
+          background-color: #eeeff0;
+    }
+
+</style>
 
 <body> 
 <div id="wrap">
@@ -80,7 +95,8 @@ function banSelect() {
 							</form>
 						    
 							<p><span><strong>총 ${vo.totalCount}개</strong>  |  ${vo.page}/${vo.totalPage}페이지</span></p>
-							<form name="frm" id="frm" action="list.do" method="post">
+
+							<form name="frm" id="frm" action="banMem.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
 									<col class="w5" />
@@ -99,7 +115,7 @@ function banSelect() {
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="allchk();"/>
+										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onclick="allchk();"/>
 										<label for="allChk"></label></th>
 										<th scope="col">번호</th>
 										<th scope="col">아이디</th> 
@@ -111,7 +127,7 @@ function banSelect() {
 										<th scope="col">생년월일</th>
 										<th scope="col">가입일</th>
 										<th scope="col">마지막 방문</th>
-										<th scope="col">정지회원</th>
+										<th scope="col">계정상태</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -125,8 +141,10 @@ function banSelect() {
 								<c:if test="${vo.totalCount > 0}">
 								
 								<c:forEach var="member" items="${list}">
-								<tr>
-									<td class="first"><input type="checkbox" name="chkrow" id="chkrow" value=""/></td>
+								<tr class = 'detail' 
+								onmouseover="mouseOver();" onmouseout="mouseOut();" 
+								onclick="location.href='detail.do?no=${member.no}';" >
+									<td class="first"><input type="checkbox" name="chk" id="chk" value="${member.no}"/></td>
 									<td>${member.no }</td>
 									<td>${member.id }</td>
 									<td>${member.password }</td>
@@ -146,7 +164,6 @@ function banSelect() {
 								</tbody>
 							</table>
 							</form>
-							
 							<!--//btn-->
 							<!-- 페이징 처리 -->
 							<div class='page'>

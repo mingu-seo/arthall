@@ -104,4 +104,36 @@ public class MemberServiceImple implements MemberService{
 		return pageName;
 	}
 	
+	@Override
+	public String banMem(String[] chk, MemberVO param) {
+		
+		for (int i = 0; i < chk.length; i++) {
+			param.setNo(chk[i]);
+			memberDao.banMem(param);
+		}
+		
+		return "redirect:index.do";
+	}
+	
+	@Override
+	public String detail(MemberVO param) {
+		String pageName = "";
+		int r = memberDao.detail(param);
+		if (r > 0) {
+			memberDao.detail(param);
+			pageName = "redirect:index.do?page="+param.getPage();
+			
+		}
+		
+		return pageName;
+	}
+
+
+	@Override
+	public MemberVO memberdetail(MemberVO param) {
+		MemberVO vo = memberDao.memberdetail(param);
+		
+		return vo;
+	}
+	
 }

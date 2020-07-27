@@ -44,4 +44,8 @@
 			#{runtime}, #{hallNo});
 	</insert>
 	
+	<select id="playAll" parameterType="play.PlayVO" resultType="play.PlayVO">
+		select * from play
+	</select>
+	
 </mapper>

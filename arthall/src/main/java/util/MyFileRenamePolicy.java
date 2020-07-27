@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Date;
 import java.util.Random;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 /**
@@ -12,6 +14,8 @@ import com.oreilly.servlet.multipart.FileRenamePolicy;
  *
  */
 public class MyFileRenamePolicy implements FileRenamePolicy {
+	
+
 
 	@Override
 	public File rename(File f) {

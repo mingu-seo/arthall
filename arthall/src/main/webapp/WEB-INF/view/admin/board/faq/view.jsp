@@ -68,7 +68,7 @@
 								</table>
 								<div class="btn">
 									<div class="btnLeft">
-										<a class="btns" href="faq.do"><strong>목록</strong></a>
+										<a class="btns" href="index.do"><strong>목록</strong></a>
 									</div>
 									<div class="btnRight">
 										<a class="btns" style="cursor: pointer;" href="modifyForm.do?no=${data.no}"><strong>수정</strong></a>

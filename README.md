@@ -54,7 +54,7 @@ AUTO_INCREMENT=3
 
 ```
 
--play (07-26 19시 수정)
+-play (#2. 07-27 18시 30분 수정)(#1. 07-26 19시 수정)
 
 ```
 CREATE TABLE `play` (
@@ -67,6 +67,7 @@ CREATE TABLE `play` (
 	`actor` TEXT NULL DEFAULT NULL,
 	`content` TEXT NULL DEFAULT NULL,
 	`fileName` VARCHAR(50) NULL DEFAULT NULL,
+	`playType` INT(11) NULL DEFAULT NULL,
 	`priceA` INT(11) NULL DEFAULT NULL,
 	`priceB` INT(11) NULL DEFAULT NULL,
 	`priceC` INT(11) NULL DEFAULT NULL,
@@ -77,7 +78,7 @@ CREATE TABLE `play` (
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=5
+AUTO_INCREMENT=22
 ;
 
 ```
@@ -155,7 +156,45 @@ ENGINE=InnoDB
 AUTO_INCREMENT=1;
 
 ```
+board/news 황동민
+```
+CREATE TABLE `news` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(50) NULL DEFAULT NULL,
+	`content` TEXT NULL DEFAULT NULL,
+	`regDate` TIMESTAMP NULL DEFAULT NULL,
+	`readCnt` INT(11) NULL DEFAULT NULL,
+	`writer` VARCHAR(50) NULL DEFAULT NULL,
+	`filename` VARCHAR(50) NULL DEFAULT NULL,
+	`modDate` TIMESTAMP NULL DEFAULT NULL,
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+```
 
+board/qna   //오게이 예아 이만철 20200727
+```
+CREATE TABLE `qna` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(255) NULL DEFAULT NULL,
+	`content` TEXT NULL DEFAULT NULL,
+	`readcnt` INT(11) NOT NULL DEFAULT 0,
+	`regdate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`moddate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`writer` VARCHAR(50) NOT NULL,
+	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`gno` INT(11) NOT NULL DEFAULT 0,
+	`ono` INT(11) NOT NULL DEFAULT 0,
+	`nested` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+```
 
 예시)
 

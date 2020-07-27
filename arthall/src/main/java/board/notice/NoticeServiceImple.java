@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import util.FileUtil;
+
 
 
 
@@ -51,6 +53,11 @@ public class NoticeServiceImple implements NoticeService {
 		
 		param.setWriter("황동민");
 		
+//		//파일을 저장
+		FileUtil fu = new FileUtil();
+		fu.fileUpload(file, req.getRealPath("/upload/board/notice/"));
+		param.setFilename(fu.fileName);
+		
 		String pageName = "";
 		int r = noticeDao.write(param);
 		if (r > 0) {
@@ -69,18 +76,37 @@ public class NoticeServiceImple implements NoticeService {
 	public NoticeVO view(NoticeVO param) {
 		
 		NoticeVO vo = noticeDao.view(param);
-		vo.setContent(noticeDao.viewContent(param));
+		//vo.setContent(noticeDao.viewContent(param));
 		//return noticeDao.view(param);
 		return vo;
 	}
 
 	@Override
-	public String modify(NoticeVO param) {
+	public String modify(HttpServletRequest req, NoticeVO param, MultipartFile file) {
 		
 		noticeDao.view(param);
 		noticeDao.modify(param);
 		
-		return "redirect:list.do";
+		FileUtil fu = new FileUtil();
+		fu.fileUpload(file, req.getRealPath("/upload/board/notice/"));
+		param.setFilename(fu.fileName);
+		
+		
+		String pageName = "";
+		int r = noticeDao.modify(param);
+		if (r > 0) {
+			pageName = "redirect:list.do";
+			
+		} else {
+			req.setAttribute("emptyTitle", true);
+		
+			pageName = "board/notice/writeModify";
+		}
+		return pageName;
+		
+		
+		
+
 	}
 
 	@Override
@@ -88,8 +114,21 @@ public class NoticeServiceImple implements NoticeService {
 		for (int i = 0; i< param.length; i++) {
 			noticeDao.delete(Integer.parseInt(param[i]));
 		}
+		
+		
+		
 		return "redirect:list.do";
 	}
+
+	@Override
+	public NoticeVO view_img(NoticeVO param) {
+		
+		NoticeVO vo = noticeDao.view_img(param);
+		noticeDao.readCnt(vo);
+		return noticeDao.view_img(param);
+	}
+
+
 
 
 	

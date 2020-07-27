@@ -2,8 +2,13 @@ package play;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import util.FileUtil;
 
 @Service
 public class PlayServiceImple implements PlayService {
@@ -41,14 +46,49 @@ public class PlayServiceImple implements PlayService {
 	
 	
 	@Override
-	public String addPlay(PlayVO param) {
-//		// 파일 저장  - 파라미터에 MultipartFile file 추가
-//		FileUtil fu = new FileUtil();
-//		fu.fileUpload(file, req.getRealPath("/upload/article/"));
-//		param.setFilename(fu.fileName);
-		// '쓰기' 페이지로 . . . .
-//		String pageName = "";
-			playDao.addPlay(param);
+	public String write(HttpServletRequest req, PlayVO param, MultipartFile file) {
+		// *** FaqServiceImple
+		//HttpSession sess = req.getSession();
+		//AdminVO sessVo = (AdminVO)sess.getAttribute("authUser");
+		
+		// 파일 저장
+		/*MyFileRenamePolicy fu = new MyFileRenamePolicy();
+		fu.fileUpload(file, req.getRealPath("/upload/article/"));
+		param.setFilename(fu.fileName);
+		*/
+		System.out.println(param.getPlayName());
+		System.out.println("1@@@@@@@@@@@@@@@@@@@@@@@@@");
+		String pageName = "";
+		System.out.println("2@@@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println(param.getStartDate().getClass().getName());
+		// 파일 저장
+		FileUtil fu = new FileUtil();
+									//파일 경로 지정 필요 경로 : webapp 이하
+		fu.fileUpload(file, req.getRealPath("/upload/play/"));
+		param.setFileName(fu.fileName);
+		
+		int r = playDao.write(param);
+		
+		System.out.println("3@@@@@@@@@@@@@@@@@@@@@@@@@");
+		pageName = "redirect:list.do";
+//		pageName = "admin/play/list.do";
+		System.out.println("추가된 번호 : " + r);
+		 /*else {
+			req.setAttribute("emptyTitle", true);
+			pageName = "admin/board/faq/index";
+		}*/
+		return pageName;
+	}
+
+
+	@Override
+	public String delete(int[] check, PlayVO param) {
+		
+		for(int i = 0; i < check.length; i++) {
+			param.setNo(check[i]);
+			playDao.delete(param);
+		}
+		
 		return "redirect:list.do";
 	}
 

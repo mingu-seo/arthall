@@ -15,6 +15,16 @@
 		   return;
 	   }
 	}
+	$(document).ready(function(){
+		$("#allChk").click(function(){
+			if($("#allChk").prop("checked")){
+				$("input[name=num]").prop("checked", true);
+			}
+			else{
+				$("input[name=num]").prop("checked",false);
+			}
+		});
+	})
 	
 </script>
 </head>
@@ -52,8 +62,8 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first"><input type="checkbox" 
-										name="allChk" id="allChk" 
+										<th scope="col" class="first">
+										<input type="checkbox"  class="allchek" name="allChk" id="allChk" 
 										onClick="check(this, document.frm.num)"/></th>
 										<th scope="col">번호</th>
 										<th scope="col">제목</th> 

@@ -1,4 +1,4 @@
-@charset 'uft-8';
+@charset "UTF-8";
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 @import url(reset.css);
@@ -149,7 +149,7 @@ main .main__content{
     font-weight: 700;
     color: #fff;
 }
-.calendarContainer__calendars thead .dates{
+.calendarContainer__calendars thead .days{
     height: 40px;
     font-size: 16px;
     border-bottom: 1px solid #ccc;
@@ -159,7 +159,7 @@ main .main__content{
     font-size: 18px;
 }
 .calendarContainer__calendars tbody td{}
-.calendarContainer__calendars tbody td span{
+.calendarContainer__calendars .dates span{
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -168,8 +168,9 @@ main .main__content{
     text-align: center;
     cursor: pointer;
 }
-.calendarContainer__calendars tbody td.today span{background: pink; color: #fff;}
-.calendarContainer__calendars tbody td.active span{background: gold; color:#fff;}
+.calendarContainer__calendars .dates.today span{background: pink; color: #fff;}
+.calendarContainer__calendars .able.active span{background: gold; color:#fff;}
+.calendarContainer__calendars .dates.disable span{opacity: 0.3; cursor: default;}
 
 
 .calBtn{
@@ -190,6 +191,7 @@ main .main__content{
     left: auto;
     right: 30px;
 }
+.calBtn > a.disable{opacity: 0.3; cursor: default;}
 
 
 
@@ -210,7 +212,7 @@ main .main__content{
 
 .timeInfo .timeInfo__timeTable{
     height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
     /*-ms-overflow-style: none;
     -moz-scrollbar-width: none; */
 }
@@ -273,8 +275,21 @@ main .main__content{
 
 .tiketInfo{background: #d4d4d4;}
 .tiketInfo .tiketInfo__form{text-align: left;}
-.form__resultBox{padding-bottom: 40px; border-bottom: 1px solid #999;}
-.form__resultBox input{font-size: 18px; color: #444;}
+.form__resultBox{
+    overflow-y: auto;
+    height: 116px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #999;
+}
+.form__resultBox label{float: left; line-height: 29px;}
+.form__resultBox input{
+    float: right;
+    height: 29px;
+    padding-right: 10px;
+    color: #444;
+    text-align: right;
+}
+.form__resultBox .resultBox__classList {display: none;}
 
 .tiketInfo__form .form__submit{
     width: 100%;
@@ -285,3 +300,4 @@ main .main__content{
     color: #fff;
     font-size: 20px;
 }
+/*resultBox__price{display: none;}*/
