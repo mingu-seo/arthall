@@ -173,6 +173,7 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
 '''
+
 board/qna   //오게이 예아 이만철 20200727
 '''
 CREATE TABLE `qna` (
