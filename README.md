@@ -54,7 +54,7 @@ AUTO_INCREMENT=3
 
 ```
 
--play (07-26 19시 수정)
+-play (#2. 07-27 18시 30분 수정)(#1. 07-26 19시 수정)
 
 ```
 CREATE TABLE `play` (
@@ -67,6 +67,7 @@ CREATE TABLE `play` (
 	`actor` TEXT NULL DEFAULT NULL,
 	`content` TEXT NULL DEFAULT NULL,
 	`fileName` VARCHAR(50) NULL DEFAULT NULL,
+	`playType` INT(11) NULL DEFAULT NULL,
 	`priceA` INT(11) NULL DEFAULT NULL,
 	`priceB` INT(11) NULL DEFAULT NULL,
 	`priceC` INT(11) NULL DEFAULT NULL,
@@ -77,7 +78,7 @@ CREATE TABLE `play` (
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=5
+AUTO_INCREMENT=22
 ;
 
 ```
