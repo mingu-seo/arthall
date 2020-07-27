@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import util.FileUtil;
+
 @Service
 public class PlayServiceImple implements PlayService {
 
@@ -59,7 +61,14 @@ public class PlayServiceImple implements PlayService {
 		String pageName = "";
 		System.out.println("2@@@@@@@@@@@@@@@@@@@@@@@@@");
 		System.out.println(param.getStartDate().getClass().getName());
+		// 파일 저장
+		FileUtil fu = new FileUtil();
+									//파일 경로 지정 필요 경로 : webapp 이하
+		fu.fileUpload(file, req.getRealPath("/upload/play/"));
+		param.setFileName(fu.fileName);
+		
 		int r = playDao.write(param);
+		
 		System.out.println("3@@@@@@@@@@@@@@@@@@@@@@@@@");
 		pageName = "redirect:list.do";
 //		pageName = "admin/play/list.do";
@@ -68,6 +77,14 @@ public class PlayServiceImple implements PlayService {
 			req.setAttribute("emptyTitle", true);
 			pageName = "admin/board/faq/index";
 		}*/
+		return pageName;
+	}
+
+
+	@Override
+	public String delete(PlayVO param) {
+		playDao.delete(param);
+		String pageName = "redirect:list.do";
 		return pageName;
 	}
 

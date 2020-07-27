@@ -7,9 +7,18 @@
 <script>
 function del() {
    if (confirm('정말로 삭제하시겠습니까?')) {
-      location.href='delete.do?article_no=${data.article_no}';
+      location.href='delete.do';
    }
 }
+$(document).ready(function(){
+    $("#allChk").click(function(){
+        if($("#allChk").prop("checked")){
+            $("input[name=no]").prop("checked",true);
+        }else{
+            $("input[name=no]").prop("checked",false);
+        }
+    })
+})
 </script>
 </head>
 <body> 
@@ -32,12 +41,13 @@ function del() {
                <div id="bbs">
                   <div id="blist">									<!-- 페이지계산 수정 필요 -->
                      <p><span><strong>총 "${vo.totalCount}"개</strong>  |  1/12페이지</span></p>
-                     <form name="frm" id="frm" action="index.do" method="post">
+                     <form name="frm" id="frm" action="delete.do" method="post">
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
                         <colgroup>
+                           <col class="w7" />
+                           <col class="w10" />
                            <col class="" />
                            <col class="w16" />
-                           <col class="w10" />
                            <col class="w12" />
                            <col class="w16" />
                            <col class="w20" />
@@ -46,23 +56,25 @@ function del() {
                            <col class="w7" />
                         </colgroup>
                         <thead>
-                           <tr rowspan="2">
-                              <th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
-                              <th scope="col">공연번호</th>
-                              <th scope="col">공연명</th> 
-                              <th scope="col">홀번호</th>
+                           <tr>
+                              <th scope="col" class="first" rowspan="2"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
+                              <th scope="col" rowspan="2">공연번호</th>
+                              <th scope="col" rowspan="2">공연명</th> 
+                              <th scope="col" rowspan="2">홀번호</th>
                               <th scope="col" colspan="2">공연 기간</th>
-	                          <th scope="col">시작일</th> 
-	                          <th scope="col">종료일</th>
-                              <th scope="col">공연 시간</th>                               
-                              <th scope="col">출연진</th> 
-                              <th scope="col">공연내용</th>
-                              <th scope="col">가격(공연)</th>
-                              <th scope="col" class="last">가격(전시회)</th>
+                              <th scope="col" rowspan="2">공연 시간</th>                               
+                              <th scope="col" rowspan="2">출연진</th> 
+                              <th scope="col" rowspan="2">공연내용</th>
+                              <th scope="col" colspan="3">가격(공연)</th>
+                              <th scope="col" class="last" rowspan="2">가격(전시회)</th>
                            </tr>
                            <tr>
                            	  <th scope="col">시작일</th> 
 	                          <th scope="col">종료일</th>
+
+	                          <th scope="col">A좌석</th>
+	                          <th scope="col">B좌석</th>
+	                          <th scope="col">C좌석</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -83,12 +95,13 @@ function del() {
                                  <td>${play.runtime}</td>
                                  <td>${play.actor}</td>
                                  <td>${play.content}</td>
-                                 <!-- 가격>하위 ABC를 둬야할 것 같은데?  -->
                                  <td>${play.priceA}</td>
                                  <td>${play.priceB}</td>
                                  <td>${play.priceC}</td>
                                  <td>${play.exhPrice}</td>
                                  <td class="last">${reserv.hallNo}</td>
+                              </tr>
+                              <tr>
                               </tr>
                               </c:forEach>
                            </c:if>
@@ -97,7 +110,7 @@ function del() {
                      </form>
                      <div class="btn">
                         <div class="btnLeft">
-                           <a class="btns" href="#" onclick="del();"><strong>삭제</strong> </a>
+                           <a class="btns" href="javascripts:$('#frm').submit();" onclick="del();"><strong>삭제</strong> </a>
                         </div>
                         <div class="btnRight">
                            <a class="wbtn" href="writeForm.do"><strong>등록</strong> </a>

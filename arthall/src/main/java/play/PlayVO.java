@@ -13,6 +13,7 @@ public class PlayVO extends util.Parameter{
 	private int hallNo;
 	private String actor;
 	private String content;
+	private int playType;
 	private int priceA;
 	private int priceB;
 	private int priceC;
@@ -95,32 +96,48 @@ public class PlayVO extends util.Parameter{
 		return priceA;
 	}
 
-	public void setPriceA(int priceA) {
-		this.priceA = priceA;
+	public void setPriceA(Integer priceA) {
+		if ( priceA == null ) {
+			this.priceA = 0;
+		} else {
+			this.priceA = priceA;
+		}
 	}
 
 	public int getPriceB() {
 		return priceB;
 	}
 
-	public void setPriceB(int priceB) {
-		this.priceB = priceB;
+	public void setPriceB(Integer priceB) {
+		if ( priceB == null ) {
+			this.priceB = 0;
+		} else {
+			this.priceB = priceB;
+		}
 	}
 
 	public int getPriceC() {
 		return priceC;
 	}
 
-	public void setPriceC(int priceC) {
-		this.priceC = priceC;
+	public void setPriceC(Integer priceC) {
+		if ( priceC == null ) {
+			this.priceC = 0;
+		} else {
+			this.priceC = priceC;
+		}
 	}
 
 	public int getExhPrice() {
 		return exhPrice;
 	}
 
-	public void setExhPrice(int exhPrice) {
-		this.exhPrice = exhPrice;
+	public void setExhPrice(Integer exhPrice) {
+		if ( exhPrice == null ) {
+			this.exhPrice = 0;
+		} else {
+			this.exhPrice = exhPrice;
+		}
 	}
 
 	public Timestamp getRegdate() {
@@ -145,6 +162,14 @@ public class PlayVO extends util.Parameter{
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+
+	public int getPlayType() {
+		return playType;
+	}
+
+	public void setPlayType(int playType) {
+		this.playType = playType;
 	}
 	
 	

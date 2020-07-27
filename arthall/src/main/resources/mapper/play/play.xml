@@ -29,15 +29,18 @@
 	
 	<insert id = "write" parameterType="play.PlayVO" useGeneratedKeys="true">
 		INSERT INTO play
-			(playName, startDate, endDate, hallNo, actor, content,
-			fileName, priceA, priceB, priceC, exhPrice, regDate, modDate)
+			(playName, startDate, endDate, runtime, hallNo, actor, content,
+			fileName, playType, priceA, priceB, priceC, exhPrice, regDate, modDate)
 		VALUES
-			(#{playName}, #{startDate}, #{endDate}, #{hallNo},
-			#{actor}, #{content}, #{fileName}, #{priceA}, #{priceB},
+			(#{playName}, #{startDate}, #{endDate}, #{runtime}, #{hallNo},
+			#{actor}, #{content}, #{fileName}, #{playType}, #{priceA}, #{priceB},
 			#{priceC}, #{exhPrice}, now(), now());
 		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
 			SELECT last_insert_id();
 		</selectKey>
 	</insert>
 	
+	<delete id = "delete" parameterType="play.PlayVO">
+		DELETE FROM play WHERE no = #{no}
+	</delete>
 </mapper>

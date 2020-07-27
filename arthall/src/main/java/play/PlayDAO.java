@@ -24,5 +24,7 @@ public class PlayDAO {
 		return sqlSession.insert("play.write", param);
 	}
 
-	
+	public int delete(PlayVO param) {
+		return sqlSession.delete("play.delete", param);
+	}
 }
