@@ -1,11 +1,12 @@
 package member;
 
-import java.security.Timestamp;
+
+import java.sql.Timestamp;
 
 import util.Parameter;
 
 public class MemberVO extends Parameter{
-
+  
 	private String no;
 	private String id;
 	private String password;
@@ -15,10 +16,16 @@ public class MemberVO extends Parameter{
 	private String addr;
 	private String birth;
 	private Timestamp joinDate;
-	private String searchword;
-	private String lastVisit;
+	private Timestamp lastVisit;
 	private int banMem;
-
+	
+	//검색 필터
+	private String memId;
+	private String memName;
+	private String memTel;
+	private String memEmail;
+	private String memAddr;
+	private String memBirth;
 	
 	MemberVO() {
 		super.setPage(1);
@@ -36,6 +43,7 @@ public class MemberVO extends Parameter{
 	}
 	public void setId(String id) {
 		this.id = id;
+		
 	}
 	public String getPassword() {
 		return password;
@@ -74,19 +82,11 @@ public class MemberVO extends Parameter{
 		this.joinDate = joinDate;
 	}
 
-	public String getSearchword() {
-		return searchword;
-	}
-
-	public void setSearchword(String searchword) {
-		this.searchword = searchword;
-	}
-
-	public String getLastVisit() {
+	public Timestamp getLastVisit() {
 		return lastVisit;
 	}
 
-	public void setLastVisit(String lastVisit) {
+	public void setLastVisit(Timestamp lastVisit) {
 		this.lastVisit = lastVisit;
 	}
 
@@ -106,5 +106,51 @@ public class MemberVO extends Parameter{
 		this.banMem = banMem;
 	}
 
-	
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+
+	public String getMemName() {
+		return memName;
+	}
+
+	public void setMemName(String memName) {
+		this.memName = memName;
+	}
+
+	public String getMemTel() {
+		return memTel;
+	}
+
+	public void setMemTel(String memTel) {
+		this.memTel = memTel;
+	}
+
+	public String getMemEmail() {
+		return memEmail;
+	}
+
+	public void setMemEmail(String memEmail) {
+		this.memEmail = memEmail;
+	}
+
+	public String getMemAddr() {
+		return memAddr;
+	}
+
+	public void setMemAddr(String memAddr) {
+		this.memAddr = memAddr;
+	}
+
+	public String getMemBirth() {
+		return memBirth;
+	}
+
+	public void setMemBirth(String memBirth) {
+		this.memBirth = memBirth;
+	}
 }
