@@ -29,9 +29,9 @@ public class NoticeDAO {
 		return sqlSession.selectOne("notice.view",param);
 	}
 	
-	public String viewContent(NoticeVO param) {
-		return sqlSession.selectOne("notice.viewContent",param);
-	}
+//	public String viewContent(NoticeVO param) {
+//		return sqlSession.selectOne("notice.viewContent",param);
+//	}
 
 	public int modify(NoticeVO param) {
 		

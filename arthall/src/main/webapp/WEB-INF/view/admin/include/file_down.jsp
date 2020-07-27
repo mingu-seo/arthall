@@ -2,7 +2,7 @@
 String fileName = request.getParameter("file_name");
 //자바에서 파일을 다운로드 (읽어들이기 다운로드하는 코드)
 //
-String savePath = "/board/notice"; // 경롤를 만들어줌
+String savePath = "/upload/notice"; // 경롤를 만들어줌
 ServletContext context = getServletContext();
 String sFilePath = context.getRealPath(savePath)+"/"+fileName;
 //String sFilePath = "D:/java/workspace/.../upload/"+fileName;

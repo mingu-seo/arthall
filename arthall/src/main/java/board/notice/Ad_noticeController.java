@@ -43,7 +43,6 @@ public class Ad_noticeController {
 		
 		String pageName = noticeservice.write(req, param,file);
 	
-		System.out.println("write"+param.getContent());
 		return pageName;
 	}
 	
@@ -61,9 +60,10 @@ public class Ad_noticeController {
 	}
 	
 	@RequestMapping("/admin/board/notice/modify.do")
-	public String modify(Model model, NoticeVO param) {
+	public String modify(HttpServletRequest req, NoticeVO param, @RequestParam("filename_tmp") MultipartFile file) {
+	//public String modify(Model model, NoticeVO param,@RequestParam("filename_tmp") MultipartFile file) {
 		
-		String pageName = noticeservice.modify(param);
+		String pageName = noticeservice.modify(req, param, file);
 		
 		return pageName;
 	}

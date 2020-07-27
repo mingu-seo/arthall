@@ -47,15 +47,7 @@
 										<th scope="row"><label for="">이미지</label></th>
 										<td><img src="/upload/board/notice/${data.filename}" width="200px"></td>
 									</tr>
-<!-- 									<tr> -->
-<!-- 										<th scope="row"><label for="">이미지</label></th> -->
-										
-<%-- 										<a href="/include/file_down.jsp?file_name=${data.filename}"> --%>
-<!-- 										<input type="button" value="파일 다운로드"> -->
-<!-- 										</a> -->
-                                        
-<!-- 									</tr> -->
-					
+							 													
 									<tr>
 										<th scope="row"><label for="">첨부파일</label></th>
 										

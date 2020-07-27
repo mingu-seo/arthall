@@ -39,9 +39,9 @@
 	
 	<insert id="write" parameterType="board.notice.NoticeVO" useGeneratedKeys="true">
 		INSERT INTO notice
-			(no,writer,title,regDate,readCnt,content,filename)
+			(writer,title,regDate,readCnt,content,filename,modDate)
 		VALUES
-			(#{no},#{writer},#{title},now(),0,#{content},#{filename})
+			(#{writer},#{title},now(),0,#{content},#{filename},now())
 	</insert>
 	
 	<!--  
@@ -53,13 +53,13 @@
 	</insert>
 	-->
 	
-	<select id="viewContent" parameterType="board.notice.NoticeVO" resultType="String">
-		SELECT content FROM notice
-			WHERE no = #{no}
-	</select>
+<!-- 	<select id="viewContent" parameterType="board.notice.NoticeVO" resultType="String"> -->
+<!-- 		SELECT content FROM notice -->
+<!-- 			WHERE no = #{no} -->
+<!-- 	</select> -->
 	<select id ="view" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
 		SELECT
-			no, writer, title, content, regdate,readCnt,filename
+			no, writer, title, content, regdate,readCnt,filename,modDate
 		FROM notice
 		WHERE no= #{no}
 	</select>
@@ -74,9 +74,13 @@
 	
 	<update id="modify" parameterType="board.notice.NoticeVO">
 		UPDATE notice SET
-			title = #{title} , content = #{content}, moddate = now(), filename=#{filename}
+			title = #{title} , content = #{content}, moddate = now(), filename = #{filename} ,regdate = now(), readCnt = #{readCnt}, writer = #{writer}	
 		where no= #{no}
 	</update>
+	
+
+	
+
 	
 	<update id="delete" parameterType="Integer">
 		DELETE FROM notice

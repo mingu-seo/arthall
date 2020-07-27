@@ -8,7 +8,7 @@ public class NoticeVO extends Parameter {
 	
 	private int no; //번호
 	private int readCnt;  //조회수
-	private String modDate; //수정날짜
+	private Timestamp modDate; //수정날짜
 	private String writer; // 작성자
 	private String title; // 제목
 	private String content; // 내용
@@ -39,12 +39,21 @@ public class NoticeVO extends Parameter {
 	public void setReadCnt(int readCnt) {
 		this.readCnt = readCnt;
 	}
-	public String getModDate() {
+	
+	public Timestamp getModDate() {
 		return modDate;
 	}
-	public void setModDate(String modDate) {
+
+
+
+
+	public void setModDate(Timestamp modDate) {
 		this.modDate = modDate;
 	}
+
+
+
+
 	public String getWriter() {
 		return writer;
 	}
