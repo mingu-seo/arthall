@@ -203,7 +203,7 @@ main .main__content{
 }
 .ticketBox__choose > article{
     float: left;
-    width: 50%;
+    width: 33.3333%;
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -284,7 +284,6 @@ main .main__content{
 .form__resultBox label{float: left; line-height: 29px;}
 .form__resultBox input{
     float: right;
-    width: 33.3333;
     height: 29px;
     padding-right: 10px;
     color: #444;

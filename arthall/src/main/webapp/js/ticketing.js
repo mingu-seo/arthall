@@ -1,9 +1,14 @@
 const timeTable = document.querySelector(".timeInfo__timeTable"),
-    timeTableList = timeTable.querySelectorAll(".timeTable__list"),
+    
     classTable = document.querySelector(".classInfo__classTable"),
     //    classTableList = classTable.querySelectorAll(".classTable__classList");
     classSeatClass = classTable.querySelectorAll(".classList__seatClass"),
     classSeatNumber = classTable.querySelectorAll(".classList__seatNumber");
+
+var timeTableList;
+if ($("#runtime").val() == "1") {
+	timeTableList = timeTable.querySelectorAll(".timeTable__list");
+}
 
 let vipPrice = 0,
     rPrice = 0,
@@ -147,9 +152,11 @@ function classHandler() {
 }
 
 function init() {
-    timeTableList.forEach(function (e) {
-        e.addEventListener("click", classHandler);
-    });
+	if ($("#runtime").val() == "1") {
+	    timeTableList.forEach(function (e) {
+	        e.addEventListener("click", classHandler);
+	    });
+	}
     classSeatClass.forEach(function (e) {
         e.addEventListener("click", classHandler);
     });
