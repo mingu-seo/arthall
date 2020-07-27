@@ -72,18 +72,24 @@
 											</tbody>
 										</c:if>
 										<c:if test="${vo.totalCount > 0}">
-											<c:forEach var="faq" items="${list}">
+											<c:forEach var="board" items="${list}">
 												<tbody>
 													<tr>
 														<td class="first"><input type="checkbox" name="num"
-															id="num" value="${faq.no}"  /></td>
-														<td>${faq.no }</td>
+															id="num" value="${board.no}"  /></td>
+														<td>${board.no }</td>
 														<td class="title"><a
-															href="view.do?no=${faq.no}&page=${vo.page}"> <c:out
-																	value="${faq.title}" />
+															href="view.do?no=${board.no}&page=${vo.page}"> 
+															<c:forEach var="index" begin="1" end="${board.depth_no}"> 
+																&nbsp;&nbsp; 
+															</c:forEach>
+															<c:if test="${board.order_no != 0}">
+																<c:out value="└"/>
+															</c:if>
+															<c:out	value="${board.title}" />
 														</a></td>
-														<td>${faq.moddate }</td>
-														<td>${faq.writer }</td>
+														<td>${board.moddate }</td>
+														<td>${board.writer }</td>
 													</tr>
 												</tbody>
 
@@ -105,20 +111,20 @@
 								<!-- 페이징 처리 -->
 								<div class='page'>
 									<c:if test="${vo.startPage > 5}">
-										<a href="faq.do?page=${vo.startPage - 5}">[이전]</a>
+										<a href="list.do?page=${vo.startPage - 5}">[이전]</a>
 									</c:if>
 									<c:forEach var="pNo" begin="${vo.startPage}"
 										end="${vo.endPage}">
-										<a href="faq.do?page=${pNo}">${pNo}</a>
+										<a href="list.do?page=${pNo}">${pNo}</a>
 									</c:forEach>
 									<c:if test="${vo.endPage < vo.totalPage}">
-										<a href="faq.do?page=${vo.startPage+5}">[다음]</a>
+										<a href="list.do?page=${vo.startPage+5}">[다음]</a>
 									</c:if>
 
 								</div>
 
 								<!-- //페이징 처리 -->
-								<form name="searchForm" id="searchForm" action="faq.do" method="post">
+								<form name="searchForm" id="searchForm" action="list.do" method="post">
 									<div class="search">
 										<select name="stype" title="검색을 선택해주세요">
 											<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>

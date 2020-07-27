@@ -2,11 +2,11 @@ package reserv;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import play.PlayVO;
 
 
 
@@ -36,6 +36,10 @@ public class ReservDAO {
 	// User 예약
 	public int reservOne(ReservVO param) {
 		return sqlSession.insert("reserv.reservOne", param);
+	}
+	
+	public PlayVO play() {
+		return sqlSession.selectOne("reserv.playAll");
 	}
 	
 }

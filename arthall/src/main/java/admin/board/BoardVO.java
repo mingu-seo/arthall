@@ -14,6 +14,34 @@ public class BoardVO  extends Parameter {
 		private int readcnt;
 		private String writer;
 		private String filename;
+		private int group_no;
+		private int order_no;
+		private int depth_no;
+		
+
+		public int getGroup_no() {
+			return group_no;
+		}
+
+		public void setGroup_no(int group_no) {
+			this.group_no = group_no;
+		}
+
+		public int getOrder_no() {
+			return order_no;
+		}
+
+		public void setOrder_no(int order_no) {
+			this.order_no = order_no;
+		}
+
+		public int getDepth_no() {
+			return depth_no;
+		}
+
+		public void setDepth_no(int depth_no) {
+			this.depth_no = depth_no;
+		}
 
 		BoardVO() {		
 			super.setPage(1);

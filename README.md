@@ -155,7 +155,23 @@ ENGINE=InnoDB
 AUTO_INCREMENT=1;
 
 ```
-
+board/news 황동민
+```
+CREATE TABLE `news` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(50) NULL DEFAULT NULL,
+	`content` TEXT NULL DEFAULT NULL,
+	`regDate` TIMESTAMP NULL DEFAULT NULL,
+	`readCnt` INT(11) NULL DEFAULT NULL,
+	`writer` VARCHAR(50) NULL DEFAULT NULL,
+	`filename` VARCHAR(50) NULL DEFAULT NULL,
+	`modDate` TIMESTAMP NULL DEFAULT NULL,
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+'''
 
 예시)
 

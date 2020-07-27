@@ -33,6 +33,10 @@ public class BoardDAO {
 	public int delete(int no) {
 		return sqlSession.delete("admin.board.delete", no);
 	}
+	public int reply(BoardVO param) {
+		sqlSession.update("admin.board.updateOrderNo", param);
+		return sqlSession.insert("admin.board.reply", param);
+	}
 	
 	
 }
