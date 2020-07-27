@@ -15,15 +15,28 @@
 		   return;
 	   }
 	}
-	
+$(document).ready(function(){
 	$("#allChk").click(function(){
-		if($("#allchk").is(":checked")){
-			$(".allchek").prop("checked", true);
+		if($("#allChk").prop("checked")){
+			$("input[name=num]").prop("checked", true);
 		}
 		else{
-			$(".allchek").prop("checked",false);
+			$("input[name=num]").prop("checked",false);
 		}
 	});
+	
+// 	$(document).ready(function(){
+// 		$("#allChk").click(function(){
+// 			if($("#allChk").prop(":checked")){
+// 				$("input[name=num]").prop("checked", true);
+// 			}
+// 			else{
+// 				$("input[name=num]").prop("checked",false);
+// 			}
+// 		});
+	
+	
+})
 	
 </script>
 </head>
@@ -61,9 +74,9 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first">
-										<input type="checkbox"  class="allchek" name="allChk" id="allChk" 
-										onClick="check(this, document.frm.num)"/></th>
+										<th scope="col" class="first"><input type="checkbox"  name="allChk" id="allChk" onClick="check(this, document.frm.num)" /></th>
+										 
+										
 										<th scope="col">번호</th>
 										<th scope="col">제목</th> 
 										<th scope="col">작성일</th> 
@@ -83,23 +96,23 @@
 								</tbody>
 								</c:if>
 								<c:if test="${vo.totalCount > 0}">
-								<c:forEach var="notice" items="${list}">
+								<c:forEach var="news" items="${list}">
 								<tr>
 										<td class="first"><input type="checkbox" name="num" id="num" 
-											value="${notice.no}"/></td>
-										<td>${notice.no}</td>
+											value="${news.no}"/></td>
+										<td>${news.no}</td>
 										
 										<td class="title">
-											<a href="view.do?no=${notice.no}&page=${vo.page}">
+											<a href="view.do?no=${news.no}&page=${vo.page}">
 												 
-												<c:out value="${notice.title}"/>
+												<c:out value="${news.title}"/>
 												 
 											
 											</a>
 										</td>
-										<td>${notice.regDate}</td>
-										<td>${notice.writer}</td>
-										<td class="last">${notice.readCnt}</td>
+										<td>${news.regDate}</td>
+										<td>${news.writer}</td>
+										<td class="last">${news.readCnt}</td>
 									</tr>
 								</c:forEach>
 								</c:if>

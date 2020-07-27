@@ -40,15 +40,20 @@
 										<td colspan="10">${data.title }</td>
 									</tr>
 									<tr>
+										
 										<th scope="row"><label for="">내용</label></th>
 										<td colspan="10">${data.content }</td>
+										
 									</tr>
 									<tr>
+										<c:if test="${data.filename != null}">
 										<th scope="row"><label for="">이미지</label></th>
 										<td><img src="/upload/board/notice/${data.filename}" width="200px"></td>
+										</c:if>
 									</tr>
 							 													
 									<tr>
+										<c:if test="${data.filename != null}">	
 										<th scope="row"><label for="">첨부파일</label></th>
 										
 										
@@ -59,11 +64,12 @@
 													첨부파일 없음
 													</c:if>
 													<c:if test="${data.filename != null}">
-													<a href="/include/file_down.jsp?file_name"=${data.filename}" 
-													target="_blank">${data.filename}</a><br />
+													<a href="/include/file_down.jsp?file_name=upload\board\notice/${data.filename}"> 
+													<target="_blank">${data.filename}</a><br />
 													</c:if>
 												</div>
 										</td>
+										</c:if>
 									</tr>
 								</tbody>
 							</table>

@@ -15,15 +15,16 @@
 		   return;
 	   }
 	}
-	
-	$("#allChk").click(function(){
-		if($("#allchk").is(":checked")){
-			$(".allchek").prop("checked", true);
-		}
-		else{
-			$(".allchek").prop("checked",false);
-		}
-	});
+	$(document).ready(function(){
+		$("#allChk").click(function(){
+			if($("#allChk").prop("checked")){
+				$("input[name=num]").prop("checked", true);
+			}
+			else{
+				$("input[name=num]").prop("checked",false);
+			}
+		});
+	})
 	
 </script>
 </head>
