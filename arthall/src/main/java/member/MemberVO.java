@@ -17,6 +17,7 @@ public class MemberVO extends Parameter{
 	private Timestamp regDate;
 	private String searchword;
 	private String lastVisit;
+	private int banMem;
 
 	
 	MemberVO() {
@@ -97,5 +98,14 @@ public class MemberVO extends Parameter{
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
+
+	public int getBanMem() {
+		return banMem;
+	}
+
+	public void setBanMem(int banMem) {
+		this.banMem = banMem;
+	}
+
 	
 }
