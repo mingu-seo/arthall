@@ -1,8 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/smarteditor/js/HuskyEZCreator.js"></script>
 <script>
 $(function() {
 	var oEditors = [];
@@ -25,6 +28,8 @@ $(function() {
 		fCreator: "createSEditor2"
 	});
 });
+
+
 </script>
 </head>
 <body> 
@@ -45,7 +50,7 @@ $(function() {
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="write.do" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -59,13 +64,14 @@ $(function() {
 									<tr>
 										<th scope="row"><label for="">*제목</label></th>
 										<td colspan="10">
-											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요" />	
+											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요" value="${vo.title}"/>
+											
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<textarea id="contents" name="contents" title="내용을 입력해주세요" style="width:100%;"></textarea>	
+											<textarea id="content" name="content" title="내용을 입력해주세요" style="width:100%;"></textarea>	
 										</td>
 									</tr>
 									<tr>
@@ -76,14 +82,15 @@ $(function() {
 									</tr>
 								</tbody>
 							</table>
-							<input type="hidden" name="cmd" value="write" />
+							<input type="hidden" name="cmd"  />
+							<!-- value="write" -->
 							</form>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="index.do"><strong>목록</strong></a>
+									<a class="btns" href="list.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
-									<a class="btns" style="cursor:pointer;"><strong>저장</strong></a>
+									<a class="btns" style="cursor:pointer;" href="javascript:$('#frm').submit();"><strong>저장</strong></a>
 								</div>
 							</div>
 							<!--//btn-->

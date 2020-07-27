@@ -2,30 +2,48 @@ package board.notice;
 
 import java.sql.Timestamp;
 
-public class NoticeVO {
+import util.Parameter;
+
+public class NoticeVO extends Parameter {
 	
 	private int no; //번호
-	private String writer;
-	private String title;
-	private int show; //조회수
-	private String contents;
-	private Timestamp day; //작성일
+	private int readCnt;  //조회수
+	private String modDate; //수정날짜
+	private String writer; // 작성자
+	private String title; // 제목
+	private String content; // 내용
+	private Timestamp regDate; //작성일
+	private String filename;
 	
 	
-	private int page;
-	private int startRow;
-	private int size;
-	private int startPage;
-	private int endPage;
-	private int totalCount;
-	private int totalPage;
+	NoticeVO() {
+		super.setPage(1);
+		super.setSize(10);
+	}
+
+	
 	
 	
 	public int getNo() {
 		return no;
 	}
+
 	public void setNo(int no) {
 		this.no = no;
+	}
+
+
+	public int getReadCnt() {
+		return readCnt;
+	}
+	public void setReadCnt(int readCnt) {
+		this.readCnt = readCnt;
+	}
+	public String getModDate() {
+		return modDate;
+	}
+	public void setModDate(String modDate) {
+		this.modDate = modDate;
 	}
 	public String getWriter() {
 		return writer;
@@ -39,73 +57,27 @@ public class NoticeVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getShow() {
-		return show;
+	public String getContent() {
+		return content;
 	}
-	public void setShow(int show) {
-		this.show = show;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getContents() {
-		return contents;
+	public Timestamp getRegDate() {
+		return regDate;
 	}
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setRegDate(Timestamp regDate) {
+		this.regDate = regDate;
 	}
-	public Timestamp getDay() {
-		return day;
+
+	public String getFilename() {
+		return filename;
 	}
-	public void setDay(Timestamp day) {
-		this.day = day;
-	}
-	public int getPage() {
-		return page;
-	}
-	public void setPage(int page) {
-		this.page = page;
-	}
-	public int getStartRow() {
-		return startRow;
-	}
-	public void setStartRow(int startRow) {
-		this.startRow = startRow;
-	}
-	public int getSize() {
-		return size;
-	}
-	public void setSize(int size) {
-		this.size = size;
-	}
-	public int getStartPage() {
-		return startPage;
-	}
-	public void setStartPage(int startPage) {
-		this.startPage = startPage;
-	}
-	public int getEndPage() {
-		return endPage;
-	}
-	public void setEndPage(int endPage) {
-		this.endPage = endPage;
-	}
-	public int getTotalCount() {
-		return totalCount;
-	}
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
-	}
-	public int getTotalPage() {
-		return totalPage;
-	}
-	public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;
+
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
 }

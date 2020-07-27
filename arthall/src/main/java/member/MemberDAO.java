@@ -50,4 +50,13 @@ public class MemberDAO {
 	public int changePwd(MemberVO param) {
 		return sqlSession.update("member.changePwd", param);
 	}
+	
+	// 최근로그인 일자 수정
+	public MemberVO lastVisit(String id) {
+		String lastVisit = id;
+		
+		return sqlSession.selectOne(lastVisit);
+	}
+
+	
 }

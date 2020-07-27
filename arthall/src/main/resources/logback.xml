@@ -14,6 +14,7 @@
     <!-- ex> namespase가 "sql.testMapper.my" 인 경우 맨 앞에 sql만 사용하면 sql로 시작되는 모든 namespace mapper 쿼리가 표시됨  -->
     <logger name="test" level="DEBUG"></logger>
     <logger name="board" level="DEBUG"></logger>
+    <logger name="reserv" level="DEBUG"></logger>
  
     <!--  
     <logger name="org.springframework.context" level="INFO"></logger>

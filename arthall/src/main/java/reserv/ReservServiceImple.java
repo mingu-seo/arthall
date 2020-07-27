@@ -1,20 +1,22 @@
 package reserv;
 
 import java.util.List;
+import java.sql.Date;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Service
 public class ReservServiceImple implements ReservService{
 	
 	@Autowired
-	private ReservDao reservDao;
+	private ReservDAO reservDao;
 
 	@Override
-	public List<ReservVo> list(ReservVo param) {
+	public List<ReservVO> list(ReservVO param) {
 		
 		
 		int startRow = (param.getPage()-1) * param.getSize(); // limit 시작값
@@ -36,13 +38,13 @@ public class ReservServiceImple implements ReservService{
 		param.setEndPage(endPage);
 		param.setTotalCount(totalCount);
 		param.setTotalPage(totalPage);
-		List<ReservVo> list = reservDao.list(param);
+		List<ReservVO> list = reservDao.list(param);
 		
 		return list;
 	}
 
 	@Override
-	public String delete(String[] nono, ReservVo param) {
+	public String delete(String[] nono, ReservVO param) {
 		
 		for (int i = 0; i < nono.length; i++) {
 			param.setNo(nono[i]);
@@ -50,6 +52,32 @@ public class ReservServiceImple implements ReservService{
 		}
 		
 		return "redirect:list.do";
+	}
+
+	
+	// Ticket
+	@Override
+	public List<TicketVO> ticketlist(TicketVO param) {
+		List<TicketVO> ticketlist = reservDao.ticketlist(param);
+		return ticketlist;
+	}
+
+	@Override
+	public String reservOne(ReservVO param) {
+		
+		param.setNo("m333333");
+		param.setRuntime(2);
+		param.setPlayDay(java.sql.Date.valueOf("2020-07-09"));
+		// session에서 가져올 값들을 미리 넣어서 실험해봄
+		param.setName("수민스똑똑이"); // 예약자명
+		param.setPlayNo("m123255"); // 공연번호
+		param.setPlayName("얍!"); // 공연명
+		param.setHallNo(1); // 홀번호
+		
+		
+		reservDao.reservOne(param);
+		
+		return "admin/reserv/list";
 	}
 
 }

@@ -21,8 +21,15 @@ public class Ad_MemberController {
 		List<MemberVO> list = memberService.list(param);
 		
 		model.addAttribute("vo", param);
+		System.out.println(param.getJoinDate());
 		model.addAttribute("list", list);
 		
 		return "admin/member/index";
+	}
+	
+	@RequestMapping("admin/include/searchBox.do")
+	public String searchBox() {
+	
+		return "admin/include/searchBox";
 	}
 }

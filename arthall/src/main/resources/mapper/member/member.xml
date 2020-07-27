@@ -6,24 +6,24 @@
 	<select id="count" parameterType="member.MemberVO" resultType="Integer">
 		SELECT COUNT(*) FROM member
 		<where>
-			<if test="searchword != null and searchword != ''">
-			id LIKE '%${searchword}%'
+			<if test="sval != null and sval != ''">
+			id LIKE '%${sval}%'
 			OR member.no IN
-			(SELECT no FROM member.name WHERE name LIKE '%${searchword}')
+			(SELECT no FROM member.name WHERE name LIKE '%${sval}%')
 			</if>
 		</where>
 	</select>
 	
 	<select id="list" parameterType="member.MemberVO" resultType="member.MemberVO">
 		SELECT * FROM member
-		<where>
-			<if test="searchword != null and searchword != ''"> 
-			id LIKE '%${searchword}%'
-			OR member.no IN
-			(SELECT no FROM member.name WHERE name LIKE '%${searchword}')
-			</if>
-		</where>
-		ORDER BY regDate DESC LIMIT #{startRow}, #{size}
+ 		<where> 
+ 			<if test="sval != null and sval != ''">
+ 			id LIKE '%${sval}%'
+ 			OR member.no IN
+ 			(SELECT no FROM member.name WHERE name LIKE '%${sval}%')
+ 			</if>
+ 		</where>
+		ORDER BY no *1 DESC LIMIT #{startRow}, #{size}
 	</select>
 	
 	
@@ -33,20 +33,32 @@
 	</select>
 	
 	<insert id="insert" parameterType="member.MemberVO">
-		insert into member (id, password, name, tel, email, birth, regDate)
+		insert into member (id, password, name, tel, email, addr, birth, joinDate)
 		values
-		( #{id}, #{password}, #{name}, #{tel}, #{email}, #{birth}, now())
+		( #{id}, #{password}, #{name}, #{tel}, #{email}, #{addr}, #{birth}, now())
 	</insert>
 	
 	<select id="login" parameterType="java.util.Map" resultType="member.MemberVO">
 		select * from member where id=#{id} and password=#{password}
 	</select>
 	
+	<update id="lastVisit" parameterType="String">
+		UPDATE member SET
+			lastVisit=NOW()
+		WHERE id=#{id}		
+	</update>
+	
+	
 	<update id="changePwd" parameterType="member.MemberVO">
 		UPDATE member SET
 			password=#{password}
 		WHERE id=#{id}			
 	</update>
+
+
+
+
+
 	
 	
 </mapper>

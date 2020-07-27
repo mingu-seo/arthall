@@ -82,7 +82,7 @@
 												<th scope="row"><label for="">관리자 아이디</label></th>
 												<td colspan="10">
 													<input type="text" id="id" name="id"
-													class="w10" title="아이디를 입력해주세요" value = ""/> 
+													class="w10" title="아이디를 입력해주세요" value = "${adminVO.id}"/> 
 													<span id="idCheckText"></span>
 												</td>
 												
@@ -90,7 +90,7 @@
 											<tr>
 												<th scope="row"><label for="">관리자 이름</label></th>
 												<td colspan="10"><input type="text" id="name"
-													name="name" class="w10" title="이름을 입력해주세요" />
+													name="name" class="w10" title="이름을 입력해주세요" value = "${adminVO.name}"/>
 													<span class = "info"></span>
 												</td>
 											</tr>
@@ -110,23 +110,23 @@
 												</td>
 											</tr>
 											<tr>
+												<th scope="row"><label for="">생년월일</label></th>
+												<td colspan="10"><input type="date" id="birth"
+													name="birth" class="w10" title="생년월일을 입력해주세요" value = "${adminVO.birth}"/>
+													<span class = "info"></span>
+												</td>
+											</tr>
+											<tr>
 												<th scope="row"><label for="">전화번호</label></th>
 												<td colspan="10"><input type="text" id="tel" name="tel"
-													class="w10" title="전화번호를 입력해주세요" />
+													class="w10" title="전화번호를 입력해주세요" value = "${adminVO.tel}" />
 													<span class = "info"></span>
 												</td>
 											</tr>
 											<tr>
 												<th scope="row"><label for="">이메일</label></th>
 												<td colspan="10"><input type="text" id="email"
-													name="email" class="w10" title="이메일을 입력해주세요" />
-													<span class = "info"></span>
-												</td>
-											</tr>
-											<tr>
-												<th scope="row"><label for="">생년월일</label></th>
-												<td colspan="10"><input type="text" id="birth"
-													name="birth" class="w10" title="생년월일을 입력해주세요" />
+													name="email" class="w10" title="이메일을 입력해주세요" value = "${adminVO.email}"/>
 													<span class = "info"></span>
 												</td>
 											</tr>

@@ -30,7 +30,7 @@ function del() {
             <div class="con">
                <!-- 내용 : s -->
                <div id="bbs">
-                  <div id="blist">
+                  <div id="blist">									<!-- 페이지계산 수정 필요 -->
                      <p><span><strong>총 "${vo.totalCount}"개</strong>  |  1/12페이지</span></p>
                      <form name="frm" id="frm" action="index.do" method="post">
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
@@ -46,17 +46,23 @@ function del() {
                            <col class="w7" />
                         </colgroup>
                         <thead>
-                           <tr>
+                           <tr rowspan="2">
                               <th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
                               <th scope="col">공연번호</th>
-                              <th scope="col">홀번호</th>
                               <th scope="col">공연명</th> 
-                              <th scope="col">시작일</th> 
-                              <th scope="col">종료일</th> 
+                              <th scope="col">홀번호</th>
+                              <th scope="col" colspan="2">공연 기간</th>
+	                          <th scope="col">시작일</th> 
+	                          <th scope="col">종료일</th>
+                              <th scope="col">공연 시간</th>                               
                               <th scope="col">출연진</th> 
                               <th scope="col">공연내용</th>
                               <th scope="col">가격(공연)</th>
                               <th scope="col" class="last">가격(전시회)</th>
+                           </tr>
+                           <tr>
+                           	  <th scope="col">시작일</th> 
+	                          <th scope="col">종료일</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -66,20 +72,21 @@ function del() {
                               </tr>
                            </c:if>
                            <c:if test="${vo.totalCount > 0}">
-                              <c:forEach var="reserv" items="${list}">
+                              <c:forEach var="play" items="${list}">
                               <tr>
                                  <td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-                                 <td class="title"><a href="view.do">${reserv.no}</a></td>
-                                 <td>${play.no}</td>   
+                                 <td class="title">${play.no}</td>
+                                 <td>${play.playName}</td>
                                  <td>${play.hallNo}</td>
                                  <td>${play.startDate}</td>
                                  <td>${play.endDate}</td>
+                                 <td>${play.runtime}</td>
                                  <td>${play.actor}</td>
                                  <td>${play.content}</td>
-                                 <!-- 가격>하위 ABC를 둬야할 것 같은데?
+                                 <!-- 가격>하위 ABC를 둬야할 것 같은데?  -->
                                  <td>${play.priceA}</td>
                                  <td>${play.priceB}</td>
-                                 <td>${play.priceC}</td>-->
+                                 <td>${play.priceC}</td>
                                  <td>${play.exhPrice}</td>
                                  <td class="last">${reserv.hallNo}</td>
                               </tr>
@@ -93,7 +100,7 @@ function del() {
                            <a class="btns" href="#" onclick="del();"><strong>삭제</strong> </a>
                         </div>
                         <div class="btnRight">
-                           <a class="wbtn" href="write.do"><strong>등록</strong> </a>
+                           <a class="wbtn" href="writeForm.do"><strong>등록</strong> </a>
                         </div>
                      </div>
                      <!--//btn-->
@@ -110,7 +117,7 @@ function del() {
                   </c:if>
                      </div>
                      <!-- //페이징 처리 -->
-                     <form name="searchForm" id="searchForm" action="index.do"  method="post">
+                     <form name="sval" id="searchForm" action="index.do"  method="post">
                         <div class="search">
                            <select name="stype" title="검색을 선택해주세요">
                               <option value="all">전체</option>

@@ -77,6 +77,7 @@ public class MemberServiceImple implements MemberService{
 		} else {
 			// 세션에 등록
 			req.getSession().setAttribute("authUser", vo);
+			memberDao.lastVisit(id);
 			pageName = "redirect:/index.do";
 		}
 		

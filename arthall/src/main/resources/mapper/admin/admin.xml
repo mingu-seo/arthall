@@ -8,14 +8,21 @@
 		SELECT * FROM admin WHERE id = #{id} AND PASSWORD = PASSWORD(#{password})
 	</select>
 	<select id="select" parameterType="admin.AdminVO" resultType="admin.AdminVO">
-		SELECT * FROM admin WHERE id = #{id}
+		SELECT * FROM admin WHERE no = #{no}
 	</select>
 	<insert id = "regist" parameterType="admin.AdminVO">
 		INSERT INTO admin (id, password, name, tel, email, birth, regdate)
 		VALUES (#{id}, PASSWORD(#{password}), #{name}, #{tel}, #{email}, #{birth}, NOW())
 	</insert>
-	<delete id="delete" parameterType="String">
-		DELETE FROM admin WHERE id = #{id};
+	<delete id="delete" parameterType="int">
+		DELETE FROM admin WHERE no = #{no};
 	</delete>
-	
+	<update id="modify" parameterType="admin.AdminVO">
+		UPDATE admin
+		SET NAME = #{name}, birth= #{birth}, tel = #{tel}, email = #{email}
+		<if test ="password != null">
+			, PASSWORD = PASSWORD(#{password})
+		</if>
+		WHERE no = #{no};
+	</update>
 </mapper>

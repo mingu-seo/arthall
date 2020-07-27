@@ -12,8 +12,13 @@ public class MemberVO extends Parameter{
 	private String name;
 	private String tel;
 	private String email;
+	private String addr;
 	private String birth;
-	private Timestamp regDate;
+	private Timestamp joinDate;
+	private String searchword;
+	private String lastVisit;
+	private int banMem;
+
 	
 	MemberVO() {
 		super.setPage(1);
@@ -62,11 +67,44 @@ public class MemberVO extends Parameter{
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	public Timestamp getRegDate() {
-		return regDate;
+	public Timestamp getJoinDate() {
+		return joinDate;
 	}
-	public void setRegDate(Timestamp regDate) {
-		this.regDate = regDate;
+	public void setJoinDate(Timestamp joinDate) {
+		this.joinDate = joinDate;
 	}
+
+	public String getSearchword() {
+		return searchword;
+	}
+
+	public void setSearchword(String searchword) {
+		this.searchword = searchword;
+	}
+
+	public String getLastVisit() {
+		return lastVisit;
+	}
+
+	public void setLastVisit(String lastVisit) {
+		this.lastVisit = lastVisit;
+	}
+
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
+	public int getBanMem() {
+		return banMem;
+	}
+
+	public void setBanMem(int banMem) {
+		this.banMem = banMem;
+	}
+
 	
 }
