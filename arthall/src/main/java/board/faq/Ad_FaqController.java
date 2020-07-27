@@ -1,4 +1,4 @@
-package board.faq;
+	package board.faq;
 
 import java.util.List;
 

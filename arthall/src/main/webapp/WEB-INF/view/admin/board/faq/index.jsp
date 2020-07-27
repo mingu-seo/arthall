@@ -14,6 +14,12 @@
 		   return;
 	   }
 	}
+	function check(){
+        if ($("#allChk").is(":checked"))
+            $(".num").prop("checked", true);
+        else
+            $(".num").prop("checked", false);
+    }
 	
 </script>
 
@@ -56,7 +62,7 @@
 											<tr>
 												<th scope="col" class="first"><input type="checkbox"
 													name="allChk" id="allChk"
-													onClick="check(this, document.frm.num)" /></th>
+													onClick="check();" /></th>
 												<th scope="col">번호</th>
 												<th scope="col">제목</th>
 												<th scope="col">작성일</th>
@@ -76,7 +82,7 @@
 												<tbody>
 													<tr>
 														<td class="first"><input type="checkbox" name="num"
-															id="num" value="${faq.no}"  /></td>
+															id="num" value="${faq.no}" class="num"  /></td>
 														<td>${faq.no }</td>
 														<td class="title"><a
 															href="view.do?no=${faq.no}&page=${vo.page}"> <c:out
@@ -105,20 +111,20 @@
 								<!-- 페이징 처리 -->
 								<div class='page'>
 									<c:if test="${vo.startPage > 5}">
-										<a href="faq.do?page=${vo.startPage - 5}">[이전]</a>
+										<a href="index.do?page=${vo.startPage - 5}">[이전]</a>
 									</c:if>
 									<c:forEach var="pNo" begin="${vo.startPage}"
 										end="${vo.endPage}">
-										<a href="faq.do?page=${pNo}">${pNo}</a>
+										<a href="index.do?page=${pNo}">${pNo}</a>
 									</c:forEach>
 									<c:if test="${vo.endPage < vo.totalPage}">
-										<a href="faq.do?page=${vo.startPage+5}">[다음]</a>
+										<a href="index.do?page=${vo.startPage+5}">[다음]</a>
 									</c:if>
 
 								</div>
 
 								<!-- //페이징 처리 -->
-								<form name="searchForm" id="searchForm" action="faq.do" method="post">
+								<form name="searchForm" id="searchForm" action="index.do" method="post">
 									<div class="search">
 										<select name="stype" title="검색을 선택해주세요">
 											<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>

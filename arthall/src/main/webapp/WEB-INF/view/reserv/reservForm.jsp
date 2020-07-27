@@ -307,6 +307,8 @@
                                     </div>
                                 </div>
                             </article>
+                            <!-- 공연 -->
+                            <c:if test="${vo.runtime != 0}">
                             <div class="ticketBox__choose cf">
                                 <article class="ticketBox__ticketBoxInner timeInfo">
                                     <h5 class="ticketBoxInner__tit">회차선택</h5>
@@ -324,50 +326,46 @@
                                             <p>출연 : ${vo.actor}</p>
                                         </li>
                                     </ol>
+                                </article>                             
+                                <article class="ticketBox__ticketBoxInner classInfo">
+                                    <h5 class="ticketBoxInner__tit">좌석등급선택</h5>
+                                    <ul class="classInfo__classTable">
+                                        <li class="classTable__classList vipClass cf">
+                                            <span class="classList__seatClass">VIP석</span>
+                                            <span class="classList__seatPrice">150,000원</span>
+                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+                                        </li>
+                                        <li class="classTable__classList rClass cf">
+                                            <span class="classList__seatClass">R석</span>
+                                            <span class="classList__seatPrice">130,000원</span>
+                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+                                        </li>
+                                        <li class="classTable__classList sClass cf">
+                                            <span class="classList__seatClass">S석</span>
+                                            <span class="classList__seatPrice">100,000원</span>
+                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+                                        </li>
+                                        <li class="classTable__classList aClass cf">
+                                            <span class="classList__seatClass">A석</span>
+                                            <span class="classList__seatPrice">80,000원</span>
+                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+                                        </li>
+                                        <li class="classTable__classList bClass cf">
+                                            <span class="classList__seatClass">B석</span>
+                                            <span class="classList__seatPrice">60,000원</span>
+                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+                                        </li>
+                                        <li class="classTable__classList wheelClass cf">
+                                            <span class="classList__seatClass">휠체어석</span>
+                                            <span class="classList__seatPrice">60,000원</span>
+                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+                                        </li>
+                                    </ul>
                                 </article>
-                                
-<!--                                 여기서부터 전시, 공연 페이지가 바뀜 -->
-                                <c:if test="${vo.exhPrice != 0}">
-	                                <article class="ticketBox__ticketBoxInner classInfo">
-	                                    <h5 class="ticketBoxInner__tit">좌석등급선택</h5>
-	                                    <ul class="classInfo__classTable">
-	                                        <li class="classTable__classList vipClass cf">
-	                                            <span class="classList__seatClass">VIP석</span>
-	                                            <span class="classList__seatPrice">150,000원</span>
-	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-	                                        </li>
-	                                        <li class="classTable__classList rClass cf">
-	                                            <span class="classList__seatClass">R석</span>
-	                                            <span class="classList__seatPrice">130,000원</span>
-	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-	                                        </li>
-	                                        <li class="classTable__classList sClass cf">
-	                                            <span class="classList__seatClass">S석</span>
-	                                            <span class="classList__seatPrice">100,000원</span>
-	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-	                                        </li>
-	                                        <li class="classTable__classList aClass cf">
-	                                            <span class="classList__seatClass">A석</span>
-	                                            <span class="classList__seatPrice">80,000원</span>
-	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-	                                        </li>
-	                                        <li class="classTable__classList bClass cf">
-	                                            <span class="classList__seatClass">B석</span>
-	                                            <span class="classList__seatPrice">60,000원</span>
-	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-	                                        </li>
-	                                        <li class="classTable__classList wheelClass cf">
-	                                            <span class="classList__seatClass">휠체어석</span>
-	                                            <span class="classList__seatPrice">60,000원</span>
-	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-	                                        </li>
-	                                    </ul>
-	                                </article>
-                                </c:if>
-                                
                                 <article class="ticketBox__ticketBoxInner tiketInfo">
                                     <h5 class="ticketBoxInner__tit">나의 예매현황</h5>
                                     <form method="post" action="#" name="tiket__form" id="tiket__form" class="tiketInfo__form">
+                                    <input type="hidden" id="runtime" name="runtime" value="${vo.runtime}">
                                         <fieldset>
                                             <legend>예매현황</legend>
                                             <ul class="form__resultBox">
@@ -411,6 +409,68 @@
                                             </p>-->
                                 </article>
                             </div>
+                            </c:if>
+                            
+                            <!-- 전시회 -->
+                            <c:if test="${vo.runtime == 0}">
+                            <div class="ticketBox__choose cf">                         
+                                <article class="ticketBox__ticketBoxInner classInfo" style="width:50%;">
+                                    <h5 class="ticketBoxInner__tit">나이 선택~?</h5>
+                                    <ul class="classInfo__classTable">
+                                        <li class="classTable__classList vipClass cf">
+                                            <span class="classList__seatClass">어린이</span>
+                                            <span class="classList__seatPrice">5,000원</span>
+                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+                                        </li>
+                                        <li class="classTable__classList rClass cf">
+                                            <span class="classList__seatClass">청소년</span>
+                                            <span class="classList__seatPrice">7,000원</span>
+                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+                                        </li>
+                                        <li class="classTable__classList sClass cf">
+                                            <span class="classList__seatClass">성인</span>
+                                            <span class="classList__seatPrice">10,000원</span>
+                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+                                        </li>
+                                    </ul>
+                                </article>
+                                <article class="ticketBox__ticketBoxInner tiketInfo" style="width:50%;">
+                                    <h5 class="ticketBoxInner__tit">나의 예매현황</h5>
+                                    <form method="post" action="#" name="tiket__form" id="tiket__form" class="tiketInfo__form">
+                                    <input type="hidden" id="runtime" name="runtime" value="${vo.runtime}">
+                                        <fieldset>
+                                            <legend>예매현황</legend>
+                                            <ul class="form__resultBox">
+                                                <li class="cf">
+                                                    <label for="resultBox__date">날짜</label><input type="text" id="resultBox__date" value="" required disabled>
+                                                </li>
+                                                <li class="resultBox__classList cf">
+                                                    <label for="">어린이</label><input type="text" id="resultBox__vipClass" class="resultBox__class" value="" disabled>
+                                                </li>
+                                                <li class="resultBox__classList cf">
+                                                    <label for="">청소년</label><input type="text" id="resultBox__rClass" class="resultBox__class" value="" disabled>
+                                                </li>
+                                                <li class="resultBox__classList cf">
+                                                    <label for="">성인</label><input type="text" id="resultBox__sClass" class="resultBox__class" value="" disabled>
+                                                </li>
+                                                <li class="cf">
+                                                    <label for="resultBox__price">가격</label><input type="text" id="resultBox__price" value="" required disabled>
+                                                </li>
+                                            </ul>
+                                            <!--                                            <button type="submit" class="form__submit">다음단계로</button>-->
+                                            <input type="submit" class="form__submit" value="다음 단계로">
+                                        </fieldset>
+                                    </form>
+                                    <!--<p class="tiketInfo__resultBox">
+                                                <span class="resultBox__date">2020년 7월 16일 수요일</span>
+                                                <span class="resultBox__time">20:00</span>
+                                                <span class="resultBox__class">VIP</span>
+                                                <span class="resultBox__price">150,000원</span>
+                                            </p>-->
+                                </article>
+                            </div>
+                            </c:if>
+                            
 
                         </div>
                     </div>
@@ -472,7 +532,7 @@
     </div>
     <script src="<%=request.getContextPath() %>/js/header.js"></script>
     <script src="<%=request.getContextPath() %>/js/calrendar.js"></script>
-    <script src="<%=request.getContextPath() %>/js/ticketing.js"></script>
+    <script src="<%=request.getContextPath() %>/js/ticketing.js"> </script>
 </body>
 
 </html>
