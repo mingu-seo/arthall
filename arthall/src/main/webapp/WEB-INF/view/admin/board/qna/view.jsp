@@ -17,7 +17,7 @@
 			<div id="container">
 				<div id="content">
 					<div class="con_tit">
-						<h2>FAQ - [읽기]</h2>
+						<h2>QnA - [읽기]</h2>
 					</div>
 					<!-- //con_tit -->
 					<div class="con">
@@ -71,6 +71,7 @@
 										<a class="btns" href="index.do"><strong>목록</strong></a>
 									</div>
 									<div class="btnRight">
+										<a class="btns" style="cursor: pointer;" href="answerForm.do?no=${data.no}"><strong>답변달기</strong></a>
 										<a class="btns" style="cursor: pointer;" href="modifyForm.do?no=${data.no}"><strong>수정</strong></a>
 										<!-- <a class="btns" style="cursor: pointer;" href=""><strong>답변</strong></a> -->
 									</div>

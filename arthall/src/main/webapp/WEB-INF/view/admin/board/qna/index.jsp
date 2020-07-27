@@ -14,7 +14,13 @@
 		   return;
 	   }
 	}
-	
+	// 체크박스 클래스num을추가
+	function check(){
+        if ($("#allChk").is(":checked"))
+            $(".num").prop("checked", true);
+        else
+            $(".num").prop("checked", false);
+    }
 </script>
 
 
@@ -49,7 +55,8 @@
 											<col class="w3" />
 											<col class="w4" />
 											<col class="" />
-											<col class="w10" />
+											<col class="w20" />
+											<col class="w15" />
 											<col class="w5" />
 										</colgroup>
 										<thead>
@@ -68,7 +75,7 @@
 										<c:if test="${vo.totalCount == 0}">
 											<tbody>
 												<tr align="center" bgcolor="white">
-													<td colspan="4">게시글이 없습니다.</td>
+													<td colspan="6">게시글이 없습니다.</td>
 												</tr>
 											</tbody>
 										</c:if>
@@ -77,12 +84,20 @@
 												<tbody>
 													<tr>
 														<td class="first"><input type="checkbox" name="num"
-															id="num" value="${qna.no}"  /></td>
+															id="num" value="${qna.no}"  class="num"  /></td>
 														<td>${qna.no }</td>
-														<td class="title"><a
+														
+														<td class="title">
+														<c:forEach begin="1" end="${qna.nested }">
+															-
+														</c:forEach>
+														<c:if test="${qna.nested != 0 }"> &gt; </c:if>
+														<a
 															href="view.do?no=${qna.no}&page=${qna.page}"> <c:out
 																	value="${qna.title}" />
-														</a></td>
+														</a>
+														
+														</td>
 														<td>${qna.moddate }</td>
 														<td>${qna.writer }</td>
 														<td>${qna.readcnt }</td>
@@ -107,20 +122,20 @@
 								<!-- 페이징 처리 -->
 								<div class='page'>
 									<c:if test="${vo.startPage > 5}">
-										<a href="qna.do?page=${vo.startPage - 5}">[이전]</a>
+										<a href="index.do?page=${vo.startPage - 5}">[이전]</a>
 									</c:if>
 									<c:forEach var="pNo" begin="${vo.startPage}"
 										end="${vo.endPage}">
-										<a href="qna.do?page=${pNo}">${pNo}</a>
+										<a href="index.do?page=${pNo}">${pNo}</a>
 									</c:forEach>
 									<c:if test="${vo.endPage < vo.totalPage}">
-										<a href="qna.do?page=${vo.startPage+5}">[다음]</a>
+										<a href="index.do?page=${vo.startPage+5}">[다음]</a>
 									</c:if>
 
 								</div>
 
 								<!-- //페이징 처리 -->
-								<form name="searchForm" id="searchForm" action="qna.do" method="post">
+								<form name="searchForm" id="searchForm" action="index.do" method="post">
 									<div class="search">
 										<select name="stype" title="검색을 선택해주세요">
 											<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>

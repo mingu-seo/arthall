@@ -75,7 +75,7 @@ public class FaqServiceImple implements FaqService {
 		faqDao.view(param);
 		faqDao.modify(param);
 		
-		return "redirect:faq.do";
+		return "redirect:index.do";
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class FaqServiceImple implements FaqService {
 			faqDao.delete(Integer.parseInt(param[i]));
 		}
 		
-		return "redirect:faq.do";
+		return "redirect:index.do";
 	}
 	
 	

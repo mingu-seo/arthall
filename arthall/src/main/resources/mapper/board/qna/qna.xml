@@ -29,37 +29,59 @@
 				(SELECT no FROM qna WHERE content LIKE '%${sval}%')
           </if>
       	</where>
-	 	ORDER BY no DESC LIMIT #{startRow}, #{size}
+	 	ORDER by gno DESC, ono asc LIMIT #{startRow}, #{size}
 	</select>
 	
-	<!-- 20200724 추가 -->
-	<insert id="write" parameterType="board.qna.QnaVO" useGeneratedKeys="true">
-		INSERT INTO faq
-			(writer, title, content , regdate, moddate, filename)
-		VALUES
-			(#{writer}, #{title}, #{content}, now(), now(), #{filename})
-			 
-		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
-	</insert>
 	
-	<select id="view" parameterType="board.qna.QnaVO" resultType="board.qna.QnaVO">
+	<!-- 여기서부터 -->
+	<select id = "lastgno" resultType="Integer">
+		SELECT MAX(gno) FROM qna
+	</select>
+	
+	<insert id="write" parameterType="board.qna.QnaVO" useGeneratedKeys="true">
+		INSERT INTO qna
+			(writer, title, content , regdate, moddate, filename, gno, ono, nested)
+		VALUES
+			(#{writer}, #{title}, #{content}, now(), now(), #{filename}, #{gno}, #{ono}, #{nested})
+		
+	</insert>
+	<!--  -->
+	
+	
+	<!-- 뷰와함께 -->
+	<select id="view" parameterType="Integer" resultType="board.qna.QnaVO">
 		SELECT
-			no, writer, title, content, regdate, filename
-		FROM faq
+			no, writer, title, content, readcnt, regdate, filename, gno, ono, nested
+		FROM qna
 		where no=#{no}
 	</select>
 	
+	<update id="readcnt" parameterType="Integer">
+		UPDATE qna SET
+			readcnt= readcnt + 1
+		WHERE no=#{no}	
+	</update>
+	
+	<!--  --> 
+	
+	<!-- 답글 -->
+	<update id="aUpdate" parameterType="board.qna.QnaVO">
+		UPDATE qna SET
+		ono = ono + 1
+		WHERE gno = ${gno} and ono <![CDATA[ > ]]> ${ono} 
+	</update>
+	<!-- cdata대문자로 -->
+	
+	
 	<update id="modify" parameterType="board.qna.QnaVO">
-		UPDATE faq SET
+		UPDATE qna SET
 			title = #{title} , content = #{content}, moddate = now(), filename=#{filename}
 		WHERE no=#{no}	
 	</update>
 	
 	
 	<update id="delete" parameterType="Integer">
-		DELETE FROM faq
+		DELETE FROM qna
 		WHERE no=#{no}
 	</update>
 	
