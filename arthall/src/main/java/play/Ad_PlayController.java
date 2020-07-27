@@ -34,7 +34,7 @@ public class Ad_PlayController {
 	
 	@RequestMapping("/admin/play/write.do")
 	public String write(HttpServletRequest req, PlayVO param, @RequestParam("filename_tmp") MultipartFile file) {
-		System.out.println(param.getPlayName());
+		System.out.println(param.getPlayType());
 		String pageName = playService.write(req, param, file);
 		System.out.println(param.getPlayName());
 		
@@ -42,8 +42,12 @@ public class Ad_PlayController {
 	}
 	
 	@RequestMapping("/admin/play/delete.do")
-	public String delete(PlayVO param) {
-		String pageName = playService.delete(param);
+	public String deleteCheck(@RequestParam("no") int[] check, PlayVO param) {
+		for (int i = 0; i < check.length; i++) {
+			System.out.println(check[i]);
+		}
+		String pageName = playService.delete(check, param);
+		
 		return pageName;
 	}
 //	

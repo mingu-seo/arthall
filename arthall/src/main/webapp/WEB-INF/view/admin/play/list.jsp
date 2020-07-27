@@ -10,15 +10,15 @@ function del() {
       location.href='delete.do';
    }
 }
-$(document).ready(function(){
+	$(document).ready(function(){
     $("#allChk").click(function(){
         if($("#allChk").prop("checked")){
             $("input[name=no]").prop("checked",true);
         }else{
             $("input[name=no]").prop("checked",false);
         }
-    })
-})
+    });
+});
 </script>
 </head>
 <body> 
@@ -86,7 +86,7 @@ $(document).ready(function(){
                            <c:if test="${vo.totalCount > 0}">
                               <c:forEach var="play" items="${list}">
                               <tr>
-                                 <td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
+                                 <td class="first"><input type="checkbox" name="no" id="no" value="${play.no}"/></td>
                                  <td class="title">${play.no}</td>
                                  <td>${play.playName}</td>
                                  <td>${play.hallNo}</td>
@@ -110,7 +110,7 @@ $(document).ready(function(){
                      </form>
                      <div class="btn">
                         <div class="btnLeft">
-                           <a class="btns" href="javascripts:$('#frm').submit();" onclick="del();"><strong>삭제</strong> </a>
+                           <a class="btns" href="javascript:$('#frm').submit();" onclick="del();"><strong>삭제</strong> </a>
                         </div>
                         <div class="btnRight">
                            <a class="wbtn" href="writeForm.do"><strong>등록</strong> </a>
