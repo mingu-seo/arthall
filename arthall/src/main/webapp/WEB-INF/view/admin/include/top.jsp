@@ -74,23 +74,25 @@ $(window).load(function(){
 				<li><a href="<%=request.getContextPath()%>/admin/play/list.do" class="parent"><span>공연관리</span></a></li>
 				  
 				<li><a href="<%=request.getContextPath()%>/admin/board/list.do" class="parent"><span>게시판</span></a>
-				<!--  
-				<li><a href="<%=request.getContextPath()%>/admin/notice/index.do" class="parent"><span>게시판</span></a>
-			    -->
+				
 					<div class="standard_left">
 					<ul>
-						<!--  
-						<li><a href="<%=request.getContextPath()%>/manage/board/index.do"><span>공지사항</span></a></li>
-						-->
+						
 						<li><a href="<%=request.getContextPath()%>/admin/board/notice/list.do"><span>공지사항</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/board/news.do"><span>뉴스</span></a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/board/faq.do"><span>FAQ</span></a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/board/qna.do"><span>Q&A</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/faq/index.do"><span>FAQ</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/qna/index.do"><span>Q&A</span></a></li>
 						
 					</ul>
 					</div>
 				</li>
-				<li><a href="<%=request.getContextPath()%>/admin/admin/list.do" class="parent"><span>관리자관리</span></a></li>
+				<li><a href="<%=request.getContextPath()%>/admin/admin/list.do" class="parent"><span>관리자관리</span></a>
+					<div class="standard_left">
+					<ul>
+						<li><a href="<%=request.getContextPath()%>/admin/admin/board/list.do"><span>자유게시판</span></a></li>
+					</ul>
+					</div>
+				</li>
 			</ul>
 		</div>
 		<!--//gnb-->
