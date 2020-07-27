@@ -47,17 +47,17 @@
 										summary="관리자 관리목록입니다.">
 										<colgroup>
 											<col class="w3" />
-											<col class="w4" />
+											
 											<col class="" />
+											<col class="w20" style= text-align: "center"/>
 											<col class="w10" />
-											<col class="w5" />
 										</colgroup>
 										<thead>
 											<tr>
 												<th scope="col" class="first"><input type="checkbox"
 													name="allChk" id="allChk"
 													onClick="check(this, document.frm.num)" /></th>
-												<th scope="col">번호</th>
+												
 												<th scope="col">제목</th>
 												<th scope="col">작성일</th>
 												<th scope="col">작성자</th>
@@ -77,9 +77,10 @@
 													<tr>
 														<td class="first"><input type="checkbox" name="num"
 															id="num" value="${board.no}"  /></td>
-														<td>${board.no }</td>
+														
 														<td class="title"><a
 															href="view.do?no=${board.no}&page=${vo.page}"> 
+															<b>
 															<c:forEach var="index" begin="1" end="${board.depth_no}"> 
 																&nbsp;&nbsp; 
 															</c:forEach>
@@ -87,6 +88,7 @@
 																<c:out value="└"/>
 															</c:if>
 															<c:out	value="${board.title}" />
+															</b>
 														</a></td>
 														<td>${board.moddate }</td>
 														<td>${board.writer }</td>
