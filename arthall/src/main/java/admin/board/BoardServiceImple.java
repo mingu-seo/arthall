@@ -12,12 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class BoardServiceImple implements BoardService {
 
 	@Autowired
-	private BoardDAO BoardDao;
+	private BoardDAO boardDao;
 	
 	@Override
 	public List<BoardVO> list(BoardVO param) {
 		int startRow = (param.getPage()-1) * param.getSize(); // limit 시작값
-		int totalCount = BoardDao.count(param); // 총갯수
+		int totalCount = boardDao.count(param); // 총갯수
 		int totalPage = totalCount / param.getSize(); // 총페이지수
 		if (totalCount % param.getSize() > 0) totalPage++;
 		
@@ -35,7 +35,7 @@ public class BoardServiceImple implements BoardService {
 		param.setTotalCount(totalCount);
 		param.setTotalPage(totalPage);
 		
-		List<BoardVO> list = BoardDao.list(param);
+		List<BoardVO> list = boardDao.list(param);
 		
 		return list;
 	}
@@ -52,7 +52,7 @@ public class BoardServiceImple implements BoardService {
 		param.setFilename(fu.fileName);
 		*/
 		String pageName = "";
-		int r = BoardDao.write(param);
+		int r = boardDao.write(param);
 		pageName = "redirect:list.do";
 		
 		System.out.println("추가된 번호 : " + r);
@@ -66,14 +66,14 @@ public class BoardServiceImple implements BoardService {
 	@Override
 	public BoardVO view(BoardVO param) {
 		
-		return BoardDao.view(param);
+		return boardDao.view(param);
 	}
 	
 	@Override
 	public String modify(BoardVO param) {
 		
-		BoardDao.view(param);
-		BoardDao.modify(param);
+		boardDao.view(param);
+		boardDao.modify(param);
 		
 		return "redirect:list.do";
 	}
@@ -82,7 +82,7 @@ public class BoardServiceImple implements BoardService {
 	public String delete(String[] param) {
 		
 		for (int i = 0 ; i < param.length ;i++) {
-			BoardDao.delete(Integer.parseInt(param[i]));
+			boardDao.delete(Integer.parseInt(param[i]));
 		}
 		
 		return "redirect:list.do";
@@ -101,7 +101,7 @@ public class BoardServiceImple implements BoardService {
 		*/
 		
 		String pageName = "";
-		int r = BoardDao.reply(param);
+		int r = boardDao.reply(param);
 		pageName = "redirect:list.do";
 		
 		System.out.println("추가된 번호 : " + r);
@@ -110,6 +110,25 @@ public class BoardServiceImple implements BoardService {
 			pageName = "admin/board/faq/index";
 		}*/
 		return pageName;
+	}
+
+	@Override
+	public List<CommentVO> commentList(BoardVO param) {
+		
+		List<CommentVO> list = boardDao.commentList(param);
+		
+		return list;
+	}
+
+	@Override
+	public String comment(HttpServletRequest req, CommentVO param) {
+		boardDao.comment(param);
+		return "redirect:view.do?no="+param.getPost_no();
+	}
+
+	@Override
+	public int deleteComment(CommentVO param) {
+		return boardDao.deleteComment(param);
 	}
 	
 	

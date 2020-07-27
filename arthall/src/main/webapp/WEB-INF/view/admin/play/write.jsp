@@ -2,11 +2,47 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 <script>
- 
-s
+$(function() {
+	$("#playType").change(function() {
+		if ($(this).val() == "1") {
+			$("#priceTr1").show();
+			$("#priceTr2").hide();
+			$("#priceTr2").remove();
+		} else {
+			$("#priceTr1").hide();
+			$("#priceTr2").show();
+			$("#priceTr1").remove();
+			
+		}
+	});
+});
+	
+/*
+function priceChange(){
 
+	var playType = $("#playType").val();
+	
+	if (playType == 1){
+		$("#exhPrice").hide();
+	}else if(playType == 2){
+		$("#priceA").hide();
+	}
+}
+*/
+/*
+	$(function() {
+		var playType = $("#playType").val();
+		if(playType == 1){
+			$("#exhPrice").hide();
+		}else if (playType == 2){
+			$("#priceA").hide();
+		}
+		console.log(playType);
+	});
+*/
 </script>
 </head>
 <body> 
@@ -41,57 +77,71 @@ s
 									<tr>
 										<th scope="row"><label for="">*공연 제목</label></th>
 										<td colspan="10">
-											<input type="text" id="playName" name="playName" class="w100" title="제목을 입력해주세요" value=''/>	
+											<input type="text" id="playName" name="playName" class="w100" title="제목을 입력해주세요" value='2000-05-05'/>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" rowspan="2"><label for="">*기간</label></th>
 			                            <th scope="col">시작일</th> 
 										<td colspan="10">
-											<input type="text" id="startDate" name="startDate" class="w100" placeholder="YYYY-MM-DD" value=''/>	
+											<input type="text" id="startDate" name="startDate" class="w100" placeholder="YYYY-MM-DD" value='2000-05-05'/>	
 										</td>
 									</tr>
 			                        <tr>
 				                        <th scope="col">종료일</th>
 				                        <td colspan="10">
-											<input type="text" id="endDate" name="endDate" class="w100" placeholder="YYYY-MM-DD" value='' />	
+											<input type="text" id="endDate" name="endDate" class="w100" placeholder="YYYY-MM-DD" value='2000-05-05' />	
 										</td>
 			                        </tr>
 									<tr>
 										<th scope="row"><label for="">*공연 시간</label></th>
 										<td colspan="10">
-											<input type="text" id="runtime" name="runtime" class="w100" placeholder="0-전시, 1-오전, 2-오후, 3-오전오후" value='' />	
+											<input type="text" id="runtime" name="runtime" class="w100" placeholder="0-전시, 1-오전, 2-오후, 3-오전오후" value='1' />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">*홀 번호</label></th>
 										<td colspan="10">
-											<input type="text" id="hallNo" name="hallNo" class="w100" title="제목을 입력해주세요" value='' />	
+											<input type="text" id="hallNo" name="hallNo" class="w100" title="제목을 입력해주세요" value='1' />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">*출연</label></th>
 										<td colspan="10">
-											<input type="text" id="actor" name="actor" class="w100" title="제목을 입력해주세요" value='' />	
+											<input type="text" id="actor" name="actor" class="w100" title="제목을 입력해주세요" value='1' />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<input type="text" id="content" name="content" class="w100" title="제목을 입력해주세요" value='' />	
+											<input type="text" id="content" name="content" class="w100" title="제목을 입력해주세요" value='1' />	
 										</td>
 									</tr>
 									<tr>
+										<th scope="row"><label for="">*분류</label></th>
+										<td>
+											<SELECT id="playType">
+												<OPTION value="1" selected>공연</OPTION>
+												<OPTION value="2">전시</OPTION>
+											</SELECT>
+										</td>
+									</tr>
+									<tr id="priceTr1">
 									<!-- '가격' 한 줄로 추가해서 콤보박스(공연/전시), 공연이면 세개 전시면 회색처리 -->
 										<th scope="row"><label for="">*가격(공연)</label></th>
 										<td colspan="10">
-											<input type="text" id="priceA" name="priceA" class="w100" title="제목을 입력해주세요" value='' />	
+											<input type="text" id="priceA" name="priceA" class="w100" title="제목을 입력해주세요" value='1' />	
+											<input type="text" id="priceB" name="priceB" class="w100" title="제목을 입력해주세요" value='1' />	
+											<input type="text" id="priceC" name="priceC" class="w100" title="제목을 입력해주세요" value='1' />
+											<input type="hidden" id="playType" name="playType" value="1" />
 										</td>
 									</tr>
-									<tr>
-										<th scope="row"><label for="">*가격(전시)</label></th>
+									<tr id="priceTr2" style="display:none;">
+									<!-- '가격' 한 줄로 추가해서 콤보박스(공연/전시), 공연이면 세개 전시면 회색처리 -->
+										<th scope="row"><label for="">*가격(전시회)</label></th>
 										<td colspan="10">
-											<input type="text" id="exhPrice" name="exhPrice" class="w100" title="제목을 입력해주세요" value='' />	
+											<input type="text" id="exhPrice" name="exhPrice" class="w100" title="제목을 입력해주세요" value='1' />
+											<input type="hidden" id="playType" name="playType" value="2" />	
 										</td>
 									</tr>
 									<tr>

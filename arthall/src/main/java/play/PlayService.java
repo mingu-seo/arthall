@@ -10,5 +10,6 @@ public interface PlayService {
 
 	public List<PlayVO> list(PlayVO param);
 	public String write(HttpServletRequest req, PlayVO param, MultipartFile file);
-			
+	public String delete(PlayVO param);
+	
 }

@@ -40,6 +40,12 @@ public class Ad_PlayController {
 		
 		return pageName;
 	}
+	
+	@RequestMapping("/admin/play/delete.do")
+	public String delete(PlayVO param) {
+		String pageName = playService.delete(param);
+		return pageName;
+	}
 //	
 //	@RequestMapping("/article/read.do")
 //	public String read2(Model model, HttpServletRequest req, ArticleVO param) {
