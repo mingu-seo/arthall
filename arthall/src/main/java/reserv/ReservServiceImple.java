@@ -1,12 +1,11 @@
 package reserv;
 
 import java.util.List;
-import java.sql.Date;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import play.PlayVO;
 
 
 @Service
@@ -78,6 +77,12 @@ public class ReservServiceImple implements ReservService{
 		reservDao.reservOne(param);
 		
 		return "admin/reserv/list";
+	}
+
+	@Override
+	public PlayVO playList() {
+		PlayVO playList = reservDao.play();
+		return playList;
 	}
 
 }

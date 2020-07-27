@@ -15,6 +15,15 @@ function move() {
 	location.href="reservForm.do"
 }
 
+$(document).ready(function(){
+    $("#allChk").click(function(){
+        if($("#allChk").prop("checked")){
+            $("input[name=no]").prop("checked",true);
+        }else{
+            $("input[name=no]").prop("checked",false);
+        }
+    })
+})
 </script>
 </head>
 <body> 

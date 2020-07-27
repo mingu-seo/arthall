@@ -4,19 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>sub</title>
-    <link rel="icon" sizes="16x16" type="image.png" href="<%=request.getContextPath()%>/img/favicon.png">
+    <title>예매하기</title>
+    <link rel="icon" sizes="16x16" type="image.png" href="<%=request.getContextPath() %>/img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ticketing.css">
-    <script src="<%=request.getContextPath()%>/js/jquery-1.11.3.min.js"></script>
-    
-    <script>
-	    function reserv() {
-	    	if (confirm('예약하시겠습니까?')) {
-	    		location.href="reserv.do";
-	    	}
-	    }
-    </script>
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/ticketing.css">
+    <script src="<%=request.getContextPath() %>/js/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>
@@ -24,7 +16,7 @@
         <a href="#main" id="gomain">본문바로가기</a>
         <header>
             <div class="header-inner cf">
-                <h1><a href="index.html"><span class="hidden">logo</span><img src="<%=request.getContextPath()%>/img/logo.png" alt="logo"></a>
+                <h1><a href="index.html"><span class="hidden">logo</span><img src="<%=request.getContextPath() %>/img/logo.png" alt="logo"></a>
                 </h1>
 
                 <div class="right_nav">
@@ -75,8 +67,8 @@
                                 <a href="#"><span>고객센터</span></a>
                                 <ul>
                                     <li><a href="#">회원혜택</a></li>
-                                    <li><a href="#">자주하는 질문</a></li>
-                                    <li><a href="#">1:1 문의</a></li>
+                                    <li><a href="fqa.html">자주하는 질문</a></li>
+                                    <li><a href="inquiry.html">1:1 문의</a></li>
                                     <li><a href="#">관람예절</a></li>
                                 </ul>
                             </li>
@@ -108,8 +100,8 @@
             <main id="main">
                 <div class="main__siteLoad">
                     <p>
-                        <a href="#">대메뉴</a> >
-                        <a href="#">중메뉴</a> >
+                        <a href="#">대메뉴</a> &gt;
+                        <a href="#">중메뉴</a> &gt;
                         <a href="#">예매하기</a>
                     </p>
                 </div>
@@ -120,11 +112,16 @@
                         <div class="innerConts__cont ticketBox">
 
                             <div class="ticketBox__titArea cf">
-                                <h4><img src="<%=request.getContextPath()%>/img/logo.png" alt="충무아트센터 로고"></h4>
+                                <h4><img src="<%=request.getContextPath() %>/img/logo.png" alt="충무아트센터 로고"></h4>
                                 <!--?-->
                                 <article class="ticketBox__ticketBoxInner ticketInfo cf">
                                     <h5 class="ticketBoxInner__tit">예매하기</h5>
-                                    <p><strong class="ticketInfo__showName">뮤지컬 &lt;프랑켄슈타인&gt;</strong><span class="ticketInfo__showInfo">충무아트센터 대극장 2020.07.10~08.31</span></p>
+                                    <p>
+                                        <strong class="ticketInfo__showName">뮤지컬 &lt;프랑켄슈타인&gt;</strong>
+                                        <span class="ticketInfo__showInfo">T-joeun아트센터 대극장
+                                            <span id="period">${vo.startDate}~${vo.endDate}</span>
+                                        </span>
+                                    </p>
                                 </article>
                             </div>
                             <article class="ticketBox__ticketBoxInner dateInfo">
@@ -133,11 +130,11 @@
                                     <div class="calendarContainer__calendars cf">
                                         <div class="calendars__prevContainer">
                                             <table class="calendars__prevMonth">
-                                                <thead class="prevMonth__date">
+                                                <thead class="prevMonth__days">
                                                     <tr class="month">
-                                                        <th colspan="7"><span>2020년 7월</span></th>
+                                                        <th colspan="7"><span class="month__text">2020년 7월</span></th>
                                                     </tr>
-                                                    <tr class="dates">
+                                                    <tr class="days">
                                                         <th class="sun">SUN</th>
                                                         <th>MON</th>
                                                         <th>TUE</th>
@@ -147,11 +144,12 @@
                                                         <th class="sat">SAT</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody class="prevCalBody">
-<!--
+                                                <tbody class="prevCalBody calBody">
+
+                                                    <!--
                                                     <tr>
                                                         <td class="days sun"><span>1</span></td>
-                                                        <td class="days"><span>2</span></td>
+                                                        <td class="days "><span>2</span></td>
                                                         <td class="days"><span>3</span></td>
                                                         <td class="days"><span>4</span></td>
                                                         <td class="days"><span>5</span></td>
@@ -213,16 +211,17 @@
                                                         <td class="days sat"><span>7</span></td>
                                                     </tr>
 -->
+
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div class="calendars__nextContainer">
                                             <table class="calendars__nextMonth">
-                                                <thead class="nextMonth__dates">
+                                                <thead class="nextMonth__days">
                                                     <tr class="month">
-                                                        <th colspan="7"><span>2020년 8월</span></th>
+                                                        <th colspan="7"><span class="month__text">2020년 8월</span></th>
                                                     </tr>
-                                                    <tr class="dates">
+                                                    <tr class="days">
                                                         <th class="sun">SUN</th>
                                                         <th>MON</th>
                                                         <th>TUE</th>
@@ -232,8 +231,8 @@
                                                         <th class="sat">SAT</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody class="nextCalBody">
-<!--
+                                                <tbody class="nextCalBody calBody">
+                                                    <!--
                                                     <tr>
                                                         <td class="days sun"><span>1</span></td>
                                                         <td class="days"><span>2</span></td>
@@ -303,7 +302,7 @@
                                         </div>
                                     </div>
                                     <div class="calBtn">
-                                        <a href="#" class="calBtn__prev"><i class="fas fa-chevron-left fa-3x"></i></a>
+                                        <a href="#" class="calBtn__prev disable"><i class="fas fa-chevron-left fa-3x"></i></a>
                                         <a href="#" class="calBtn__next"><i class="fas fa-chevron-right fa-3x"></i></a>
                                     </div>
                                 </div>
@@ -314,65 +313,94 @@
                                     <ol class="timeInfo__timeTable">
                                         <li class="timeTable__list">
                                             <span class="list__Time">15:00</span>
-                                            <p>출연 : 류정한 · 최우혁 · 박혜나 · 이지수 · 홍경수 · 이희정</p>
+                                            <p>출연 : ${vo.actor}</p>
                                         </li>
                                         <li class="timeTable__list">
                                             <span class="list__Time">20:00</span>
-                                            <p>출연 : 박건형 · 최우혁 · 박혜나 · 이지수 · 홍경수 · 이희정</p>
+                                            <p>출연 : ${vo.actor}</p>
                                         </li>
                                         <li class="timeTable__list">
                                             <span class="list__Time">21:00</span>
-                                            <p>출연 : 류정한 · 최우혁 · 박혜나 · 이지수 · 홍경수 · 이희정</p>
+                                            <p>출연 : ${vo.actor}</p>
                                         </li>
                                     </ol>
                                 </article>
-                                <article class="ticketBox__ticketBoxInner classInfo">
-                                    <h5 class="ticketBoxInner__tit">좌석등급선택</h5>
-                                    <ul class="classInfo__classTable">
-                                        <li class="classTable__classList cf">
-                                            <span class="classList__seatClass">VIP</span>
-                                            <span class="classList__seatPrice">150,000원</span>
-                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-                                        </li>
-                                        <li class="classTable__classList cf">
-                                            <span class="classList__seatClass">R석</span>
-                                            <span class="classList__seatPrice">130,000원</span>
-                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-                                        </li>
-                                        <li class="classTable__classList cf">
-                                            <span class="classList__seatClass">S석</span>
-                                            <span class="classList__seatPrice">100,000원</span>
-                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-                                        </li>
-                                        <li class="classTable__classList cf">
-                                            <span class="classList__seatClass">A석</span>
-                                            <span class="classList__seatPrice">80,000원</span>
-                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-                                        </li>
-                                        <li class="classTable__classList cf">
-                                            <span class="classList__seatClass">B석</span>
-                                            <span class="classList__seatPrice">60,000원</span>
-                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-                                        </li>
-                                        <li class="classTable__classList cf">
-                                            <span class="classList__seatClass">휠체어석</span>
-                                            <span class="classList__seatPrice">60,000원</span>
-                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
-                                        </li>
-                                    </ul>
-                                </article>
+                                
+<!--                                 여기서부터 전시, 공연 페이지가 바뀜 -->
+                                <c:if test="${vo.exhPrice != 0}">
+	                                <article class="ticketBox__ticketBoxInner classInfo">
+	                                    <h5 class="ticketBoxInner__tit">좌석등급선택</h5>
+	                                    <ul class="classInfo__classTable">
+	                                        <li class="classTable__classList vipClass cf">
+	                                            <span class="classList__seatClass">VIP석</span>
+	                                            <span class="classList__seatPrice">150,000원</span>
+	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+	                                        </li>
+	                                        <li class="classTable__classList rClass cf">
+	                                            <span class="classList__seatClass">R석</span>
+	                                            <span class="classList__seatPrice">130,000원</span>
+	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+	                                        </li>
+	                                        <li class="classTable__classList sClass cf">
+	                                            <span class="classList__seatClass">S석</span>
+	                                            <span class="classList__seatPrice">100,000원</span>
+	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+	                                        </li>
+	                                        <li class="classTable__classList aClass cf">
+	                                            <span class="classList__seatClass">A석</span>
+	                                            <span class="classList__seatPrice">80,000원</span>
+	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+	                                        </li>
+	                                        <li class="classTable__classList bClass cf">
+	                                            <span class="classList__seatClass">B석</span>
+	                                            <span class="classList__seatPrice">60,000원</span>
+	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+	                                        </li>
+	                                        <li class="classTable__classList wheelClass cf">
+	                                            <span class="classList__seatClass">휠체어석</span>
+	                                            <span class="classList__seatPrice">60,000원</span>
+	                                            <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
+	                                        </li>
+	                                    </ul>
+	                                </article>
+                                </c:if>
+                                
                                 <article class="ticketBox__ticketBoxInner tiketInfo">
                                     <h5 class="ticketBoxInner__tit">나의 예매현황</h5>
-                                    <form method="post" action="list.do" name="tiket__form" id="tiket__form" class="tiketInfo__form">
+                                    <form method="post" action="#" name="tiket__form" id="tiket__form" class="tiketInfo__form">
                                         <fieldset>
                                             <legend>예매현황</legend>
-                                            <p class="form__resultBox">
-                                                <input type="text" id="resultBox__date" value="2020년 7월 16일 수요일" required disabled>
-                                                <input type="time" id="resultBox__time" value="20:00" required disabled>
-                                                <input type="text" id="resultBox__class" value="VIP석 1매" required disabled>
-                                                <input type="text" id="resultBox__price" value="150,000원" required disabled>
-                                            </p>
-                                            <button type="submit" class="form__submit" onclick="reserv();">다음단계로</button>
+                                            <ul class="form__resultBox">
+                                                <li class="cf">
+                                                    <label for="resultBox__date">날짜</label><input type="text" id="resultBox__date" value="" required disabled>
+                                                </li>
+                                                <li class="cf">
+                                                    <label for="resultBox__time">시간</label><input type="text" id="resultBox__time" value="" required disabled>
+                                                </li>
+                                                <li class="resultBox__classList cf">
+                                                    <label for="resultBox__vipClass">VIP석</label><input type="text" id="resultBox__vipClass" class="resultBox__class" value="" disabled>
+                                                </li>
+                                                <li class="resultBox__classList cf">
+                                                    <label for="">R석</label><input type="text" id="resultBox__rClass" class="resultBox__class" value="" disabled>
+                                                </li>
+                                                <li class="resultBox__classList cf">
+                                                    <label for="">S석</label><input type="text" id="resultBox__sClass" class="resultBox__class" value="" disabled>
+                                                </li>
+                                                <li class="resultBox__classList cf">
+                                                    <label for="">A석</label><input type="text" id="resultBox__aClass" class="resultBox__class" value="" disabled>
+                                                </li>
+                                                <li class="resultBox__classList cf">
+                                                    <label for="">B석</label><input type="text" id="resultBox__bClass" class="resultBox__class" value="" disabled>
+                                                </li>
+                                                <li class="resultBox__classList cf">
+                                                    <label for="">휠체어석</label><input type="text" id="resultBox__wheelClass" class="resultBox__class" value="" disabled>
+                                                </li>
+                                                <li class="cf">
+                                                    <label for="resultBox__price">가격</label><input type="text" id="resultBox__price" value="" required disabled>
+                                                </li>
+                                            </ul>
+                                            <!--                                            <button type="submit" class="form__submit">다음단계로</button>-->
+                                            <input type="submit" class="form__submit" value="다음 단계로">
                                         </fieldset>
                                     </form>
                                     <!--<p class="tiketInfo__resultBox">
@@ -393,7 +421,7 @@
         <footer>
             <div class="footerinner">
                 <div class="footerinner__top cf">
-                    <h2><a href="#"><img src="<%=request.getContextPath()%>/img/logo.png" alt="로고"></a></h2>
+                    <h2><a href="#"><img src="<%=request.getContextPath() %>/img/logo.png" alt="로고"></a></h2>
                     <div class="top__links">
                         <div class="links__sns cf">
                             <a href="#"><i class="fab fa-facebook-f fa-2x"></i></a>
@@ -442,9 +470,9 @@
             </div>
         </footer>
     </div>
-    <script src="<%=request.getContextPath()%>/js/header.js"></script>
-    <script src="<%=request.getContextPath()%>/js/calrendar.js"></script>
-    <script src="<%=request.getContextPath()%>/js/ticketing.js"></script>
+    <script src="<%=request.getContextPath() %>/js/header.js"></script>
+    <script src="<%=request.getContextPath() %>/js/calrendar.js"></script>
+    <script src="<%=request.getContextPath() %>/js/ticketing.js"></script>
 </body>
 
 </html>
