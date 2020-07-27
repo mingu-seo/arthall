@@ -58,7 +58,8 @@
 										<th scope="col">번호</th>
 										<th scope="col">제목</th> 
 										<th scope="col">작성일</th> 
-										<th scope="col">작성자</th> 
+										<th scope="col">작성자</th>
+										<th scope="col" class="last">조회수</th>
 										
 									</tr>
 								</thead>
@@ -87,9 +88,9 @@
 											
 											</a>
 										</td>
-										<td>"${notice.regDate}"</td>
-										<td>"${notice.writer}"</td>
-										<td class="last">"${notice.readCnt}"</td>
+										<td>${notice.regDate}</td>
+										<td>${notice.writer}</td>
+										<td class="last">${notice.readCnt}</td>
 									</tr>
 								</c:forEach>
 								</c:if>
@@ -109,20 +110,26 @@
 							<!--//btn-->
 							<!-- 페이징 처리 -->
 							<div class='page'>
-								<strong>1</strong>
-								<a href="">2</a>
-								<a href="">3</a>
-								<a href="">4</a>
-							</div>
+								<c:if test="${vo.startPage > 5}">
+									<a href="list.do?page=${vo.startPage - 5}">[이전]</a>
+								</c:if>
+								<c:forEach var="pNo" begin="${vo.startPage}"
+									end="${vo.endPage}">
+									<a href="list.do?page=${pNo}">${pNo}</a>
+								</c:forEach>
+								<c:if test="${vo.endPage < vo.totalPage}">
+										<a href="list.do?page=${vo.startPage+5}">[다음]</a>
+								</c:if>
+															</div>
 							<!-- //페이징 처리 -->
-							<form name="searchForm" id="searchForm" action="write.do"  method="post">
+							<form name="searchForm" id="searchForm" action="list.do"  method="post">
 								<div class="search">
 									<select name="stype" title="검색을 선택해주세요">
-										<option value="all">전체</option>
-										<option value="title">제목</option>
-										<option value="contents">내용</option>
+										<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>
+										<option value="title" <c:if test="${vo.stype=='title'}">selected</c:if>>제목</option>
+										<option value="contents" <c:if test="${vo.stype=='content'}">selected</c:if>>내용</option>
 									</select>
-									<input type="text" name="sval" value="" title="검색할 내용을 입력해주세요" />
+									<input type="text" name="sval" value="${vo.sval }" title="검색할 내용을 입력해주세요" />
 									<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />
 								</div>
 							</form>

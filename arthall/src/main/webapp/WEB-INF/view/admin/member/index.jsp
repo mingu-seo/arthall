@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -79,7 +80,6 @@ function allchk() {
 								</tr>
 								</c:if>
 								<c:if test="${vo.totalCount > 0}">
-	
 								
 								<c:forEach var="member" items="${list}">
 								<tr>
@@ -92,7 +92,7 @@ function allchk() {
 									<td>${member.email }</td>
 									<td>${member.addr }</td>
 									<td>${member.birth }</td>
-									<td>${member.regDate }</td>
+									<td>${member.joinDate }</td>
 									<td>${member.lastVisit }</td>
 									<td>${member.banMem }</td>
 									
@@ -115,7 +115,7 @@ function allchk() {
 							</form>
 							
 							<div class="btn">
-							<!--<div class="btnLeft">
+								<!--<div class="btnLeft">
 									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
 								</div>-->
 								<div class="btnRight">
@@ -150,7 +150,7 @@ function allchk() {
 										<option value="contents">내용</option>
 									</select>
 									<input type="text" name="searchword" value="${vo.searchword }" title="검색할 내용을 입력해주세요" />
-									<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />
+<%-- 									<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" /> --%>
 								</div>
 							</form>-->
 							<!-- //search --> 

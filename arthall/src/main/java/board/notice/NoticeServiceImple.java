@@ -3,10 +3,13 @@ package board.notice;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+
 
 
 @Service
@@ -44,7 +47,9 @@ public class NoticeServiceImple implements NoticeService {
 	}
 
 	@Override
-	public String write(HttpServletRequest req, NoticeVO param) {
+	public String write(HttpServletRequest req, NoticeVO param, MultipartFile file) {
+		
+		param.setWriter("황동민");
 		
 		String pageName = "";
 		int r = noticeDao.write(param);
@@ -63,11 +68,15 @@ public class NoticeServiceImple implements NoticeService {
 	@Override
 	public NoticeVO view(NoticeVO param) {
 		
-		return noticeDao.view(param);
+		NoticeVO vo = noticeDao.view(param);
+		vo.setContent(noticeDao.viewContent(param));
+		//return noticeDao.view(param);
+		return vo;
 	}
 
 	@Override
 	public String modify(NoticeVO param) {
+		
 		noticeDao.view(param);
 		noticeDao.modify(param);
 		
@@ -82,6 +91,12 @@ public class NoticeServiceImple implements NoticeService {
 		return "redirect:list.do";
 	}
 
+
+	
+
+	
+
+	
 
 
 

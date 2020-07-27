@@ -33,7 +33,7 @@
 	</select>
 	
 	<insert id="insert" parameterType="member.MemberVO">
-		insert into member (id, password, name, tel, email, addr, birth, regDate)
+		insert into member (id, password, name, tel, email, addr, birth, joinDate)
 		values
 		( #{id}, #{password}, #{name}, #{tel}, #{email}, #{addr}, #{birth}, now())
 	</insert>
@@ -42,11 +42,23 @@
 		select * from member where id=#{id} and password=#{password}
 	</select>
 	
+	<update id="lastVisit" parameterType="String">
+		UPDATE member SET
+			lastVisit=NOW()
+		WHERE id=#{id}		
+	</update>
+	
+	
 	<update id="changePwd" parameterType="member.MemberVO">
 		UPDATE member SET
 			password=#{password}
 		WHERE id=#{id}			
 	</update>
+
+
+
+
+
 	
 	
 </mapper>

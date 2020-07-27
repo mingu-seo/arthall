@@ -18,6 +18,7 @@
 			 	${stype} like '%${sval}%'
 			</if>
 		</where>
+		ORDER BY reservDay desc
 		LIMIT #{startRow},#{size}
 	</select>
 	
@@ -35,5 +36,12 @@
 		WHERE reservNo = #{reservNo}
 	</select>
 	
+	<insert id="reservOne" parameterType="reserv.ReservVO">
+		INSERT INTO reserv
+			(no, name, reservDay, playNo, playName, playDay, runtime, hallNo)
+		VALUES
+			(#{no}, #{name}, now(), #{playNo}, #{playName}, #{playDay},
+			#{runtime}, #{hallNo});
+	</insert>
 	
 </mapper>

@@ -13,7 +13,7 @@ public class ReservVO extends Parameter {
    private String playName;
    private Date playDay;
    private int runtime;
-   private String hallNo;
+   private int hallNo;
    
 
    
@@ -64,10 +64,10 @@ public class ReservVO extends Parameter {
    public void setRuntime(int runtime) {
       this.runtime = runtime;
    }
-   public String getHallNo() {
+   public int getHallNo() {
       return hallNo;
    }
-   public void setHallNo(String hallNo) {
+   public void setHallNo(int hallNo) {
       this.hallNo = hallNo;
    }
 

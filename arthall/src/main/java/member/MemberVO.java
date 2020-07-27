@@ -14,7 +14,7 @@ public class MemberVO extends Parameter{
 	private String email;
 	private String addr;
 	private String birth;
-	private Timestamp regDate;
+	private Timestamp joinDate;
 	private String searchword;
 	private String lastVisit;
 	private int banMem;
@@ -67,12 +67,11 @@ public class MemberVO extends Parameter{
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	public Timestamp getRegDate() {
-		System.out.println("reggggggggggg :"+ regDate);
-		return regDate;
+	public Timestamp getJoinDate() {
+		return joinDate;
 	}
-	public void setRegDate(Timestamp regDate) {
-		this.regDate = regDate;
+	public void setJoinDate(Timestamp joinDate) {
+		this.joinDate = joinDate;
 	}
 
 	public String getSearchword() {
