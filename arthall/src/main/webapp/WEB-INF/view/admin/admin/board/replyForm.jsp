@@ -48,7 +48,7 @@ $(function() {
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="write.do" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="reply.do" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -62,6 +62,9 @@ $(function() {
 									<tr>
 										<th scope="row"><label for="">*제목</label></th>
 										<td colspan="10">
+											<input type="hidden" id="group_no" name="group_no" value = "${vo.group_no}"  />	
+											<input type="hidden" id="order_no" name="order_no" value = "${vo.order_no}"  />	
+											<input type="hidden" id="depth_no" name="depth_no" value = "${vo.depth_no}"  />	
 											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요"  />	
 										</td>
 									</tr>

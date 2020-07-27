@@ -81,4 +81,20 @@ public class BoradController {
 		
 		return pageName;
 	}
+	
+	@RequestMapping("/admin/admin/board/reply.do")
+	public String reply(HttpServletRequest req, BoardVO param, @RequestParam("filename_tmp") MultipartFile file) {
+		String pageName = boardService.reply(req, param, file);
+		
+		return pageName;
+	}
+	@RequestMapping("/admin/admin/board/replyForm.do")
+	public String replyForm(Model model, BoardVO param) {
+		
+		BoardVO vo = boardService.view(param);
+		
+		model.addAttribute("vo", vo);
+		
+		return "/admin/admin/board/replyForm";
+	}
 }

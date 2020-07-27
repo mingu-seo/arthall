@@ -42,7 +42,7 @@ $(function() {
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>FAQ - [수정]</h2>
+					<h2>자유게시판 - [수정]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">

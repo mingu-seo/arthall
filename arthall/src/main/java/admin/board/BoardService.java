@@ -12,5 +12,6 @@ public interface BoardService {
 	public BoardVO view(BoardVO param);
 	public String modify(BoardVO param);
 	public String delete(String[] param);
+	public String reply(HttpServletRequest req, BoardVO param, MultipartFile file);
 	
 }

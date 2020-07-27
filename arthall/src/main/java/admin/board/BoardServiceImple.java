@@ -87,6 +87,30 @@ public class BoardServiceImple implements BoardService {
 		
 		return "redirect:list.do";
 	}
+
+	@Override
+	public String reply(HttpServletRequest req, BoardVO param, MultipartFile file) {
+		//HttpSession sess = req.getSession();
+		//AdminVO sessVo = (AdminVO)sess.getAttribute("authUser");
+		param.setWriter("admin");
+		
+		// 파일 저장
+		/*MyFileRenamePolicy fu = new MyFileRenamePolicy();
+		fu.fileUpload(file, req.getRealPath("/upload/article/"));
+		param.setFilename(fu.fileName);
+		*/
+		
+		String pageName = "";
+		int r = BoardDao.reply(param);
+		pageName = "redirect:list.do";
+		
+		System.out.println("추가된 번호 : " + r);
+		 /*else {
+			req.setAttribute("emptyTitle", true);
+			pageName = "admin/board/faq/index";
+		}*/
+		return pageName;
+	}
 	
 	
 
