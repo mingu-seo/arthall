@@ -47,17 +47,7 @@ public class Ad_noticeController {
 		return pageName;
 	}
 	
-	@RequestMapping("/admin/board/notice/view.do")
-	public String view(Model model, HttpServletRequest req, NoticeVO param) {
-		
-		NoticeVO data = noticeservice.view(param);
-		
-		model.addAttribute("vo",param);
-		model.addAttribute("data",data);
-		System.out.println("view"+data.getContent());
-		
-		return "admin/board/notice/view";
-	}
+
 	
 	@RequestMapping("/admin/board/notice/modifyForm.do")
 	public String modifyForm(Model model, NoticeVO param) {
@@ -86,7 +76,29 @@ public class Ad_noticeController {
 		return pageName;
 		
 	}
+	
+	@RequestMapping("/admin/board/notice/view.do")
+	public String view_img(Model model, HttpServletRequest req, NoticeVO param) {
+		
+		NoticeVO data = noticeservice.view_img(param);
+		
+		model.addAttribute("vo",param);
+		model.addAttribute("data",data);
+		
+		return "admin/board/notice/view";
+	}
 
+//	@RequestMapping("/admin/board/notice/view.do")
+//	public String view(Model model, HttpServletRequest req, NoticeVO param) {
+//		
+//		NoticeVO data = noticeservice.view(param);
+//		
+//		model.addAttribute("vo",param);
+//		model.addAttribute("data",data);
+//		System.out.println("view"+data.getContent());
+//		
+//		return "admin/board/notice/view";
+//	}
 	
 
 

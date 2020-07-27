@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import util.FileUtil;
+
 
 
 
@@ -51,6 +53,11 @@ public class NoticeServiceImple implements NoticeService {
 		
 		param.setWriter("황동민");
 		
+//		//파일을 저장
+		FileUtil fu = new FileUtil();
+		fu.fileUpload(file, req.getRealPath("/upload/board/notice/"));
+		param.setFilename(fu.fileName);
+		
 		String pageName = "";
 		int r = noticeDao.write(param);
 		if (r > 0) {
@@ -90,6 +97,16 @@ public class NoticeServiceImple implements NoticeService {
 		}
 		return "redirect:list.do";
 	}
+
+	@Override
+	public NoticeVO view_img(NoticeVO param) {
+		
+		NoticeVO vo = noticeDao.view_img(param);
+		noticeDao.readCnt(vo);
+		return noticeDao.view_img(param);
+	}
+
+
 
 
 	
