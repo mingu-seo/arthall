@@ -82,6 +82,15 @@
 		DELETE FROM notice
 		WHERE no= #{no}
 	</update>
+	
+	<select id="view_img" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
+		SELECT
+			no,writer,title,content,regDate,filename,readCnt
+		FROM notice
+		WHERE no = #{no}
+	
+	</select>
+	
 
 
 

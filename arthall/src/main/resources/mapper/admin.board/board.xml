@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin.board"><!-- test.memberList -->
+	
+	<select id="count" parameterType="admin.board.BoardVO" resultType="Integer">
+
+		SELECT COUNT(*) FROM board
+	 	<where>
+            <if test="sval != null and sval !='' and stype != 'all'" >
+                ${stype} LIKE '%${sval}%'
+            </if>
+            <if test="sval != null and sval !='' and stype == 'all'">
+            	title LIKE '%${sval}%'
+            	or no in 
+				(SELECT no FROM board WHERE content LIKE '%${sval}%')
+            </if>
+         </where>
+	</select>
+	<select id="list" parameterType="admin.board.BoardVO" resultType="admin.board.BoardVO">
+		
+		SELECT * FROM board 
+		<where>
+         <if test="sval != null and sval !='' and stype != 'all'">
+             ${stype} like '%${sval}%'
+         </if>
+         <if test="sval != null and sval !='' and stype == 'all'">
+            	title LIKE '%${sval}%'
+            	or no in 
+				(SELECT no FROM board WHERE content LIKE '%${sval}%')
+          </if>
+      	</where>
+	 	ORDER BY group_no DESC, order_no asc LIMIT #{startRow}, #{size}
+	</select>
+	
+	<!-- 20200724 추가 -->
+	<insert id="write" parameterType="admin.board.BoardVO" useGeneratedKeys="true">
+		INSERT INTO board
+			(writer, title, content , regdate, moddate, filename, group_no)
+		SELECT
+			#{writer}, #{title}, #{content}, now(), now(), #{filename}, IF(MAX(group_no) IS NULL, 1, MAX(group_no) + 1)
+		FROM board	 
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="reply" parameterType="admin.board.BoardVO" useGeneratedKeys="true">
+		
+		
+		INSERT INTO board
+			(writer, title, content , regdate, moddate, filename, group_no, order_no, depth_no)
+		VALUES
+			(#{writer}, #{title}, #{content}, now(), now(), #{filename}, #{group_no}, #{order_no}+1, #{depth_no}+1)
+		
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<select id="view" parameterType="admin.board.BoardVO" resultType="admin.board.BoardVO">
+		SELECT
+			no, writer, title, content, regdate, filename, group_no, order_no, depth_no
+		FROM board
+		where no=#{no}
+	</select>
+	
+	<update id="modify" parameterType="admin.board.BoardVO">
+		UPDATE board SET
+			title = #{title} , content = #{content}, moddate = now(), filename=#{filename}
+		WHERE no=#{no}	
+	</update>
+	
+	<update id="updateOrderNo" parameterType="admin.board.BoardVO">
+		UPDATE board
+		SET order_no = order_no+1
+		WHERE group_no = #{group_no} AND order_no > #{order_no};
+	</update>
+	
+	
+	<update id="delete" parameterType="Integer">
+		DELETE FROM board
+		WHERE no=#{no}
+	</update>
+	
+</mapper>

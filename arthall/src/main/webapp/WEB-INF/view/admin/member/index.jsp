@@ -6,6 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 </head>
+<script type="text/javascript">
+function allchk() {
+	if($("#allChk").is(':checked')) {
+		$("input[name=chkrow]").prop("checked", true);			
+	} else {
+		$("input[name=chkrow]").prop("checked", false);
+	}
+};
+
+
+</script>
 <body> 
 <div id="wrap">
 	<!-- canvas -->
@@ -39,12 +50,14 @@
 									<col class="w5" />
 									<col class="w5" />
 									<col class="w5" />
+									<col class="w5" />
 									<col class="" />
 
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
+										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="allchk();"/>
+										<label for="allChk"></label></th>
 										<th scope="col">번호</th>
 										<th scope="col">아이디</th> 
 										<th scope="col">패스워드</th> 
@@ -55,6 +68,7 @@
 										<th scope="col">생년월일</th>
 										<th scope="col">가입일</th>
 										<th scope="col">마지막 방문</th>
+										<th scope="col" >정지회원</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -69,7 +83,7 @@
 								
 								<c:forEach var="member" items="${list}">
 								<tr>
-									<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
+									<td class="first"><input type="checkbox" name="chkrow" id="chkrow" value=""/></td>
 									<td>${member.no }</td>
 									<td>${member.id }</td>
 									<td>${member.password }</td>
@@ -80,6 +94,8 @@
 									<td>${member.birth }</td>
 									<td>${member.joinDate }</td>
 									<td>${member.lastVisit }</td>
+									<td>${member.banMem }</td>
+									
 								</tr>	
 								</c:forEach>
 
@@ -103,7 +119,7 @@
 									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
 								</div>-->
 								<div class="btnRight">
-									<a class="wbtn" href="write.do"><strong>등록</strong> </a>
+									<a class="wbtn" href="#" onclick="tt()"><strong>회원정지</strong> </a>
 								</div>
 							</div>
 							<!--//btn-->

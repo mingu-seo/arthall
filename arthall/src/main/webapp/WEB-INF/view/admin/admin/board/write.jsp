@@ -1,18 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/smarteditor/js/HuskyEZCreator.js"></script>
 <script>
-var oEditors = [];
 $(function() {
-	
+	var oEditors = [];
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
-		elPlaceHolder: "ct", // textarea ID
+		elPlaceHolder: "contents", // textarea ID
 		sSkinURI: "<%=request.getContextPath()%>/smarteditor/SmartEditor2Skin.html",	
 		htParams : {
 			bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -31,10 +27,6 @@ $(function() {
 });
 
 
-	function check() {
-		 oEditors.getById['ct'].exec('UPDATE_CONTENTS_FIELD',[]);
-		}
-
 
 </script>
 </head>
@@ -49,14 +41,14 @@ $(function() {
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공지사항 - [쓰기]</h2>
+					<h2>자유게시판 - [쓰기]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="fm" action="write.do" onsubmit="return check()" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="write.do" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -70,16 +62,13 @@ $(function() {
 									<tr>
 										<th scope="row"><label for="">*제목</label></th>
 										<td colspan="10">
-											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요" value="${data.title}"/>
-											<c:if test="${emptyTitle}">제목을 입력하세요</c:if>	
+											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요"  />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<textarea id=ct name="content" title="내용을 입력해주세요" style="width:100%;">
-												${data.content}
-											</textarea>	
+											<textarea id="content" name="content" title="내용을 입력해주세요" style="width:100%;"></textarea>	
 										</td>
 									</tr>
 									<tr>
@@ -90,17 +79,17 @@ $(function() {
 									</tr>
 								</tbody>
 							</table>
-							<input type="hidden" name="cmd"  />
-							<!-- value="write" -->
-							</form>
+							<input type="hidden" name="cmd" value="write" />
+							
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="list.do"><strong>목록</strong></a>
+									<a class="btns" href="index.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
-									<a class="btns" style="cursor:pointer;" href="javascript:$('#fm').submit();"><strong>저장</strong></a>
+									<a class="btns" style="cursor:pointer;" href="javascript:$('#frm').submit();"><strong>저장</strong></a>
 								</div>
 							</div>
+							</form>
 							<!--//btn-->
 						</div>
 						<!-- //bread -->

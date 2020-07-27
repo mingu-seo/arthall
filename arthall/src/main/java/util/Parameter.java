@@ -17,6 +17,7 @@ public class Parameter {
 	private int endPage; // 페이지하단에 마지막페이지
 	private int totalCount; // 전체갯수
 	private int totalPage; // 총페이지수
+	private String filename;
 	
 
 	public String getStype() {
@@ -73,6 +74,14 @@ public class Parameter {
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	
+	
 	
 	
 

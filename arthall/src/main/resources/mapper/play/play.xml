@@ -5,10 +5,10 @@
 	<select id = "count" parameterType="play.PlayVO" resultType="Integer">
 		SELECT COUNT(*) FROM play
 		<where>
-			<if test="searchword != null and searchword != ''">
-			playName LIKE '%${searchword}%'
-			OR playNo IN
-			(SELECT playNo FROM play WHERE content LIKE '%${searchword}%')
+			<if test="sval != null and sval != ''">
+			playName LIKE '%${sval}%'
+			OR no IN
+			(SELECT no FROM play WHERE content LIKE '%${sval}%')
 			</if>
 		</where>
 	</select>
@@ -16,25 +16,26 @@
 	<select id = "list" parameterType="play.PlayVO" resultType="play.PlayVO">
 		SELECT * FROM play 
 		<where>
-			<if test="searchword != null and searchword != ''">
-			playName LIKE '%${searchword}%'
-			OR playNo IN
-			(SELECT playNo FROM play WHERE content LIKE '%${searchword}%')
+			<if test="sval != null and sval != ''">
+			playName LIKE '%${sval}%'
+			OR no IN
+			(SELECT no FROM play WHERE content LIKE '%${sval}%')
+			OR no IN
+			(SELECT no FROM play WHERE actor LIKE '%${sval}%')
 			</if>
 		</where>
 		ORDER BY regDate DESC LIMIT #{startRow}, #{size}
 	</select>
 	
-	<insert id = "addPlay" parameterType="play.PlayVO" useGeneratedKeys="true">
+	<insert id = "write" parameterType="play.PlayVO" useGeneratedKeys="true">
 		INSERT INTO play
-			(playName, startDate, lastDate, hallNo, actor, content,
-			fileName, priceA, priceB, priceC, exhPrice)
+			(playName, startDate, endDate, hallNo, actor, content,
+			fileName, priceA, priceB, priceC, exhPrice, regDate, modDate)
 		VALUES
-			(#{playName}, #{startDate}, #{lastDate}, ${hallNo},
-			#{actor}, #{content}, #{fileName}, ${priceA}, ${priceB},
-			${priceC}, ${exhPrice});
-			
-		<selectKey keyProperty="playNo" resultType="Integer" order="AFTER">
+			(#{playName}, #{startDate}, #{endDate}, #{hallNo},
+			#{actor}, #{content}, #{fileName}, #{priceA}, #{priceB},
+			#{priceC}, #{exhPrice}, now(), now());
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
 			SELECT last_insert_id();
 		</selectKey>
 	</insert>

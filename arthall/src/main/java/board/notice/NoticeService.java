@@ -17,6 +17,9 @@ public interface NoticeService {
 	public String modify(NoticeVO param);
 	public String delete(String[] param);
 	
+	//이미지불러오기
+	public NoticeVO view_img(NoticeVO param);
+	
 	
 
 	
