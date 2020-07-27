@@ -106,7 +106,7 @@ CREATE TABLE `notice` (
 	`filename` VARCHAR(50) NULL DEFAULT NULL,
 	`modDate` VARCHAR(50) NULL DEFAULT NULL,
 	`content` TEXT NULL DEFAULT NULL,
-	PRIMARY KEY (`noticeNo`)
+	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
