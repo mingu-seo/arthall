@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -32,4 +35,29 @@ public class Ad_MemberController {
 	
 		return "admin/include/searchBox";
 	}
+	
+	@RequestMapping("/admin/member/banMem.do")
+	public String view(Model model, @RequestParam("chk") String[] chk, MemberVO param) {
+		for (int i = 0; i < chk.length; i++) {
+			System.out.println(chk[i]);
+		}
+		String pageName = memberService.banMem(chk, param);
+		return pageName;
+	}
+	
+	@RequestMapping("/admin/member/detail.do")
+	public String detail(Model model, HttpServletRequest req, MemberVO param) {
+		MemberVO vo = memberService.memberdetail(param);
+		System.out.println(param.getNo());
+		model.addAttribute("member", vo);
+		return "admin/member/detail";
+	}
+	
+	@RequestMapping("/admin/member/write.do")
+	public String memberupdate(Model model, HttpServletRequest req, MemberVO param) {
+		String pageName = memberService.detail(param);
+		
+		return pageName;
+	}
+
 }

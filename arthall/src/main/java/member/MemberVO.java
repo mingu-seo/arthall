@@ -1,6 +1,6 @@
 package member;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import util.Parameter;
 
@@ -15,10 +15,8 @@ public class MemberVO extends Parameter{
 	private String addr;
 	private String birth;
 	private Timestamp joinDate;
-	private String searchword;
 	private String lastVisit;
-	private int banMem;
-
+	private String banMem;
 	
 	MemberVO() {
 		super.setPage(1);
@@ -74,14 +72,6 @@ public class MemberVO extends Parameter{
 		this.joinDate = joinDate;
 	}
 
-	public String getSearchword() {
-		return searchword;
-	}
-
-	public void setSearchword(String searchword) {
-		this.searchword = searchword;
-	}
-
 	public String getLastVisit() {
 		return lastVisit;
 	}
@@ -98,13 +88,12 @@ public class MemberVO extends Parameter{
 		this.addr = addr;
 	}
 
-	public int getBanMem() {
+	public String getBanMem() {
 		return banMem;
 	}
 
-	public void setBanMem(int banMem) {
+	public void setBanMem(String banMem) {
 		this.banMem = banMem;
 	}
 
-	
 }
