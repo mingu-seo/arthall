@@ -53,7 +53,7 @@ public class FaqServiceImple implements FaqService {
 		*/
 		String pageName = "";
 		int r = faqDao.write(param);
-		pageName = "redirect:faq.do";
+		pageName = "redirect:index.do";
 		
 		System.out.println("추가된 번호 : " + r);
 		 /*else {
