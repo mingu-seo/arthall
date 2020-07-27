@@ -35,7 +35,7 @@ AUTO_INCREMENT=5
 ```
 -admin.board
 
-'''
+```
 CREATE TABLE `board` (
 	`no` INT(11) NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(255) NULL DEFAULT NULL,
@@ -52,7 +52,8 @@ ENGINE=InnoDB
 AUTO_INCREMENT=3
 ;
 
-'''
+```
+
 -play (07-26 19시 수정)
 
 ```
