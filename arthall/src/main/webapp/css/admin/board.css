@@ -240,6 +240,9 @@ textarea{border:1px solid #cccccc;}
 #bbs #bread table tfoot td.line{background:url(/img/admin/blist_td_line.gif) repeat-y left top;}
 #bbs #bread table tfoot td.tr{text-align:right;}
 
+#bbs #bread table tbody select.option{padding:11px; background:#eeeff0; color:#323337; font-size:13px; border-bottom:1px solid #bec0c4; text-align:left; text-align:center;}
+
+
 
 /*답글*/
 #bread .reple{position:relative; width:100%; height:auto; margin:20px 0 20px 0; padding:10px 0px 10px 0px; background:#f5f5f5; font-size:11px; overflow:hidden;}

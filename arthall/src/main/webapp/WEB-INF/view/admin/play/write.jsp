@@ -7,13 +7,14 @@
 <script>
 $(function() {
 	$("#playType").change(function() {
-		if ($(this).val() == "1") {
+		if ($(this).val() == "0") {
 			$("#priceTr1").show();
 			$("#priceTr2").hide();
 			$("#priceTr2").remove();
+			
 		} else {
-			$("#priceTr1").hide();
 			$("#priceTr2").show();
+			$("#priceTr1").hide();
 			$("#priceTr1").remove();
 			
 		}
@@ -120,9 +121,9 @@ function priceChange(){
 									<tr>
 										<th scope="row"><label for="">*분류</label></th>
 										<td>
-											<SELECT id="playType">
-												<OPTION value="1" selected>공연</OPTION>
-												<OPTION value="2">전시</OPTION>
+											<SELECT id="playType" style="font-size: 12px">
+												<OPTION value="0" selected>공연</OPTION>
+												<OPTION value="1">전시</OPTION>
 											</SELECT>
 										</td>
 									</tr>
@@ -130,18 +131,18 @@ function priceChange(){
 									<!-- '가격' 한 줄로 추가해서 콤보박스(공연/전시), 공연이면 세개 전시면 회색처리 -->
 										<th scope="row"><label for="">*가격(공연)</label></th>
 										<td colspan="10">
-											<input type="text" id="priceA" name="priceA" class="w100" title="제목을 입력해주세요" value='1' />	
-											<input type="text" id="priceB" name="priceB" class="w100" title="제목을 입력해주세요" value='1' />	
-											<input type="text" id="priceC" name="priceC" class="w100" title="제목을 입력해주세요" value='1' />
-											<input type="hidden" id="playType" name="playType" value="1" />
+											<input type="text" id="priceA" name="priceA" class="w100" title="제목을 입력해주세요" value='' />	
+											<input type="text" id="priceB" name="priceB" class="w100" title="제목을 입력해주세요" value='' />	
+											<input type="text" id="priceC" name="priceC" class="w100" title="제목을 입력해주세요" value='' />
+											<input type="hidden" id="playType" name="playType" value="0" />
 										</td>
 									</tr>
 									<tr id="priceTr2" style="display:none;">
 									<!-- '가격' 한 줄로 추가해서 콤보박스(공연/전시), 공연이면 세개 전시면 회색처리 -->
 										<th scope="row"><label for="">*가격(전시회)</label></th>
 										<td colspan="10">
-											<input type="text" id="exhPrice" name="exhPrice" class="w100" title="제목을 입력해주세요" value='1' />
-											<input type="hidden" id="playType" name="playType" value="2" />	
+											<input type="text" id="exhPrice" name="exhPrice" class="w100" title="제목을 입력해주세요" value='' />
+											<input type="hidden" id="playType" name="playType" value="1" />	
 										</td>
 									</tr>
 									<tr>

@@ -26,6 +26,27 @@
 		ORDER BY no *1 DESC LIMIT #{startRow}, #{size}
 	</select>
 	
+	<update id="banMem" parameterType="member.MemberVO">
+		UPDATE member SET
+			banMem = '정상'
+		WHERE no=#{no}
+	</update>
+	
+	<update id="cbanMem" parameterType="member.MemberVO">
+		UPDATE member SET
+			banMem = '휴면'
+		WHERE no=#{no}
+	</update>
+	
+	<select id="memberdetail" parameterType="member.MemberVO" resultType="member.MemberVO">
+		SELECT * FROM member WHERE no = #{no}
+	</select>
+	
+	<update id="detail" parameterType="member.MemberVO">
+		UPDATE member SET id = #{id}, password = #{password}, 
+		name = #{name}, tel = #{tel}, email = #{email}, addr = #{addr}, birth = #{birth}, banMem = #{banMem} WHERE no = #{no}
+	</update>
+	
 	
 	<!-- 회원 페이지 -->
 	<select id="selectOne" parameterType="String" resultType="member.MemberVO">
@@ -35,7 +56,7 @@
 	<insert id="insert" parameterType="member.MemberVO">
 		insert into member (id, password, name, tel, email, addr, birth, joinDate)
 		values
-		( #{id}, #{password}, #{name}, #{tel}, #{email}, #{addr}, #{birth}, now())
+		( #{id}, PASSWORD(#{password}), #{name}, #{tel}, #{email}, #{addr}, #{birth}, now())
 	</insert>
 	
 	<select id="login" parameterType="java.util.Map" resultType="member.MemberVO">
@@ -44,18 +65,11 @@
 	
 	<update id="lastVisit" parameterType="String">
 		UPDATE member SET
-			lastVisit=NOW()
+			lastVisit=#{lastVisit}
 		WHERE id=#{id}		
 	</update>
-	
-	
-	<update id="changePwd" parameterType="member.MemberVO">
-		UPDATE member SET
-			password=#{password}
-		WHERE id=#{id}			
-	</update>
 
-
+	
 
 
 
