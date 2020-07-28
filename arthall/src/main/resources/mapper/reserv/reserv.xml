@@ -5,8 +5,12 @@
 	<select id="count" parameterType="reserv.ReservVO" resultType="Integer"> 
 		SELECT COUNT(*) FROM reserv
 			<where>
-				<if test="sval != null and sval !=''" >
+				<!-- 홀 뭔가 안어울린다 정준아 -->
+				<if test="stype != 'all' and sval != null and sval !=''" >
 				 	${stype} like '%${sval}%'
+				</if>
+				<if test="stype == 'all' and sval != null and sval !=''" >
+				 	name like '%${sval}%' OR playName like '%${sval}%' OR hallNo like '%${sval}%'
 				</if>
 			</where>
 	</select>
@@ -14,11 +18,15 @@
 	<select id="list" parameterType="reserv.ReservVO" resultType="reserv.ReservVO">
 		SELECT * FROM reserv
 		<where>
-			<if test="sval != null and sval !=''">
-			 	${stype} like '%${sval}%'
+		<!-- 홀 뭔가 안어울린다 정준아 -->
+			<if test="stype != 'all' and sval != null and sval !=''" >
+				 ${stype} like '%${sval}%'
+			</if>
+			<if test="stype == 'all' and sval != null and sval !=''" >
+			 	name like '%${sval}%' OR playName like '%${sval}%' OR hallNo like '%${sval}%'
 			</if>
 		</where>
-		ORDER BY reservDay desc
+		ORDER BY reservDate desc
 		LIMIT #{startRow},#{size}
 	</select>
 	
@@ -38,9 +46,9 @@
 	
 	<insert id="reservOne" parameterType="reserv.ReservVO">
 		INSERT INTO reserv
-			(no, name, reservDay, playNo, playName, playDay, runtime, hallNo)
+			(no, name, reservDate, playNo, playName, playDate, runtime, hallNo)
 		VALUES
-			(#{no}, #{name}, now(), #{playNo}, #{playName}, #{playDay},
+			(#{no}, #{name}, now(), #{playNo}, #{playName}, #{playDate},
 			#{runtime}, #{hallNo});
 	</insert>
 	

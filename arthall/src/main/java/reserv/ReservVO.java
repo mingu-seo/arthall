@@ -8,10 +8,10 @@ public class ReservVO extends Parameter {
    
    private String no;
    private String name;
-   private Date reservDay;
+   private Date reservDate;
    private String playNo;
    private String playName;
-   private Date playDay;
+   private Date playDate;
    private int runtime;
    private int hallNo;
    
@@ -34,11 +34,11 @@ public class ReservVO extends Parameter {
    public void setName(String name) {
       this.name = name;
    }
-   public Date getReservDay() {
-      return reservDay;
+   public Date getReservDate() {
+      return reservDate;
    }
-   public void setReservDay(Date reservDay) {
-      this.reservDay = reservDay;
+   public void setReservDate(Date reservDate) {
+      this.reservDate = reservDate;
    }
    public String getPlayNo() {
       return playNo;
@@ -52,11 +52,11 @@ public class ReservVO extends Parameter {
    public void setPlayName(String playName) {
       this.playName = playName;
    }
-   public Date getPlayDay() {
-      return playDay;
+   public Date getPlayDate() {
+      return playDate;
    }
-   public void setPlayDay(Date playDay) {
-      this.playDay = playDay;
+   public void setPlayDate(Date playDate) {
+      this.playDate = playDate;
    }
    public int getRuntime() {
       return runtime;

@@ -30,6 +30,9 @@ public class FaqDAO {
 	public int modify(FaqVO param) {
 		return sqlSession.update("faq.modify", param);
 	}
+	public int modifyFile(FaqVO param) {
+		return sqlSession.update("faq.modifyFile", param);
+	}
 	public int delete(int faqno) {
 		return sqlSession.delete("faq.delete", faqno);
 	}

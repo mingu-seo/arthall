@@ -40,9 +40,9 @@
 	
 	<insert id="write" parameterType="board.qna.QnaVO" useGeneratedKeys="true">
 		INSERT INTO qna
-			(writer, title, content , regdate, moddate, filename, gno, ono, nested)
+			(writer, title, content , regdate, moddate, filename, filename_org, gno, ono, nested)
 		VALUES
-			(#{writer}, #{title}, #{content}, now(), now(), #{filename}, #{gno}, #{ono}, #{nested})
+			(#{writer}, #{title}, #{content}, now(), now(), #{filename}, #{filename_org}, #{gno}, #{ono}, #{nested})
 		
 	</insert>
 	<!--  -->
@@ -51,7 +51,7 @@
 	<!-- 뷰와함께 -->
 	<select id="view" parameterType="Integer" resultType="board.qna.QnaVO">
 		SELECT
-			no, writer, title, content, readcnt, regdate, filename, gno, ono, nested
+			no, writer, title, content, readcnt, regdate, filename, filename_org, gno, ono, nested
 		FROM qna
 		where no=#{no}
 	</select>
@@ -75,7 +75,13 @@
 	
 	<update id="modify" parameterType="board.qna.QnaVO">
 		UPDATE qna SET
-			title = #{title} , content = #{content}, moddate = now(), filename=#{filename}
+			title = #{title} , content = #{content}, moddate = now()
+		WHERE no=#{no}	
+	</update>
+	
+	<update id="modifyFile" parameterType="board.qna.QnaVO">
+		UPDATE qna SET
+			filename=#{filename}, filename_org = #{filename_org}
 		WHERE no=#{no}	
 	</update>
 	

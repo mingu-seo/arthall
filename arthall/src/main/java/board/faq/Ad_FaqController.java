@@ -67,9 +67,9 @@ public class Ad_FaqController {
 	}
 	
 	@RequestMapping("/admin/board/faq/modify.do")
-	public String modify(Model model, FaqVO param) {
+	public String modify(HttpServletRequest req, Model model, FaqVO param, @RequestParam("filename_tmp") MultipartFile file) {
 		
-		String pageName = faqService.modify(param);
+		String pageName = faqService.modify(req, param, file);
 		
 		return pageName;
 	}

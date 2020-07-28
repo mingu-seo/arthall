@@ -27,7 +27,12 @@ $(function() {
 	});
 });
 
-
+function delfile(){
+	$("#filespan").text("");
+    //$("#filename").removeAttr("name");
+    $("#filename").val("noupdate");
+    $("#delbtn").hide();
+}
 
 </script>
 </head>
@@ -80,7 +85,10 @@ $(function() {
 											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요."/>	
 										</c:if>
 										<c:if test="${vo.filename != null}">
-											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" value="${vo.filename}" />	
+										<span id="filespan"><strong>원본파일 : ${vo.filename_org}</strong></span>
+										<input type="button" id="delbtn" onclick="delfile();" value="파일삭제" />
+											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" />	
+											<input type="hidden" id="filename" name="filename" value="${vo.filename}" />
 										</c:if>
 										</td>
 									</tr>

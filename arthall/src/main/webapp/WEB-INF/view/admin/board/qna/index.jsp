@@ -4,7 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp"%>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
 	function del() {
 	   if (confirm('정말로 삭제하시겠습니까?')) {
@@ -126,7 +125,7 @@
 									</c:if>
 									<c:forEach var="pNo" begin="${vo.startPage}"
 										end="${vo.endPage}">
-										<a href="index.do?page=${pNo}">${pNo}</a>
+										<a href="index.do?page=${pNo}&sval=${vo.sval}&stype=${vo.stype}">${pNo}</a>
 									</c:forEach>
 									<c:if test="${vo.endPage < vo.totalPage}">
 										<a href="index.do?page=${vo.startPage+5}">[다음]</a>

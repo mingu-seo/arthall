@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
+//수정
 public class UserLoginInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
