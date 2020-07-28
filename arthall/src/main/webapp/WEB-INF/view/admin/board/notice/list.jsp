@@ -26,6 +26,10 @@
 		});
 	})
 	
+	function move() {
+		location.href="mainForm.do";
+	}
+	
 </script>
 </head>
 <body> 
@@ -79,7 +83,7 @@
 								<tbody>
 									<tr align="center" bgcolor="white">
 								
-										<td colspan="4">게시글이 없습니다.</td>
+										<td colspan="100%">게시글이 없습니다.</td>
 									</tr>
 								</tbody>
 								</c:if>
@@ -143,6 +147,7 @@
 									<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />
 								</div>
 							</form>
+							<input type="submit" value="메인페이지이동" onclick='move();'>
 							<!-- //search --> 
 						</div>
 						<!-- //blist -->
