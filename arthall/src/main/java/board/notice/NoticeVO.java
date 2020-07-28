@@ -22,8 +22,6 @@ public class NoticeVO extends Parameter {
 	}
 
 	
-	
-	
 	public int getNo() {
 		return no;
 	}
@@ -31,7 +29,6 @@ public class NoticeVO extends Parameter {
 	public void setNo(int no) {
 		this.no = no;
 	}
-
 
 	public int getReadCnt() {
 		return readCnt;
@@ -44,15 +41,9 @@ public class NoticeVO extends Parameter {
 		return modDate;
 	}
 
-
-
-
 	public void setModDate(Timestamp modDate) {
 		this.modDate = modDate;
 	}
-
-
-
 
 	public String getWriter() {
 		return writer;

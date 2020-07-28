@@ -1,12 +1,10 @@
 package member;
-
-
 import java.sql.Timestamp;
 
 import util.Parameter;
 
 public class MemberVO extends Parameter{
-
+  
 	private String no;
 	private String id;
 	private String password;
@@ -17,7 +15,11 @@ public class MemberVO extends Parameter{
 	private String birth;
 	private Timestamp joinDate;
 	private Timestamp lastVisit;
+	
 	private String banMem;
+	private String banSelect;
+
+	
 	
 	MemberVO() {
 		super.setPage(1);
@@ -35,6 +37,7 @@ public class MemberVO extends Parameter{
 	}
 	public void setId(String id) {
 		this.id = id;
+		
 	}
 	public String getPassword() {
 		return password;
@@ -95,6 +98,14 @@ public class MemberVO extends Parameter{
 
 	public void setBanMem(String banMem) {
 		this.banMem = banMem;
+	}
+
+	public String getBanSelect() {
+		return banSelect;
+	}
+
+	public void setBanSelect(String banSelect) {
+		this.banSelect = banSelect;
 	}
 
 }

@@ -21,39 +21,50 @@ $(function() {
 			success : function(data) {
 				if (data.trim() == 'true') {
 					$('textarea[name=content]').val('');
+					listComment();
 				} else {
 				}
+			},
+			error:function() {
+				alert("서버 장애");
 			}
-		})
-	})
-	/* 
-	$('#content').keyup(function() {
-		if ($('#id').val().trim() != '') {
-			$.ajax({
-				url:'dup.do?id='+$('#id').val(),
-				type:'html',
-				async:false,
-				success : function(data) {
-					if (data.trim() == 'false') {
-						$("#idCheckText").html("<span style=color:red>이미 사용 중인 아이디입니다.</span>");
-					} else {
-						$("#idCheckText").html("<span style=color:green>사용 가능한 아이디입니다.</span>");
-					}
-				}
-			});
-		} else {
-			$("#idCheckText").html("아이디를 입력해 주세요");
-		}
-	}).click(empty);
-	
-	$("input:not(#id)").keyup(empty).click(empty);
-
-	$("#reg_btn").click(function() {
-		$("#frm").attr('action', '/admin/admin/regist.do');
-		$("#frm").submit();
+	    
+		});
+		
+	 
 	});
-*/
+	
 });
+function listComment() {
+	$.ajax({
+		url:"commentList.do?no=${data.no}",
+		cache: false,
+		async:true,
+		dataType:'HTML',
+		success : function(data) {
+			var cmts = data.trim();
+			$('#cbox').html(cmts);
+			
+		}
+    
+	});
+}
+function delComment(no) {
+	$.ajax({
+		url:'deleteComment.do',
+		method:'post',
+		async:true,
+		data:{no:no},
+		success : function(data) {
+			if (data.trim() == "true") {
+				listComment();
+			} else {
+				alert("서버 장애");
+			}
+		}
+    
+	});
+}
 </script>
 </head>
 <body>
@@ -157,7 +168,7 @@ $(function() {
 										</tr>
 								</form>											
 								</table>
-								<div class="cbox">
+								<div class="cbox" id="cbox">
 									<ul>
 										<c:forEach var="comment" items="${list}">
 											<li>
@@ -169,7 +180,7 @@ $(function() {
 														${comment.regdate}
 													</span>
 													<span>
-														<a class="btns" href="deleteComment.do?no=${comment.no}&post_no=${data.no}"><strong>삭제</strong></a>
+														<a class="btns cdelete" href="javascript:delComment(${comment.no});"><strong>삭제</strong></a>
 													</span>
 												</div>
 												<div style="margin:5px; padding-bottom:20px;">

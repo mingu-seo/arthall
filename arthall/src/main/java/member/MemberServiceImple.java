@@ -1,5 +1,8 @@
 package member;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,9 +76,8 @@ public class MemberServiceImple implements MemberService{
 		if (vo == null) {
 			pageName = "admin/member/loginForm";
 		} else {
-			// 세션에 등록
+			memberDao.lastVisit(id); // 마지막 방문일 수정
 			req.getSession().setAttribute("authUser", vo);
-			memberDao.lastVisit(id);
 			pageName = "redirect:/index.do";
 		}
 		

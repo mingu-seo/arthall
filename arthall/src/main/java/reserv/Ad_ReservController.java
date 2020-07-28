@@ -28,7 +28,7 @@ public class Ad_ReservController {
 		}
 		
 		@RequestMapping("/admin/reserv/delete.do")
-		public String view(Model model, @RequestParam("no") String[] nono, ReservVO param) {
+		public String delete(@RequestParam("no") String[] nono, ReservVO param) {
 			
 			for (int i = 0; i < nono.length; i++) {
 				System.out.println(nono[i]);

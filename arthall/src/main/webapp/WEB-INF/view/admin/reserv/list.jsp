@@ -24,6 +24,21 @@ $(document).ready(function(){
         }
     })
 })
+
+$(function() {
+	$("#search").change(function() {
+		if ($(this).val() == "reservDate") {
+			$("#searchword1").show();
+			$("#searchword0").hide();
+			
+		} else {
+			$("#searchword0").show();
+			$("#searchword1").hide();
+			
+		}
+	});
+});
+
 </script>
 </head>
 <body> 
@@ -38,7 +53,7 @@ $(document).ready(function(){
       <div id="container">
          <div id="content">
             <div class="con_tit">
-               <h2>공지사항 - [목록]</h2>
+               <h2>공지사항 - 예약관리</h2>
             </div>
             <!-- //con_tit -->
             <div class="con">
@@ -118,14 +133,24 @@ $(document).ready(function(){
                      <!-- //페이징 처리 -->
                      <form name="searchForm" id="searchForm" action="list.do"  method="post">
                         <div class="search">
-                           <select name="stype" title="검색을 선택해주세요">
+                           <select name="stype" id="search"title="검색을 선택해주세요">
                               <option value="name" <c:if test="${vo.stype=='name'}">selected</c:if>>예약자명</option>
                               <option value="playName" <c:if test="${vo.stype=='playName'}">selected</c:if>>공연명</option>
                               <option value="playDay" <c:if test="${vo.stype=='playDay'}">selected</c:if>>공연일자</option>
                               <option value="hallNo" <c:if test="${vo.stype=='hallNo'}">selected</c:if>>공연홀</option>
+                              <option value="reservDate" >예매기간</option>
                            </select>
-                           <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요"/>	
-                           <input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색"/>
+                           <span id="searchword0" >
+	                           <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요"/>	
+	                       </span>
+                           	<span id="searchword1" style="display:none;">
+								<input type="date" id="startDate"name="startDate" class="w10" title="시작일을 입력해주세요" 
+								value = ""/>
+								~
+								<input type="date" id="endDate"name="endDate" class="w10" title="종료일을 입력해주세요" 
+								value = ""/>
+							</span>
+							<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색"/>
                         </div>
                      </form>
                      <input type="submit" value="예약 페이지 이동" onclick="move();">
