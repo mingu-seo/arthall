@@ -94,11 +94,10 @@ function mouseOut() {
 								</tr>
 								</c:if>
 								<c:if test="${vo.totalCount > 0}">
-								
 								<c:forEach var="member" items="${list}">
 								<tr class = 'detail' 
 								onmouseover="mouseOver();" onmouseout="mouseOut();" 
-								onclick="location.href='detail.do?no=${member.no}';" >
+								onclick="location.href='detail.do?no=${member.no}&page=${vo.page }';" >
 									<td class="first"><input type="checkbox" name="chk" id="chk" value="${member.no}"/></td>
 									<td>${member.no }</td>
 									<td>${member.id }</td>

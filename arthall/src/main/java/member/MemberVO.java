@@ -1,5 +1,6 @@
 package member;
 
+
 import java.sql.Timestamp;
 
 import util.Parameter;
@@ -15,7 +16,7 @@ public class MemberVO extends Parameter{
 	private String addr;
 	private String birth;
 	private Timestamp joinDate;
-	private String lastVisit;
+	private Timestamp lastVisit;
 	private String banMem;
 	
 	MemberVO() {
@@ -72,11 +73,11 @@ public class MemberVO extends Parameter{
 		this.joinDate = joinDate;
 	}
 
-	public String getLastVisit() {
+	public Timestamp getLastVisit() {
 		return lastVisit;
 	}
 
-	public void setLastVisit(String lastVisit) {
+	public void setLastVisit(Timestamp lastVisit) {
 		this.lastVisit = lastVisit;
 	}
 

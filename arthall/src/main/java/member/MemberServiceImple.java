@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import util.Parameter;
-
 @Service
 public class MemberServiceImple implements MemberService{
 
@@ -119,7 +117,7 @@ public class MemberServiceImple implements MemberService{
 		int r = memberDao.detail(param);
 		if (r > 0) {
 			memberDao.detail(param);
-			pageName = "redirect:index.do?page="+param.getPage();
+			pageName = "redirect:index.do?page=";
 			
 		}
 		

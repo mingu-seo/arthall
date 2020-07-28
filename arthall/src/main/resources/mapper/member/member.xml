@@ -44,7 +44,8 @@
 	
 	<update id="detail" parameterType="member.MemberVO">
 		UPDATE member SET id = #{id}, password = #{password}, 
-		name = #{name}, tel = #{tel}, email = #{email}, addr = #{addr}, birth = #{birth}, banMem = #{banMem} WHERE no = #{no}
+		name = #{name}, tel = #{tel}, email = #{email}, addr = #{addr}, birth = #{birth}, joinDate = #{joinDate},
+		lastVisit = #{lastVisit}, banMem = #{banMem} WHERE no = #{no}
 	</update>
 	
 	

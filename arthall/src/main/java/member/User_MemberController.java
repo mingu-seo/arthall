@@ -18,29 +18,28 @@ public class User_MemberController {
 	@Autowired
 	MemberService memberService;
 	
-	@RequestMapping("admin/member/joinForm.do")
+	@RequestMapping("member/joinForm.do")
 	public String joinForm() {
-		return "admin/member/joinForm";
+		return "member/joinForm";
 	}
 	
-	@RequestMapping("admin/member/join.do")
+	@RequestMapping("member/join.do")
 	public String join(HttpServletRequest req, MemberVO param) {
 		String pageName = memberService.regist(param, req);
-		System.out.println("컨트롤러 값 : " + param.getTel());
 		return pageName;
 	}
 	
-	@RequestMapping("admin/member/joinSuccess.do")
+	@RequestMapping("member/joinSuccess.do")
 	public String joinSuccess() {
-		return "admin/member/joinSuccess";
+		return "member/joinSuccess";
 	}
 	
-	@RequestMapping("/member/loginForm.do")
+	@RequestMapping("member/loginForm.do")
 	public String loginForm() {
 		return "member/loginForm";
 	}
 	
-	@RequestMapping("/member/login.do")
+	@RequestMapping("member/login.do")
 	public String login(HttpServletRequest req, @RequestParam("id") String id, 
 						@RequestParam("password") String password) {
 		
@@ -49,7 +48,7 @@ public class User_MemberController {
 		return pageName;
 	}
 	
-	@RequestMapping("/member/logout.do")
+	@RequestMapping("member/logout.do")
 	public String logout(Model model, HttpSession sess, HttpServletResponse res) throws IOException {
 
 		sess.removeAttribute("authUser");
@@ -59,12 +58,12 @@ public class User_MemberController {
 		return "common/alert";
 	}
 	
-	@RequestMapping("/member/changePwdForm.do")
+	@RequestMapping("member/changePwdForm.do")
 	public String changePwdForm() {
 		return "member/changePwdForm";
 	}
 	
-	@RequestMapping("/member/changePwd.do")
+	@RequestMapping("member/changePwd.do")
 	public String changePwd(HttpServletRequest req, HttpSession sess,
 							@RequestParam("newPwd") String newPwd) {
 		

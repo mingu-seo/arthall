@@ -35,6 +35,7 @@ function ban() {
 					<div id="bbs">
 						<div id="bread">
 							<form method="post" name="frm" id="frm" action="write.do" enctype="multipart/form-data">
+							<input type="hidden" name="page" id="page" value="${param.page}"/>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -93,8 +94,8 @@ function ban() {
 										<th scope="row"><label for="">계정상태</label></th>
 										<td colspan="10">
 										<select name="banMem" style="font-size: 12px; color: #656668";>
-										    <option value="${member.banMem}" selected="selected">정상</option>
-										    <option value="${member.banMem}">휴면</option>
+										    <option value="정상" <c:if test="${member.banMem=='정상'}">selected="selected"</c:if>>정상</option>
+										    <option value="휴면" <c:if test="${member.banMem=='휴면'}">selected="selected"</c:if>>휴면</option>
 										</select>
 <!--  											<input type="text" class="banMem" name="banMem" value="${member.banMem}" readonly> 
 											<input type="button" value="계정상태 변경" class="w8" onclick="ban();"/>
@@ -121,7 +122,7 @@ function ban() {
 							</form>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="index.do"><strong>목록</strong></a>
+									<a class="btns" href="index.do?page=${param.page}"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
 									<a class="btns" style="cursor:pointer;" href="javascript:$('#frm').submit();"><strong>저장</strong></a>

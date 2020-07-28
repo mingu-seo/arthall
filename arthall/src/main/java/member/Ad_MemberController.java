@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -24,7 +22,6 @@ public class Ad_MemberController {
 		List<MemberVO> list = memberService.list(param);
 		
 		model.addAttribute("vo", param);
-		System.out.println(param.getJoinDate());
 		model.addAttribute("list", list);
 		
 		return "admin/member/index";
@@ -47,6 +44,7 @@ public class Ad_MemberController {
 	
 	@RequestMapping("/admin/member/detail.do")
 	public String detail(Model model, HttpServletRequest req, MemberVO param) {
+
 		MemberVO vo = memberService.memberdetail(param);
 		System.out.println(param.getNo());
 		model.addAttribute("member", vo);
@@ -56,8 +54,8 @@ public class Ad_MemberController {
 	@RequestMapping("/admin/member/write.do")
 	public String memberupdate(Model model, HttpServletRequest req, MemberVO param) {
 		String pageName = memberService.detail(param);
-		
-		return pageName;
+		String i = req.getParameter("page");
+		return pageName+i;
 	}
 
 }
