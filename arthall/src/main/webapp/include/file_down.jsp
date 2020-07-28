@@ -12,7 +12,7 @@ String savePath = request.getParameter("path");
 //String savePath = request.getParameter("file_name");
 ServletContext context = getServletContext();
 String sFilePath = context.getRealPath(savePath)+fileName;
-System.out.println(sFilePath);
+System.out.println(sFilePath); 
  
 //String sFilePath = "D:/java/workspace/.../upload/"+fileName;
 byte b[] = new byte[4096];
