@@ -12,7 +12,7 @@ HeidiSQL
   -admin, member, notice, news, qna, faq, play, reserv   
 > 테이블 생성 코드   
 
--admin
+-admin (07-28 13:26 마지막 수정)
 
 ```
 CREATE TABLE `admin` (
@@ -33,7 +33,7 @@ AUTO_INCREMENT=5
 
 
 ```
--admin.board
+-admin.board (07-28 13:26 마지막 수정)
 
 ```
 CREATE TABLE `board` (
@@ -45,12 +45,16 @@ CREATE TABLE `board` (
 	`readcnt` INT(11) NOT NULL DEFAULT 0,
 	`writer` VARCHAR(50) NOT NULL DEFAULT '0',
 	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`group_no` INT(11) NOT NULL,
+	`order_no` INT(11) NULL DEFAULT 0,
+	`depth_no` INT(11) NULL DEFAULT 0,
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=3
+AUTO_INCREMENT=98
 ;
+
 
 ```
 

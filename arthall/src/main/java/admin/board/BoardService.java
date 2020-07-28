@@ -15,5 +15,5 @@ public interface BoardService {
 	public String delete(String[] param);
 	public int deleteComment(CommentVO param);
 	public String reply(HttpServletRequest req, BoardVO param, MultipartFile file);
-	public String comment(HttpServletRequest req, CommentVO param);
+	public int comment(HttpServletRequest req, CommentVO param);
 }

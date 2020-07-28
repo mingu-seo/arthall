@@ -62,6 +62,17 @@ public class BoradController {
 		
 		return "/admin/admin/board/view";
 	}
+	@RequestMapping("/admin/admin/board/commentList.do")
+	public String commentLIst(Model model, HttpServletRequest req, BoardVO param) {
+		
+		
+		List<CommentVO> list = boardService.commentList(param);
+		
+		model.addAttribute("list", list);
+				
+		return "/admin/admin/board/commentList";
+	}
+	
 	
 	@RequestMapping("/admin/admin/board/modifyForm.do")
 	public String modifyForm(Model model, BoardVO param) {
@@ -89,9 +100,13 @@ public class BoradController {
 		return pageName;
 	}
 	@RequestMapping("/admin/admin/board/deleteComment.do")
-	public String deleteComment(HttpServletRequest req, CommentVO param) {
+	public void deleteComment(HttpServletRequest req, CommentVO param, HttpServletResponse res) throws Exception {
+		
 		boardService.deleteComment(param);
-		return  "redirect:view.do?no="+req.getParameter("post_no");
+		res.setContentType("text/html; charset=utf-8");
+		PrintWriter out = res.getWriter();
+		out.print("true");
+		out.flush();
 	}
 	
 	@RequestMapping("/admin/admin/board/reply.do")
@@ -112,11 +127,8 @@ public class BoradController {
 	
 	@RequestMapping("/admin/admin/board/comment.do")
 	public void comment(HttpServletRequest req, CommentVO param, HttpServletResponse res) throws Exception {
-		String pageName="";
-		AdminVO adminVO = (AdminVO) req.getSession().getAttribute("authAdmin");
 		
-		param.setWriter(adminVO.getId());	
-		pageName = boardService.comment(req, param);
+		boardService.comment(req, param);
 		
 		res.setContentType("text/html; charset=utf-8");
 		PrintWriter out = res.getWriter();

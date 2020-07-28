@@ -3,10 +3,13 @@ package admin.board;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import admin.AdminVO;
 
 @Service
 public class BoardServiceImple implements BoardService {
@@ -42,9 +45,13 @@ public class BoardServiceImple implements BoardService {
 	
 	@Override
 	public String write(HttpServletRequest req, BoardVO param, MultipartFile file) {
-		//HttpSession sess = req.getSession();
-		//AdminVO sessVo = (AdminVO)sess.getAttribute("authUser");
-		param.setWriter("admin");
+		HttpSession sess = req.getSession();
+		AdminVO adminVO = (AdminVO)sess.getAttribute("authAdmin");
+		if(adminVO == null) {
+			System.out.println("null");
+		}
+		param.setWriter(adminVO.getId());
+		
 		
 		// 파일 저장
 		/*MyFileRenamePolicy fu = new MyFileRenamePolicy();
@@ -90,9 +97,9 @@ public class BoardServiceImple implements BoardService {
 
 	@Override
 	public String reply(HttpServletRequest req, BoardVO param, MultipartFile file) {
-		//HttpSession sess = req.getSession();
-		//AdminVO sessVo = (AdminVO)sess.getAttribute("authUser");
-		param.setWriter("admin");
+		HttpSession sess = req.getSession();
+		AdminVO adminVO = (AdminVO)sess.getAttribute("authAdmin");
+		param.setWriter(adminVO.getId());
 		
 		// 파일 저장
 		/*MyFileRenamePolicy fu = new MyFileRenamePolicy();
@@ -121,9 +128,14 @@ public class BoardServiceImple implements BoardService {
 	}
 
 	@Override
-	public String comment(HttpServletRequest req, CommentVO param) {
-		boardDao.comment(param);
-		return "redirect:view.do?no="+param.getPost_no();
+	public int comment(HttpServletRequest req, CommentVO param) {
+		
+		HttpSession sess = req.getSession();
+		AdminVO adminVO = (AdminVO)sess.getAttribute("authAdmin");
+		param.setWriter(adminVO.getId());
+		
+		
+		return boardDao.comment(param);
 	}
 
 	@Override
