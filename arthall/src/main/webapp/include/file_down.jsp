@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><%@ page import="java.io.*" %><%@ page import="java.net.*" %><%
-
+// 파라매터 명에따라 다름
 String fileName = request.getParameter("file_name");
  
 // 패스도 가져와서 추가
