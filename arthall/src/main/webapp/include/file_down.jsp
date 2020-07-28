@@ -5,7 +5,7 @@ String fileName = request.getParameter("file_name");
 // 패스도 가져와서 추가
 String fileName_org = request.getParameter("file_name_org");
 String savePath = request.getParameter("path");
-
+ 
 //자바에서 파일을 다운로드 (읽어들이기 다운로드하는 코드)
 //
 //String savePath = "/upload/board/notice"; // 경롤를 만들어줌
