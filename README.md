@@ -211,7 +211,9 @@ AUTO_INCREMENT=1
 Eclipse IDE Enterprice for Java Developers   
 
 >src/main/java   
->>/admin    
+>>/admin
+>>>/board
+
 >>/member  
 
 >>/board       
@@ -249,7 +251,7 @@ Eclipse IDE Enterprice for Java Developers
 
 
 >>>/admin 
->>>>/list.jsp 
+>>>>/board 
 
 >>>/member 
 
