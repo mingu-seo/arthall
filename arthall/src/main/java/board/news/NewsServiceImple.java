@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import admin.AdminVO;
 import board.notice.NoticeVO;
 import util.FileUtil;
 
@@ -50,14 +52,25 @@ public class NewsServiceImple implements NewsService {
 	}
 
 	@Override
-	public String write(HttpServletRequest req, NewsVO param, MultipartFile file) {
+	public String write(HttpServletRequest req, NewsVO param, MultipartFile file,AdminVO aparam) {
+	
+		HttpSession sess = req.getSession();
+		AdminVO sessVo = (AdminVO)sess.getAttribute("authAdmin");
+		aparam.setId(sessVo.getId());
+		aparam.setName(sessVo.getName());
+		param.setWriter(sessVo.getId());//	 admin id 받아옴
 		
-		param.setWriter("황동민");
+		
 		
 //		//파일을 저장
 		FileUtil fu = new FileUtil();
 		fu.fileUpload(file, req.getRealPath("/upload/board/news/"));
 		param.setFilename(fu.fileName);
+		
+		
+		if(file.getOriginalFilename() != null) {
+			param.setFilename_org(file.getOriginalFilename());
+		};
 		
 		String pageName = "";
 		int r = newsDao.write(param);
@@ -83,17 +96,27 @@ public class NewsServiceImple implements NewsService {
 	}
 
 	@Override
-	public String modify(HttpServletRequest req, NewsVO param, MultipartFile file) {
+	public String modify(HttpServletRequest req, NewsVO param, MultipartFile file,AdminVO aparam) {
+		
+		HttpSession sess = req.getSession();
+		AdminVO sessVo = (AdminVO)sess.getAttribute("authAdmin");
+		aparam.setId(sessVo.getId());
+		aparam.setName(sessVo.getName());
+		param.setWriter(sessVo.getId());
 		
 		newsDao.view(param);
 		newsDao.modify(param);
 		
-		newsDao.view(param);
-		newsDao.modify(param);
+	//	newsDao.view(param);
+//		newsDao.modify(param);
 		
 		FileUtil fu = new FileUtil();
 		fu.fileUpload(file, req.getRealPath("/upload/board/news/"));
 		param.setFilename(fu.fileName);
+		
+		if(file.getOriginalFilename() != null) {
+			param.setFilename_org(file.getOriginalFilename());
+		};
 		
 		
 		String pageName = "";

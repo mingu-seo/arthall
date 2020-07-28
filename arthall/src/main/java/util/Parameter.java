@@ -19,7 +19,7 @@ public class Parameter {
 	private int totalPage; // 총페이지수
 	private String filename;
 	private String filename_org;
- 
+
 	public String getStype() {
 		return stype;
 	}

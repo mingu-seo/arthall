@@ -51,3 +51,5 @@
         </div>
     </div>
 </div>
+<script src="<%=request.getContextPath()%>js/header.js"></script>
+<script src="<%=request.getContextPath()%>js/visual.js"></script>

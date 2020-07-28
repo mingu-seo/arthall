@@ -33,9 +33,17 @@ boolean ieBrowser = (agent.indexOf("MSIE") > -1 || agent.indexOf("Trident") > -1
 
 // 한글 인코딩부분
 if (ieBrowser) {
+<<<<<<< HEAD
 	fileName_org = URLEncoder.encode(fileName_org, "UTF-8").replaceAll("\\+", "%20");
+=======
+   fileName_org = URLEncoder.encode(fileName_org, "UTF-8").replaceAll("\\+", "%20");
+>>>>>>> branch 'master' of https://github.com/mingu-seo/arthall.git
 } else {
+<<<<<<< HEAD
 	fileName_org = new String(fileName_org.getBytes("UTF-8"), "iso-8859-1");
+=======
+   fileName_org = new String(fileName_org.getBytes("UTF-8"), "iso-8859-1");
+>>>>>>> branch 'master' of https://github.com/mingu-seo/arthall.git
 }
 
 // 받을때 실제 파일이름
@@ -45,8 +53,8 @@ int numRead;
 
 //while ((numRead = in.read(b, 0, b.length)) != -1) {
 for (int i; (i=in.read(b)) != -1; ){
-	out2.write(b, 0, i);
-	out2.flush();
+   out2.write(b, 0, i);
+   out2.flush();
 }
 in.close();
 out2.close();
