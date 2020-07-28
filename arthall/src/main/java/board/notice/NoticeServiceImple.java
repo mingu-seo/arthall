@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import admin.AdminVO;
 import util.FileUtil;
 
 
@@ -51,7 +53,16 @@ public class NoticeServiceImple implements NoticeService {
 	@Override
 	public String write(HttpServletRequest req, NoticeVO param, MultipartFile file) {
 		
-		param.setWriter("황동민");
+		//param.setWriter("황동민");
+//		
+//		HttpSession sess = req.getSession();
+//		AdminVO sessVo = (AdminVO)sess.getAttribute("authAdmin");
+//		aparam.setId(sessVo.getId());
+//		aparam.setName(sessVo.getName());
+//		param.setWriter(setVo.getId);
+
+		
+	
 		
 //		//파일을 저장
 		FileUtil fu = new FileUtil();
@@ -127,6 +138,8 @@ public class NoticeServiceImple implements NoticeService {
 		noticeDao.readCnt(vo);
 		return noticeDao.view_img(param);
 	}
+
+
 
 
 

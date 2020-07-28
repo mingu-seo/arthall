@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import admin.AdminVO;
+
 
 
 
@@ -19,6 +21,8 @@ public interface NoticeService {
 	
 	//이미지불러오기
 	public NoticeVO view_img(NoticeVO param);
+	
+	
 	
 	
 

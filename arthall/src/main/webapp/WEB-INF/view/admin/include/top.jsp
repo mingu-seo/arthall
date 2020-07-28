@@ -73,7 +73,7 @@ $(window).load(function(){
   				<li><a href="<%=request.getContextPath()%>/admin/reserv/list.do" class="parent"><span>예약관리</span></a></li>
 				<li><a href="<%=request.getContextPath()%>/admin/play/list.do" class="parent"><span>공연관리</span></a></li>
 				  
-				<li><a href="<%=request.getContextPath()%>/admin/board/list.do" class="parent"><span>게시판</span></a>
+				<li><a href="<%=request.getContextPath()%>/admin/board/notice/list.do" class="parent"><span>게시판</span></a>
 				
 					<div class="standard_left">
 					<ul>

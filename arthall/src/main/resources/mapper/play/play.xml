@@ -7,8 +7,7 @@
 		<where>
 			<if test="sval != null and sval != ''">
 			playName LIKE '%${sval}%'
-			OR no IN
-			(SELECT no FROM play WHERE content LIKE '%${sval}%')
+			OR actor LIKE '%${sval}%'
 			</if>
 		</where>
 	</select>
@@ -18,10 +17,7 @@
 		<where>
 			<if test="sval != null and sval != ''">
 			playName LIKE '%${sval}%'
-			OR no IN
-			(SELECT no FROM play WHERE content LIKE '%${sval}%')
-			OR no IN
-			(SELECT no FROM play WHERE actor LIKE '%${sval}%')
+			OR actor LIKE '%${sval}%'
 			</if>
 		</where>
 		ORDER BY regDate DESC LIMIT #{startRow}, #{size}

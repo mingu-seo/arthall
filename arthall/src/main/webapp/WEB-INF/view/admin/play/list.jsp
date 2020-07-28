@@ -80,7 +80,7 @@ function del() {
                         <tbody>
                            <c:if test="${vo.totalCount == 0}">
                               <tr>
-                                 <td colspan="4">게시글이 없습니다.</td>
+                                 <td colspan="14">게시글이 없습니다.</td>
                               </tr>
                            </c:if>
                            <c:if test="${vo.totalCount > 0}">
@@ -130,14 +130,13 @@ function del() {
                   </c:if>
                      </div>
                      <!-- //페이징 처리 -->
-                     <form name="sval" id="searchForm" action="index.do"  method="post">
+                     <form name="sval" id="searchForm" action="list.do"  method="post">
                         <div class="search">
                            <select name="stype" title="검색을 선택해주세요">
-                              <option value="all">전체</option>
-                              <option value="title">제목</option>
-                              <option value="contents">내용</option>
+                           	  <option value="title" <c:if test="${vo.stype=='title'}">selected</c:if>>공연명</option>
+                              <option value="actor" <c:if test="${vo.stype=='actor'}">selected</c:if>>배우</option>
                            </select>
-                           <input type="text" name="sval" value="" title="검색할 내용을 입력해주세요" />
+                           <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요" />
                            <input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />
                         </div>
                      </form>
