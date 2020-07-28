@@ -82,10 +82,14 @@ public class PlayServiceImple implements PlayService {
 
 
 	@Override
-	public String delete(PlayVO param) {
-		playDao.delete(param);
-		String pageName = "redirect:list.do";
-		return pageName;
+	public String delete(int[] check, PlayVO param) {
+		
+		for(int i = 0; i < check.length; i++) {
+			param.setNo(check[i]);
+			playDao.delete(param);
+		}
+		
+		return "redirect:list.do";
 	}
 
 }

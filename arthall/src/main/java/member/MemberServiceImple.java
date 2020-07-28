@@ -1,5 +1,8 @@
 package member;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -75,9 +78,8 @@ public class MemberServiceImple implements MemberService{
 		if (vo == null) {
 			pageName = "admin/member/loginForm";
 		} else {
-			// 세션에 등록
+			memberDao.lastVisit(id); // 마지막 방문일 수정
 			req.getSession().setAttribute("authUser", vo);
-			memberDao.lastVisit(id);
 			pageName = "redirect:/index.do";
 		}
 		
@@ -100,6 +102,38 @@ public class MemberServiceImple implements MemberService{
 			pageName = "member/changePwdSuccess";
 		}
 		return pageName;
+	}
+	
+	@Override
+	public String banMem(String[] chk, MemberVO param) {
+		
+		for (int i = 0; i < chk.length; i++) {
+			param.setNo(chk[i]);
+			memberDao.banMem(param);
+		}
+		
+		return "redirect:index.do";
+	}
+	
+	@Override
+	public String detail(MemberVO param) {
+		String pageName = "";
+		int r = memberDao.detail(param);
+		if (r > 0) {
+			memberDao.detail(param);
+			pageName = "redirect:index.do?page="+param.getPage();
+			
+		}
+		
+		return pageName;
+	}
+
+
+	@Override
+	public MemberVO memberdetail(MemberVO param) {
+		MemberVO vo = memberDao.memberdetail(param);
+		
+		return vo;
 	}
 	
 }

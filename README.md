@@ -172,7 +172,29 @@ CREATE TABLE `news` (
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
-'''
+```
+
+board/qna   //오게이 예아 이만철 20200727
+```
+CREATE TABLE `qna` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(255) NULL DEFAULT NULL,
+	`content` TEXT NULL DEFAULT NULL,
+	`readcnt` INT(11) NOT NULL DEFAULT 0,
+	`regdate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`moddate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`writer` VARCHAR(50) NOT NULL,
+	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`gno` INT(11) NOT NULL DEFAULT 0,
+	`ono` INT(11) NOT NULL DEFAULT 0,
+	`nested` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+```
 
 예시)
 

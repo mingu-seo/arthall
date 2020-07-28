@@ -4,19 +4,46 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<%@ include file="/WEB-INF/view/admin/include/headHtml.jsp"%>
 </head>
+
 <script type="text/javascript">
 function allchk() {
-	if($("#allChk").is(':checked')) {
-		$("input[name=chkrow]").prop("checked", true);			
-	} else {
-		$("input[name=chkrow]").prop("checked", false);
-	}
+	   if($("#allChk").is(':checked')) {
+	      $("input[name=chk]").prop("checked", true);         
+	   } else {
+	      $("input[name=chk]").prop("checked", false);
+	   }
+	};
+function mouseOver() {
+	$('#frm').style.color = 'black'
 };
 
+function mouseOut() {
+	$(this).style.color = "white";
+};
+	
 
+function banSelect() {
+	var v = $("#banSelect").val();
+	if(v=="all"){
+		alert("전체");
+	}else if(v=="nomal"){
+		alert("nomal");
+	}else {
+		alert("quie");
+	}
+}
 </script>
+
+<style style="text/css">
+
+    table tr:hover:not(#thead){
+          background-color: #eeeff0;
+    }
+
+</style>
+
 <body> 
 <div id="wrap">
 	<!-- canvas -->
@@ -36,8 +63,40 @@ function allchk() {
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="blist">
+							<form name="frm2" id="frm2" action="index.do" method="post">
+								<table border="2">
+									<tr>
+										<td class="" rowspan="2">회원검색</td>
+										<td class="w22">아이디    <input type="text" id="memId" name="memID"></td>
+										<td class="w22">이름    <input type="text" id="memName" name="memName"></td>
+										<td class="w22">연락처    <input type="text" id="memName" name="memName"></td>
+										<td class="w22">주소    <input type="text" id="memAddr" name="memAddr"></td>
+									</tr>
+									<tr>
+										<td>생일    <input type="text" id="memBirth" name="memBirth"></td>
+										<td>가입일    <input type="text" id="memJoin" name="memJoin"></td>
+										<td>휴면 계정 여부
+											<select id="banSelect" name="banSelect" onchange="banSelect()" style="width: 100px">
+												<option value="all" selected="selected">전체</option>
+												<option value="nomal">정상계정</option>
+												<option value="quie">휴면계정</option>
+											</select>
+										</td>
+										<td>이메일    <input type="text" id="memEmail" name="memEmail"></td>
+									</tr>
+								</table>
+								<div class="btn">
+									<div class="btnRight">
+										<a class="btns" href="#" onclick="kk()"><strong>초화</strong></a>
+										<a class="btns" href="#" onclick="gg()"><strong>적용</strong></a>
+										<a class="btns" href="#" onclick="tt()"><strong>회원정지</strong></a>
+									</div>
+								</div>
+							</form>
+						    
 							<p><span><strong>총 ${vo.totalCount}개</strong>  |  ${vo.page}/${vo.totalPage}페이지</span></p>
-							<form name="frm" id="frm" action="process.do" method="post">
+
+							<form name="frm" id="frm" action="banMem.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
 									<col class="w5" />
@@ -56,7 +115,7 @@ function allchk() {
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="allchk();"/>
+										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onclick="allchk();"/>
 										<label for="allChk"></label></th>
 										<th scope="col">번호</th>
 										<th scope="col">아이디</th> 
@@ -68,7 +127,7 @@ function allchk() {
 										<th scope="col">생년월일</th>
 										<th scope="col">가입일</th>
 										<th scope="col">마지막 방문</th>
-										<th scope="col" >정지회원</th>
+										<th scope="col">계정상태</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -82,8 +141,10 @@ function allchk() {
 								<c:if test="${vo.totalCount > 0}">
 								
 								<c:forEach var="member" items="${list}">
-								<tr>
-									<td class="first"><input type="checkbox" name="chkrow" id="chkrow" value=""/></td>
+								<tr class = 'detail' 
+								onmouseover="mouseOver();" onmouseout="mouseOut();" 
+								onclick="location.href='detail.do?no=${member.no}';" >
+									<td class="first"><input type="checkbox" name="chk" id="chk" value="${member.no}"/></td>
 									<td>${member.no }</td>
 									<td>${member.id }</td>
 									<td>${member.password }</td>
@@ -101,27 +162,8 @@ function allchk() {
 
 								</c:if>
 								</tbody>
-								<!-- 검색기능
-								<tr>
-									<td colspan="4" align="center">
-										<form action="list.do">
-											<input type="text" name="searchword" value="${vo.searchword }"> 
-											<input type="submit" value="검색">
-										</form>
-									</td>
-								</tr> -->
-								<!-- =========================================================================================== -->
 							</table>
 							</form>
-							
-							<div class="btn">
-								<!--<div class="btnLeft">
-									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
-								</div>-->
-								<div class="btnRight">
-									<a class="wbtn" href="#" onclick="tt()"><strong>회원정지</strong> </a>
-								</div>
-							</div>
 							<!--//btn-->
 							<!-- 페이징 처리 -->
 							<div class='page'>
@@ -139,20 +181,6 @@ function allchk() {
 									</td>
 								</tr> 
 							</div>
-							
-							
-							<!-- 검색어
-							<form name="searchForm" id="searchForm" action="index.do"  method="post">
-								<div class="search">
-									<select name="stype" title="검색을 선택해주세요">
-										<option value="all">전체</option>
-										<option value="title">제목</option>
-										<option value="contents">내용</option>
-									</select>
-									<input type="text" name="searchword" value="${vo.searchword }" title="검색할 내용을 입력해주세요" />
-<%-- 									<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" /> --%>
-								</div>
-							</form>-->
 							<!-- //search --> 
 						</div>
 						<!-- //blist -->

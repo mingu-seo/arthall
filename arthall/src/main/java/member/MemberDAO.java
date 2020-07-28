@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 public class MemberDAO {
@@ -22,6 +25,7 @@ public class MemberDAO {
 	
 	// 회원목록 조회
 	public List<MemberVO> list(MemberVO param) {
+		
 		return sqlSession.selectList("member.list", param);
 	}
 	
@@ -34,7 +38,7 @@ public class MemberDAO {
 	
 	// 회원가입_DB등록
 	public int insert(MemberVO param) {
-		System.out.println("DAO값 : " + param.getTel());
+
 		return sqlSession.insert("member.insert", param);
 	}
 
@@ -47,16 +51,32 @@ public class MemberDAO {
 		return sqlSession.selectOne("member.login", m);
 	}
 	
+	// 마지막 방문 일자 수정
+		public MemberVO lastVisit(String id) {
+			return sqlSession.selectOne("member.lastVisit", id);
+	}
+	
+	
 	public int changePwd(MemberVO param) {
 		return sqlSession.update("member.changePwd", param);
 	}
 	
-	// 최근로그인 일자 수정
-	public MemberVO lastVisit(String id) {
-		String lastVisit = id;
-		
-		return sqlSession.selectOne(lastVisit);
+
+	
+	// 회원정지
+	public int banMem(MemberVO param) {
+		return sqlSession.update("member.banMem", param);		
 	}
+
+	public int detail(MemberVO param) {
+		return sqlSession.update("member.detail", param);
+	}
+	
+	public MemberVO memberdetail(MemberVO param) {
+		return sqlSession.selectOne("member.memberdetail", param);
+	}
+	
+
 
 	
 }
