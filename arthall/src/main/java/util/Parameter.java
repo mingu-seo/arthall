@@ -2,7 +2,7 @@ package util;
 
 /*
  * 20200723 18:05 임한철 : faq 페이지 처리를 위한 파라메터 삽입  
- * 
+ * 20200728 13:11 임한철 : 원래 파일이름 추가(쌤의 과제)
  *
  */
 public class Parameter {
@@ -18,7 +18,7 @@ public class Parameter {
 	private int totalCount; // 전체갯수
 	private int totalPage; // 총페이지수
 	private String filename;
-
+	private String filename_org;
 
 	public String getStype() {
 		return stype;
@@ -79,6 +79,12 @@ public class Parameter {
 	}
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+	public String getFilename_org() {
+		return filename_org;
+	}
+	public void setFilename_org(String filename_org) {
+		this.filename_org = filename_org;
 	}
 	
 	
