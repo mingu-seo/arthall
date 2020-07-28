@@ -5,9 +5,7 @@
 <link rel="icon" sizes="16x16" type="image.png" href="<%=request.getContextPath()%>/img/favicon.png">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="<%=request.getContextPath()%>js/jquery-1.11.3.min.js"></script>
 <script src="<%=request.getContextPath()%>js/jquery-ui-1.10.3.custom.min.js"></script>
-<script src="<%=request.getContextPath()%>js/header.js"></script>
-<script src="<%=request.getContextPath()%>js/visual.js"></script>
+
 
