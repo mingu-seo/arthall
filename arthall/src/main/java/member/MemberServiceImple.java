@@ -108,7 +108,7 @@ public class MemberServiceImple implements MemberService{
 	public String banMem(String[] chk, MemberVO param) {
 		
 		for (int i = 0; i < chk.length; i++) {
-			param.setNo(chk[i]);
+			param.setBanMem(chk[i]);
 			memberDao.banMem(param);
 		}
 		
