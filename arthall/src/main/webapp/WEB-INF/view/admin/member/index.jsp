@@ -87,7 +87,7 @@ function banSelect() {
 								</table>
 								<div class="btn">
 									<div class="btnRight">
-										<a class="btns" href="#" onclick="kk()"><strong>초화</strong></a>
+										<a class="btns" href="#" onclick="reset()"><strong>초기화</strong></a>
 										<a class="btns" href="#" onclick="gg()"><strong>적용</strong></a>
 										<a class="btns" href="#" onclick="tt()"><strong>회원정지</strong></a>
 									</div>

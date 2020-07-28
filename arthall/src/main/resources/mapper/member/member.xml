@@ -14,6 +14,7 @@
 		</where>
 	</select>
 	
+	<!-- 
 	<select id="list" parameterType="member.MemberVO" resultType="member.MemberVO">
 		SELECT * FROM member
  		<where> 
@@ -25,6 +26,43 @@
  		</where>
 		ORDER BY no *1 DESC LIMIT #{startRow}, #{size}
 	</select>
+	 -->
+	
+	<select id="list" parameterType="member.MemberVO" resultType="member.MemberVO">
+	SELECT * FROM member 
+	<where>
+		<if test="memId != null and memId != ''">
+			id LIKE '%${memId}% 
+			AND name in (SELECT name FROM member WHERE name LIKE '%${memName}%') 
+			AND tel in (SELECT tel FROM member WHERE tel LIKE '%${memTel}%') 
+			AND addr in (SELECT addr FROM member WHERE addr LIKE '%${memAddr}%') 
+			AND birth in (SELECT birth FROM member WHERE birth LIKE '%${memBirth}%') 
+			AND joinDate in (SELECT joinDate FROM member WHERE joinDate LIKE '%${joinDateStart}%') 
+			<!-- AND banMem in (SELECT banMem FROM member WHERE banMem LIKE '%%') --> 
+			AND email in (SELECT email FROM member WHERE email LIKE '%${memEmail}%')
+		</if>
+	</where>
+	ORDER BY no DESC LIMIT #{startRow}, #{size}
+	</select>
+	
+	
+	<!--
+	<select id="list" parameterType="member.MemberVO" resultType="member.MemberVO">
+	SELECT * FROM member where id LIKE '%test%' AND name in
+	(SELECT name FROM member WHERE name LIKE '%test%') AND tel in
+	(SELECT tel FROM member WHERE tel LIKE '%010%') AND addr in
+	(SELECT addr FROM member WHERE addr LIKE '%인천시%') AND birth in
+	(SELECT birth FROM member WHERE birth LIKE '%2020%') AND joinDate in
+	(SELECT joinDate FROM member WHERE joinDate LIKE '%2020%') AND banMem in
+	(SELECT banMem FROM member WHERE banMem LIKE '%%') AND email in
+	(SELECT email FROM member WHERE email LIKE '%naver%')
+	ORDER BY joinDate DESC LIMIT #{startRow}, #{size}
+	 -->
+	
+	
+	
+	
+	
 	
 	<update id="banMem" parameterType="member.MemberVO">
 		UPDATE member SET

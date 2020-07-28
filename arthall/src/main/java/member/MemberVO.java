@@ -6,7 +6,7 @@ import util.Parameter;
 
 public class MemberVO extends Parameter{
   
-	private String no;
+	private int no;
 	private String id;
 	private String password;
 	private String name;
@@ -15,9 +15,7 @@ public class MemberVO extends Parameter{
 	private String addr;
 	private String birth;
 	private Timestamp joinDate;
-
 	private Timestamp lastVisit;
-
 	
 	//검색 필터
 	private String memId;
@@ -27,16 +25,17 @@ public class MemberVO extends Parameter{
 	private String memAddr;
 	private String memBirth;
 	private String banMem;
+	private Timestamp memJoinStart;
+	private Timestamp memJoinEnd;
 	
 	MemberVO() {
 		super.setPage(1);
 		super.setSize(10);
 	}
-	
-	public String getNo() {
+	public int getNo() {
 		return no;
 	}
-	public void setNo(String no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 	public String getId() {
@@ -107,6 +106,7 @@ public class MemberVO extends Parameter{
 		this.banMem = banMem;
 	}
 
+	// 검색 필터 Getter,Setter
 	public String getMemId() {
 		return memId;
 	}
@@ -154,4 +154,21 @@ public class MemberVO extends Parameter{
 	public void setMemBirth(String memBirth) {
 		this.memBirth = memBirth;
 	}
+
+	public Timestamp getMemJoinStart() {
+		return memJoinStart;
+	}
+
+	public void setMemJoinStart(Timestamp memJoinStart) {
+		this.memJoinStart = memJoinStart;
+	}
+
+	public Timestamp getMemJoinEnd() {
+		return memJoinEnd;
+	}
+
+	public void setMemJoinEnd(Timestamp memJoinEnd) {
+		this.memJoinEnd = memJoinEnd;
+	}
+	
 }
