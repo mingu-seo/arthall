@@ -66,7 +66,7 @@ public class ReservServiceImple implements ReservService{
 		
 		param.setNo("m333333");
 		param.setRuntime(2);
-		param.setPlayDay(java.sql.Date.valueOf("2020-07-09"));
+		param.setPlayDate(java.sql.Date.valueOf("2020-07-09"));
 		// session에서 가져올 값들을 미리 넣어서 실험해봄
 		param.setName("수민스똑똑이"); // 예약자명
 		param.setPlayNo("m123255"); // 공연번호
