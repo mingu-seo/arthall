@@ -54,7 +54,7 @@ public class Ad_newsController {
 	@RequestMapping("/admin/board/news/modifyForm.do")
 	public String modifyForm(Model model, NewsVO param) {
 		
-		NewsVO vo = newsservice.view(param);
+		NewsVO vo = newsservice.view(param); 
 		
 		model.addAttribute("vo",vo);
 		

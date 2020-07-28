@@ -129,7 +129,7 @@
 								</c:if>
 								<c:forEach var="pNo" begin="${vo.startPage}"
 									end="${vo.endPage}">
-									<a href="list.do?page=${pNo}">${pNo}</a>
+									<a href="list.do?page=${pNo}&stype=${vo.stype}&sval=${vo.sval}">${pNo}</a>
 								</c:forEach>
 								<c:if test="${vo.endPage < vo.totalPage}">
 										<a href="list.do?page=${vo.startPage+5}">[다음]</a>

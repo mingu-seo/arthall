@@ -39,9 +39,9 @@
 	
 	<insert id="write" parameterType="board.news.NewsVO" useGeneratedKeys="true">
 		INSERT INTO news
-			(no,writer,title,regDate,readCnt,content,filename)
+			(no,writer,title,regDate,readCnt,content,filename,filename_org)
 		VALUES
-			(#{no},#{writer},#{title},now(),0,#{content},#{filename})
+			(#{no},#{writer},#{title},now(),0,#{content},#{filename},#{filename_org})
 	</insert>
 	
 	<!--  
@@ -59,7 +59,7 @@
 	</select>
 	<select id ="view" parameterType="board.news.NewsVO" resultType="board.news.NewsVO">
 		SELECT
-			no, writer, title, content, regdate,readCnt,filename
+			no, writer, title, content, regdate,readCnt,filename,filename_org
 		FROM news
 		WHERE no= #{no}
 	</select>
@@ -74,7 +74,7 @@
 	
 	<update id="modify" parameterType="board.news.NewsVO">
 		UPDATE news SET
-			title = #{title} , content = #{content}, moddate = now(), filename=#{filename}
+			title = #{title} , content = #{content}, moddate = now(), filename=#{filename},filename_org=#{filename_org}
 		where no= #{no}
 	</update>
 	
@@ -85,7 +85,7 @@
 	
 	<select id="view_img" parameterType="board.news.NewsVO" resultType="board.news.NewsVO">
 		SELECT
-			no,writer,title,content,regDate,filename,readCnt
+			no,writer,title,content,regDate,filename,readCnt,filename_org
 		FROM news
 		WHERE no = #{no}
 	

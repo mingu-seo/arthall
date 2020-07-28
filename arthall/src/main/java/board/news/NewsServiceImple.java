@@ -67,6 +67,11 @@ public class NewsServiceImple implements NewsService {
 		fu.fileUpload(file, req.getRealPath("/upload/board/news/"));
 		param.setFilename(fu.fileName);
 		
+		
+		if(file.getOriginalFilename() != null) {
+			param.setFilename_org(file.getOriginalFilename());
+		};
+		
 		String pageName = "";
 		int r = newsDao.write(param);
 		if (r > 0) {
@@ -108,6 +113,10 @@ public class NewsServiceImple implements NewsService {
 		FileUtil fu = new FileUtil();
 		fu.fileUpload(file, req.getRealPath("/upload/board/news/"));
 		param.setFilename(fu.fileName);
+		
+		if(file.getOriginalFilename() != null) {
+			param.setFilename_org(file.getOriginalFilename());
+		};
 		
 		
 		String pageName = "";
