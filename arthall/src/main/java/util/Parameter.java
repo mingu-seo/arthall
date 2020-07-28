@@ -18,7 +18,7 @@ public class Parameter {
 	private int totalCount; // 전체갯수
 	private int totalPage; // 총페이지수
 	private String filename;
-	
+
 
 	public String getStype() {
 		return stype;
