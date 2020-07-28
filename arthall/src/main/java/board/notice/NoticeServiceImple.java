@@ -67,6 +67,11 @@ public class NoticeServiceImple implements NoticeService {
 		fu.fileUpload(file, req.getRealPath("/upload/board/notice/"));
 		param.setFilename(fu.fileName);
 		
+		if(file.getOriginalFilename() != null) {
+			param.setFilename_org(file.getOriginalFilename());
+		};
+	
+		
 		String pageName = "";
 		int r = noticeDao.write(param);
 		if (r > 0) {

@@ -43,8 +43,8 @@ public class Ad_noticeController {
 	
 
 	@RequestMapping("/admin/board/notice/write.do")
-	public String write(HttpServletRequest req, NoticeVO param, @RequestParam("filename_tmp") MultipartFile file,AdminVO aparam) {
-	
+	public String write(Model model,HttpServletRequest req, NoticeVO param, @RequestParam("filename_tmp") MultipartFile file,AdminVO aparam) {
+		
 		String pageName = noticeservice.write(req, param,file,aparam);
 		
 		return pageName;

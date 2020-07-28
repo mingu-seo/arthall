@@ -33,6 +33,8 @@ public class ReservDAO {
 		return sqlSession.selectList("reserv.ticketlist", param);
 	}
 	
+	// 시작일, 종료일 받아서 다시 조회
+	
 	// User 예약
 	public int reservOne(ReservVO param) {
 		return sqlSession.insert("reserv.reservOne", param);
