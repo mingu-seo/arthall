@@ -45,12 +45,12 @@
 										<td colspan="10">${data.content }</td>
 										
 									</tr>
-<!-- 									<tr> -->
-<%-- 										<c:if test="${data.filename != null}"> --%>
-<!-- 										<th scope="row"><label for="">이미지</label></th> -->
-<%-- 										<td><img src="/upload/board/notice/${data.filename}" width="200px"></td> --%>
-<%-- 										</c:if> --%>
-<!-- 									</tr> -->
+									<tr>
+										<c:if test="${data.filename != null}">
+										<th scope="row"><label for="">이미지</label></th>
+										<td><img src="/upload/board/notice/${data.filename}" width="200px"></td>
+										</c:if>
+									</tr>
 							 													
 									<tr>
 										<c:if test="${data.filename != null}">	
