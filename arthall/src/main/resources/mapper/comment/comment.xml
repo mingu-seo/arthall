@@ -16,7 +16,7 @@
 		INSERT INTO comment
 		(TABLE_NAME, post_no, writer, content, regdate)
 		VALUES
-		('board', #{post_no}, #{writer}, #{content}, now())
+		(#{table_name}, #{post_no}, #{writer}, #{content}, now())
 		
 			
 	</insert>

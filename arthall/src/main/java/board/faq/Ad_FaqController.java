@@ -50,6 +50,7 @@ public class Ad_FaqController {
 		
 		FaqVO data = faqService.view(param);
 		
+		model.addAttribute("table_name", "faq");
 		model.addAttribute("vo", param);
 		model.addAttribute("data", data);
 		

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=utf-8"%>
 <script>
 
 	$(function() {
@@ -6,36 +7,37 @@
 			var count = $(this).val().length;
 			$('#clen').text(count)
 		})
-		$('#cbtn').click(function(){
-			var data = $("#frm").serialize();
-			$.ajax({
-				url:'${pageContext.request.contextPath}/comment/comment.do',
-				method:'post',
-				async:true,
-				data:data,
-				success : function(data) {
-					if (data.trim() == 'true') {
-						$('textarea[name=content]').val('');
-						listComment();
-					} else {
-					}
-				},
-				error:function() {
-					alert("서버 장애");
-				}
-			});
-		});
+		
 	});
+	function saveComment() {
+		var data = $("#frm").serialize();
+		console.log(data);
+		$.ajax({
+			url:'${pageContext.request.contextPath}/comment/comment.do',
+			method:'post',
+			async:false,
+			data:data,
+			success : function(data) {
+				if (data.trim() == 'true') {
+					$('textarea[name=content]').val('');
+					listComment();
+				} else {
+				}
+			},
+			error:function() {
+				alert("서버 에러");
+			}
+		});
+	}
 	function listComment() {
 		$.ajax({
-			url:"${pageContext.request.contextPath}/comment/commentList.do?table_name=${table_name}&post_no=${data.no}",// data: 게시글VO객체
+			url:"${pageContext.request.contextPath}/comment/commentList.do?table_name=${table_name}&post_no=${data.no}",// data: ê²ìê¸VOê°ì²´
 			cache: false,
-			async:true,
+			async:false,
 			dataType:'HTML',
 			success : function(data) {
 				var cmts = data.trim();
 				$('#cbox').html(cmts);
-				
 			}
 	    
 		});
@@ -50,7 +52,7 @@
 				if (data.trim() == "true") {
 					listComment();
 				} else {
-					alert("서버 장애");
+					alert("서버에러");
 				}
 			}
 		});
