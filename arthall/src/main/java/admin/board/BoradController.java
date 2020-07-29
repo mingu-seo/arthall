@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import admin.AdminVO;
 
 
+
 /*
  * 20200724 임한철 : 컨트롤러 추가
  */
@@ -23,7 +24,8 @@ import admin.AdminVO;
 public class BoradController {
 	
 	@Autowired
-	private BoardService boardService; 
+	private BoardService boardService;
+	
 	
 	@RequestMapping("/admin/admin/board/list.do")
 	public String list(Model model, HttpServletRequest req, BoardVO param) {		
@@ -54,9 +56,10 @@ public class BoradController {
 	public String view(Model model, HttpServletRequest req, BoardVO param) {
 		
 		BoardVO data = boardService.view(param);
-		List<CommentVO> list = boardService.commentList(param);
+		//List<CommentVO> list = boardService.commentList(param);
 		
-		model.addAttribute("list", list);
+		//model.addAttribute("list", list);
+		model.addAttribute("table_name", "board");
 		model.addAttribute("vo", param);
 		model.addAttribute("data", data);
 		
@@ -88,11 +91,6 @@ public class BoradController {
 		
 		return pageName;
 	}
-	@RequestMapping("/admin/admin/board/deleteComment.do")
-	public String deleteComment(HttpServletRequest req, CommentVO param) {
-		boardService.deleteComment(param);
-		return  "redirect:view.do?no="+req.getParameter("post_no");
-	}
 	
 	@RequestMapping("/admin/admin/board/reply.do")
 	public String reply(HttpServletRequest req, BoardVO param, @RequestParam("filename_tmp") MultipartFile file) {
@@ -110,18 +108,36 @@ public class BoradController {
 		return "/admin/admin/board/replyForm";
 	}
 	
-	@RequestMapping("/admin/admin/board/comment.do")
-	public void comment(HttpServletRequest req, CommentVO param, HttpServletResponse res) throws Exception {
-		String pageName="";
-		AdminVO adminVO = (AdminVO) req.getSession().getAttribute("authAdmin");
-		
-		param.setWriter(adminVO.getId());	
-		pageName = boardService.comment(req, param);
-		
-		res.setContentType("text/html; charset=utf-8");
-		PrintWriter out = res.getWriter();
-		out.print("true");
-		out.flush();
-		
-	}
+//	@RequestMapping("/admin/admin/board/deleteComment.do")
+//	public void deleteComment(HttpServletRequest req, CommentVO param, HttpServletResponse res) throws Exception {
+//		
+//		commentService.deleteComment(param);
+//		res.setContentType("text/html; charset=utf-8");
+//		PrintWriter out = res.getWriter();
+//		out.print("true");
+//		out.flush();
+//	}
+//	
+//	@RequestMapping("/admin/admin/board/comment.do")
+//	public void comment(HttpServletRequest req, CommentVO param, HttpServletResponse res) throws Exception {
+//		
+//		commentService.comment(req, param);
+//		
+//		res.setContentType("text/html; charset=utf-8");
+//		PrintWriter out = res.getWriter();
+//		out.print("true");
+//		out.flush();
+//		
+//	}
+//	@RequestMapping("/admin/admin/board/commentList.do")
+//	public String commentLIst(Model model, HttpServletRequest req, CommentVO param) {
+//		
+//		
+//		List<CommentVO> list = commentService.commentList(param);
+//		
+//		model.addAttribute("list", list);
+//		
+//		return "/admin/admin/board/commentList";
+//	}
 }
+

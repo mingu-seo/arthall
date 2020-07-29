@@ -1,5 +1,4 @@
 package member;
-
 import java.sql.Timestamp;
 
 import util.Parameter;
@@ -19,10 +18,9 @@ public class MemberVO extends Parameter{
 	private String birth;
 	private Timestamp joinDate;
 	private Timestamp lastVisit;
-	
 	private String banMem;
 	private String banSelect;
-	
+
 	MemberVO() {
 		super.setPage(1);
 		super.setSize(10);
@@ -147,6 +145,5 @@ public class MemberVO extends Parameter{
 	public void setBanSelect(String banSelect) {
 		this.banSelect = banSelect;
 	}
+
 	
-	
-}

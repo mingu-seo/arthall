@@ -26,6 +26,10 @@
 		});
 	})
 	
+	function move() {
+		location.href="mainForm.do";
+	}
+	
 </script>
 </head>
 <body> 
@@ -79,7 +83,7 @@
 								<tbody>
 									<tr align="center" bgcolor="white">
 								
-										<td colspan="4">게시글이 없습니다.</td>
+										<td colspan="100%">게시글이 없습니다.</td>
 									</tr>
 								</tbody>
 								</c:if>
@@ -125,7 +129,7 @@
 								</c:if>
 								<c:forEach var="pNo" begin="${vo.startPage}"
 									end="${vo.endPage}">
-									<a href="list.do?page=${pNo}">${pNo}</a>
+									<a href="list.do?page=${pNo}&stype=${vo.stype}&sval=${vo.sval}">${pNo}</a>
 								</c:forEach>
 								<c:if test="${vo.endPage < vo.totalPage}">
 										<a href="list.do?page=${vo.startPage+5}">[다음]</a>
@@ -143,6 +147,7 @@
 									<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />
 								</div>
 							</form>
+							<input type="submit" value="메인페이지이동" onclick='move();'>
 							<!-- //search --> 
 						</div>
 						<!-- //blist -->

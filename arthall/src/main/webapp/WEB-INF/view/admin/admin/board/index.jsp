@@ -6,6 +6,23 @@
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp"%>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
+
+	$(function(){
+		
+		$("#allChk").change(function() {
+			
+			if (this.checked) {
+	            $(".checkSingle").each(function() {
+	                this.checked=true;
+	            });
+	        } else {
+	            $(".checkSingle").each(function() {
+	                this.checked=false;
+	            });
+	        }
+	        
+	    });
+	});
 	function del() {
 	   if (confirm('정말로 삭제하시겠습니까?')) {
 		   $("#frm").submit();
@@ -55,8 +72,8 @@
 										<thead>
 											<tr>
 												<th scope="col" class="first"><input type="checkbox"
-													name="allChk" id="allChk"
-													onClick="check(this, document.frm.num)" /></th>
+													name="allChk" id="allChk"/>
+												 </th>
 												
 												<th scope="col">제목</th>
 												<th scope="col">작성일</th>
@@ -76,7 +93,7 @@
 												<tbody>
 													<tr>
 														<td class="first"><input type="checkbox" name="num"
-															id="num" value="${board.no}"  /></td>
+															id="num" class="checkSingle" value="${board.no}"  /></td>
 														
 														<td class="title"><a
 															href="view.do?no=${board.no}&page=${vo.page}"> 

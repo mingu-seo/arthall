@@ -46,9 +46,10 @@ public class Ad_QnaController {
 	@RequestMapping("/admin/board/qna/view.do")
 	public String view(Model model, HttpServletRequest req, QnaVO param) {
 		int a = Integer.parseInt((String)req.getParameter("no"));
-		QnaVO data = qnaService.view(a, 1);
+		QnaVO data = qnaService.view(a, 2);
 		
 		//model.addAttribute("vo", param);
+		model.addAttribute("table_name", "qna");
 		model.addAttribute("data", data);
 		
 		return "admin/board/qna/view";
@@ -83,6 +84,7 @@ public class Ad_QnaController {
 		
 		QnaVO vo = qnaService.view(param.getNo(), 2);
 		
+		System.out.println("파일이름"+vo.getFilename());
 		model.addAttribute("vo", vo);
 		
 		
@@ -90,9 +92,9 @@ public class Ad_QnaController {
 	}
 	
 	@RequestMapping("/admin/board/qna/modify.do")
-	public String modify(Model model, QnaVO param) {
+	public String modify(HttpServletRequest req, Model model, QnaVO param, @RequestParam("filename_tmp") MultipartFile file) {
 		
-		String pageName = qnaService.modify(param);
+		String pageName = qnaService.modify(req, param, file);
 		
 		return pageName;
 	}

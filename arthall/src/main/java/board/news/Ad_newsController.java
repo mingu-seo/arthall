@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import board.notice.NoticeVO;
+import admin.AdminVO;
 
 
 @Controller
@@ -41,11 +41,11 @@ public class Ad_newsController {
 	
 
 	@RequestMapping("/admin/board/news/write.do")
-	public String write(HttpServletRequest req, NewsVO param, @RequestParam("filename_tmp") MultipartFile file) {
+	public String write(HttpServletRequest req, NewsVO param, @RequestParam("filename_tmp") MultipartFile file, AdminVO aparam) {
 		
-		String pageName = newsservice.write(req, param,file);
+		String pageName = newsservice.write(req, param,file,aparam);
 	
-		System.out.println("write"+param.getContent());
+	
 		return pageName;
 	}
 	
@@ -54,7 +54,7 @@ public class Ad_newsController {
 	@RequestMapping("/admin/board/news/modifyForm.do")
 	public String modifyForm(Model model, NewsVO param) {
 		
-		NewsVO vo = newsservice.view(param);
+		NewsVO vo = newsservice.view(param); 
 		
 		model.addAttribute("vo",vo);
 		
@@ -63,9 +63,9 @@ public class Ad_newsController {
 	}
 	
 	@RequestMapping("/admin/board/news/modify.do")
-	public String modify(HttpServletRequest req, NewsVO param, @RequestParam("filename_tmp") MultipartFile file) {
+	public String modify(HttpServletRequest req, NewsVO param, @RequestParam("filename_tmp") MultipartFile file,AdminVO aparam) {
 		
-		String pageName = newsservice.modify(req,param,file);
+		String pageName = newsservice.modify(req,param,file,aparam);
 		
 		return pageName;
 	}

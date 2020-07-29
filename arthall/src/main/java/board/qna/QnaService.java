@@ -13,6 +13,6 @@ public interface QnaService {
 	public String write(HttpServletRequest req, QnaVO param, MultipartFile file);
 	public QnaVO view(int no, int flag);
 	public int answer(QnaVO param);
-	public String modify(QnaVO param);
+	public String modify(HttpServletRequest req, QnaVO param, MultipartFile file);
 	public String delete(String[] param);
 }

@@ -147,6 +147,7 @@ function ban() {
 										<th scope="col">계정상태</th>
 										<th scope="col">가입일</th>
 										<th scope="col">마지막 방문</th>
+										<th scope="col">계정상태</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -158,11 +159,10 @@ function ban() {
 								</tr>
 								</c:if>
 								<c:if test="${vo.totalCount > 0}">
-								
 								<c:forEach var="member" items="${list}">
 								<tr class = 'detail' 
 								onmouseover="mouseOver();" onmouseout="mouseOut();" 
-								onclick="location.href='detail.do?no=${member.no}';" >
+								onclick="location.href='detail.do?no=${member.no}&page=${vo.page }';" >
 									<td class="first"><input type="checkbox" name="chk" id="chk" value="${member.no}"/></td>
 									<td>${member.no }</td>
 									<td>${member.id }</td>

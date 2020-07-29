@@ -12,7 +12,7 @@ HeidiSQL
   -admin, member, notice, news, qna, faq, play, reserv   
 > 테이블 생성 코드   
 
--admin
+-admin (07-28 13:26 마지막 수정)
 
 ```
 CREATE TABLE `admin` (
@@ -33,7 +33,7 @@ AUTO_INCREMENT=5
 
 
 ```
--admin.board
+-admin.board (07-28 13:26 마지막 수정)
 
 ```
 CREATE TABLE `board` (
@@ -45,12 +45,16 @@ CREATE TABLE `board` (
 	`readcnt` INT(11) NOT NULL DEFAULT 0,
 	`writer` VARCHAR(50) NOT NULL DEFAULT '0',
 	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`group_no` INT(11) NOT NULL,
+	`order_no` INT(11) NULL DEFAULT 0,
+	`depth_no` INT(11) NULL DEFAULT 0,
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=3
+AUTO_INCREMENT=98
 ;
+
 
 ```
 
@@ -149,6 +153,7 @@ CREATE TABLE `faq` (
 	`readcnt` INT(11) NOT NULL DEFAULT 0,
 	`writer` VARCHAR(50) NOT NULL DEFAULT '0',
 	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`filename_org` VARCHAR(255) NULL DEFAULT NULL,
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
@@ -185,6 +190,7 @@ CREATE TABLE `qna` (
 	`moddate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
 	`writer` VARCHAR(50) NOT NULL,
 	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`filename_org` VARCHAR(255) NULL DEFAULT NULL,
 	`gno` INT(11) NOT NULL DEFAULT 0,
 	`ono` INT(11) NOT NULL DEFAULT 0,
 	`nested` INT(11) NOT NULL DEFAULT 0,
@@ -195,6 +201,30 @@ ENGINE=InnoDB
 AUTO_INCREMENT=1
 ;
 ```
+
+-member 김대영/신근영
+```
+CREATE TABLE `member` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
+	`id` VARCHAR(50) NULL DEFAULT NULL,
+	`password` VARCHAR(50) NULL DEFAULT NULL,
+	`name` VARCHAR(50) NULL DEFAULT NULL,
+	`tel` VARCHAR(50) NULL DEFAULT NULL,
+	`email` VARCHAR(50) NULL DEFAULT NULL,
+	`addr1` VARCHAR(100) NULL DEFAULT NULL,
+	`addr2` VARCHAR(100) NULL DEFAULT NULL,
+	`birth` VARCHAR(50) NULL DEFAULT NULL,
+	`joinDate` TIMESTAMP NULL DEFAULT NULL,
+	`lastVisit` TIMESTAMP NULL DEFAULT NULL,
+	`banMem` VARCHAR(50) NULL DEFAULT NULL,
+	PRIMARY KEY (`no`)
+)
+COMMENT='회원테이블'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=20
+;
+``` 
 
 예시)
 
@@ -207,7 +237,9 @@ AUTO_INCREMENT=1
 Eclipse IDE Enterprice for Java Developers   
 
 >src/main/java   
->>/admin    
+>>/admin
+>>>/board
+
 >>/member  
 
 >>/board       
@@ -245,7 +277,7 @@ Eclipse IDE Enterprice for Java Developers
 
 
 >>>/admin 
->>>>/list.jsp 
+>>>>/board 
 
 >>>/member 
 

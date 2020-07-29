@@ -50,6 +50,12 @@ public class NoticeDAO {
 	public NoticeVO view_img(NoticeVO param) {
 		return sqlSession.selectOne("notice.view_img",param);
 	}
+
+	public int modifyFile(NoticeVO param) {
+		return sqlSession.update("notice.modifyFile", param);
+		
+		
+	}
 	
 	
 }

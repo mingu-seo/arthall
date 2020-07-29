@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import admin.AdminVO;
+
+
+
 
 @Controller
 public class Ad_noticeController {
@@ -39,10 +43,10 @@ public class Ad_noticeController {
 	
 
 	@RequestMapping("/admin/board/notice/write.do")
-	public String write(HttpServletRequest req, NoticeVO param, @RequestParam("filename_tmp") MultipartFile file) {
+	public String write(Model model,HttpServletRequest req, NoticeVO param, @RequestParam("filename_tmp") MultipartFile file,AdminVO aparam) {
 		
-		String pageName = noticeservice.write(req, param,file);
-	
+		String pageName = noticeservice.write(req, param,file,aparam);
+		
 		return pageName;
 	}
 	
@@ -60,10 +64,10 @@ public class Ad_noticeController {
 	}
 	
 	@RequestMapping("/admin/board/notice/modify.do")
-	public String modify(HttpServletRequest req, NoticeVO param, @RequestParam("filename_tmp") MultipartFile file) {
-	//public String modify(Model model, NoticeVO param,@RequestParam("filename_tmp") MultipartFile file) {
+	public String modify(HttpServletRequest req, NoticeVO param, @RequestParam("filename_tmp") MultipartFile file,AdminVO aparam) {
+	
 		
-		String pageName = noticeservice.modify(req, param, file);
+		String pageName = noticeservice.modify(req, param, file,aparam);
 		
 		return pageName;
 	}
@@ -87,6 +91,8 @@ public class Ad_noticeController {
 		
 		return "admin/board/notice/view";
 	}
+	
+	
 
 //	@RequestMapping("/admin/board/notice/view.do")
 //	public String view(Model model, HttpServletRequest req, NoticeVO param) {

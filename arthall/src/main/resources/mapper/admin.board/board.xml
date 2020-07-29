@@ -75,16 +75,16 @@
 		SET order_no = order_no+1
 		WHERE group_no = #{group_no} AND order_no > #{order_no};
 	</update>
-	<delete id="deleteComment" parameterType="admin.board.CommentVO">
-		DELETE FROM comment
-		where no = #{no}
-	</delete>
 	
 	<update id="delete" parameterType="Integer">
 		DELETE FROM board
 		WHERE no=#{no}
 	</update>
-	
+	<!-- 
+	<delete id="deleteComment" parameterType="admin.board.CommentVO">
+		DELETE FROM comment
+		where no = #{no}
+	</delete>
 	<select id="commentList" parameterType="admin.board.BoardVO" resultType="admin.board.CommentVO">
 		SELECT * FROM comment
 		WHERE TABLE_name = "board" AND post_no = ${no}
@@ -95,7 +95,6 @@
 		(TABLE_NAME, post_no, writer, content, regdate)
 		VALUES
 		('board', #{post_no}, #{writer}, #{content}, now())
-		
-			
 	</insert>
+	 -->
 </mapper>
