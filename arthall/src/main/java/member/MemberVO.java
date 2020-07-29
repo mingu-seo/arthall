@@ -10,74 +10,116 @@ public class MemberVO extends Parameter{
 	private String id;
 	private String password;
 	private String name;
+	private String gender;
 	private String tel;
 	private String email;
-	private String addr;
+	private String zipCode;
+	private String addr1;
+	private String addr2;
 	private String birth;
 	private Timestamp joinDate;
 	private Timestamp lastVisit;
 	
-	//검색 필터
-	private String memId;
-	private String memName;
-	private String memTel;
-	private String memEmail;
-	private String memAddr;
-	private String memBirth;
 	private String banMem;
-	private Timestamp memJoinStart;
-	private Timestamp memJoinEnd;
+	private String banSelect;
 	
 	MemberVO() {
 		super.setPage(1);
 		super.setSize(10);
 	}
+
 	public int getNo() {
 		return no;
 	}
+
 	public void setNo(int no) {
 		this.no = no;
 	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
-		
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public String getTel() {
 		return tel;
 	}
+
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public String getAddr1() {
+		return addr1;
+	}
+
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+
+	public String getAddr2() {
+		return addr2;
+	}
+
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
+
 	public String getBirth() {
 		return birth;
 	}
+
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
+
 	public Timestamp getJoinDate() {
 		return joinDate;
 	}
+
 	public void setJoinDate(Timestamp joinDate) {
 		this.joinDate = joinDate;
 	}
@@ -90,14 +132,6 @@ public class MemberVO extends Parameter{
 		this.lastVisit = lastVisit;
 	}
 
-	public String getAddr() {
-		return addr;
-	}
-
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
-
 	public String getBanMem() {
 		return banMem;
 	}
@@ -106,69 +140,13 @@ public class MemberVO extends Parameter{
 		this.banMem = banMem;
 	}
 
-	// 검색 필터 Getter,Setter
-	public String getMemId() {
-		return memId;
+	public String getBanSelect() {
+		return banSelect;
 	}
 
-	public void setMemId(String memId) {
-		this.memId = memId;
+	public void setBanSelect(String banSelect) {
+		this.banSelect = banSelect;
 	}
-
-	public String getMemName() {
-		return memName;
-	}
-
-	public void setMemName(String memName) {
-		this.memName = memName;
-	}
-
-	public String getMemTel() {
-		return memTel;
-	}
-
-	public void setMemTel(String memTel) {
-		this.memTel = memTel;
-	}
-
-	public String getMemEmail() {
-		return memEmail;
-	}
-
-	public void setMemEmail(String memEmail) {
-		this.memEmail = memEmail;
-	}
-
-	public String getMemAddr() {
-		return memAddr;
-	}
-
-	public void setMemAddr(String memAddr) {
-		this.memAddr = memAddr;
-	}
-
-	public String getMemBirth() {
-		return memBirth;
-	}
-
-	public void setMemBirth(String memBirth) {
-		this.memBirth = memBirth;
-	}
-
-	public Timestamp getMemJoinStart() {
-		return memJoinStart;
-	}
-
-	public void setMemJoinStart(Timestamp memJoinStart) {
-		this.memJoinStart = memJoinStart;
-	}
-
-	public Timestamp getMemJoinEnd() {
-		return memJoinEnd;
-	}
-
-	public void setMemJoinEnd(Timestamp memJoinEnd) {
-		this.memJoinEnd = memJoinEnd;
-	}
+	
 	
 }

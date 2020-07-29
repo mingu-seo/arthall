@@ -25,7 +25,6 @@ public class MemberDAO {
 	
 	// 회원목록 조회
 	public List<MemberVO> list(MemberVO param) {
-		
 		return sqlSession.selectList("member.list", param);
 	}
 	

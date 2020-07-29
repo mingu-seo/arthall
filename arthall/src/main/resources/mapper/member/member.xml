@@ -6,63 +6,68 @@
 	<select id="count" parameterType="member.MemberVO" resultType="Integer">
 		SELECT COUNT(*) FROM member
 		<where>
-			<if test="sval != null and sval != ''">
-			id LIKE '%${sval}%'
-			OR member.no IN
-			(SELECT no FROM member.name WHERE name LIKE '%${sval}%')
+			<!--1. 휴면여부 : 전체 / 검색조건 : 전체 / 검색어 : 값이 있을때 -->
+			<if test="banSelect == 'banAll' and stype == 'all' and sval != null and sval !='' ">
+				id LIKE '%${sval}%' OR name LIKE '%${sval}%' OR tel LIKE '%${sval}%' OR email LIKE '%${sval}%' OR addr1 LIKE '%${sval}%' OR addr2 LIKE '%${sval}%'
 			</if>
+			<!--2. 휴면여부 : 전체 / 검색조건 : 전체 / 검색어 : 값이 없을때 -->
+			<!--                  전체 리스트 출력                                 -->
+			<!--3. 휴면여부 : 전체 / 검색조건 : 나머지 / 검색어 : 값이 있을때 -->
+			<if test="banSelect == 'banAll' and stype != 'all' and sval != null and sval !='' ">
+				${stype} LIKE '%${sval}%'
+			</if>
+			<!--4. 휴면여부 : 전체 / 검색조건 : 나머지 / 검색어 : 값이 없을때 -->
+			<!--                  경고창 출력                                           -->
+			<!--5. 휴면여부 : 나머지 / 검색조건 : 전체 / 검색어 : 값이 있을때 -->
+			<if test="banSelect != 'banAll' and stype == 'all' and sval != null and sval !='' ">
+				banMem LIKE '${banSelect}' AND (id LIKE '%${sval}%' OR name LIKE '%${sval}%' OR tel LIKE '%${sval}%' OR email LIKE '%${sval}%' OR addr1 LIKE '%${sval}%' OR addr2 LIKE '%${sval}%')
+			</if>
+			<!--6. 휴면여부 : 나머지 / 검색조건 : 전체 / 검색어 : 값이 없을때 -->
+			<if test="banSelect != 'banAll' and stype == 'all' and (sval == null or sval =='')">
+				banMem LIKE '${banSelect}'
+			</if>
+			<!--7. 휴면여부 : 나머지 /검색조건 : 나머지 / 검색어 : 값이 있을때 -->
+			<if test="banSelect != 'banAll' and stype != 'all' and sval != null and sval !='' ">
+				banMem LIKE '${banSelect}' AND ${stype} LIKE '%${sval}%'
+			</if>
+			<!--8. 휴면여부 : 나머지 /검색조건 : 나머지 / 검색어 : 값이 없을때 -->
+			<!--                  경고창 출력                                           -->
 		</where>
 	</select>
-	
-	<!-- 
-	<select id="list" parameterType="member.MemberVO" resultType="member.MemberVO">
-		SELECT * FROM member
- 		<where> 
- 			<if test="sval != null and sval != ''">
- 			id LIKE '%${sval}%'
- 			OR member.no IN
- 			(SELECT no FROM member.name WHERE name LIKE '%${sval}%')
- 			</if>
- 		</where>
-		ORDER BY no *1 DESC LIMIT #{startRow}, #{size}
-	</select>
-	 -->
-	
+
+	<!-- 검색 필터 -->
 	<select id="list" parameterType="member.MemberVO" resultType="member.MemberVO">
 	SELECT * FROM member 
 	<where>
-		<if test="memId != null and memId != ''">
-			id LIKE '%${memId}% 
-			AND name in (SELECT name FROM member WHERE name LIKE '%${memName}%') 
-			AND tel in (SELECT tel FROM member WHERE tel LIKE '%${memTel}%') 
-			AND addr in (SELECT addr FROM member WHERE addr LIKE '%${memAddr}%') 
-			AND birth in (SELECT birth FROM member WHERE birth LIKE '%${memBirth}%') 
-			AND joinDate in (SELECT joinDate FROM member WHERE joinDate LIKE '%${joinDateStart}%') 
-			<!-- AND banMem in (SELECT banMem FROM member WHERE banMem LIKE '%%') --> 
-			AND email in (SELECT email FROM member WHERE email LIKE '%${memEmail}%')
-		</if>
+		<!--1. 휴면여부 : 전체 / 검색조건 : 전체 / 검색어 : 값이 있을때 -->
+			<if test="banSelect == 'banAll' and stype == 'all' and sval != null and sval !='' ">
+				id LIKE '%${sval}%' OR name LIKE '%${sval}%' OR tel LIKE '%${sval}%' OR email LIKE '%${sval}%' OR addr1 LIKE '%${sval}%' OR addr2 LIKE '%${sval}%'
+			</if>
+			<!--2. 휴면여부 : 전체 / 검색조건 : 전체 / 검색어 : 값이 없을때 -->
+			<!--                  전체 리스트 출력                                 -->
+			<!--3. 휴면여부 : 전체 / 검색조건 : 나머지 / 검색어 : 값이 있을때 -->
+			<if test="banSelect == 'banAll' and stype != 'all' and sval != null and sval !='' ">
+				${stype} LIKE '%${sval}%'
+			</if>
+			<!--4. 휴면여부 : 전체 / 검색조건 : 나머지 / 검색어 : 값이 없을때 -->
+			<!--                  경고창 출력                                           -->
+			<!--5. 휴면여부 : 나머지 / 검색조건 : 전체 / 검색어 : 값이 있을때 -->
+			<if test="banSelect != 'banAll' and stype == 'all' and sval != null and sval !='' ">
+				banMem LIKE '${banSelect}' AND (id LIKE '%${sval}%' OR name LIKE '%${sval}%' OR tel LIKE '%${sval}%' OR email LIKE '%${sval}%' OR addr1 LIKE '%${sval}%' OR addr2 LIKE '%${sval}%')
+			</if>
+			<!--6. 휴면여부 : 나머지 / 검색조건 : 전체 / 검색어 : 값이 없을때 -->
+			<if test="banSelect != 'banAll' and stype == 'all' and (sval == null or sval =='')">
+				banMem LIKE '${banSelect}'
+			</if>
+			<!--7. 휴면여부 : 나머지 /검색조건 : 나머지 / 검색어 : 값이 있을때 -->
+			<if test="banSelect != 'banAll' and stype != 'all' and sval != null and sval !='' ">
+				banMem LIKE '${banSelect}' AND ${stype} LIKE '%${sval}%'
+			</if>
+			<!--8. 휴면여부 : 나머지 /검색조건 : 나머지 / 검색어 : 값이 없을때 -->
+			<!--                  경고창 출력                                           -->
 	</where>
 	ORDER BY no DESC LIMIT #{startRow}, #{size}
 	</select>
-	
-	
-	<!--
-	<select id="list" parameterType="member.MemberVO" resultType="member.MemberVO">
-	SELECT * FROM member where id LIKE '%test%' AND name in
-	(SELECT name FROM member WHERE name LIKE '%test%') AND tel in
-	(SELECT tel FROM member WHERE tel LIKE '%010%') AND addr in
-	(SELECT addr FROM member WHERE addr LIKE '%인천시%') AND birth in
-	(SELECT birth FROM member WHERE birth LIKE '%2020%') AND joinDate in
-	(SELECT joinDate FROM member WHERE joinDate LIKE '%2020%') AND banMem in
-	(SELECT banMem FROM member WHERE banMem LIKE '%%') AND email in
-	(SELECT email FROM member WHERE email LIKE '%naver%')
-	ORDER BY joinDate DESC LIMIT #{startRow}, #{size}
-	 -->
-	
-	
-	
-	
-	
 	
 	<update id="banMem" parameterType="member.MemberVO">
 		UPDATE member SET
@@ -81,8 +86,9 @@
 	</select>
 	
 	<update id="detail" parameterType="member.MemberVO">
-		UPDATE member SET id = #{id}, password = #{password}, 
-		name = #{name}, tel = #{tel}, email = #{email}, addr = #{addr}, birth = #{birth}, banMem = #{banMem} WHERE no = #{no}
+		UPDATE member SET id = #{id}, password = #{password}, name = #{name}, gender = #{gender}, 
+		tel = #{tel}, email = #{email}, zipCode = #{zipCode}, addr1 = #{addr1}, addr2 = #{addr2},
+		birth = #{birth}, joinDate = #{joinDate}, lastVisit = #{lastVisit}, banMem = #{banMem} WHERE no = #{no}
 	</update>
 	
 	
@@ -92,9 +98,9 @@
 	</select>
 	
 	<insert id="insert" parameterType="member.MemberVO">
-		insert into member (id, password, name, tel, email, addr, birth, joinDate)
+		insert into member (id, password, name, gender, tel, email, zipCode, addr1, addr2, birth, joinDate)
 		values
-		( #{id}, PASSWORD(#{password}), #{name}, #{tel}, #{email}, #{addr}, #{birth}, now())
+		( #{id}, PASSWORD(#{password}), #{name}, #{gender}, #{tel}, #{email}, #{zipCode}, #{addr1}, #{addr2}, #{birth}, now())
 	</insert>
 	
 	<select id="login" parameterType="java.util.Map" resultType="member.MemberVO">
@@ -106,10 +112,6 @@
 			lastVisit=#{lastVisit}
 		WHERE id=#{id}		
 	</update>
-
-	
-
-
 
 	
 	

@@ -20,6 +20,8 @@ public class User_MemberController {
 	
 	@RequestMapping("admin/member/joinForm.do")
 	public String joinForm() {
+		
+		
 		return "admin/member/joinForm";
 	}
 	

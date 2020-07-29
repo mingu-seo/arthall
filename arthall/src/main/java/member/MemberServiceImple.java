@@ -1,16 +1,11 @@
 package member;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import util.Parameter;
 
 @Service
 public class MemberServiceImple implements MemberService{
@@ -39,6 +34,9 @@ public class MemberServiceImple implements MemberService{
 		param.setEndPage(endPage);
 		param.setTotalCount(totalCount);
 		param.setTotalPage(totalPage);
+		
+		System.out.println("++++++++++선택값 : "+param.getBanSelect());
+		
 		List<MemberVO> list = memberDao.list(param);
 		
 		return list;
