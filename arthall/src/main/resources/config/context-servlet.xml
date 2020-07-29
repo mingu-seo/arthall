@@ -10,12 +10,12 @@
 	<context:component-scan base-package="test" />
 
 	<context:component-scan base-package="admin" /> 
-	<context:component-scan base-package="member" />
 	<context:component-scan base-package="reserv" />
 
 	<context:component-scan base-package="board" />
 	<context:component-scan base-package="play" />
  -->
+	<context:component-scan base-package="member" />
  	<context:component-scan base-package="admin" />
  	<context:component-scan base-package="board" />
 	<mvc:annotation-driven/> <!-- annotation 활성화 -->
@@ -40,8 +40,8 @@
  	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
  		<constructor-arg index="0" ref="sqlSession"/>
  	</bean>
- 	<mvc:interceptors>
  	<!-- 인터셉터 
+ 	<mvc:interceptors>
  		<mvc:interceptor>
  			<mvc:mapping path="/member/changePwdForm.do"/>
  			<mvc:mapping path="/member/changePwd.do"/> 
@@ -50,7 +50,6 @@
  			<mvc:mapping path="/article/write.do"/> 
  			<bean class="interceptor.UserLoginInterceptor"></bean>
  	</mvc:interceptor>
- 	-->
  	<mvc:interceptor>
  			<mvc:mapping path="/admin/**"/>
  			<mvc:exclude-mapping path="/admin/index.do"/>  
@@ -60,6 +59,7 @@
  		</mvc:interceptor>
  	</mvc:interceptors>
 
+ 	-->
 
 	<!-- 파일업로드 -->
  	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

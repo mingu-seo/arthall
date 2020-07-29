@@ -44,29 +44,30 @@ public class MemberServiceImple implements MemberService{
 	
 	
 	@Override
-	public String regist(MemberVO param, HttpServletRequest req) {
+	public String join(MemberVO param, HttpServletRequest req) {
+		int numJoin = 0;
 		
-		int dupliCheck = 0;
-		MemberVO vo = memberDao.selectOne(param.getId());
-		
-		// 중복 시 -1 리턴
-		if (vo != null) {
-			dupliCheck = -1;
-		} else {
-			System.out.println("서비스값 : " + param.getTel());
-			dupliCheck = memberDao.insert(param);
+		MemberVO vo = memberDao.dupId(param);
+		if(vo == null) {
+			numJoin = memberDao.join(param);
 		}
-		
 		String pageName = "";
-		if (dupliCheck < 0) {
-			req.setAttribute("isDup", "true");
-			pageName = "admin/member/joinForm";
-		} else if (dupliCheck == 0) {
-			pageName = "admin/member/joinForm";
-		} else {
-			pageName = "redirect:joinSuccess.do?name="+param.getName();
+		if(numJoin != 0) {
+			req.setAttribute("msg", "회원가입 실패");
+			req.setAttribute("url", "index.do");
+			pageName = "common/alert";
 		}
 		return pageName;
+	}
+	
+	@Override
+	public String dupId(HttpServletRequest req, MemberVO param) {
+		MemberVO vo = memberDao.dupId(param);
+		String r = "true";
+		if (vo != null) {
+			r = "false";
+		}
+		return r;
 	}
 
 	@Override

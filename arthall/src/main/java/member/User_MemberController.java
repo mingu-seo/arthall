@@ -25,7 +25,7 @@ public class User_MemberController {
 	
 	@RequestMapping("member/join.do")
 	public String join(HttpServletRequest req, MemberVO param) {
-		String pageName = memberService.regist(param, req);
+		String pageName = memberService.join(param, req);
 		return pageName;
 	}
 	

@@ -17,7 +17,7 @@ public class Ad_MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping("admin/member/index.do")
+	@RequestMapping("/admin/member/index.do")
 	public String list(Model model, HttpServletRequest req, MemberVO param) {
 		List<MemberVO> list = memberService.list(param);
 		

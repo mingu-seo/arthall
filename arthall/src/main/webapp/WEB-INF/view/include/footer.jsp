@@ -4,7 +4,7 @@
 
 <div class="footerinner">
     <div class="footerinner__top cf">
-        <h2><a href="#"><img src="img/logo.png" alt="로고"></a></h2>
+        <h2><a href="#"><img src="<%=request.getContextPath()%>/img/logo.png" alt="로고"></a></h2>
         <div class="top__links">
             <div class="links__sns cf">
                 <a href="#"><i class="fab fa-facebook-f fa-2x"></i></a>
@@ -51,5 +51,5 @@
         </div>
     </div>
 </div>
-<script src="<%=request.getContextPath()%>js/header.js"></script>
-<script src="<%=request.getContextPath()%>js/visual.js"></script>
+<script src="<%=request.getContextPath()%>/js/header.js"></script>
+<script src="<%=request.getContextPath()%>/js/visual.js"></script>

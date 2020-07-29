@@ -50,43 +50,61 @@ function ban() {
 									<tr>
 										<th scope="row"><label for="">아이디</label></th>
 										<td colspan="10">
-											<input type="text" id="title" name="id" class="w100" title="" value="${member.id}" readonly/>	
+											<input type="text" id="id" name="id" class="w100" title="" value="${member.id}" readonly/>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">비밀번호</label></th>
 										<td colspan="10">
-											<input type="text" id="title" name="password" class="w100" title="비밀번호를 입력해주세요" value="${member.password}"/>
+											<input type="text" id="password" name="password" class="w100" title="비밀번호를 입력해주세요" value="${member.password}"/>
 											
 										</td>
-									</tr><tr>
+									</tr>
+									<tr>
 										<th scope="row"><label for="">이름</label></th>
 										<td colspan="10">
-											<input type="text" id="title" name="name" class="w100" title="이름을 입력해주세요" value="${member.name}"/>
+											<input type="text" id="name" name="name" class="w100" title="이름을 입력해주세요" value="${member.name}"/>
 											
 										</td>
-									</tr><tr>
-										<th scope="row"><label for="">전화번호</label></th>
+									</tr>
+									<tr>
+										<th scope="row"><label for="">성별</label></th>
 										<td colspan="10">
-											<input type="text" id="title" name="tel" class="w100" title="전화번호를 입력해주세요" value="${member.tel}"/>
-											
+											<input type="text" id="gender" name="gender" class="w100" title="성별을 입력해주세요" value="${member.gender}"/>
 										</td>
-									</tr><tr>
-										<th scope="row"><label for="">E-mail</label></th>
-										<td colspan="10">
-											<input type="text" id="title" name="email" class="w100" title="이메일을 입력해주세요" value="${member.email}"/>
-											
-										</td>
-									</tr><tr>
-										<th scope="row"><label for="">주소</label></th>
-										<td colspan="10">
-											<input type="text" id="title" name="addr" class="w100" title="주소를 입력해주세요" value="${member.addr}"/>
-											
-										</td>
-									</tr><tr>
+									</tr>
+									<tr>
 										<th scope="row"><label for="">생년월일</label></th>
 										<td colspan="10">
-											<input type="text" id="title" name="birth" class="w100" title="생년월일을 입력해주세요" value="${member.birth}"/>
+											<input type="text" id="birth" name="birth" class="w100" title="생년월일을 입력해주세요" value="${member.birth}"/>
+											
+										</td>
+									</tr>
+									<tr>
+										<th scope="row"><label for="">연락처</label></th>
+										<td colspan="10">
+											<input type="text" id="tel" name="tel" class="w100" title="전화번호를 입력해주세요" value="${member.tel}"/>
+											
+										</td>
+									</tr>
+									<tr>
+										<th scope="row"><label for="">E-mail</label></th>
+										<td colspan="10">
+											<input type="text" id="email" name="email" class="w100" title="이메일을 입력해주세요" value="${member.email}"/>
+											
+										</td>
+									</tr>
+									<tr>
+										<th scope="row"><label for="">주소</label></th>
+										<td colspan="10">
+											<input type="text" id="addr1" name="addr1" class="w100" title="주소를 입력해주세요" value="${member.addr1}"/>
+											
+										</td>
+									</tr>
+									<tr>
+										<th scope="row"><label for="">상세주소</label></th>
+										<td colspan="10">
+											<input type="text" id="addr2" name="addr2" class="w100" title="상세주소를 입력해주세요" value="${member.addr2}"/>
 											
 										</td>
 									</tr>
