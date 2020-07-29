@@ -82,6 +82,7 @@ $(window).load(function(){
 						<li><a href="<%=request.getContextPath()%>/admin/board/news/list.do"><span>뉴스</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/board/faq/index.do"><span>FAQ</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/board/qna/index.do"><span>Q&A</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/gallery/list.do"><span>갤러리</span></a></li>
 						
 					</ul>
 					</div>

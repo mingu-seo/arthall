@@ -15,20 +15,17 @@
 		   return;
 	   }
 	}
-	$(document).ready(function(){
-		$("#allChk").click(function(){
-			if($("#allChk").prop("checked")){
-				$("input[name=num]").prop("checked", true);
-			}
-			else{
-				$("input[name=num]").prop("checked",false);
-			}
-		});
-	})
+$(document).ready(function(){
+	$("#allChk").click(function(){
+		if($("#allChk").prop("checked")){
+			$("input[name=num]").prop("checked", true);
+		}
+		else{
+			$("input[name=num]").prop("checked",false);
+		}
+	});
 	
-	function move() {
-		location.href="mainForm.do";
-	}
+})
 	
 </script>
 </head>
@@ -44,7 +41,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공지사항 - [목록]</h2>
+					<h2>갤러리 - [목록]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
@@ -55,56 +52,61 @@
 								<span><strong>총 ${vo.totalCount} 개</strong> | ${vo.page }/${vo.totalPage}페이지</span>
 							</p>
 							<form name="frm" id="frm" action="delete.do" method="post">
-							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
+							
 								<colgroup>
-									<col class="w3" />
-									<col class="w4" />
-									<col class="" />
-									<col class="w10" />
-									<col class="w5" />
-									<col class="w6" />
+									<col width="10%" />
+									<col width="15%" />
+									<col width="10%" />
+									<col width="15%" />
+									<col width="25%" />
+									<col width="25%" />
 								</colgroup>
-								<thead>
+								<tbody>
 									<tr>
-										<th scope="col" class="first">
-										<input type="checkbox"  class="allchek" name="allChk" id="allChk" 
-										onClick="check(this, document.frm.num)"/></th>
-										<th scope="col">번호</th>
-										<th scope="col">제목</th> 
-										<th scope="col">작성일</th> 
-										<th scope="col">작성자</th>
-										<th scope="col" class="last">조회수</th>
-										
+										<th scope="row"><label for="">제목</label></th>
+										<td colspan="10">${data.title }</td>
 									</tr>
-								</thead>
+									<tr>
+										<th scope="row"><label for="">내용</label></th>
+										<td colspan="10">${data.content }</td>
+									</tr>
+										<tr>
+										<c:if test="${data.filename != null}">
+										<th scope="row"><label for="">이미지</label></th>
+										<td><img src="/upload/board/news/${data.filename}" width="200px"></td>
+										</c:if>
+									</tr>
+								
+								
 								<tbody>
 								
 								<c:if test="${vo.totalCount ==0}">
 								<tbody>
 									<tr align="center" bgcolor="white">
 								
-										<td colspan="100%">게시글이 없습니다.</td>
+										<td colspan="4">갤러리가 없습니다.</td>
 									</tr>
 								</tbody>
 								</c:if>
 								<c:if test="${vo.totalCount > 0}">
-								<c:forEach var="notice" items="${list}">
+								<c:forEach var="news" items="${list}">
 								<tr>
 										<td class="first"><input type="checkbox" name="num" id="num" 
-											value="${notice.no}"/></td>
-										<td>${notice.no}</td>
+											value="${news.no}"/></td>
+										<td>${news.no}</td>
 										
 										<td class="title">
-											<a href="view.do?no=${notice.no}&page=${vo.page}">
+											<a href="view.do?no=${news.no}&page=${vo.page}">
 												 
-												<c:out value="${notice.title}"/>
+												<c:out value="${news.title}"/>
 												 
 											
 											</a>
 										</td>
-										<td>${notice.regDate}</td>
-										<td>${notice.writer}</td>
-										<td class="last">${notice.readCnt}</td>
+										<td>${news.regDate}</td>
+										<td>${news.writer}</td>
+										<td class="last">${news.readCnt}</td>
 									</tr>
 								</c:forEach>
 								</c:if>
@@ -143,11 +145,10 @@
 										<option value="title" <c:if test="${vo.stype=='title'}">selected</c:if>>제목</option>
 										<option value="content" <c:if test="${vo.stype=='content'}">selected</c:if>>내용</option>
 									</select>
-									<input type="text" name="sval" value="${vo.sval }" title="검색할 내용을 입력해주세요" />
+									<input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요" />
 									<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />
 								</div>
 							</form>
-							<input type="submit" value="메인페이지이동" onclick='move();'>
 							<!-- //search --> 
 						</div>
 						<!-- //blist -->
