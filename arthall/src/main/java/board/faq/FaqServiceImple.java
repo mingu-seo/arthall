@@ -3,10 +3,14 @@ package board.faq;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import admin.AdminVO;
+import util.FileUtil;
 
 @Service
 public class FaqServiceImple implements FaqService {
@@ -42,24 +46,22 @@ public class FaqServiceImple implements FaqService {
 	
 	@Override
 	public String write(HttpServletRequest req, FaqVO param, MultipartFile file) {
-		//HttpSession sess = req.getSession();
-		//AdminVO sessVo = (AdminVO)sess.getAttribute("authUser");
-		param.setWriter("임한철");
+		HttpSession sess = req.getSession();
+		AdminVO sessVo = (AdminVO)sess.getAttribute("authAdmin");
+		param.setWriter(sessVo.getId());
 		
 		// 파일 저장
-		/*MyFileRenamePolicy fu = new MyFileRenamePolicy();
-		fu.fileUpload(file, req.getRealPath("/upload/article/"));
+		FileUtil fu = new FileUtil();
+		fu.fileUpload(file, req.getRealPath("/upload/board/faq/"));
 		param.setFilename(fu.fileName);
-		*/
+		param.setFilename_org(file.getOriginalFilename());
+		
 		String pageName = "";
 		int r = faqDao.write(param);
 		pageName = "redirect:index.do";
 		
 		System.out.println("추가된 번호 : " + r);
-		 /*else {
-			req.setAttribute("emptyTitle", true);
-			pageName = "admin/board/faq/index";
-		}*/
+		
 		return pageName;
 	}
 
@@ -70,10 +72,21 @@ public class FaqServiceImple implements FaqService {
 	}
 	
 	@Override
-	public String modify(FaqVO param) {
+	public String modify(HttpServletRequest req, FaqVO param, MultipartFile file) {
+		FileUtil fu = new FileUtil();
+		fu.fileUpload(file, req.getRealPath("/upload/board/faq/"));
 		
 		faqDao.view(param);
-		faqDao.modify(param);
+		
+		if (fu.fileName != null) { // 널이면 없는거
+			param.setFilename(fu.fileName); 
+			param.setFilename_org(file.getOriginalFilename());
+			faqDao.modifyFile(param);
+		} else if(param.getFilename().equals("noupdate")) {
+			param.setFilename(null); 
+			param.setFilename_org(null);
+			faqDao.modifyFile(param);
+		}
 		
 		return "redirect:index.do";
 	}

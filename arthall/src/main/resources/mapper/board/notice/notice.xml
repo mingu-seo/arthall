@@ -71,13 +71,24 @@
 	</update>
 	
 	
-	
+<!-- 	
 	<update id="modify" parameterType="board.notice.NoticeVO">
 		UPDATE notice SET
-			title = #{title} , content = #{content}, moddate = now(), filename = #{filename} ,regdate = now(), readCnt = #{readCnt}, writer = #{writer}	,filename_org =#{filename_org}
+			title = #{title} , content = #{content},regDate =now(),modDate = now(), filename=#{filename},filename_org=#{filename_org}
 		where no= #{no}
 	</update>
-	
+ -->
+ 	<update id="modify" parameterType="board.notice.NoticeVO">
+ 		UPDATE notice SET
+ 			title = #{title} ,regDate=now(), content = #{content}, modDate = now()
+ 		WHERE no=#{no}
+ 	</update>
+ 	
+ 	<update id="modifyFile" parameterType="board.notice.NoticeVO">
+ 		UPDATE notice SET
+ 			filename=#{filename}, filename_org = #{filename_org}
+ 		WHERE no=#{no}
+ 	</update>	
 
 	
 

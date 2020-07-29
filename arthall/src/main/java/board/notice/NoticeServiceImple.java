@@ -107,22 +107,43 @@ public class NoticeServiceImple implements NoticeService {
 		noticeDao.view(param);
 		noticeDao.modify(param);
 		
+		
 		FileUtil fu = new FileUtil();
 		fu.fileUpload(file, req.getRealPath("/upload/board/notice/"));
 		param.setFilename(fu.fileName);
 		
 		
-		String pageName = "";
-		int r = noticeDao.modify(param);
-		if (r > 0) {
-			pageName = "redirect:list.do";
-			
-		} else {
-			req.setAttribute("emptyTitle", true);
-		
-			pageName = "board/notice/writeModify";
+		if(file.getOriginalFilename() != null) {
+			param.setFilename_org(file.getOriginalFilename());
 		}
-		return pageName;
+		
+		if (fu.fileName != null) { // 널이면 없는거
+			param.setFilename(fu.fileName); 
+			param.setFilename_org(file.getOriginalFilename());
+			noticeDao.modifyFile(param);
+		} //else if(param.getFilename() ==equals("noupdate")) {
+			else if(param.getFilename() == null) {
+			param.setFilename(null); 
+			param.setFilename_org(null);
+			noticeDao.modifyFile(param);
+		}
+		
+//		String pageName = "";
+//		
+//		
+//		int r = noticeDao.modify(param);
+//		
+//		if (r > 0) {
+//			pageName = "redirect:list.do";
+//			
+//		} else {
+//			req.setAttribute("emptyTitle", true);
+//		
+//			pageName = "board/notice/writeModify";
+//		}
+		
+		//return pageName;
+		return "redirect:list.do";
 		
 	}
 

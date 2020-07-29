@@ -67,6 +67,11 @@ public class NewsServiceImple implements NewsService {
 		fu.fileUpload(file, req.getRealPath("/upload/board/news/"));
 		param.setFilename(fu.fileName);
 		
+		
+		if(file.getOriginalFilename() != null) {
+			param.setFilename_org(file.getOriginalFilename());
+		};
+		
 		String pageName = "";
 		int r = newsDao.write(param);
 		if (r > 0) {
@@ -102,25 +107,39 @@ public class NewsServiceImple implements NewsService {
 		newsDao.view(param);
 		newsDao.modify(param);
 		
-	//	newsDao.view(param);
-//		newsDao.modify(param);
 		
 		FileUtil fu = new FileUtil();
 		fu.fileUpload(file, req.getRealPath("/upload/board/news/"));
 		param.setFilename(fu.fileName);
 		
-		
-		String pageName = "";
-		int r = newsDao.modify(param);
-		if (r > 0) {
-			pageName = "redirect:list.do";
-			
-		} else {
-			req.setAttribute("emptyTitle", true);
-		
-			pageName = "board/news/writeModify";
+		if(file.getOriginalFilename() != null) {
+			param.setFilename_org(file.getOriginalFilename());
 		}
-		return pageName;
+		
+		if (fu.fileName != null) { // 널이면 없는거
+			param.setFilename(fu.fileName); 
+			param.setFilename_org(file.getOriginalFilename());
+			newsDao.modifyFile(param);
+		} //else if(param.getFilename() ==equals("noupdate")) {
+			else if(param.getFilename() == null) {
+			param.setFilename(null); 
+			param.setFilename_org(null);
+			newsDao.modifyFile(param);
+		}
+		
+		
+//		String pageName = "";
+//		int r = newsDao.modify(param);
+//		if (r > 0) {
+//			pageName = "redirect:list.do";
+//			
+//		} else {
+//			req.setAttribute("emptyTitle", true);
+//		
+//			pageName = "board/news/writeModify";
+//		}
+//		return pageName;
+		return "redirect:list.do";
 		
 		
 	}

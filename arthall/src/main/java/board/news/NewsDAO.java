@@ -51,5 +51,9 @@ public class NewsDAO {
 		return sqlSession.selectOne("news.view_img",param);
 	}
 	
+	public int modifyFile(NewsVO param) {
+		return sqlSession.update("news.modifyFile",param);
+	}
+	
 	
 }

@@ -43,20 +43,20 @@
 										<th scope="row"><label for="">내용</label></th>
 										<td colspan="10">${data.content }</td>
 									</tr>
-									<tr>
+<!-- 									<tr> -->
+<%-- 										<c:if test="${data.filename != null}"> --%>
+<!-- 										<th scope="row"><label for="">이미지</label></th> -->
+<%-- 										<td><img src="/upload/board/news/${data.filename}" width="200px"></td> --%>
+<%-- 										</c:if> --%>
+<!-- 									</tr> -->
+										<tr>
 										<c:if test="${data.filename != null}">
 										<th scope="row"><label for="">이미지</label></th>
 										<td><img src="/upload/board/news/${data.filename}" width="200px"></td>
 										</c:if>
 									</tr>
-<!-- 									<tr> -->
-<!-- 										<th scope="row"><label for="">이미지</label></th> -->
-										
-<%-- 										<a href="/include/file_down.jsp?file_name=${data.filename}"> --%>
-<!-- 										<input type="button" value="파일 다운로드"> -->
-<!-- 										</a> -->
-                                        
-<!-- 									</tr> -->
+								
+ 							
 					
 									<tr>
 									<c:if test="${data.filename != null}">
@@ -70,9 +70,9 @@
 													첨부파일 없음
 													</c:if>
 													<c:if test="${data.filename != null}">
+													<a href="/include/file_down.jsp?path=upload/board/news/&file_name=${data.filename}&file_name_org=${data.filename_org}">
 													
-													<a href="/include/file_down.jsp?file_name=upload\board\news/${data.filename}">
-													<target="_blank">${data.filename}</a><br />
+													<target="_blank">${data.filename_org}</a><br />
 													</c:if>
 												</div>
 										</td>

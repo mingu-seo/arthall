@@ -51,6 +51,9 @@ public class QnaDAO {
 	public int modify(QnaVO param) {
 		return sqlSession.update("qna.modify", param);
 	}
+	public int modifyFile(QnaVO param) {
+		return sqlSession.update("qna.modifyFile", param);
+	}
 	public int delete(int no) {
 		return sqlSession.delete("qna.delete", no);
 	}

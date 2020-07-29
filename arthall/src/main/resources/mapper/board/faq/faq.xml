@@ -35,9 +35,9 @@
 	<!-- 20200724 추가 -->
 	<insert id="write" parameterType="board.faq.FaqVO" useGeneratedKeys="true">
 		INSERT INTO faq
-			(writer, title, content , regdate, moddate, filename)
+			(writer, title, content , regdate, moddate, filename, filename_org)
 		VALUES
-			(#{writer}, #{title}, #{content}, now(), now(), #{filename})
+			(#{writer}, #{title}, #{content}, now(), now(), #{filename}, #{filename_org})
 			 
 		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
 			SELECT last_insert_id()
@@ -46,14 +46,20 @@
 	
 	<select id="view" parameterType="board.faq.FaqVO" resultType="board.faq.FaqVO">
 		SELECT
-			no, writer, title, content, regdate, filename
+			no, writer, title, content, regdate, filename, filename_org
 		FROM faq
 		where no=#{no}
 	</select>
 	
 	<update id="modify" parameterType="board.faq.FaqVO">
 		UPDATE faq SET
-			title = #{title} , content = #{content}, moddate = now(), filename=#{filename}
+			title = #{title} , content = #{content}, moddate = now()
+		WHERE no=#{no}	
+	</update>
+	
+	<update id="modifyFile" parameterType="board.qna.QnaVO">
+		UPDATE faq SET
+			filename=#{filename}, filename_org = #{filename_org}
 		WHERE no=#{no}	
 	</update>
 	

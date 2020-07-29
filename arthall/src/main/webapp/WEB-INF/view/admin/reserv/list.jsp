@@ -25,20 +25,6 @@ $(document).ready(function(){
     })
 })
 
-$(function() {
-	$("#search").change(function() {
-		if ($(this).val() == "reservDate") {
-			$("#searchword1").show();
-			$("#searchword0").hide();
-			
-		} else {
-			$("#searchword0").show();
-			$("#searchword1").hide();
-			
-		}
-	});
-});
-
 </script>
 </head>
 <body> 
@@ -57,8 +43,39 @@ $(function() {
             </div>
             <!-- //con_tit -->
             <div class="con">
+            	<form name="searchForm" id="searchForm" action="list.do"  method="post">
+					
+					<div class="search">
+						<!-- 기간검색 -->
+						예매일자로 검색
+						<span id="searchword1">
+							<input type="date" id="startDate"name="startDate" class="w10" title="시작일을 입력해주세요" 
+								value = ""/>
+								~
+							<input type="date" id="endDate"name="endDate" class="w10" title="종료일을 입력해주세요" 
+								value = ""/>
+						</span>
+						                    	
+                    	<!-- 키워드 -->
+                    	<select name="stype" id="search" title="검색을 선택해주세요">
+                        	<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>
+                            <option value="name" <c:if test="${vo.stype=='name'}">selected</c:if>>예약자명</option>
+                            <option value="playName" <c:if test="${vo.stype=='playName'}">selected</c:if>>공연명</option>
+                            <option value="playDate" <c:if test="${vo.stype=='playDate'}">selected</c:if>>공연일자</option>
+                            <option value="hallNo" <c:if test="${vo.stype=='hallNo'}">selected</c:if>>공연홀</option>
+                        </select>
+                        <span id="searchword0" >
+	                        <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요"/>	
+	                    </span>
+	                 	                    
+						<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색"/>
+                    </div>
+                   
+                </form>
                <!-- 내용 : s -->
+               
                <div id="bbs">
+               
                   <div id="blist">
                      <p><span><strong>총 ${vo.totalCount}개</strong>  |  ${vo.page}/${vo.endPage}페이지</span></p>
                      <form name="frm" id="frm" action="delete.do" method="post">
@@ -100,10 +117,10 @@ $(function() {
                                  <!-- 티켓리스트 페이지로 이동 -->
                                  <td class="title"><a href="ticketlist.do?reservNo=${reserv.no}">${reserv.no}</a></td>
                                  <td>${reserv.name}</td>   
-                                 <td>${reserv.reservDay}</td>
+                                 <td>${reserv.reservDate}</td>
                                  <td>${reserv.playNo}</td>
                                  <td>${reserv.playName}</td>
-                                 <td>${reserv.playDay}</td>
+                                 <td>${reserv.playDate}</td>
                                  <td>${reserv.runtime}</td>
                                  <td class="last">${reserv.hallNo}</td>
                               </tr>
@@ -131,28 +148,7 @@ $(function() {
 						</c:if>
                      </div>
                      <!-- //페이징 처리 -->
-                     <form name="searchForm" id="searchForm" action="list.do"  method="post">
-                        <div class="search">
-                           <select name="stype" id="search"title="검색을 선택해주세요">
-                              <option value="name" <c:if test="${vo.stype=='name'}">selected</c:if>>예약자명</option>
-                              <option value="playName" <c:if test="${vo.stype=='playName'}">selected</c:if>>공연명</option>
-                              <option value="playDay" <c:if test="${vo.stype=='playDay'}">selected</c:if>>공연일자</option>
-                              <option value="hallNo" <c:if test="${vo.stype=='hallNo'}">selected</c:if>>공연홀</option>
-                              <option value="reservDate" >예매기간</option>
-                           </select>
-                           <span id="searchword0" >
-	                           <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요"/>	
-	                       </span>
-                           	<span id="searchword1" style="display:none;">
-								<input type="date" id="startDate"name="startDate" class="w10" title="시작일을 입력해주세요" 
-								value = ""/>
-								~
-								<input type="date" id="endDate"name="endDate" class="w10" title="종료일을 입력해주세요" 
-								value = ""/>
-							</span>
-							<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색"/>
-                        </div>
-                     </form>
+
                      <input type="submit" value="예약 페이지 이동" onclick="move();">
                      <!-- //search --> 
                   </div>
@@ -171,6 +167,8 @@ $(function() {
    <!--//canvas -->
 </div>
 <!--//wrap -->
+
+
 
 </body>
 </html>
