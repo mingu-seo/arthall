@@ -44,16 +44,16 @@ $(document).ready(function(){
             <!-- //con_tit -->
             <div class="con">
             	<form name="searchForm" id="searchForm" action="list.do"  method="post">
-					
+
 					<div class="search">
 						<!-- 기간검색 -->
 						예매일자로 검색
 						<span id="searchword1">
-							<input type="date" id="startDate"name="startDate" class="w10" title="시작일을 입력해주세요" 
-								value = ""/>
+							<input type="date" id="startDate" name="startDate" class="w10" title="시작일을 입력해주세요" 
+								value = "${vo.startDate}"/>
 								~
-							<input type="date" id="endDate"name="endDate" class="w10" title="종료일을 입력해주세요" 
-								value = ""/>
+							<input type="date" id="endDate" name="endDate" class="w10" title="종료일을 입력해주세요" 
+								value = "${vo.endDate}"/>
 						</span>
 						                    	
                     	<!-- 키워드 -->
@@ -138,13 +138,14 @@ $(document).ready(function(){
                      <!-- 페이징 처리 -->
                      <div class='page'>
                         <c:if test="${vo.startPage > 5}">
-							<a href="list.do?page=${vo.startPage-5}">[이전]</a>
+							<a href="list.do?stype=${vo.stype}&sval=${vo.sval}&page=${vo.startPage-5}&startDate=${vo.startDate}&endDate=${vo.endDate}">[이전]</a>
 						</c:if>
+						
 						<c:forEach var="pNo" begin="${vo.startPage}" end="${vo.endPage}">
-							<a href="list.do?page=${pNo}">[${pNo}]</a>
+							<a href="list.do?stype=${vo.stype}&sval=${vo.sval}&page=${pNo}&startDate=${vo.startDate}&endDate=${vo.endDate}">[${pNo}]</a>
 						</c:forEach>
 						<c:if test="${vo.endPage < vo.totalPage}">
-							<a href="list.do?page=${vo.startPage+5}">[다음]</a>
+							<a href="list.do?stype=${vo.stype}&sval=${vo.sval}&page=${vo.startPage+5}&startDate=${vo.startDate}&endDate=${vo.endDate}">[다음]</a>
 						</c:if>
                      </div>
                      <!-- //페이징 처리 -->
