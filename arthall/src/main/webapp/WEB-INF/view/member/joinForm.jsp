@@ -26,32 +26,25 @@
 	}
 
 	$(function() {
-		$('#id')
-				.keyup(
-						function() {
-							if ($('#id').val().trim() != '') {
-								$
-										.ajax({
-											url : 'dupId.do?id='
-													+ $('#id').val(),
-											type : 'html',
-											async : false,
-											success : function(data) {
-												if (data.trim() == 'false') {
-													$("#dupChk")
-															.html(
-																	"<span style=color:red>이미 사용 중인 아이디입니다.</span>");
-												} else {
-													$("#dupChk")
-															.html(
-																	"<span style=color:green>사용 가능한 아이디입니다.</span>");
-												}
-											}
-										});
-							} else {
-								$("#dupChk").html("아이디를 입력해 주세요");
+		$('#id').keyup(function() {
+			if ($('#id').val().trim() != '') {
+				$
+						.ajax({
+							url : 'dupId.do?id='+ $('#id').val(),
+							type : 'html',
+							async : false,
+							success : function(data) {
+								if (data.trim() == 'false') {
+									$("#dupChk").html("<span style=color:red>이미 사용 중인 아이디입니다.</span>");
+								} else {
+									$("#dupChk").html("<span style=color:green>사용 가능한 아이디입니다.</span>");
+								}
 							}
-						}).click(empty);
+						});
+			} else {
+				$("#dupChk").html("아이디를 입력해 주세요");
+			}
+		}).click(empty);
 
 		$("input:not(#id)").keyup(empty).click(empty);
 

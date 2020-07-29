@@ -6,66 +6,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 
-$(function() {
-	$('textarea[name=content]').keyup(function(){
-		var count = $(this).val().length;
-		$('#clen').text(count)
-	})
-	$('#cbtn').click(function(){
-		var data = $("#frm").serialize();
-		$.ajax({
-			url:'comment.do',
-			method:'post',
-			async:true,
-			data:data,
-			success : function(data) {
-				if (data.trim() == 'true') {
-					$('textarea[name=content]').val('');
-					listComment();
-				} else {
-				}
-			},
-			error:function() {
-				alert("서버 장애");
-			}
-	    
-		});
-		
-	 
-	});
-	
-});
-function listComment() {
-	$.ajax({
-		url:"commentList.do?no=${data.no}",
-		cache: false,
-		async:true,
-		dataType:'HTML',
-		success : function(data) {
-			var cmts = data.trim();
-			$('#cbox').html(cmts);
-			
-		}
-    
-	});
-}
-function delComment(no) {
-	$.ajax({
-		url:'deleteComment.do',
-		method:'post',
-		async:true,
-		data:{no:no},
-		success : function(data) {
-			if (data.trim() == "true") {
-				listComment();
-			} else {
-				alert("서버 장애");
-			}
-		}
-    
-	});
-}
+
 </script>
+	<%@ include file="/WEB-INF/view/include/comment.jsp"%>
 </head>
 <body>
 	<div id="wrap">
@@ -169,7 +112,8 @@ function delComment(no) {
 								</form>											
 								</table>
 								<div class="cbox" id="cbox">
-									<ul>
+									<!-- 
+									 <ul>
 										<c:forEach var="comment" items="${list}">
 											<li>
 												<div style="font-size:7px; color:grey; margin:5px">
@@ -191,6 +135,7 @@ function delComment(no) {
 											</li>
 										</c:forEach>
 									</ul>
+									 -->
 								</div>
 								<div class="btn">
 									<div class="btnLeft">
