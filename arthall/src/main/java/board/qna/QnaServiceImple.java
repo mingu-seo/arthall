@@ -1,4 +1,4 @@
-package board.qna;
+	package board.qna;
 
 import java.util.List;
 
@@ -50,9 +50,9 @@ public class QnaServiceImple implements QnaService {
 
 	@Override
 	public String write(HttpServletRequest req, QnaVO param, MultipartFile file) {
-		HttpSession sess = req.getSession();
+		/*HttpSession sess = req.getSession();
 		AdminVO sessVo = (AdminVO)sess.getAttribute("authAdmin");
-		param.setWriter(sessVo.getId());
+		param.setWriter(sessVo.getId());*/
 		int gno = 0;
 
 		// 파일 저장

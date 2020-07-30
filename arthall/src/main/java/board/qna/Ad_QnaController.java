@@ -3,6 +3,7 @@ package board.qna;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import board.faq.FaqVO;
+import admin.AdminVO;
 
 @Controller
 public class Ad_QnaController {
@@ -38,6 +39,10 @@ public class Ad_QnaController {
 	
 	@RequestMapping("/admin/board/qna/write.do")
 	public String write(HttpServletRequest req, QnaVO param, @RequestParam("filename_tmp") MultipartFile file) {	
+		// 임시로 해주는부분입니다.
+		HttpSession sess = req.getSession();
+		AdminVO sessVo = (AdminVO)sess.getAttribute("authAdmin");
+		param.setWriter(sessVo.getId());
 		String pageName = qnaService.write(req, param, file);
 		
 		return pageName;
