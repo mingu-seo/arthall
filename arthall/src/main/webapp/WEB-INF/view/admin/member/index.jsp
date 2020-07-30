@@ -147,7 +147,6 @@ function ban() {
 										<th scope="col">계정상태</th>
 										<th scope="col">가입일</th>
 										<th scope="col">마지막 방문</th>
-										<th scope="col">계정상태</th>
 									</tr>
 								</thead>
 								<tbody>

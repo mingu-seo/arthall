@@ -145,5 +145,6 @@ public class MemberVO extends Parameter{
 	public void setBanSelect(String banSelect) {
 		this.banSelect = banSelect;
 	}
+}
 
 	
