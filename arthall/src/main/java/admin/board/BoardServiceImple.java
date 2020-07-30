@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import admin.AdminVO;
+import comment.CommentVO;
 
 @Service
 public class BoardServiceImple implements BoardService {
@@ -119,30 +120,30 @@ public class BoardServiceImple implements BoardService {
 		return pageName;
 	}
 
-	@Override
-	public List<CommentVO> commentList(BoardVO param) {
-		
-		List<CommentVO> list = boardDao.commentList(param);
-		
-		return list;
-	}
-
-	@Override
-	public int comment(HttpServletRequest req, CommentVO param) {
-		
-		HttpSession sess = req.getSession();
-		AdminVO adminVO = (AdminVO)sess.getAttribute("authAdmin");
-		param.setWriter(adminVO.getId());
-		
-		
-		return boardDao.comment(param);
-	}
-
-	@Override
-	public int deleteComment(CommentVO param) {
-		return boardDao.deleteComment(param);
-	}
-	
-	
+//	@Override
+//	public List<CommentVO> commentList(BoardVO param) {
+//		
+//		List<CommentVO> list = boardDao.commentList(param);
+//		
+//		return list;
+//	}
+//
+//	@Override
+//	public int comment(HttpServletRequest req, CommentVO param) {
+//		
+//		HttpSession sess = req.getSession();
+//		AdminVO adminVO = (AdminVO)sess.getAttribute("authAdmin");
+//		param.setWriter(adminVO.getId());
+//		
+//		
+//		return boardDao.comment(param);
+//	}
+//
+//	@Override
+//	public int deleteComment(CommentVO param) {
+//		return boardDao.deleteComment(param);
+//	}
+//	
+//	
 
 }

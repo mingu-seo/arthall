@@ -6,66 +6,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 
-$(function() {
-	$('textarea[name=content]').keyup(function(){
-		var count = $(this).val().length;
-		$('#clen').text(count)
-	})
-	$('#cbtn').click(function(){
-		var data = $("#frm").serialize();
-		$.ajax({
-			url:'comment.do',
-			method:'post',
-			async:true,
-			data:data,
-			success : function(data) {
-				if (data.trim() == 'true') {
-					$('textarea[name=content]').val('');
-					listComment();
-				} else {
-				}
-			},
-			error:function() {
-				alert("서버 장애");
-			}
-	    
-		});
-		
-	 
-	});
-	
-});
-function listComment() {
-	$.ajax({
-		url:"commentList.do?no=${data.no}",
-		cache: false,
-		async:true,
-		dataType:'HTML',
-		success : function(data) {
-			var cmts = data.trim();
-			$('#cbox').html(cmts);
-			
-		}
-    
-	});
-}
-function delComment(no) {
-	$.ajax({
-		url:'deleteComment.do',
-		method:'post',
-		async:true,
-		data:{no:no},
-		success : function(data) {
-			if (data.trim() == "true") {
-				listComment();
-			} else {
-				alert("서버 장애");
-			}
-		}
-    
-	});
-}
+
 </script>
+	<%@ include file="/WEB-INF/view/include/comment.jsp"%>
 </head>
 <body>
 	<div id="wrap">
@@ -131,66 +74,9 @@ function delComment(no) {
 										</tr>
 									</tbody>
 								</table>
-								<table style="border:0px">
-								<form method="post" name="frm" id="frm">
-								<input type="hidden" name="post_no" value="${data.no}">
-								<input type="hidden" name="table_name" value="board">
-										<tr>
-										
-											<td colspan=10 style="font-size:20px; font-weight: bold;">
-												댓글
-											</td>
-										</tr>											
-										<tr>
-											<td style="padding:20px"> 
-													<textarea   id="content" name="content" rows="5" cols="10" style="width:100%;"></textarea>
-												
-										        
-										    </td>
-										    <td style="width:8%;">
-													<button id = 'cbtn' style = "height:80px; width:80px; margin:10px; text-align: center;" type="button"><strong>등록</strong>	</button>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div style="float: right; font-size:10px">
-													<span id='clen'>
-													0
-													</span>
-													/ 
-													<span >
-													300
-													</span>
-												</div>
-											</td>
-											<td>
-											</td>
-										</tr>
-								</form>											
-								</table>
+								
 								<div class="cbox" id="cbox">
-									<ul>
-										<c:forEach var="comment" items="${list}">
-											<li>
-												<div style="font-size:7px; color:grey; margin:5px">
-													<span>
-														${comment.writer}&nbsp;
-													</span>
-													<span>
-														${comment.regdate}
-													</span>
-													<span>
-														<a class="btns cdelete" href="javascript:delComment(${comment.no});"><strong>삭제</strong></a>
-													</span>
-												</div>
-												<div style="margin:5px; padding-bottom:20px;">
-													<p>
-														${comment.content}
-													</p>
-												</div>
-											</li>
-										</c:forEach>
-									</ul>
+									
 								</div>
 								<div class="btn">
 									<div class="btnLeft">

@@ -1,8 +1,5 @@
 package member;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +34,9 @@ public class MemberServiceImple implements MemberService{
 		param.setEndPage(endPage);
 		param.setTotalCount(totalCount);
 		param.setTotalPage(totalPage);
+		
+		System.out.println("++++++++++선택값 : "+param.getBanSelect());
+		
 		List<MemberVO> list = memberDao.list(param);
 		
 		return list;
@@ -44,29 +44,30 @@ public class MemberServiceImple implements MemberService{
 	
 	
 	@Override
-	public String regist(MemberVO param, HttpServletRequest req) {
+	public String join(MemberVO param, HttpServletRequest req) {
+		int numJoin = 0;
 		
-		int dupliCheck = 0;
-		MemberVO vo = memberDao.selectOne(param.getId());
-		
-		// 중복 시 -1 리턴
-		if (vo != null) {
-			dupliCheck = -1;
-		} else {
-			System.out.println("서비스값 : " + param.getTel());
-			dupliCheck = memberDao.insert(param);
+		MemberVO vo = memberDao.dupId(param);
+		if(vo == null) {
+			numJoin = memberDao.join(param);
 		}
-		
 		String pageName = "";
-		if (dupliCheck < 0) {
-			req.setAttribute("isDup", "true");
-			pageName = "admin/member/joinForm";
-		} else if (dupliCheck == 0) {
-			pageName = "admin/member/joinForm";
-		} else {
-			pageName = "redirect:joinSuccess.do?name="+param.getName();
+		if(numJoin != 0) {
+			req.setAttribute("msg", "회원가입 실패");
+			req.setAttribute("url", "index.do");
+			pageName = "common/alert";
 		}
 		return pageName;
+	}
+	
+	@Override
+	public String dupId(HttpServletRequest req, MemberVO param) {
+		MemberVO vo = memberDao.dupId(param);
+		String r = "true";
+		if (vo != null) {
+			r = "false";
+		}
+		return r;
 	}
 
 	@Override
@@ -106,7 +107,7 @@ public class MemberServiceImple implements MemberService{
 	public String banMem(String[] chk, MemberVO param) {
 		
 		for (int i = 0; i < chk.length; i++) {
-			param.setNo(chk[i]);
+			param.setBanMem(chk[i]);
 			memberDao.banMem(param);
 		}
 		

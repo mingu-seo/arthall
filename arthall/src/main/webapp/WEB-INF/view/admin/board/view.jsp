@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<%@ include file="/WEB-INF/view/include/comment.jsp"%>
 </head>
 <body> 
 <div id="wrap">
@@ -56,6 +57,8 @@
 									</tr>
 								</tbody>
 							</table>
+							<div class="cbox" id="cbox">
+							</div>
 							<div class="btn">
 								<div class="btnLeft">
 									<a class="btns" href="list.do"><strong>목록</strong></a>

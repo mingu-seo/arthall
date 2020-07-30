@@ -54,6 +54,7 @@ public class Ad_QnaController {
 		QnaVO data = qnaService.view(a, 2);
 		
 		//model.addAttribute("vo", param);
+		model.addAttribute("table_name", "qna");
 		model.addAttribute("data", data);
 		
 		return "admin/board/qna/view";

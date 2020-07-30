@@ -17,21 +17,19 @@ public class Ad_MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping("admin/member/index.do")
+	@RequestMapping("/admin/member/index.do")
 	public String list(Model model, HttpServletRequest req, MemberVO param) {
 		List<MemberVO> list = memberService.list(param);
 		
 		model.addAttribute("vo", param);
 		model.addAttribute("list", list);
+		param.setBanSelect(req.getParameter("banSelect"));
+		param.setStype(req.getParameter("stype"));
+		param.setSval(req.getParameter("sval"));
 		
 		return "admin/member/index";
 	}
-	
-	@RequestMapping("admin/include/searchBox.do")
-	public String searchBox() {
-	
-		return "admin/include/searchBox";
-	}
+
 	
 	@RequestMapping("/admin/member/banMem.do")
 	public String view(Model model, @RequestParam("chk") String[] chk, MemberVO param) {
