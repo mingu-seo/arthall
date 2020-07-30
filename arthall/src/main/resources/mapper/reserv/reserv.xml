@@ -5,12 +5,46 @@
 	<select id="count" parameterType="reserv.ReservVO" resultType="Integer"> 
 		SELECT COUNT(*) FROM reserv
 			<where>
-				<!-- 홀 뭔가 안어울린다 정준아 -->
-				<if test="stype != 'all' and sval != null and sval !=''" >
-				 	${stype} like '%${sval}%'
+			<!-- 날짜x, 검색어 o,x -->
+				<if test="startDate == null or startDate == '' or endDate == null or endDate == ''">
+					<!-- 홀 뭔가 안어울린다 정준아 -->
+					<!-- 여기는 검색어가 특정 분야만 선택할때 -->
+					<if test="stype != 'all' and sval != null and sval !=''" >
+					 	${stype} like '%${sval}%'
+					</if>
+					<!-- 여기는 검색어가 전체일때 -->
+					<if test="stype == 'all' and sval != null and sval !=''" >
+					 	name like '%${sval}%' OR playName like '%${sval}%' OR hallNo like '%${sval}%'
+					</if>
 				</if>
-				<if test="stype == 'all' and sval != null and sval !=''" >
-				 	name like '%${sval}%' OR playName like '%${sval}%' OR hallNo like '%${sval}%'
+				
+				<!-- 날짜o, 검색어 o,x -->
+				<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+					<!-- 검색어 없을때 -->
+					<if test="stype == 'all' and (sval == null or sval =='') " >
+					 	reservDate BETWEEN #{startDate} AND #{endDate}
+					 	
+					</if>
+					
+					<!-- stype:all, sval:o -->
+					<!-- stype all인 경우에 검색어가  확실히 있다~~~~ -->
+					<if test="stype == 'all' and (sval != null and sval !='') ">
+						(name like '%${sval}%' OR playName like '%${sval}%' OR hallNo LIKE '%${sval}%') AND
+						reservDate in 
+						(SELECT distinct reservDate 
+						FROM reserv WHERE reservDate 
+						BETWEEN #{startDate} AND #{endDate})
+					</if>
+					
+					<!-- stype!=all, sval: o -->
+					<!-- stype all이 아닌 경우에  경우에 검색어가  확실히 있다~~~~ -->
+					<if test="stype != 'all' and sval != null and sval !=''">
+						(${stype} like '%${sval}%') AND
+						reservDate in 
+						(SELECT distinct reservDate 
+						FROM reserv WHERE reservDate 
+						BETWEEN #{startDate} AND #{endDate})
+					</if>
 				</if>
 			</where>
 	</select>
@@ -18,13 +52,46 @@
 	<select id="list" parameterType="reserv.ReservVO" resultType="reserv.ReservVO">
 		SELECT * FROM reserv
 		<where>
-		<!-- 홀 뭔가 안어울린다 정준아 -->
-			<if test="stype != 'all' and sval != null and sval !=''" >
-				 ${stype} like '%${sval}%'
-			</if>
-			<if test="stype == 'all' and sval != null and sval !=''" >
-			 	name like '%${sval}%' OR playName like '%${sval}%' OR hallNo like '%${sval}%'
-			</if>
+		<!-- 날짜x, 검색어 o,x -->
+				<if test="startDate == null or startDate == '' or endDate == null or endDate == ''">
+					<!-- 홀 뭔가 안어울린다 정준아 -->
+					<!-- 여기는 검색어가 특정 분야만 선택할때 -->
+					<if test="stype != 'all' and sval != null and sval !=''" >
+					 	${stype} like '%${sval}%'
+					</if>
+					<!-- 여기는 검색어가 전체일때 -->
+					<if test="stype == 'all' and sval != null and sval !=''" >
+					 	name like '%${sval}%' OR playName like '%${sval}%' OR hallNo like '%${sval}%'
+					</if>
+				</if>
+				
+				<!-- 날짜o, 검색어 o,x -->
+				<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+					<!-- 검색어 없을때 -->
+					<if test="stype == 'all' and (sval == null or sval =='') " >
+					 	reservDate BETWEEN #{startDate} AND #{endDate}
+					</if>
+					
+					<!-- stype:all, sval:o -->
+					<!-- stype all인 경우에 검색어가  확실히 있다~~~~ -->
+					<if test="stype == 'all' and (sval != null and sval !='') ">
+						(name like '%${sval}%' OR playName like '%${sval}%' OR hallNo LIKE '%${sval}%') AND
+						reservDate in 
+						(SELECT distinct reservDate 
+						FROM reserv WHERE reservDate 
+						BETWEEN #{startDate} AND #{endDate})
+					</if>
+					
+					<!-- stype!=all, sval: o -->
+					<!-- stype all이 아닌 경우에  경우에 검색어가  확실히 있다~~~~ -->
+					<if test="stype != 'all' and sval != null and sval !=''">
+						(${stype} like '%${sval}%') AND
+						reservDate in 
+						(SELECT distinct reservDate 
+						FROM reserv WHERE reservDate 
+						BETWEEN #{startDate} AND #{endDate})
+					</if>
+				</if>
 		</where>
 		ORDER BY reservDate desc
 		LIMIT #{startRow},#{size}

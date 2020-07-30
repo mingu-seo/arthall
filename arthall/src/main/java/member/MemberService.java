@@ -18,10 +18,14 @@ public interface MemberService {
 	public MemberVO memberdetail(MemberVO param);
 	    
 	//사용자
-	public String regist(MemberVO param, HttpServletRequest req);
+	public String join( MemberVO param, HttpServletRequest req);
+	
+	public String dupId(HttpServletRequest req, MemberVO param);
 	
 	public String login(HttpServletRequest req, String id, String password);
 	
 	public String changePwd(HttpServletRequest req, String id, String password);
+
+	
 
 }

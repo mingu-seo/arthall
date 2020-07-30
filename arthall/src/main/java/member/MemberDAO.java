@@ -25,21 +25,20 @@ public class MemberDAO {
 	
 	// 회원목록 조회
 	public List<MemberVO> list(MemberVO param) {
-		
 		return sqlSession.selectList("member.list", param);
 	}
 	
 	// 2. 사용자페이지
 	// 회원가입_아이디 중복 확인
-	public MemberVO selectOne(String id) {
-		MemberVO vo = sqlSession.selectOne("member.selectOne", id);
+	public MemberVO dupId(MemberVO param) {
+		MemberVO vo = sqlSession.selectOne("member.dupId", param);
 		return vo;
 	}
 	
 	// 회원가입_DB등록
-	public int insert(MemberVO param) {
+	public int join(MemberVO param) {
 
-		return sqlSession.insert("member.insert", param);
+		return sqlSession.insert("member.join", param);
 	}
 
 	// 로그인
@@ -76,7 +75,5 @@ public class MemberDAO {
 		return sqlSession.selectOne("member.memberdetail", param);
 	}
 	
-
-
 	
 }
