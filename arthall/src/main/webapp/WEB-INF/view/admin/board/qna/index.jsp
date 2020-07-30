@@ -6,20 +6,19 @@
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp"%>
 <script>
 	function del() {
-	   if (confirm('정말로 삭제하시겠습니까?')) {
-		   $("#frm").submit();
-	   }
-	   else{
-		   return;
-	   }
+		if (confirm('정말로 삭제하시겠습니까?')) {
+			$("#frm").submit();
+		} else {
+			return;
+		}
 	}
 	// 체크박스 클래스num을추가
-	function check(){
-        if ($("#allChk").is(":checked"))
-            $(".num").prop("checked", true);
-        else
-            $(".num").prop("checked", false);
-    }
+	function check() {
+		if ($("#allChk").is(":checked"))
+			$(".num").prop("checked", true);
+		else
+			$(".num").prop("checked", false);
+	}
 </script>
 
 
@@ -45,7 +44,8 @@
 						<div id="bbs">
 							<div id="blist">
 								<p>
-									<span><strong>총 ${vo.totalCount} 개</strong> | ${vo.page}/${vo.totalPage}페이지</span>
+									<span><strong>총 ${vo.totalCount} 개</strong> |
+										${vo.page}/${vo.totalPage}페이지</span>
 								</p>
 								<form name="frm" id="frm" action="delete.do" method="post">
 									<table width="100%" border="0" cellspacing="0" cellpadding="0"
@@ -83,20 +83,16 @@
 												<tbody>
 													<tr>
 														<td class="first"><input type="checkbox" name="num"
-															id="num" value="${qna.no}"  class="num"  /></td>
+															id="num" value="${qna.no}" class="num" /></td>
 														<td>${qna.no }</td>
-														
-														<td class="title">
-														<c:forEach begin="1" end="${qna.nested }">
+
+														<td class="title"><c:forEach begin="1"
+																end="${qna.nested }">
 															-
-														</c:forEach>
-														<c:if test="${qna.nested != 0 }"> &gt; </c:if>
-														<a
+														</c:forEach> <c:if test="${qna.nested != 0 }"> &gt; </c:if> <a
 															href="view.do?no=${qna.no}&page=${qna.page}"> <c:out
 																	value="${qna.title}" />
-														</a>
-														
-														</td>
+														</a></td>
 														<td>${qna.moddate }</td>
 														<td>${qna.writer }</td>
 														<td>${qna.readcnt }</td>
@@ -111,7 +107,8 @@
 								</form>
 								<div class="btn">
 									<div class="btnLeft">
-										<a class="btns" href="#" onclick="del();"><strong>삭제</strong> </a>
+										<a class="btns" href="#" onclick="del();"><strong>삭제</strong>
+										</a>
 									</div>
 									<div class="btnRight">
 										<a class="wbtn" href="writeForm.do"><strong>등록</strong> </a>
@@ -125,7 +122,8 @@
 									</c:if>
 									<c:forEach var="pNo" begin="${vo.startPage}"
 										end="${vo.endPage}">
-										<a href="index.do?page=${pNo}&sval=${vo.sval}&stype=${vo.stype}">${pNo}</a>
+										<a
+											href="index.do?page=${pNo}&sval=${vo.sval}&stype=${vo.stype}">${pNo}</a>
 									</c:forEach>
 									<c:if test="${vo.endPage < vo.totalPage}">
 										<a href="index.do?page=${vo.startPage+5}">[다음]</a>
@@ -134,16 +132,19 @@
 								</div>
 
 								<!-- //페이징 처리 -->
-								<form name="searchForm" id="searchForm" action="index.do" method="post">
+								<form name="searchForm" id="searchForm" action="index.do"
+									method="post">
 									<div class="search">
 										<select name="stype" title="검색을 선택해주세요">
-											<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>
-											<option value="title" <c:if test="${vo.stype=='title'}">selected</c:if>>제목</option>
-											<option value="content" <c:if test="${vo.stype=='content'}">selected</c:if>>내용</option>
-										</select> 
-										
-										<input type="text" name="sval" value="${vo.sval }"	title="검색할 내용을 입력해주세요" /> 
-										<input type="image"	src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
+											<option value="all"
+												<c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>
+											<option value="title"
+												<c:if test="${vo.stype=='title'}">selected</c:if>>제목</option>
+											<option value="content"
+												<c:if test="${vo.stype=='content'}">selected</c:if>>내용</option>
+										</select> <input type="text" name="sval" value="${vo.sval }"
+											title="검색할 내용을 입력해주세요" /> <input type="image"
+											src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
 											class="sbtn" alt="검색" />
 									</div>
 								</form>
