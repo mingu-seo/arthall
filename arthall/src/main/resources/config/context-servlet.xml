@@ -28,10 +28,10 @@
  	</mvc:view-resolvers>
  	
  	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
- 		<property name="driverClassName" value="org.mariadb.jdbc.Driver"/> 
- 		<property name="url" value="jdbc:mariadb://jonggak2020.cafe24.com/jonggak2020"/> 
- 		<property name="username" value="jonggak2020"/> 
- 		<property name="password" value="jonggak2021"/> 
+ 		<property value="org.mariadb.jdbc.Driver" name="driverClassName"/>
+		<property value="jdbc:mariadb://http://jonggak2020.cafe24.com/jonggak2020" name="url"/>
+		<property value="jonggak2020" name="username"/>
+		<property value="jonggak2021" name="password"/> 
  	</bean>
  	
  	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
