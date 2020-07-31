@@ -17,7 +17,9 @@
 		(TABLE_NAME, post_no, writer, content, regdate)
 		VALUES
 		(#{table_name}, #{post_no}, #{writer}, #{content}, now())
-		
-			
 	</insert>
+	<select id="count" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM comment
+		WHERE post_no = #{post_no}
+	</select>
 </mapper>

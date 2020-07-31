@@ -27,8 +27,8 @@ public class CommentController {
 	
 	@RequestMapping("/comment/commentList.do")
 	public String commentList(Model model, HttpServletRequest req, CommentVO param) {
-		
-		
+	
+			
 		List<CommentVO> list = commentService.commentList(param);
 		
 		model.addAttribute("list", list);
@@ -57,5 +57,6 @@ public class CommentController {
 		out.print("true");
 		out.flush();
 		
-	}
+	}	
+	
 }

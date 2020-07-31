@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import admin.AdminVO;
+import admin.board.BoardVO;
 
 @Service
 public class CommentServiceImple implements CommentService {
@@ -39,6 +40,12 @@ public class CommentServiceImple implements CommentService {
 	@Override
 	public int deleteComment(CommentVO param) {
 		return commentDAO.deleteComment(param);
+	}
+
+	@Override
+	public int count(int post_no) {
+		System.out.println(post_no);
+		return commentDAO.count(post_no);
 	}
 	
 	

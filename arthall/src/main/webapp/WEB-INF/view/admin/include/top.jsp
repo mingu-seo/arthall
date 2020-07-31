@@ -63,6 +63,7 @@ $(window).load(function(){
 			<ul>
 				<li class="frist"><a href="<%=request.getContextPath()%>/admin" onclick="">Home</a></li>
 				<li><a href="<%=request.getContextPath()%>/admin/logout.do">LogOut</a></li>
+				<li><a href="<%=request.getContextPath()%>/">회원페이지</a></li>
 			</ul>
 		</div>
 		<!-- util : e --> 
