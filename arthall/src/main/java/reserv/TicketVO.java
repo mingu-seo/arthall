@@ -5,7 +5,7 @@ public class TicketVO {
 	private String no;
 	private String reservNo;
 	private String seatType;
-	private int price; //
+	private int price;
 	
 	
 	public String getNo() {
