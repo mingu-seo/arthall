@@ -21,7 +21,6 @@ public class PlayVO extends util.Parameter{
 	
 	private Timestamp regdate;
 	private Timestamp moddate;
-	private String fileName;
 	
 	public PlayVO(){
 		super.setPage(1);
@@ -154,14 +153,6 @@ public class PlayVO extends util.Parameter{
 
 	public void setModdate(Timestamp moddate) {
 		this.moddate = moddate;
-	}
-
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
 	}
 
 	public int getPlayType() {

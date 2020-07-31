@@ -87,6 +87,9 @@
 														<td class="title"><a
 															href="view.do?no=${faq.no}&page=${vo.page}"> <c:out
 																	value="${faq.title}" />
+														<c:if test="${faq.cmtNum != 0}">
+															<c:out value="[${faq.cmtNum}]"/>
+														</c:if>
 														</a></td>
 														<td>${faq.moddate }</td>
 														<td>${faq.writer }</td>

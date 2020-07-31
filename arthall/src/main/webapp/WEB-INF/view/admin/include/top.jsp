@@ -63,6 +63,7 @@ $(window).load(function(){
 			<ul>
 				<li class="frist"><a href="<%=request.getContextPath()%>/admin" onclick="">Home</a></li>
 				<li><a href="<%=request.getContextPath()%>/admin/logout.do">LogOut</a></li>
+				<li><a href="<%=request.getContextPath()%>/">회원페이지</a></li>
 			</ul>
 		</div>
 		<!-- util : e --> 
@@ -82,6 +83,7 @@ $(window).load(function(){
 						<li><a href="<%=request.getContextPath()%>/admin/board/news/list.do"><span>뉴스</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/board/faq/index.do"><span>FAQ</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/board/qna/index.do"><span>Q&A</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/gallery/list.do"><span>갤러리</span></a></li>
 						
 					</ul>
 					</div>

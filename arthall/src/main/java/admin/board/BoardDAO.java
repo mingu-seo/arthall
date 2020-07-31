@@ -33,21 +33,21 @@ public class BoardDAO {
 	public int delete(int no) {
 		return sqlSession.delete("admin.board.delete", no);
 	}
-	public int deleteComment(CommentVO param) {
-		return sqlSession.delete("admin.board.deleteComment", param);
-	}
 	public int reply(BoardVO param) {
 		sqlSession.update("admin.board.updateOrderNo", param);
 		return sqlSession.insert("admin.board.reply", param);
 	}
 	
-	public List<CommentVO> commentList(BoardVO param) {
-		return sqlSession.selectList("admin.board.commentList", param);
-	}
-	
-	public int comment(CommentVO param) {
-		return sqlSession.insert("admin.board.comment", param);
-	}
+//	public int deleteComment(CommentVO param) {
+//		return sqlSession.delete("admin.board.deleteComment", param);
+//	}
+//	public List<CommentVO> commentList(BoardVO param) {
+//		return sqlSession.selectList("admin.board.commentList", param);
+//	}
+//	
+//	public int comment(CommentVO param) {
+//		return sqlSession.insert("admin.board.comment", param);
+//	}
 
 	
 	

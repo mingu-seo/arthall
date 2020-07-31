@@ -1,8 +1,5 @@
 package member;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +34,9 @@ public class MemberServiceImple implements MemberService{
 		param.setEndPage(endPage);
 		param.setTotalCount(totalCount);
 		param.setTotalPage(totalPage);
+		
+		System.out.println("++++++++++선택값 : "+param.getBanSelect());
+		
 		List<MemberVO> list = memberDao.list(param);
 		
 		return list;
@@ -107,7 +107,7 @@ public class MemberServiceImple implements MemberService{
 	public String banMem(String[] chk, MemberVO param) {
 		
 		for (int i = 0; i < chk.length; i++) {
-			param.setNo(chk[i]);
+			param.setBanMem(chk[i]);
 			memberDao.banMem(param);
 		}
 		

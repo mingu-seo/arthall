@@ -8,42 +8,24 @@
 $(function() {
 	$("#playType").change(function() {
 		if ($(this).val() == "0") {
-			$("#priceTr1").show();
-			$("#priceTr2").hide();
-			$("#priceTr2").remove();
+			$("#priceTr0").show();
+			$("#priceTr1").hide();
 			
 		} else {
-			$("#priceTr2").show();
-			$("#priceTr1").hide();
-			$("#priceTr1").remove();
+			$("#priceTr1").show();
+			$("#priceTr0").hide();
 			
 		}
 	});
 });
 	
-/*
-function priceChange(){
-
-	var playType = $("#playType").val();
-	
-	if (playType == 1){
-		$("#exhPrice").hide();
-	}else if(playType == 2){
-		$("#priceA").hide();
+function checkType(){
+	if ($("#playType").val() == "0") {
+		$("#priceTr1").remove();
+	} else if ($("#playType").val() == "1") {
+		$("#priceTr0").remove();
 	}
 }
-*/
-/*
-	$(function() {
-		var playType = $("#playType").val();
-		if(playType == 1){
-			$("#exhPrice").hide();
-		}else if (playType == 2){
-			$("#priceA").hide();
-		}
-		console.log(playType);
-	});
-*/
 </script>
 </head>
 <body> 
@@ -127,7 +109,7 @@ function priceChange(){
 											</SELECT>
 										</td>
 									</tr>
-									<tr id="priceTr1">
+									<tr id="priceTr0">
 									<!-- '가격' 한 줄로 추가해서 콤보박스(공연/전시), 공연이면 세개 전시면 회색처리 -->
 										<th scope="row"><label for="">*가격(공연)</label></th>
 										<td colspan="10">
@@ -137,7 +119,7 @@ function priceChange(){
 											<input type="hidden" id="playType" name="playType" value="0" />
 										</td>
 									</tr>
-									<tr id="priceTr2" style="display:none;">
+									<tr id="priceTr1" style="display:none;">
 									<!-- '가격' 한 줄로 추가해서 콤보박스(공연/전시), 공연이면 세개 전시면 회색처리 -->
 										<th scope="row"><label for="">*가격(전시회)</label></th>
 										<td colspan="10">
@@ -148,6 +130,9 @@ function priceChange(){
 									<tr>
 										<th scope="row"><label for="">첨부파일</label></th>
 										<td colspan="10">
+											<c:if test="${!empty vo.filename}">
+												<td><img src='/upload/play/${vo.filename}'/></td>
+											</c:if>
 											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요." value=''/>	
 										</td>
 									</tr>
@@ -160,7 +145,7 @@ function priceChange(){
 									<a class="btns" href="list.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
-									<a class="btns" style="cursor:pointer;" href="javascript:$('#frm').submit();"><strong>저장</strong></a>
+									<a class="btns" style="cursor:pointer;" onclick="checkType();" href="javascript:$('#frm').submit();"><strong>저장</strong></a>
 								</div>
 							</div>
 							</form>

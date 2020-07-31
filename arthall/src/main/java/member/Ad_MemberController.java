@@ -23,15 +23,13 @@ public class Ad_MemberController {
 		
 		model.addAttribute("vo", param);
 		model.addAttribute("list", list);
+		param.setBanSelect(req.getParameter("banSelect"));
+		param.setStype(req.getParameter("stype"));
+		param.setSval(req.getParameter("sval"));
 		
 		return "admin/member/index";
 	}
-	
-	@RequestMapping("admin/include/searchBox.do")
-	public String searchBox() {
-	
-		return "admin/include/searchBox";
-	}
+
 	
 	@RequestMapping("/admin/member/banMem.do")
 	public String view(Model model, @RequestParam("chk") String[] chk, MemberVO param) {

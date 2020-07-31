@@ -119,24 +119,25 @@ ENGINE=InnoDB
 ;
 
 ```
-board/notice
+board/notice 황동민 20200730 filename_org 추가
 ```
 
 
 CREATE TABLE `notice` (
 	`no` INT(11) NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(50) NULL DEFAULT NULL,
+	`filename_org` VARCHAR(50) NULL DEFAULT NULL,
 	`regDate` TIMESTAMP NULL DEFAULT NULL,
 	`readCnt` INT(11) NULL DEFAULT NULL,
 	`writer` VARCHAR(50) NULL DEFAULT NULL,
 	`filename` VARCHAR(50) NULL DEFAULT NULL,
-	`modDate` VARCHAR(50) NULL DEFAULT NULL,
+	`modDate` TIMESTAMP NULL DEFAULT NULL,
 	`content` TEXT NULL DEFAULT NULL,
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=3
+AUTO_INCREMENT=81
 ;
 
 
@@ -153,6 +154,7 @@ CREATE TABLE `faq` (
 	`readcnt` INT(11) NOT NULL DEFAULT 0,
 	`writer` VARCHAR(50) NOT NULL DEFAULT '0',
 	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`filename_org` VARCHAR(255) NULL DEFAULT NULL,
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
@@ -160,12 +162,13 @@ ENGINE=InnoDB
 AUTO_INCREMENT=1;
 
 ```
-board/news 황동민
+board/news 황동민 20200730 filename_org 추가 
 ```
 CREATE TABLE `news` (
 	`no` INT(11) NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(50) NULL DEFAULT NULL,
 	`content` TEXT NULL DEFAULT NULL,
+	`filename_org` VARCHAR(50) NULL DEFAULT NULL,
 	`regDate` TIMESTAMP NULL DEFAULT NULL,
 	`readCnt` INT(11) NULL DEFAULT NULL,
 	`writer` VARCHAR(50) NULL DEFAULT NULL,
@@ -175,7 +178,9 @@ CREATE TABLE `news` (
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
+AUTO_INCREMENT=22
 ;
+
 ```
 
 board/qna   //오게이 예아 이만철 20200727
@@ -189,6 +194,7 @@ CREATE TABLE `qna` (
 	`moddate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
 	`writer` VARCHAR(50) NOT NULL,
 	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`filename_org` VARCHAR(255) NULL DEFAULT NULL,
 	`gno` INT(11) NOT NULL DEFAULT 0,
 	`ono` INT(11) NOT NULL DEFAULT 0,
 	`nested` INT(11) NOT NULL DEFAULT 0,
@@ -200,15 +206,17 @@ AUTO_INCREMENT=1
 ;
 ```
 
--member 김대영/신근영
+-member 200731_수정 김대영/신근영
 ```
 CREATE TABLE `member` (
 	`no` INT(11) NOT NULL AUTO_INCREMENT,
 	`id` VARCHAR(50) NULL DEFAULT NULL,
 	`password` VARCHAR(50) NULL DEFAULT NULL,
 	`name` VARCHAR(50) NULL DEFAULT NULL,
+	`gender` INT(11) NULL DEFAULT 4 COMMENT '1=남성 / 2=여성 / 3=제3의성  / 4=기재원치않음',
 	`tel` VARCHAR(50) NULL DEFAULT NULL,
 	`email` VARCHAR(50) NULL DEFAULT NULL,
+	`zipCode` VARCHAR(50) NULL DEFAULT NULL,
 	`addr1` VARCHAR(100) NULL DEFAULT NULL,
 	`addr2` VARCHAR(100) NULL DEFAULT NULL,
 	`birth` VARCHAR(50) NULL DEFAULT NULL,
@@ -222,6 +230,7 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 AUTO_INCREMENT=20
 ;
+
 ``` 
 
 예시)
