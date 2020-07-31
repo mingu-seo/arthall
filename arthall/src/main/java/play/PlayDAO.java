@@ -27,4 +27,11 @@ public class PlayDAO {
 	public int delete(PlayVO param) {
 		return sqlSession.delete("play.delete", param);
 	}
+	public int modify(PlayVO param) {
+		return sqlSession.update("play.modify", param);
+	}
+	
+	public PlayVO modifyView(PlayVO param){
+		return sqlSession.selectOne("play.modifyView", param);
+	}
 }

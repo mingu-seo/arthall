@@ -12,6 +12,6 @@ public interface PlayService {
 	public List<PlayVO> list(PlayVO param);
 	public String write(HttpServletRequest req, PlayVO param, MultipartFile file);
 	public String delete(int[] check, PlayVO param);
-	
-	
+	public String modify(HttpServletRequest req, PlayVO param, MultipartFile file);
+	public PlayVO modifyView(PlayVO param);
 }

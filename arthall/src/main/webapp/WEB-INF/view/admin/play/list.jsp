@@ -19,6 +19,9 @@ function del() {
         }
     });
 });
+function modify(){
+	
+}
 </script>
 </head>
 <body> 
@@ -44,14 +47,18 @@ function del() {
                      <form name="frm" id="frm" action="delete.do" method="post">
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
                         <colgroup>
-                           <col class="w7" />
-                           <col class="w10" />
                            <col class="" />
-                           <col class="w16" />
-                           <col class="w12" />
-                           <col class="w16" />
-                           <col class="w20" />
-                           <col class="w12" />
+                           <col class="w7" />
+                           <col class="w5" />
+                           <col class="w5" />
+                           <col class="w8" />
+                           <col class="w8" />
+                           <col class="w7" />
+                           <col class="w7" />
+                           <col class="w7" />
+                           <col class="w7" />
+                           <col class="w7" />
+                           <col class="w7" />
                            <col class="w7" />
                            <col class="w7" />
                         </colgroup>
@@ -66,7 +73,8 @@ function del() {
                               <th scope="col" rowspan="2">출연진</th> 
                               <th scope="col" rowspan="2">공연내용</th>
                               <th scope="col" colspan="3">가격(공연)</th>
-                              <th scope="col" class="last" rowspan="2">가격(전시회)</th>
+                              <th scope="col" rowspan="2">가격(전시)</th>
+                              <th scope="col" class="last" rowspan="2">첨부파일</th>
                            </tr>
                            <tr>
                            	  <th scope="col">시작일</th> 
@@ -85,7 +93,7 @@ function del() {
                            </c:if>
                            <c:if test="${vo.totalCount > 0}">
                               <c:forEach var="play" items="${list}">
-                              <tr>
+                              <tr id="tr" onclick="location.href='modifyForm.do?no=${play.no}'">
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${play.no}"/></td>
                                  <td class="title">${play.no}</td>
                                  <td>${play.playName}</td>
@@ -99,7 +107,7 @@ function del() {
                                  <td>${play.priceB}</td>
                                  <td>${play.priceC}</td>
                                  <td>${play.exhPrice}</td>
-                                 <td class="last">${reserv.hallNo}</td>
+                                 <td class="last"><a class="fileview" href="fileView.do?filename=${play.filename}"><strong>${play.filename}</strong></a></td>
                               </tr>
                               <tr>
                               </tr>
@@ -115,6 +123,9 @@ function del() {
                         <div class="btnRight">
                            <a class="wbtn" href="writeForm.do"><strong>등록</strong> </a>
                         </div>
+                        <div class="btnRight">
+                           <a class="wbtn" href="modifyForm.do?no=${vo.no}"><strong>수정</strong> </a>
+                        </div>
                      </div>
                      <!--//btn-->
                      <!-- 페이징 처리 -->
@@ -124,16 +135,18 @@ function del() {
                   </c:if>
                   <c:forEach var="pNo" begin="${vo.startPage}" end="${vo.endPage}">
                      <a href="list.do?page=${pNo}">[${pNo}]</a>
+<!--                      &stype=${vo.stype}&sval=${vo.sval} -->
                   </c:forEach>
                   <c:if test="${vo.endPage < vo.totalPage}">
                      <a href="list.do?page=${vo.startPage+5}">[다음]</a>
                   </c:if>
                      </div>
                      <!-- //페이징 처리 -->
-                     <form name="sval" id="searchForm" action="list.do"  method="post">
+                     <form name="searchForm" id="searchForm" action="list.do"  method="post">
                         <div class="search">
                            <select name="stype" title="검색을 선택해주세요">
-                           	  <option value="title" <c:if test="${vo.stype=='title'}">selected</c:if>>공연명</option>
+                           	  <option value="all" <c:if test="${vo.stype == 'all'}">selected</c:if>>전체</option>
+                           	  <option value="playName" <c:if test="${vo.stype == 'playName'}">selected</c:if>>공연명</option>
                               <option value="actor" <c:if test="${vo.stype=='actor'}">selected</c:if>>배우</option>
                            </select>
                            <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요" />
