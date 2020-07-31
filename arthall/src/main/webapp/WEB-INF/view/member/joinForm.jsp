@@ -43,10 +43,9 @@
 	
 	function regist() {
 		
-		
-		
 		return false;
 	}
+
 
 </script>
 <!-- 다음API -->
@@ -209,8 +208,8 @@
 											</li>
 										</ul>
 										<div class="btn_yn">
-											<button><span>확인</span></button>
-											<button><span>취소</span></button>
+											<button ><span>확인</span></button>
+											<button ><span>취소</span></button>
 										</div>
 									</div>
 								</fieldset>
