@@ -25,6 +25,7 @@ public interface MemberService {
 	public String login(HttpServletRequest req, String id, String password);
 	
 	public String changePwd(HttpServletRequest req, String id, String password);
+	
 
 	
 
