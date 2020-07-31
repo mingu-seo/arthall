@@ -104,7 +104,10 @@
 															<c:if test="${board.order_no != 0}">
 																<c:out value="└"/>
 															</c:if>
-															<c:out	value="${board.title}" />
+															<c:out	value="${board.title}  " />
+															<c:if test="${board.cmtNum != 0}">
+																<c:out value="[${board.cmtNum}]"/>
+															</c:if>
 															</b>
 														</a></td>
 														<td>${board.moddate }</td>

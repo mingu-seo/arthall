@@ -92,6 +92,9 @@
 														</c:forEach> <c:if test="${qna.nested != 0 }"> &gt; </c:if> <a
 															href="view.do?no=${qna.no}&page=${qna.page}"> <c:out
 																	value="${qna.title}" />
+														<c:if test="${qna.cmtNum != 0}">
+															<c:out value="[${qna.cmtNum}]"/>
+														</c:if>
 														</a></td>
 														<td>${qna.moddate }</td>
 														<td>${qna.writer }</td>

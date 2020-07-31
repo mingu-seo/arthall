@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import admin.board.BoardVO;
+
 @Repository
 public class CommentDAO {
 	
@@ -24,7 +26,11 @@ public class CommentDAO {
 	public int comment(CommentVO param) {
 		return sqlSession.insert("comment.comment", param);
 	}
-
+	
+	public int count(int post_no) {
+		
+		return sqlSession.selectOne("comment.count", post_no);
+	}
 	
 	
 }

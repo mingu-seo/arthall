@@ -18,7 +18,9 @@
 	</select>
 	<select id="list" parameterType="board.qna.QnaVO" resultType="board.qna.QnaVO">
 		
-		SELECT * FROM qna
+		SELECT 
+			NO, title, regdate, readcnt, writer,(SELECT count(*) FROM comment WHERE post_no=qna.no) AS cmtNum
+		FROM qna 
 		<where>
          <if test="sval != null and sval !='' and stype != 'all'">
              ${stype} like '%${sval}%'
