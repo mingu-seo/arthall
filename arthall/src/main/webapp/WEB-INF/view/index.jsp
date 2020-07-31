@@ -1,92 +1,22 @@
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="ko">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>충무아트센터</title>
-    <link rel="icon" sizes="16x16" type="image.png" href="img/favicon.png">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
 
+</head>
 <body>
-    <div id="wrap">
-        <a href="#main" id="gomain">본문바로가기</a>
-        <header>
-            <div class="header-inner cf">
-                <h1><a href="index.html"><span class="hidden">logo</span><img src="img/logo.png" alt="logo"></a>
-                </h1>
-            
-                <div class="mobile">
-                   <a href="javascript:;" class="mobile__openBtn"><i class="fas fa-bars fa-3x"></i></a>
-                   <a href="javascript:;" class="mobile__closeBtn"><i class="fas fa-times fa-3x"></i></a>
-                    <div class="right_nav">
-                        <ul class="tnb cf">
-                            <li><a href="./login.html">로그인</a></li>
-                            <li><a href="./join.html">회원가입</a></li>
-                            <li><a href="./mypage.html">마이페이지</a></li>
-                        </ul>
-                        <nav class="gnb">
-                            <ul class="cf">
-                                <li class="hover">
-                                    <a href="#"><span>충무아트센터 소개</span></a>
-                                    <ul>
-                                        <li><a href="#">기관 및 재단소개</a></li>
-                                        <li><a href="#">좌석배치도</a></li>
-                                        <li><a href="#">층별안내</a></li>
-                                        <li><a href="#">오시는길</a></li>
-                                        <li><a href="#">편의시설</a></li>
-                                        <li><a href="#">주차시설</a></li>
-                                    </ul>
-                                </li>
-                                <li class="hover">
-                                    <a href="#"><span>공연·전시·행사</span></a>
-                                    <ul>
-                                        <li><a href="#">캘린더</a></li>
-                                        <li><a href="perf_info.html">공연정보</a></li>
-                                        <li><a href="exhi_info.html">전시정보</a></li>
-                                        <li><a href="event_info.html">행사정보</a></li>
-                                    </ul>
-                                </li>
-                                <li class="hover">
-                                    <a href="#"><span>뉴스·소식</span></a>
-                                    <ul>
-                                        <li><a href="#">공지사항</a></li>
-                                        <li><a href="#">뉴스/이슈</a></li>
-                                    </ul>
-                                </li>
-                                <li class="hover">
-                                    <a href="#"><span>대관안내</span></a>
-                                    <ul>
-                                        <li><a href="#">대관시설</a></li>
-                                        <li><a href="rentalGuidance.html">대관절차</a></li>
-                                        <li><a href="rentalApply.html">대관신청</a></li>
-                                    </ul>
-                                </li>
-                                <li class="hover">
-                                    <a href="faq.html"><span>고객센터</span></a>
-                                    <ul>
-                                        <li><a href="faq.html">자주하는 질문</a></li>
-                                        <li><a href="inquiry.html">1:1 문의</a></li>
-                                        <li><a href="etiquette.html">관람예절</a></li>
-                                        <li><a href="benefits.html">회원혜택</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <form class="search" action="action_page.php">
-                        <input type="search" name="search" class="t_box" placeholder="검색어를 입력해주세요">
-                        <button type="submit" class="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-            </div>
-        </header>
-        <section class="mainVisual">
+<div id = "wrap">
+		<a href="<%=request.getContextPath()%>/index.do" id="gomain">본문바로가기</a>
+		<!-- S T A R T :: headerArea-->
+		<header>
+			<%@ include file="/WEB-INF/view/include/top.jsp" %>
+		</header>
+		<!-- E N D :: headerArea--> 
+		<!-- S T A R T :: section area-->
+		<section class="mainVisual">
             <div class="visualView">
                 <div class="bg1">
                 </div>
@@ -147,16 +77,17 @@
                 </div>
             </div>
         </section>
-
-        <main id="main">
+		<!-- E N D :: section area-->
+		<!-- S T A R T :: main area -->
+		 <main id="main">
             <section class="icons">
                 <div class="icons__wrap section__wrap">
                     <ul class="cf">
-                        <li><a href="#"><i class="fas fa-ticket-alt fa-3x"></i>예매안내</a></li>
+                        <li><a href="<%=request.getContextPath()%>/reserv/reserv.do"><i class="fas fa-ticket-alt fa-3x"></i>예매안내</a></li>
                         <li><a href="#"><i class="fas fa-route fa-3x"></i>오시는길</a></li>
                         <li><a href="#"><i class="fas fa-parking fa-3x"></i>주차안내</a></li>
-                        <li><a href="faq.html"><i class="far fa-question-circle fa-3x"></i>자주하는 질문</a></li>
-                        <li><a href="inquiry.html"><i class="far fa-comment-dots fa-3x"></i>1대1 문의</a></li>
+                        <li><a href="<%=request.getContextPath()%>/board/faq/index.do"><i class="far fa-question-circle fa-3x"></i>자주하는 질문</a></li>
+                        <li><a href="<%=request.getContextPath()%>/board/qna/index.do"><i class="far fa-comment-dots fa-3x"></i>1대1 문의</a></li>
                         <li><a href="etiquette.html"><i class="fas fa-theater-masks fa-3x"></i>극장예절</a></li>
                         <li><a href="#"><i class="fas fa-binoculars fa-3x"></i>오페라글래스 대여</a></li>
                     </ul>
@@ -325,10 +256,10 @@
                         </div>
                         <div class="cont">
                             <ul class="cf">
-                                <li><a href="#"><img src="img/event/event-1.jpg" alt="이벤트1"></a></li>
-                                <li><a href="#"><img src="img/event/event-2.jpg" alt="이벤트2"></a></li>
-                                <li><a href="#"><img src="img/event/event-3.jpg" alt="이벤트3"></a></li>
-                                <li><a href="#"><img src="img/event/event-4.jpg" alt="이벤트4"></a></li>
+                                <li><a href="#"><img src="<%=request.getContextPath()%>/img/event/event-1.jpg" alt="이벤트1"></a></li>
+                                <li><a href="#"><img src="<%=request.getContextPath()%>/img/event/event-2.jpg" alt="이벤트2"></a></li>
+                                <li><a href="#"><img src="<%=request.getContextPath()%>/img/event/event-3.jpg" alt="이벤트3"></a></li>
+                                <li><a href="#"><img src="<%=request.getContextPath()%>/img/event/event-4.jpg" alt="이벤트4"></a></li>
                             </ul>
                         </div>
                     </article>
@@ -336,62 +267,16 @@
             </section>
             <a href="javascript:;" class="topBtn">TOP</a>
         </main>
-        <footer>
-            <div class="footerinner">
-                <div class="footerinner__top cf">
-                    <h2><a href="index.html"><img src="img/logo.png" alt="로고"></a></h2>
-                    <div class="top__links">
-                        <div class="links__sns cf">
-                            <a href="https://ko-kr.facebook.com/chungmuartscenter/" target="_blank"><i class="fab fa-facebook-f fa-2x"></i></a>
-                            <a href="https://twitter.com/chungmuholic" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
-                            <a href="https://www.instagram.com/chungmu2016/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
-                            <a href="https://blog.naver.com/cmah_arthall" target="_blank"><i class="xi-naver xi-2x"></i></a>
-                            <a href="https://www.youtube.com/channel/UC4UWAAwSsT4O3hcLjFL8kXQ" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
-                        </div>
-                        <ul class="links__list cf">
-                            <li><a href="#">이용약관</a></li>
-                            <li><a href="#">행정정보공개</a></li>
-                            <li><a href="#">이메일수집거부</a></li>
-                            <li><a href="#">개인정보취급방침</a></li>
-                            <li><a href="#">사이트맵</a></li>
-                            <li>
-                                <select name="siteBox" id="siteBox">
-                                    <option value="">관련사이트 바로가기</option>
-                                    <option value="http://www.beautifulmindcharity.org/">뷰티풀마인드</option>
-                                    <option value="http://www.chimff.com/2019/">충무로 뮤지컬 영화제</option>
-                                    <option value="https://www.e-junggulib.or.kr/SJGL/">서울중구 통합 전자도서관</option>
-                                </select>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footerinner__bottom cf">
-                    <div class="bottom__left">
-                        <address>
-                            사업자등록번호 : 201-82-06405 <br>
-                            통신판매번호 : 제2008-서울중구-1218호 <br>
-                            주소 : 서울시 중구 퇴계로 387(흥인동 131)
-                        </address>
-                        <p>Copyrights all rights reserved &copy; Chungmu Arts Center and The Joeun IT Academy 2020 Team</p>
-                    </div>
-                    <div class="bottom__right">
-                        <a href="tel:02-2230-6600">02.2230.6600</a>
-                        <p>
-                            상담시간 : 월~금 09:30~18:30 <br>
-                            점심시간 : 12:00~13:00 <br>
-                            주말 및 공휴일 휴무
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <script src="js/header.js"></script>
-    <script src="js/visual.js"></script>
-    <script src="js/topBtn.js"></script>
-    <script src="js/siteOpen.js"></script>
-    <script src="js/sec_slide.js"></script>
-    <script src="js/ticketingPopup.js"></script>
+		<!-- E N D :: main area -->
+		
+	
+	<!-- S T A R T :: footer area  -->
+	<footer>
+		<%@ include file="/WEB-INF/view/include/footer.jsp" %>
+	
+	</footer>
+	
+	<!-- E N D :: footer area  -->
+</div>
 </body>
-
 </html>

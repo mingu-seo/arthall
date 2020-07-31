@@ -9,7 +9,7 @@ public class Parameter {
 	private String sval;
 	private String stype;
 	
-	
+	private int cmtNum;
 	private int page; // 요청페이지번호
 	private int startRow; // 시작로우(limit 앞)
 	private int size;	// 페이지당 갯수(limit 뒤)
@@ -85,6 +85,12 @@ public class Parameter {
 	}
 	public void setFilename_org(String filename_org) {
 		this.filename_org = filename_org;
+	}
+	public int getCmtNum() {
+		return cmtNum;
+	}
+	public void setCmtNum(int cmtNum) {
+		this.cmtNum = cmtNum;
 	}
 	
 	
