@@ -34,33 +34,33 @@
 }
 
 .mainVisual .visualView > .bg1{
-    background: url(/img/main/img_main_visual1.jpg) no-repeat center bottom;
+    background: url(../img/main/img_main_visual1.jpg) no-repeat center bottom;
 
     width: 20%;
     height: 937px;
     left: 0%;
 }
 .mainVisual .visualView > .bg2{
-    background: url(/img/main/img_main_visual2.jpg) no-repeat center bottom;
+    background: url(../img/main/img_main_visual2.jpg) no-repeat center bottom;
 
     width: 20%;
     height: 937px;
     left: 20%;
 }
 .mainVisual .visualView > .bg3{
-    background: url(/img/main/img_main_visual3.jpg) no-repeat center bottom;
+    background: url(../img/main/img_main_visual3.jpg) no-repeat center bottom;
     width: 20%;
     height: 937px;
     left: 40%;
 }
 .mainVisual .visualView > .bg4{
-    background: url(/img/main/img_main_visual4.jpg) no-repeat center bottom;
+    background: url(../img/main/img_main_visual4.jpg) no-repeat center bottom;
     width: 20%;
     height: 937px;
     left: 60%;
 }
 .mainVisual .visualView > .bg5{
-    background: url(/img/main/img_main_visual5.jpg) no-repeat center bottom;
+    background: url(../img/main/img_main_visual5.jpg) no-repeat center bottom;
     width: 20%;
     height: 937px;
     left: 80%;
@@ -268,16 +268,16 @@ main .icons{padding: 50px 0;}
 }
 
 /*각 슬라이드 이미지적용*/
-.slide1{background: url(/img/poster/pos1.jpg) no-repeat center;}
-.slide2{background: url(/img/poster/pos2.jpg) no-repeat center ;}
-.slide3{background: url(/img/poster/pos3.jpg) no-repeat center;}
-.slide4{background: url(/img/poster/pos4.jpg) no-repeat center;}
-.slide5{background: url(/img/poster/pos5.jpg) no-repeat center;}
-.slide6{background: url(/img/poster/pos6.jpg) no-repeat center;}
-.slide7{background: url(/img/poster/pos7.jpg) no-repeat center;}
-.slide8{background: url(/img/poster/pos8.jpg) no-repeat center;}
-.slide9{background: url(/img/poster/pos9.jpg) no-repeat center;}
-.slide10{background: url(/img/poster/pos10.jpg) no-repeat center;}
+.slide1{background: url(../img/poster/pos1.jpg) no-repeat center;}
+.slide2{background: url(../img/poster/pos2.jpg) no-repeat center ;}
+.slide3{background: url(../img/poster/pos3.jpg) no-repeat center;}
+.slide4{background: url(../img/poster/pos4.jpg) no-repeat center;}
+.slide5{background: url(../img/poster/pos5.jpg) no-repeat center;}
+.slide6{background: url(../img/poster/pos6.jpg) no-repeat center;}
+.slide7{background: url(../img/poster/pos7.jpg) no-repeat center;}
+.slide8{background: url(../img/poster/pos8.jpg) no-repeat center;}
+.slide9{background: url(../img/poster/pos9.jpg) no-repeat center;}
+.slide10{background: url(../img/poster/pos10.jpg) no-repeat center;}
 /*각 슬라이드 이미지적용 끝*/
 
 .show__showList .showList__cont:last-child{margin-right: 0;}
