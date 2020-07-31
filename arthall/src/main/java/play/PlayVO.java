@@ -29,7 +29,7 @@ public class PlayVO extends util.Parameter{
 
 	public int getNo() {
 		return no;
-	}
+	} 
 
 	public void setNo(int no) {
 		this.no = no;
