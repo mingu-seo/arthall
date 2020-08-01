@@ -4,7 +4,11 @@ import util.Parameter;
 
 public class PerformVO extends Parameter{
 	
+	// DB기준 (PlayVO)
+	
+//				no
 	private int performNo;
+				
 	private String playName;
 	private String content;
 	private int priceA;

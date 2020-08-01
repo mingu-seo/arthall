@@ -36,7 +36,7 @@ function modify(){
       <div id="container">
          <div id="content">
             <div class="con_tit">
-               <h2>공연/전시 관리 - [작품정보]</h2>
+               <h2>공지사항 - [목록]</h2>
             </div>
             <!-- //con_tit -->
             <div class="con">
@@ -61,7 +61,6 @@ function modify(){
                            <col class="w7" />
                            <col class="w7" />
                            <col class="w7" />
-                           <col class="w7" />
                         </colgroup>
                         <thead>
                            <tr>
@@ -69,19 +68,20 @@ function modify(){
                               <th scope="col" rowspan="2">공연번호</th>
                               <th scope="col" rowspan="2">홀번호</th>
                               <th scope="col" rowspan="2">공연/전시</th>
-                              <th scope="col" rowspan="2">제목</th>
-                              <th scope="col" colspan="2">기간</th>
-                              <th scope="col" rowspan="2">출연진/작가</th>                               
-                              <th scope="col" rowspan="2">내용</th> 
+                              <th scope="col" rowspan="2">공연명</th>
+                              <th scope="col" colspan="2">공연 기간</th>
+                              <th scope="col" rowspan="2">내용</th>                               
                               <th scope="col" rowspan="2">등급</th> 
-                              <th scope="col" rowspan="2">러닝타임(분)</th>
-                              <th scope="col" rowspan="2">문의</th>
-                              <th scope="col" rowspan="2">제작/주최</th>
+                              <th scope="col" colspan="3">러닝타임</th>
                               <th scope="col" class="last" rowspan="2">첨부파일</th>
                            </tr>
                            <tr>
                            	  <th scope="col">시작일</th> 
 	                          <th scope="col">종료일</th>
+
+	                          <th scope="col">A좌석</th>
+	                          <th scope="col">B좌석</th>
+	                          <th scope="col">C좌석</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -95,17 +95,17 @@ function modify(){
                               <tr id="tr" onclick="location.href='modifyForm.do?no=${play.no}'">
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${play.no}"/></td>
                                  <td class="title">${play.no}</td>
-                                 <td>${play.hallNo}</td>
-                                 <td>${play.playType}</td>
                                  <td>${play.playName}</td>
+                                 <td>${play.hallNo}</td>
                                  <td>${play.startDate}</td>
                                  <td>${play.endDate}</td>
-                                 <td>${play.starring}</td>
+                                 <td>${play.runtime}</td>
+                                 <td>${play.actor}</td>
                                  <td>${play.content}</td>
-                                 <td>${play.rating}</td>
-                                 <td>${play.runningTime}</td>
-                                 <td>${play.inquiry}</td>
-                                 <td>${play.producer}</td>
+                                 <td>${play.priceA}</td>
+                                 <td>${play.priceB}</td>
+                                 <td>${play.priceC}</td>
+                                 <td>${play.exhPrice}</td>
                                  <td class="last"><a class="fileview" href="fileView.do?filename=${play.filename}"><strong>${play.filename}</strong></a></td>
                               </tr>
                               <tr>

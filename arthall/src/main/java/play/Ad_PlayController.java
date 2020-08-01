@@ -31,6 +31,34 @@ public class Ad_PlayController {
 		return "admin/play/list";
 	}
 	
+	@RequestMapping("/admin/play/perform.do")
+	public String listPerform(Model model, PlayVO param) {
+		List<PlayVO> list = playService.list(param);
+		
+		model.addAttribute("vo", param);
+		model.addAttribute("list", list);
+//		for (int i = 0 ; i < list.size();i++) {
+//			System.out.println(list.get(i).getFileName());
+//		}
+//		
+//		System.out.println(param.getStype());
+		return "admin/play/perform";
+	}
+	
+	@RequestMapping("/admin/play/exhibit.do")
+	public String listExhibit(Model model, PlayVO param) {
+//		List<PlayVO> list = playService.list(param);
+//		
+//		model.addAttribute("vo", param);
+//		model.addAttribute("list", list);
+//		for (int i = 0 ; i < list.size();i++) {
+//			System.out.println(list.get(i).getFileName());
+//		}
+//		
+//		System.out.println(param.getStype());
+		return "admin/play/exhibit";
+	}
+	
 	@RequestMapping("/admin/play/writeForm.do")
 	public String writeForm(HttpServletRequest req) {
 		return "admin/play/write";
