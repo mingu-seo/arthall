@@ -14,8 +14,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/join.css">
 <script src="<%=request.getContextPath()%>/js/join.js"></script>
 <script>
-
-
 	function check() {
 		if ($('#id').val().trim() != '') {
 			$.ajax({
@@ -37,6 +35,31 @@
 			});
 		} else {
 			alert("아이디를 입력해 주세요");
+		}
+		return false;
+	}
+	
+	function sendMail() {
+		if ($('#id').val().trim() != '') {
+			$.ajax({
+				url : 'sendMail.do?email='+ $('#email').val(),
+				type : 'html',
+				async : false,
+				success : function(data) {
+					var val = data.trim();
+					if (val.trim() == "false") {
+						alert("이메일을 입력해주세요.");
+						$("#email").val("");
+						$("#email_conf").val("false")
+						$("#email").focus();
+					} else {
+						alert("인증이 완료되었습니다.");
+						$("#email_conf").val('true');
+					}
+				}
+			});
+		} else {
+			alert("이메일을 입력해주세요.");
 		}
 		return false;
 	}
@@ -180,22 +203,14 @@
 											<li>
 												<label for="email"><span>*</span>이메일:</label> 
 												<div class="email_area">
-													<input type="text" name="email1" id="email1" >
-													<span>@</span>
-												</div>
-												<div class="email_select">
-													<select>
-														<option value="">직접입력</option>
-														<option value="">naver.com</option>
-														<option value="">daum.net</option>
-														<option value="">gmail.com</option>
-													</select>
+													<input type="text" name="email" id="email" >
 												</div>
 												<button><span>인증번호 발송</span></button>
 											</li>
 											<li>
 												<label for="email_conf"><span>*</span>이메일 인증 확인:</label> 
 												<input type="text" name="email_conf" id="email_conf" placeholder="인증번호를 입력하신 후 확인을 눌러주세요" >
+												<button id="dupChk" onclick="return check();"><span>중복확인</span></button>
 												<button><span>인증번호 확인</span></button>
 											</li>
 											<li>
