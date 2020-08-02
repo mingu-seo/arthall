@@ -8,6 +8,9 @@
 		SELECT * FROM admin WHERE id = #{id} AND PASSWORD = PASSWORD(#{password})
 	</select>
 	<select id="select" parameterType="admin.AdminVO" resultType="admin.AdminVO">
+		SELECT * FROM admin WHERE no = #{no}
+	</select>
+	<select id="selectByID" parameterType="admin.AdminVO" resultType="admin.AdminVO">
 		SELECT * FROM admin WHERE id = #{id}
 	</select>
 	<insert id = "regist" parameterType="admin.AdminVO">

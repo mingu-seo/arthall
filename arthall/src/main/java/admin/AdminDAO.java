@@ -40,4 +40,8 @@ public class AdminDAO {
 		
 	}
 
+	public AdminVO selectByID(AdminVO param) {
+		return sqlSession.selectOne("admin.selectByID", param);
+	}
+
 }

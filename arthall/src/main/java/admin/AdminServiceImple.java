@@ -62,7 +62,7 @@ public class AdminServiceImple implements AdminService {
 		
 		// TODO 아이디를 중복체크하고, 중복이 안되는 경우에만 db에 등록
 		// 아이디 중복확인
-		AdminVO vo = adminDao.selectOne(param);
+		AdminVO vo = adminDao.selectByID(param);
 		String r = "true";
 		if (vo != null) {
 			r = "false";
