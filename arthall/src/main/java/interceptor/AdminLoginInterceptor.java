@@ -14,7 +14,7 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 							HttpServletResponse res, 
 							Object handler) throws Exception {
 		
-		// 로그인 세션이 존재하는지 확인
+//		// 로그인 세션이 존재하는지 확인
 //		if (req.getSession().getAttribute("authAdmin") == null) {
 //			// 로그인이 안되어 있는 상태
 //			res.setContentType("text/html;charset=utf-8");
@@ -26,7 +26,7 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 //			out.flush();
 //			return false;
 //		}
-		
+//		
 		return true;
 	}
 }

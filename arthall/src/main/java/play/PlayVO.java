@@ -1,22 +1,24 @@
 package play;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class PlayVO extends util.Parameter{
 
-	private String playNo;
-	private String playName;
-	private Timestamp startDate;
-	private Timestamp endDate;
+	private int no;
 	private int hallNo;
-	private String actor;
+	private int playType;
+	private String playName;
+	private Date startDate;
+	private Date endDate;
+	private String starring;
 	private String content;
-	private int priceA;
-	private int priceB;
-	private int priceC;
+	private String rating;
+	private int runningTime;
+	private String inquiry;
+	private String producer;
 	private int exhPrice;
 	
-	private String filename;
 	private Timestamp regdate;
 	private Timestamp moddate;
 	
@@ -24,92 +26,127 @@ public class PlayVO extends util.Parameter{
 		super.setPage(1);
 		super.setSize(10);
 	}
-	
-	public String getPlayNo() {
-		return playNo;
+
+	public int getNo() {
+		return no;
 	}
-	public void setPlayNo(String playNo) {
-		this.playNo = playNo;
+
+	public void setNo(int no) {
+		this.no = no;
 	}
-	public String getPlayName() {
-		return playName;
-	}
-	public void setPlayName(String playName) {
-		this.playName = playName;
-	}
-	public Timestamp getStartDate() {
-		return startDate;
-	}
-	public void setStartDate(Timestamp startDate) {
-		this.startDate = startDate;
-	}
-	public Timestamp getEndDate() {
-		return endDate;
-	}
-	public void setEndDate(Timestamp endDate) {
-		this.endDate = endDate;
-	}
+
 	public int getHallNo() {
 		return hallNo;
 	}
+
 	public void setHallNo(int hallNo) {
 		this.hallNo = hallNo;
 	}
-	public String getActor() {
-		return actor;
+
+	public int getPlayType() {
+		return playType;
 	}
-	public void setActor(String actor) {
-		this.actor = actor;
+
+	public void setPlayType(int playType) {
+		this.playType = playType;
 	}
+
+	public String getPlayName() {
+		return playName;
+	}
+
+	public void setPlayName(String playName) {
+		this.playName = playName;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getStarring() {
+		return starring;
+	}
+
+	public void setStarring(String starring) {
+		this.starring = starring;
+	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getPriceA() {
-		return priceA;
+
+	public String getRating() {
+		return rating;
 	}
-	public void setPriceA(int priceA) {
-		this.priceA = priceA;
+
+	public void setRating(String rating) {
+		this.rating = rating;
 	}
-	public int getPriceB() {
-		return priceB;
+
+	public int getRunningTime() {
+		return runningTime;
 	}
-	public void setPriceB(int priceB) {
-		this.priceB = priceB;
+
+	public void setRunningTime(int runningTime) {
+		this.runningTime = runningTime;
 	}
-	public int getPriceC() {
-		return priceC;
+
+	public String getInquiry() {
+		return inquiry;
 	}
-	public void setPriceC(int priceC) {
-		this.priceC = priceC;
+
+	public void setInquiry(String inquiry) {
+		this.inquiry = inquiry;
 	}
+
+	public String getProducer() {
+		return producer;
+	}
+
+	public void setProducer(String producer) {
+		this.producer = producer;
+	}
+
 	public int getExhPrice() {
 		return exhPrice;
 	}
+
 	public void setExhPrice(int exhPrice) {
 		this.exhPrice = exhPrice;
 	}
-	public String getFilename() {
-		return filename;
-	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
+
 	public Timestamp getRegdate() {
 		return regdate;
 	}
+
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
+
 	public Timestamp getModdate() {
 		return moddate;
 	}
+
 	public void setModdate(Timestamp moddate) {
 		this.moddate = moddate;
 	}
-	
+
 	
 	
 }

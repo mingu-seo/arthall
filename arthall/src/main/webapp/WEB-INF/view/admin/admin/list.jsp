@@ -30,13 +30,6 @@
 	        }
 	    });
 	});
-	function mouseOver() {
-		$('#frm').style.color = 'black'
-	};
-
-	function mouseOut() {
-		$(this).style.color = "white";
-	};
 	
 	
 
@@ -95,16 +88,14 @@
 								</thead>
 								<tbody>
 									<c:forEach var="admin" items="${list}">
-										<tr class = 'detail' 
-										onmouseover="mouseOver()" onmouseout="mouseOut()"
-										onclick="location.href='modifyForm.do?no=${admin.no}';">
-											<td class="first"><input type="checkbox" class = "checkSingle" name="chkd" id="chkd" value="${admin.id}"/></td>
-											<td>${admin.id}</td>
-											<td>${admin.name}</td>
-											<td>${admin.tel}</td>
-											<td>${admin.email}</td>
-											<td>${admin.birth}</td>
-											<td>${admin.regdate}</td>
+										<tr class = 'detail'>
+											<td class="first"><input type="checkbox" class = "checkSingle" name="chkd" id="chkd" value="${admin.no}"/></td>
+											<td onclick="location.href='modifyForm.do?no=${admin.no}';">${admin.id}</td>
+											<td onclick="location.href='modifyForm.do?no=${admin.no}';">${admin.name}</td>
+											<td onclick="location.href='modifyForm.do?no=${admin.no}';">${admin.tel}</td>
+											<td onclick="location.href='modifyForm.do?no=${admin.no}';">${admin.email}</td>
+											<td onclick="location.href='modifyForm.do?no=${admin.no}';">${admin.birth}</td>
+											<td onclick="location.href='modifyForm.do?no=${admin.no}';">${admin.regdate}</td>
 											
 										</tr>
 									</c:forEach>

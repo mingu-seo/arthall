@@ -11,6 +11,22 @@ function del() {
 	}
 }
 
+function move() {
+	location.href="reservForm.do"
+}
+
+$(document).ready(function(){
+    $("#allChk").click(function(){
+        if($("#allChk").prop("checked")){
+            $("input[name=no]").prop("checked",true);
+        }else{
+            $("input[name=no]").prop("checked",false);
+        }
+    })
+})
+
+
+
 </script>
 </head>
 <body> 
@@ -25,12 +41,45 @@ function del() {
       <div id="container">
          <div id="content">
             <div class="con_tit">
-               <h2>공지사항 - [목록]</h2>
+               <h2>공지사항 - 예약관리</h2>
             </div>
             <!-- //con_tit -->
             <div class="con">
+            <input type="submit" value="예약 페이지 이동" onclick="move();">
+            	<form name="searchForm" id="searchForm" action="list.do"  method="post">
+
+					<div class="search">
+						<!-- 기간검색 -->
+						예매일자로 검색
+						<span id="searchword1">
+							<input type="date" id="startDate" name="startDate" class="w10" title="시작일을 입력해주세요" 
+								value = "${vo.startDate}"/>
+								~
+							<input type="date" id="endDate" name="endDate" class="w10" title="종료일을 입력해주세요" 
+								value = "${vo.endDate}"/>
+						</span>
+						                    	
+                    	<!-- 키워드 -->
+                    	<select name="stype" id="search" title="검색을 선택해주세요">
+                        	<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>
+                            <option value="reservNo" <c:if test="${vo.stype=='reservNo'}">selected</c:if>>예약번호</option>
+                            <option value="name" <c:if test="${vo.stype=='name'}">selected</c:if>>예약자명</option>
+                            <option value="playName" <c:if test="${vo.stype=='playName'}">selected</c:if>>공연명</option>
+                            <option value="playDate" <c:if test="${vo.stype=='playDate'}">selected</c:if>>공연일자</option>
+                            <option value="hallNo" <c:if test="${vo.stype=='hallNo'}">selected</c:if>>공연홀</option>
+                        </select>
+                        <span id="searchword0" >
+	                        <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요"/>	
+	                    </span>
+	                 	                    
+						<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색"/>
+                    </div>
+                   
+                </form>
                <!-- 내용 : s -->
+               
                <div id="bbs">
+               
                   <div id="blist">
                      <p><span><strong>총 ${vo.totalCount}개</strong>  |  ${vo.page}/${vo.endPage}페이지</span></p>
                      <form name="frm" id="frm" action="delete.do" method="post">
@@ -45,18 +94,21 @@ function del() {
                            <col class="w12" />
                            <col class="w7" />
                            <col class="w7" />
+                           <col class="w7" />
                         </colgroup>
                         <thead>
                            <tr>
                               <th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)" /></th>
                               <th scope="col">예약번호</th>
+                              <th scope="col">멤버번호</th>
                               <th scope="col">예약자명</th> 
                               <th scope="col">예약일자</th> 
                               <th scope="col">공연번호</th> 
                               <th scope="col">공연명</th>
                               <th scope="col">공연일자</th> 
-                              <th scope="col">공연시간</th>
-                              <th scope="col" class="last">공연홀</th>
+                              <th scope="col">time</th>
+                              <th scope="col">홀번호</th>
+                              <th scope="col" class="last">입금상황</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -67,17 +119,19 @@ function del() {
                            </c:if>
                            <c:if test="${vo.totalCount > 0}">
                               <c:forEach var="reserv" items="${list}">
-                              <tr>
-                                 <td class="first"><input type="checkbox" name="no" id="no" value="${reserv.no}"/></td>
                                  <!-- 티켓리스트 페이지로 이동 -->
-                                 <td class="title"><a href="ticketlist.do?reservNo=${reserv.no}">${reserv.no}</a></td>
-                                 <td>${reserv.name}</td>   
-                                 <td>${reserv.reservDay}</td>
-                                 <td>${reserv.playNo}</td>
-                                 <td>${reserv.playName}</td>
-                                 <td>${reserv.playDay}</td>
-                                 <td>${reserv.runtime}</td>
-                                 <td class="last">${reserv.hallNo}</td>
+                              <tr class = 'list'>
+                                 <td class="first"><input type="checkbox" name="no" id="no" value="${reserv.reservNo}"/></td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.reservNo}</td>   
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.memberNo}';">${reserv.memberNo}</td>   
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.name}';">${reserv.name}</td>   
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservDate}';">${reserv.reservDate}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.playNo}';">${reserv.playNo}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.playName}';">${reserv.playName}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.playDate}';">${reserv.playDate}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.time}';">${reserv.time}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.hallNo}';">${reserv.hallNo}</td>
+                                 <td class="last" onclick="location.href='ticketlist.do?reservNo=${reserv.pay}';">${reserv.pay}</td>
                               </tr>
                               </c:forEach>                             
                            </c:if>
@@ -93,28 +147,18 @@ function del() {
                      <!-- 페이징 처리 -->
                      <div class='page'>
                         <c:if test="${vo.startPage > 5}">
-							<a href="list.do?page=${vo.startPage-5}">[이전]</a>
+							<a href="list.do?stype=${vo.stype}&sval=${vo.sval}&page=${vo.startPage-5}&startDate=${vo.startDate}&endDate=${vo.endDate}">[이전]</a>
 						</c:if>
+						
 						<c:forEach var="pNo" begin="${vo.startPage}" end="${vo.endPage}">
-							<a href="list.do?page=${pNo}">[${pNo}]</a>
+							<a href="list.do?stype=${vo.stype}&sval=${vo.sval}&page=${pNo}&startDate=${vo.startDate}&endDate=${vo.endDate}">[${pNo}]</a>
 						</c:forEach>
 						<c:if test="${vo.endPage < vo.totalPage}">
-							<a href="list.do?page=${vo.startPage+5}">[다음]</a>
+							<a href="list.do?stype=${vo.stype}&sval=${vo.sval}&page=${vo.startPage+5}&startDate=${vo.startDate}&endDate=${vo.endDate}">[다음]</a>
 						</c:if>
                      </div>
                      <!-- //페이징 처리 -->
-                     <form name="searchForm" id="searchForm" action="list.do"  method="post">
-                        <div class="search">
-                           <select name="stype" title="검색을 선택해주세요">
-                              <option value="name" <c:if test="${vo.stype=='name'}">selected</c:if>>예약자명</option>
-                              <option value="playName" <c:if test="${vo.stype=='playName'}">selected</c:if>>공연명</option>
-                              <option value="playDay" <c:if test="${vo.stype=='playDay'}">selected</c:if>>공연일자</option>
-                              <option value="hallNo" <c:if test="${vo.stype=='hallNo'}">selected</c:if>>공연홀</option>
-                           </select>
-                           <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요"/>	
-                           <input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색"/>
-                        </div>
-                     </form>
+
                      <!-- //search --> 
                   </div>
                   <!-- //blist -->
@@ -132,6 +176,8 @@ function del() {
    <!--//canvas -->
 </div>
 <!--//wrap -->
+
+
 
 </body>
 </html>

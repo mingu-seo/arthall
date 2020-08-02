@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import play.PlayVO;
+
 
 
 @Repository
@@ -29,6 +31,17 @@ public class ReservDAO {
 	// Ticket
 	public List<TicketVO> ticketlist(TicketVO param) {
 		return sqlSession.selectList("reserv.ticketlist", param);
+	}
+	
+	// 시작일, 종료일 받아서 다시 조회
+	
+	// User 예약
+	public int reservOne(ReservVO param) {
+		return sqlSession.insert("reserv.reservOne", param);
+	}
+	
+	public PlayVO play() {
+		return sqlSession.selectOne("reserv.playAll");
 	}
 	
 }

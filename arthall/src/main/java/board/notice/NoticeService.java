@@ -4,14 +4,30 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import admin.AdminVO;
+
+
+
 
 public interface NoticeService {
 
-	//게시글 가져오기
 	public List<NoticeVO> list(NoticeVO param);
+	public String write(HttpServletRequest req, NoticeVO param,MultipartFile file,AdminVO aparam);
 	
-	//게시글 작성
-	public String write(HttpServletRequest req, NoticeVO param);
+	public NoticeVO view(NoticeVO param);
+	public String modify(HttpServletRequest req, NoticeVO param, MultipartFile file,AdminVO aparam);
+	public String delete(String[] param);
+	
+	//이미지불러오기
+	public NoticeVO view_img(NoticeVO param);
+	
+	
+	
+	
+	
+	
 	
 
 	

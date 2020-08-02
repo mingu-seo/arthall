@@ -1,6 +1,7 @@
 package member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,35 +13,45 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import admin.AdminVO;
+
 @Controller
 public class User_MemberController {
 
 	@Autowired
 	MemberService memberService;
 	
-	@RequestMapping("admin/member/joinForm.do")
+	@RequestMapping("member/joinForm.do")
 	public String joinForm() {
-		return "admin/member/joinForm";
+		return "member/joinForm";
 	}
 	
-	@RequestMapping("admin/member/join.do")
+	@RequestMapping("/member/dupId.do")
+	public void dup(HttpServletRequest req, MemberVO param, HttpServletResponse res) throws Exception {
+		String r = memberService.dupId(req, param);
+		res.setContentType("text/html; charset=utf-8");
+		PrintWriter out = res.getWriter();
+		out.print(r);
+		out.flush();
+	}
+	
+	@RequestMapping("member/join.do")
 	public String join(HttpServletRequest req, MemberVO param) {
-		String pageName = memberService.regist(param, req);
-		System.out.println("컨트롤러 값 : " + param.getTel());
+		String pageName = memberService.join(param, req);
 		return pageName;
 	}
 	
-	@RequestMapping("admin/member/joinSuccess.do")
+	@RequestMapping("member/joinSuccess.do")
 	public String joinSuccess() {
-		return "admin/member/joinSuccess";
+		return "member/joinSuccess";
 	}
 	
-	@RequestMapping("/member/loginForm.do")
+	@RequestMapping("member/loginForm.do")
 	public String loginForm() {
 		return "member/loginForm";
 	}
 	
-	@RequestMapping("/member/login.do")
+	@RequestMapping("member/login.do")
 	public String login(HttpServletRequest req, @RequestParam("id") String id, 
 						@RequestParam("password") String password) {
 		
@@ -49,7 +60,7 @@ public class User_MemberController {
 		return pageName;
 	}
 	
-	@RequestMapping("/member/logout.do")
+	@RequestMapping("member/logout.do")
 	public String logout(Model model, HttpSession sess, HttpServletResponse res) throws IOException {
 
 		sess.removeAttribute("authUser");
@@ -59,12 +70,12 @@ public class User_MemberController {
 		return "common/alert";
 	}
 	
-	@RequestMapping("/member/changePwdForm.do")
+	@RequestMapping("member/changePwdForm.do")
 	public String changePwdForm() {
 		return "member/changePwdForm";
 	}
 	
-	@RequestMapping("/member/changePwd.do")
+	@RequestMapping("member/changePwd.do")
 	public String changePwd(HttpServletRequest req, HttpSession sess,
 							@RequestParam("newPwd") String newPwd) {
 		

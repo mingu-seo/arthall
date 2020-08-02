@@ -4,7 +4,18 @@
 
 	<select id="count" parameterType="board.notice.NoticeVO" resultType="Integer">
 
-		SELECT COUNT(*) FROM notice  
+		SELECT COUNT(*) FROM notice 
+		<where>
+			<if test="sval != null and sval !='' and stype != 'all'">
+				${stype} LIKE '%${sval}%'
+			</if>
+			<if test="sval != null and sval !='' and stype == 'all'">
+				title LIKE '%${sval}%'
+				or no in
+				(SELECT no FROM notice WHERE content LIKE '%${sval)%')
+			</if>
+		</where>
+		
 	
 	</select>
 
@@ -12,24 +23,89 @@
 	<select id="list" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
 		
 		SELECT * FROM notice 
+		<where>
+		<if test="sval != null and sval !='' and stype != 'all'">
+			${stype} like '%${sval}%'
+		</if>
+		<if test="sval != null and sval !='' and stype == 'all'">
+				title LIKE '%${sval}%'
+				or no in
+				(SELECT no FROM notice WHERE content LIKE '%${sval}%')
+		</if>
+		</where>
+		ORDER BY no DESC LIMIT #{startRow}, #{size}
 	 
 	</select>
 	
 	<insert id="write" parameterType="board.notice.NoticeVO" useGeneratedKeys="true">
 		INSERT INTO notice
-			(no,writer,title,regDate,readCnt,content)
+			(writer,title,regDate,readCnt,content,filename,modDate,filename_org)
 		VALUES
-			(#{no},#{writer},#{title},now(),0,#{content})
+			(#{writer},#{title},now(),0,#{content},#{filename},now(),#{filename_org})
 	</insert>
-
-<!--  	<insert id="writeContent" parameterType="board.notice.NoticeVO">
+	
+	<!--  
+	<insert id="writeContent" parameterType="board.notice.NoticeVO">
 		INSERT INTO notice
-			(content)
+			(no, content)
 		VALUES
-			(#{content})
-		
+			(#{no}, #{content})
 	</insert>
--->
+	-->
+	
+<!-- 	<select id="viewContent" parameterType="board.notice.NoticeVO" resultType="String"> -->
+<!-- 		SELECT content FROM notice -->
+<!-- 			WHERE no = #{no} -->
+<!-- 	</select> -->
+	<select id ="view" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
+		SELECT
+			no, writer, title, content, regdate,readCnt,filename,modDate,filename_org
+		FROM notice
+		WHERE no= #{no}
+	</select>
+	
+	<update id ="readCnt" parameterType="board.notice.NoticeVO">
+		UPDATE notice SET
+			readCnt=#{readCnt}+1
+		WHERE no= #{no}
+	</update>
+	
+	
+<!-- 	
+	<update id="modify" parameterType="board.notice.NoticeVO">
+		UPDATE notice SET
+			title = #{title} , content = #{content},regDate =now(),modDate = now(), filename=#{filename},filename_org=#{filename_org}
+		where no= #{no}
+	</update>
+ -->
+ 	<update id="modify" parameterType="board.notice.NoticeVO">
+ 		UPDATE notice SET
+ 			title = #{title} ,regDate=now(), content = #{content}, modDate = now()
+ 		WHERE no=#{no}
+ 	</update>
+ 	
+ 	<update id="modifyFile" parameterType="board.notice.NoticeVO">
+ 		UPDATE notice SET
+ 			filename=#{filename}, filename_org = #{filename_org}
+ 		WHERE no=#{no}
+ 	</update>	
+
+	
+
+	
+	<update id="delete" parameterType="Integer">
+		DELETE FROM notice
+		WHERE no= #{no}
+	</update>
+	
+	<select id="view_img" parameterType="board.notice.NoticeVO" resultType="board.notice.NoticeVO">
+		SELECT
+			no,writer,title,content,regDate,filename,readCnt,filename_org
+		FROM notice
+		WHERE no = #{no}
+	
+	</select>
+	
 
 
 

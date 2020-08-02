@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="news">
+
+	<select id="count" parameterType="board.news.NewsVO" resultType="Integer">
+
+		SELECT COUNT(*) FROM news 
+		<where>
+			<if test="sval != null and sval !='' and stype != 'all'">
+				${stype} LIKE '%${sval}%'
+			</if>
+			<if test="sval != null and sval !='' and stype == 'all'">
+				title LIKE '%${sval}%'
+				or no in
+				(SELECT no FROM news WHERE content LIKE '%${sval)%')
+			</if>
+		</where>
+		
+	
+	</select>
+
+
+	<select id="list" parameterType="board.news.NewsVO" resultType="board.news.NewsVO">
+		
+		SELECT * FROM news 
+		<where>
+		<if test="sval != null and sval !='' and stype != 'all'">
+			${stype} like '%${sval}%'
+		</if>
+		<if test="sval != null and sval !='' and stype == 'all'">
+				title LIKE '%${sval}%'
+				or no in
+				(SELECT no FROM news WHERE content LIKE '%${sval}%')
+		</if>
+		</where>
+		ORDER BY no DESC LIMIT #{startRow}, #{size}
+	 
+	</select>
+	
+	<insert id="write" parameterType="board.news.NewsVO" useGeneratedKeys="true">
+		INSERT INTO news
+			(no,writer,title,regDate,readCnt,content,filename,filename_org,modDate)
+		VALUES
+			(#{no},#{writer},#{title},now(),0,#{content},#{filename},#{filename_org},now())
+	</insert>
+	
+	<!--  
+	<insert id="writeContent" parameterType="board.notice.NoticeVO">
+		INSERT INTO notice
+			(no, content)
+		VALUES
+			(#{no}, #{content})
+	</insert>
+	-->
+	
+	<select id="viewContent" parameterType="board.news.NewsVO" resultType="String">
+		SELECT content FROM news
+			WHERE no = #{no}
+	</select>
+	<select id ="view" parameterType="board.news.NewsVO" resultType="board.news.NewsVO">
+		SELECT
+			no, writer, title, content, regDate,modDate,readCnt,filename,filename_org
+		FROM news
+		WHERE no= #{no}
+	</select>
+	
+	<update id ="readCnt" parameterType="board.news.NewsVO">
+		UPDATE news SET
+			readCnt=#{readCnt}+1
+		WHERE no= #{no}
+	</update>
+	
+	
+<!-- 
+	<update id="modify" parameterType="board.news.NewsVO">
+		UPDATE news SET
+			title = #{title} , content = #{content},regDate =now(),modDate = now(), filename=#{filename},filename_org=#{filename_org}
+		where no= #{no}
+	</update>
+ -->	
+ 	<update id="modify" parameterType="board.news.NewsVO">
+ 		UPDATE news SET
+ 			title = #{title} ,regDate=now(), content = #{content}, modDate = now()
+ 		WHERE no=#{no}
+ 	</update>
+ 	
+ 	<update id="modifyFile" parameterType="board.news.NewsVO">
+ 		UPDATE news SET
+ 			filename=#{filename}, filename_org = #{filename_org}
+ 		WHERE no=#{no}
+ 	</update>	
+	<update id="delete" parameterType="Integer">
+		DELETE FROM news
+		WHERE no= #{no}
+	</update>
+	
+	<select id="view_img" parameterType="board.news.NewsVO" resultType="board.news.NewsVO">
+		SELECT
+			no,writer,title,content,regDate,filename,readCnt,filename_org
+		FROM news
+		WHERE no = #{no}
+	
+	</select>
+	
+
+
+
+</mapper>
+

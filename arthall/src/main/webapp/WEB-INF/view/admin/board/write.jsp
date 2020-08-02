@@ -29,11 +29,7 @@ $(function() {
 	});
 });
 
-function check() {
-	function check() {
-		 oEditors.getById['contents'].exec('UPDATE_CONTENTS_FIELD',[]);
-		}
-}
+
 </script>
 </head>
 <body> 
@@ -54,7 +50,7 @@ function check() {
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="write.do" onsubmit="return check();" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="write.do" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -69,15 +65,13 @@ function check() {
 										<th scope="row"><label for="">*제목</label></th>
 										<td colspan="10">
 											<input type="text" id="title" name="title" class="w100" title="제목을 입력해주세요" value="${vo.title}"/>
-											<c:if test="${emptyTitle}">제목을 입력하세요</c:if>	
+											
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<textarea id="contents" name="contents" title="내용을 입력해주세요" style="width:100%;">
-												${vo.content }
-											</textarea>	
+											<textarea id="content" name="content" title="내용을 입력해주세요" style="width:100%;"></textarea>	
 										</td>
 									</tr>
 									<tr>

@@ -7,8 +7,20 @@
 <script>
 function del() {
    if (confirm('정말로 삭제하시겠습니까?')) {
-      location.href='delete.do?article_no=${data.article_no}';
+      location.href='delete.do';
    }
+}
+	$(document).ready(function(){
+    $("#allChk").click(function(){
+        if($("#allChk").prop("checked")){
+            $("input[name=no]").prop("checked",true);
+        }else{
+            $("input[name=no]").prop("checked",false);
+        }
+    });
+});
+function modify(){
+	
 }
 </script>
 </head>
@@ -24,64 +36,79 @@ function del() {
       <div id="container">
          <div id="content">
             <div class="con_tit">
-               <h2>공지사항 - [목록]</h2>
+               <h2>공연/전시 관리 - [작품정보]</h2>
             </div>
             <!-- //con_tit -->
             <div class="con">
                <!-- 내용 : s -->
                <div id="bbs">
-                  <div id="blist">
+                  <div id="blist">									<!-- 페이지계산 수정 필요 -->
                      <p><span><strong>총 "${vo.totalCount}"개</strong>  |  1/12페이지</span></p>
-                     <form name="frm" id="frm" action="index.do" method="post">
+                     <form name="frm" id="frm" action="delete.do" method="post">
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
                         <colgroup>
-                           <col class="" />
-                           <col class="w16" />
-                           <col class="w10" />
-                           <col class="w12" />
-                           <col class="w16" />
+                           <col class="w3" />
+                           <col class="w5" />
+                           <col class="w4" />
+                           <col class="w5" />
+                           <col class="w8" />
+                           <col class="w8" />
+                           <col class="w7" />
                            <col class="w20" />
-                           <col class="w12" />
+                           <col class="w7" />
+                           <col class="w7" />
+                           <col class="w7" />
+                           <col class="w7" />
+                           <col class="w7" />
                            <col class="w7" />
                            <col class="w7" />
                         </colgroup>
                         <thead>
                            <tr>
-                              <th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
-                              <th scope="col">공연번호</th>
-                              <th scope="col">홀번호</th>
-                              <th scope="col">공연명</th> 
-                              <th scope="col">시작일</th> 
-                              <th scope="col">종료일</th> 
-                              <th scope="col">출연진</th> 
-                              <th scope="col">공연내용</th>
-                              <th scope="col">가격(공연)</th>
-                              <th scope="col" class="last">가격(전시회)</th>
+                              <th scope="col" class="first" rowspan="2"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
+                              <th scope="col" rowspan="2">공연번호</th>
+                              <th scope="col" rowspan="2">홀번호</th>
+                              <th scope="col" rowspan="2">공연/전시</th>
+                              <th scope="col" rowspan="2">제목</th>
+                              <th scope="col" colspan="2">기간</th>
+                              <th scope="col" rowspan="2">출연진/작가</th>                               
+                              <th scope="col" rowspan="2">내용</th> 
+                              <th scope="col" rowspan="2">등급</th> 
+                              <th scope="col" rowspan="2">러닝타임(분)</th>
+                              <th scope="col" rowspan="2">문의</th>
+                              <th scope="col" rowspan="2">제작/주최</th>
+                              <th scope="col" class="last" rowspan="2">첨부파일</th>
+                           </tr>
+                           <tr>
+                           	  <th scope="col">시작일</th> 
+	                          <th scope="col">종료일</th>
                            </tr>
                         </thead>
                         <tbody>
                            <c:if test="${vo.totalCount == 0}">
                               <tr>
-                                 <td colspan="4">게시글이 없습니다.</td>
+                                 <td colspan="14">게시글이 없습니다.</td>
                               </tr>
                            </c:if>
                            <c:if test="${vo.totalCount > 0}">
-                              <c:forEach var="reserv" items="${list}">
-                              <tr>
-                                 <td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-                                 <td class="title"><a href="view.do">${reserv.no}</a></td>
-                                 <td>${play.no}</td>   
+                              <c:forEach var="play" items="${list}">
+                              <tr id="tr" onclick="location.href='modifyForm.do?no=${play.no}'">
+                                 <td class="first"><input type="checkbox" name="no" id="no" value="${play.no}"/></td>
+                                 <td class="title">${play.no}</td>
                                  <td>${play.hallNo}</td>
+                                 <td>${play.playType}</td>
+                                 <td>${play.playName}</td>
                                  <td>${play.startDate}</td>
                                  <td>${play.endDate}</td>
-                                 <td>${play.actor}</td>
+                                 <td>${play.starring}</td>
                                  <td>${play.content}</td>
-                                 <!-- 가격>하위 ABC를 둬야할 것 같은데?
-                                 <td>${play.priceA}</td>
-                                 <td>${play.priceB}</td>
-                                 <td>${play.priceC}</td>-->
-                                 <td>${play.exhPrice}</td>
-                                 <td class="last">${reserv.hallNo}</td>
+                                 <td>${play.rating}</td>
+                                 <td>${play.runningTime}</td>
+                                 <td>${play.inquiry}</td>
+                                 <td>${play.producer}</td>
+                                 <td class="last"><a class="fileview" href="fileView.do?filename=${play.filename}"><strong>${play.filename}</strong></a></td>
+                              </tr>
+                              <tr>
                               </tr>
                               </c:forEach>
                            </c:if>
@@ -90,10 +117,13 @@ function del() {
                      </form>
                      <div class="btn">
                         <div class="btnLeft">
-                           <a class="btns" href="#" onclick="del();"><strong>삭제</strong> </a>
+                           <a class="btns" href="javascript:$('#frm').submit();" onclick="del();"><strong>삭제</strong> </a>
                         </div>
                         <div class="btnRight">
-                           <a class="wbtn" href="write.do"><strong>등록</strong> </a>
+                           <a class="wbtn" href="writeForm.do"><strong>등록</strong> </a>
+                        </div>
+                        <div class="btnRight">
+                           <a class="wbtn" href="modifyForm.do?no=${vo.no}"><strong>수정</strong> </a>
                         </div>
                      </div>
                      <!--//btn-->
@@ -104,20 +134,21 @@ function del() {
                   </c:if>
                   <c:forEach var="pNo" begin="${vo.startPage}" end="${vo.endPage}">
                      <a href="list.do?page=${pNo}">[${pNo}]</a>
+<!--                      &stype=${vo.stype}&sval=${vo.sval} -->
                   </c:forEach>
                   <c:if test="${vo.endPage < vo.totalPage}">
                      <a href="list.do?page=${vo.startPage+5}">[다음]</a>
                   </c:if>
                      </div>
                      <!-- //페이징 처리 -->
-                     <form name="searchForm" id="searchForm" action="index.do"  method="post">
+                     <form name="searchForm" id="searchForm" action="list.do"  method="post">
                         <div class="search">
                            <select name="stype" title="검색을 선택해주세요">
-                              <option value="all">전체</option>
-                              <option value="title">제목</option>
-                              <option value="contents">내용</option>
+                           	  <option value="all" <c:if test="${vo.stype == 'all'}">selected</c:if>>전체</option>
+                           	  <option value="playName" <c:if test="${vo.stype == 'playName'}">selected</c:if>>공연명</option>
+                              <option value="actor" <c:if test="${vo.stype=='actor'}">selected</c:if>>배우</option>
                            </select>
-                           <input type="text" name="sval" value="" title="검색할 내용을 입력해주세요" />
+                           <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요" />
                            <input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />
                         </div>
                      </form>

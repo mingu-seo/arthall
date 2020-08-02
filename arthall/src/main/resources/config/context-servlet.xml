@@ -6,16 +6,19 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
+ 
 	<context:component-scan base-package="test" />
 
 	<context:component-scan base-package="admin" /> 
-	<context:component-scan base-package="member" />
 	<context:component-scan base-package="reserv" />
 
 	<context:component-scan base-package="board" />
 	<context:component-scan base-package="play" />
-	
+	<context:component-scan base-package="comment" />
+
+	<context:component-scan base-package="member" />
+ 	<context:component-scan base-package="admin" />
+ 	<context:component-scan base-package="board" />
 	<mvc:annotation-driven/> <!-- annotation 활성화 -->
  	<mvc:default-servlet-handler/>
  	
@@ -24,7 +27,16 @@
  	    <mvc:jsp suffix="jsp"/>
  	</mvc:view-resolvers>
  	
+ 	<!-- 
  	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
+ 		<property name="driverClassName" value="org.mariadb.jdbc.Driver"/> 
+ 		<property name="url" value="jdbc:mariadb://localhost/arthall"/> 
+ 		<property name="username" value="root"/> 
+ 		<property name="password" value="root1234"/> 
+ 	</bean>
+ 	 -->
+ 	 
+ 	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
  		<property name="driverClassName" value="org.mariadb.jdbc.Driver"/> 
  		<property name="url" value="jdbc:mariadb://localhost/arthall"/> 
  		<property name="username" value="root"/> 
@@ -38,8 +50,8 @@
  	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
  		<constructor-arg index="0" ref="sqlSession"/>
  	</bean>
- 	<mvc:interceptors>
  	<!-- 인터셉터 
+ 	<mvc:interceptors>
  		<mvc:interceptor>
  			<mvc:mapping path="/member/changePwdForm.do"/>
  			<mvc:mapping path="/member/changePwd.do"/> 
@@ -48,7 +60,6 @@
  			<mvc:mapping path="/article/write.do"/> 
  			<bean class="interceptor.UserLoginInterceptor"></bean>
  	</mvc:interceptor>
- 	-->
  	<mvc:interceptor>
  			<mvc:mapping path="/admin/**"/>
  			<mvc:exclude-mapping path="/admin/index.do"/>  
@@ -58,6 +69,7 @@
  		</mvc:interceptor>
  	</mvc:interceptors>
 
+ 	-->
 
 	<!-- 파일업로드 -->
  	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

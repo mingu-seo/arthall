@@ -2,8 +2,13 @@ package play;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import util.FileUtil;
 
 @Service
 public class PlayServiceImple implements PlayService {
@@ -36,20 +41,76 @@ public class PlayServiceImple implements PlayService {
 		// 모두 list로 집어넣는다.
 		List<PlayVO> list = playDao.list(param);
 		
+//		for (int i = 0 ; i < list.size();i++) {
+//			System.out.println(list.get(i).getFilename());
+//		}
+		
 		return list;
 	}
 	
 	
 	@Override
-	public String addPlay(PlayVO param) {
-//		// 파일 저장  - 파라미터에 MultipartFile file 추가
-//		FileUtil fu = new FileUtil();
-//		fu.fileUpload(file, req.getRealPath("/upload/article/"));
-//		param.setFilename(fu.fileName);
-		// '쓰기' 페이지로 . . . .
-//		String pageName = "";
-			playDao.addPlay(param);
+	public String write(HttpServletRequest req, PlayVO param, MultipartFile file) {
+		// *** FaqServiceImple
+		//HttpSession sess = req.getSession();
+		//AdminVO sessVo = (AdminVO)sess.getAttribute("authUser");
+		
+		// 파일 저장
+		/*MyFileRenamePolicy fu = new MyFileRenamePolicy();
+		fu.fileUpload(file, req.getRealPath("/upload/article/"));
+		param.setFilename(fu.fileName);
+		*/
+		String pageName = "";
+
+		// 파일 저장
+		FileUtil fu = new FileUtil();
+		fu.fileUpload(file, req.getRealPath("/upload/play/"));
+		param.setFilename(fu.fileName);
+		
+		int r = playDao.write(param);
+		
+		pageName = "redirect:list.do";
+		System.out.println("추가된 번호 : " + r);
+		return pageName;
+	}
+
+
+	@Override
+	public String delete(int[] check, PlayVO param) {
+		
+		for(int i = 0; i < check.length; i++) {
+			param.setNo(check[i]);
+			playDao.delete(param);
+		}
+		
 		return "redirect:list.do";
 	}
+
+
+	@Override
+	public String modify(HttpServletRequest req, PlayVO param, MultipartFile file) {
+		String pageName = "";
+
+		// 파일 저장
+		FileUtil fu = new FileUtil();
+		fu.fileUpload(file, req.getRealPath("/upload/play/"));
+		param.setFilename(fu.fileName);
+		
+		int r = playDao.modify(param);
+		
+		pageName = "redirect:list.do";
+		System.out.println("수정된 번호 : " + r);
+		return pageName;
+	}
+
+
+	@Override
+	public PlayVO modifyView(PlayVO param) {
+		PlayVO mv = playDao.modifyView(param);
+		
+		return mv;
+	}
+
+
 
 }

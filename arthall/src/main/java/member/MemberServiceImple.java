@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import util.Parameter;
+
+
+
 
 @Service
 public class MemberServiceImple implements MemberService{
@@ -36,6 +38,9 @@ public class MemberServiceImple implements MemberService{
 		param.setEndPage(endPage);
 		param.setTotalCount(totalCount);
 		param.setTotalPage(totalPage);
+		
+		System.out.println("++++++++++선택값 : "+param.getBanSelect());
+		
 		List<MemberVO> list = memberDao.list(param);
 		
 		return list;
@@ -43,29 +48,30 @@ public class MemberServiceImple implements MemberService{
 	
 	
 	@Override
-	public String regist(MemberVO param, HttpServletRequest req) {
+	public String join(MemberVO param, HttpServletRequest req) {
+		int numJoin = 0;
 		
-		int dupliCheck = 0;
-		MemberVO vo = memberDao.selectOne(param.getId());
-		
-		// 중복 시 -1 리턴
-		if (vo != null) {
-			dupliCheck = -1;
-		} else {
-			System.out.println("서비스값 : " + param.getTel());
-			dupliCheck = memberDao.insert(param);
+		MemberVO vo = memberDao.dupId(param);
+		if(vo == null) {
+			numJoin = memberDao.join(param);
 		}
-		
 		String pageName = "";
-		if (dupliCheck < 0) {
-			req.setAttribute("isDup", "true");
-			pageName = "admin/member/joinForm";
-		} else if (dupliCheck == 0) {
-			pageName = "admin/member/joinForm";
-		} else {
-			pageName = "redirect:joinSuccess.do?name="+param.getName();
+		if(numJoin != 0) {
+			req.setAttribute("msg", "회원가입 실패");
+			req.setAttribute("url", "index.do");
+			pageName = "common/alert";
 		}
 		return pageName;
+	}
+	
+	@Override
+	public String dupId(HttpServletRequest req, MemberVO param) {
+		MemberVO vo = memberDao.dupId(param);
+		String r = "true";
+		if (vo != null) {
+			r = "false";
+		}
+		return r;
 	}
 
 	@Override
@@ -75,7 +81,7 @@ public class MemberServiceImple implements MemberService{
 		if (vo == null) {
 			pageName = "admin/member/loginForm";
 		} else {
-			// 세션에 등록
+			memberDao.lastVisit(id); // 마지막 방문일 수정
 			req.getSession().setAttribute("authUser", vo);
 			pageName = "redirect:/index.do";
 		}
@@ -101,4 +107,36 @@ public class MemberServiceImple implements MemberService{
 		return pageName;
 	}
 	
+	@Override
+	public String banMem(String[] chk, MemberVO param) {
+		
+		for (int i = 0; i < chk.length; i++) {
+			param.setBanMem(chk[i]);
+			memberDao.banMem(param);
+		}
+		
+		return "redirect:index.do";
+	}
+	
+	@Override
+	public String detail(MemberVO param) {
+		String pageName = "";
+		int r = memberDao.detail(param);
+		if (r > 0) {
+			memberDao.detail(param);
+			pageName = "redirect:index.do?page=";
+			
+		}
+		
+		return pageName;
+	}
+
+
+	@Override
+	public MemberVO memberdetail(MemberVO param) {
+		MemberVO vo = memberDao.memberdetail(param);
+		
+		return vo;
+	}	
+
 }

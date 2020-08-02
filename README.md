@@ -12,7 +12,7 @@ HeidiSQL
   -admin, member, notice, news, qna, faq, play, reserv   
 > 테이블 생성 코드   
 
--admin
+-admin (07-28 13:26 마지막 수정)
 
 ```
 CREATE TABLE `admin` (
@@ -33,27 +33,55 @@ AUTO_INCREMENT=5
 
 
 ```
--play
+-admin.board (07-28 13:26 마지막 수정)
 
 ```
-CREATE TABLE `play` (
-	`no` VARCHAR(20) NOT NULL,
-	`playName` VARCHAR(50) NULL DEFAULT NULL,
-	`startDate` DATE NULL DEFAULT NULL,
-	`endDate` DATE NULL DEFAULT NULL,
-	`hallNo` INT(11) NULL DEFAULT NULL,
-	`actor` TEXT NULL DEFAULT NULL,
+CREATE TABLE `board` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(255) NULL DEFAULT NULL,
 	`content` TEXT NULL DEFAULT NULL,
-	`fileName` VARCHAR(50) NULL DEFAULT NULL,
-	`priceA` INT(11) NULL DEFAULT NULL,
-	`priceB` INT(11) NULL DEFAULT NULL,
-	`priceC` INT(11) NULL DEFAULT NULL,
-	`exhPrice` INT(11) NULL DEFAULT NULL,
+	`regdate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`moddate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`readcnt` INT(11) NOT NULL DEFAULT 0,
+	`writer` VARCHAR(50) NOT NULL DEFAULT '0',
+	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`group_no` INT(11) NOT NULL,
+	`order_no` INT(11) NULL DEFAULT 0,
+	`depth_no` INT(11) NULL DEFAULT 0,
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
+AUTO_INCREMENT=98
 ;
+
+
+```
+
+-play (#3. play/perform/exhibit으로 분할 예정, 이후로는 최종 완성 이후 수정하겠습니다. - 현재 로컬 작업중)
+
+```
+CREATE TABLE `play` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT COMMENT '공연번호',
+	`hallNo` INT(11) NULL DEFAULT NULL COMMENT '홀번호',
+	`playType` INT(1) NULL DEFAULT 1 COMMENT '공연1 전시회2',
+	`playName` VARCHAR(50) NULL DEFAULT NULL COMMENT '제목',
+	`startDate` DATE NULL DEFAULT NULL COMMENT '기간(시작일)',
+	`endDate` DATE NULL DEFAULT NULL COMMENT '기간(종료일)',
+	`starring` TEXT NULL DEFAULT NULL COMMENT '출연진/작가',
+	`content` TEXT NULL DEFAULT NULL COMMENT '내용(본문)',
+	`rating` VARCHAR(50) NULL DEFAULT NULL COMMENT '등급',
+	`runningTime` INT(11) NULL DEFAULT NULL COMMENT '러닝타임',
+	`inquiry` VARCHAR(50) NULL DEFAULT NULL COMMENT '문의',
+	`producer` VARCHAR(50) NULL DEFAULT NULL COMMENT '제작/주최',
+	`filename` VARCHAR(50) NULL DEFAULT NULL COMMENT '첨부파일',
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=7
+;
+
 
 ```
 -reserv
@@ -89,24 +117,25 @@ ENGINE=InnoDB
 ;
 
 ```
-board/notice
+board/notice 황동민 20200730 filename_org 추가
 ```
 
 
 CREATE TABLE `notice` (
-	`noticeNo` INT(11) NOT NULL AUTO_INCREMENT,
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(50) NULL DEFAULT NULL,
+	`filename_org` VARCHAR(50) NULL DEFAULT NULL,
 	`regDate` TIMESTAMP NULL DEFAULT NULL,
 	`readCnt` INT(11) NULL DEFAULT NULL,
 	`writer` VARCHAR(50) NULL DEFAULT NULL,
 	`filename` VARCHAR(50) NULL DEFAULT NULL,
-	`modDate` VARCHAR(50) NULL DEFAULT NULL,
+	`modDate` TIMESTAMP NULL DEFAULT NULL,
 	`content` TEXT NULL DEFAULT NULL,
-	PRIMARY KEY (`noticeNo`)
+	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=3
+AUTO_INCREMENT=81
 ;
 
 
@@ -123,6 +152,7 @@ CREATE TABLE `faq` (
 	`readcnt` INT(11) NOT NULL DEFAULT 0,
 	`writer` VARCHAR(50) NOT NULL DEFAULT '0',
 	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`filename_org` VARCHAR(255) NULL DEFAULT NULL,
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
@@ -130,7 +160,76 @@ ENGINE=InnoDB
 AUTO_INCREMENT=1;
 
 ```
+board/news 황동민 20200730 filename_org 추가 
+```
+CREATE TABLE `news` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(50) NULL DEFAULT NULL,
+	`content` TEXT NULL DEFAULT NULL,
+	`filename_org` VARCHAR(50) NULL DEFAULT NULL,
+	`regDate` TIMESTAMP NULL DEFAULT NULL,
+	`readCnt` INT(11) NULL DEFAULT NULL,
+	`writer` VARCHAR(50) NULL DEFAULT NULL,
+	`filename` VARCHAR(50) NULL DEFAULT NULL,
+	`modDate` TIMESTAMP NULL DEFAULT NULL,
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=22
+;
 
+```
+
+board/qna   //오게이 예아 이만철 20200727
+```
+CREATE TABLE `qna` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(255) NULL DEFAULT NULL,
+	`content` TEXT NULL DEFAULT NULL,
+	`readcnt` INT(11) NOT NULL DEFAULT 0,
+	`regdate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`moddate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`writer` VARCHAR(50) NOT NULL,
+	`filename` VARCHAR(255) NULL DEFAULT NULL,
+	`filename_org` VARCHAR(255) NULL DEFAULT NULL,
+	`gno` INT(11) NOT NULL DEFAULT 0,
+	`ono` INT(11) NOT NULL DEFAULT 0,
+	`nested` INT(11) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`no`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+```
+
+-member 200731_수정 김대영/신근영
+```
+CREATE TABLE `member` (
+	`no` INT(11) NOT NULL AUTO_INCREMENT,
+	`id` VARCHAR(50) NULL DEFAULT NULL,
+	`password` VARCHAR(50) NULL DEFAULT NULL,
+	`name` VARCHAR(50) NULL DEFAULT NULL,
+	`gender` INT(11) NULL DEFAULT 4 COMMENT '1=남성 / 2=여성 / 3=제3의성  / 4=기재원치않음',
+	`tel` VARCHAR(50) NULL DEFAULT NULL,
+	`email` VARCHAR(50) NULL DEFAULT NULL,
+	`zipCode` VARCHAR(50) NULL DEFAULT NULL,
+	`addr1` VARCHAR(100) NULL DEFAULT NULL,
+	`addr2` VARCHAR(100) NULL DEFAULT NULL,
+	`birth` VARCHAR(50) NULL DEFAULT NULL,
+	`joinDate` TIMESTAMP NULL DEFAULT NULL,
+	`lastVisit` TIMESTAMP NULL DEFAULT NULL,
+	`banMem` VARCHAR(50) NULL DEFAULT NULL,
+	PRIMARY KEY (`no`)
+)
+COMMENT='회원테이블'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=20
+;
+
+``` 
 
 예시)
 
@@ -143,7 +242,9 @@ AUTO_INCREMENT=1;
 Eclipse IDE Enterprice for Java Developers   
 
 >src/main/java   
->>/admin    
+>>/admin
+>>>/board
+
 >>/member  
 
 >>/board       
@@ -181,7 +282,7 @@ Eclipse IDE Enterprice for Java Developers
 
 
 >>>/admin 
->>>>/list.jsp 
+>>>>/board 
 
 >>>/member 
 

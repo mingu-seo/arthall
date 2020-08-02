@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 public class MemberDAO {
@@ -27,15 +30,15 @@ public class MemberDAO {
 	
 	// 2. 사용자페이지
 	// 회원가입_아이디 중복 확인
-	public MemberVO selectOne(String id) {
-		MemberVO vo = sqlSession.selectOne("member.selectOne", id);
+	public MemberVO dupId(MemberVO param) {
+		MemberVO vo = sqlSession.selectOne("member.dupId", param);
 		return vo;
 	}
 	
 	// 회원가입_DB등록
-	public int insert(MemberVO param) {
-		System.out.println("DAO값 : " + param.getTel());
-		return sqlSession.insert("member.insert", param);
+	public int join(MemberVO param) {
+
+		return sqlSession.insert("member.join", param);
 	}
 
 	// 로그인
@@ -47,7 +50,30 @@ public class MemberDAO {
 		return sqlSession.selectOne("member.login", m);
 	}
 	
+	// 마지막 방문 일자 수정
+		public MemberVO lastVisit(String id) {
+			return sqlSession.selectOne("member.lastVisit", id);
+	}
+	
+	
 	public int changePwd(MemberVO param) {
 		return sqlSession.update("member.changePwd", param);
 	}
+	
+
+	
+	// 회원정지
+	public int banMem(MemberVO param) {
+		return sqlSession.update("member.banMem", param);		
+	}
+
+	public int detail(MemberVO param) {
+		return sqlSession.update("member.detail", param);
+	}
+	
+	public MemberVO memberdetail(MemberVO param) {
+		return sqlSession.selectOne("member.memberdetail", param);
+	}
+	
+	
 }

@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<%@ include file="/WEB-INF/view/include/comment.jsp"%>
 </head>
 <body> 
 <div id="wrap">
@@ -37,13 +38,13 @@
 									<tr>
 										<th scope="row"><label for="">제목</label></th>
 										<td colspan="10">
-											<c:out value="${vo.title}"/>
+											<c:out value="${data.title}"/>
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">내용</label></th>
 										<td colspan="10">
-											<c:out value="${vo.content}"/>
+											<c:out value="${data.content}"/>
 										</td>
 									</tr>
 									<tr>
@@ -56,6 +57,8 @@
 									</tr>
 								</tbody>
 							</table>
+							<div class="cbox" id="cbox">
+							</div>
 							<div class="btn">
 								<div class="btnLeft">
 									<a class="btns" href="list.do"><strong>목록</strong></a>

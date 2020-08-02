@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comment"><!-- test.memberList -->
+	
+	<delete id="deleteComment" parameterType="comment.CommentVO">
+		DELETE FROM comment
+		where no = #{no}
+	</delete>
+	
+	<select id="commentList" parameterType="comment.CommentVO" resultType="comment.CommentVO">
+		SELECT * FROM comment
+		WHERE TABLE_name = '${table_name}' and post_no = ${post_no}
+		ORDER BY regdate DESC
+	</select>
+	<insert id="comment" parameterType="comment.CommentVO">
+		INSERT INTO comment
+		(TABLE_NAME, post_no, writer, content, regdate)
+		VALUES
+		(#{table_name}, #{post_no}, #{writer}, #{content}, now())
+	</insert>
+	<select id="count" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM comment
+		WHERE post_no = #{post_no}
+	</select>
+</mapper>

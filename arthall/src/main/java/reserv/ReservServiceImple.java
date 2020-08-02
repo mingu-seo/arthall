@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import play.PlayVO;
+
 
 @Service
 public class ReservServiceImple implements ReservService{
@@ -44,7 +46,7 @@ public class ReservServiceImple implements ReservService{
 	public String delete(String[] nono, ReservVO param) {
 		
 		for (int i = 0; i < nono.length; i++) {
-			param.setNo(nono[i]);
+			param.setReservNo(nono[i]);
 			reservDao.delete(param);
 		}
 		
@@ -57,6 +59,23 @@ public class ReservServiceImple implements ReservService{
 	public List<TicketVO> ticketlist(TicketVO param) {
 		List<TicketVO> ticketlist = reservDao.ticketlist(param);
 		return ticketlist;
+	}
+
+	@Override
+	public String reservOne(ReservVO param) {
+		
+		
+		
+		
+		reservDao.reservOne(param);
+		
+		return "admin/reserv/list";
+	}
+
+	@Override
+	public PlayVO playList() {
+		PlayVO playList = reservDao.play();
+		return playList;
 	}
 
 }

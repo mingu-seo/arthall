@@ -25,8 +25,37 @@ public class NoticeDAO {
 		return sqlSession.insert("notice.write", param);
 	}
 	
-//	public int writeContent(NoticeVO param) {
-//		return sqlSession.insert("notice.writeContent", param);
+	public NoticeVO view(NoticeVO param) {
+		return sqlSession.selectOne("notice.view",param);
+	}
+	
+//	public String viewContent(NoticeVO param) {
+//		return sqlSession.selectOne("notice.viewContent",param);
 //	}
+
+	public int modify(NoticeVO param) {
+		
+		return sqlSession.update("notice.modify", param);
+	}
+
+	public int delete(int noticeno) {
+		return sqlSession.delete("notice.delete",noticeno);
+	}
+	
+	public int readCnt(NoticeVO param) {
+		return sqlSession.update("notice.readCnt",param);
+	}
+	
+	
+	public NoticeVO view_img(NoticeVO param) {
+		return sqlSession.selectOne("notice.view_img",param);
+	}
+
+	public int modifyFile(NoticeVO param) {
+		return sqlSession.update("notice.modifyFile", param);
+		
+		
+	}
+	
 	
 }
