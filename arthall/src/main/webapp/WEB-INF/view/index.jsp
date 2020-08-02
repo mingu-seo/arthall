@@ -235,7 +235,7 @@
 									<c:if test="${status.count <= 5}">
 									<tr>
 											<td class="title">
-												<a href="/member/view.do?no=${notice.no}&page=${vo.page}">
+												<a href="/board/notice/view.do?no=${notice.no}&page=${vo.page}">
 													<c:out value="${notice.title}"/>
 												</a>
 											</td>
