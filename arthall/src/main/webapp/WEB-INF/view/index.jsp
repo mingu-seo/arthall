@@ -231,7 +231,8 @@
 									</tbody>
 									</c:if>
 									<c:if test="${vo.totalCount > 0}">
-									<c:forEach var="notice" items="${list}">
+									<c:forEach var="notice" items="${list}" varStatus="status">
+									<c:if test="${status.count <= 5}">
 									<tr>
 											<td class="title">
 												<a href="view.do?no=${notice.no}&page=${vo.page}">
@@ -240,6 +241,7 @@
 											</td>
 											<td>${notice.regDate}</td>
 										</tr>
+									</c:if>
 									</c:forEach>
 									</c:if>
 							
