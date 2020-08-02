@@ -25,6 +25,8 @@ $(document).ready(function(){
     })
 })
 
+
+
 </script>
 </head>
 <body> 
@@ -43,6 +45,7 @@ $(document).ready(function(){
             </div>
             <!-- //con_tit -->
             <div class="con">
+            <input type="submit" value="예약 페이지 이동" onclick="move();">
             	<form name="searchForm" id="searchForm" action="list.do"  method="post">
 
 					<div class="search">
@@ -59,6 +62,7 @@ $(document).ready(function(){
                     	<!-- 키워드 -->
                     	<select name="stype" id="search" title="검색을 선택해주세요">
                         	<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>
+                            <option value="reservNo" <c:if test="${vo.stype=='reservNo'}">selected</c:if>>예약번호</option>
                             <option value="name" <c:if test="${vo.stype=='name'}">selected</c:if>>예약자명</option>
                             <option value="playName" <c:if test="${vo.stype=='playName'}">selected</c:if>>공연명</option>
                             <option value="playDate" <c:if test="${vo.stype=='playDate'}">selected</c:if>>공연일자</option>
@@ -90,18 +94,21 @@ $(document).ready(function(){
                            <col class="w12" />
                            <col class="w7" />
                            <col class="w7" />
+                           <col class="w7" />
                         </colgroup>
                         <thead>
                            <tr>
                               <th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)" /></th>
                               <th scope="col">예약번호</th>
+                              <th scope="col">멤버번호</th>
                               <th scope="col">예약자명</th> 
                               <th scope="col">예약일자</th> 
                               <th scope="col">공연번호</th> 
                               <th scope="col">공연명</th>
                               <th scope="col">공연일자</th> 
-                              <th scope="col">공연시간</th>
-                              <th scope="col" class="last">공연홀</th>
+                              <th scope="col">time</th>
+                              <th scope="col">홀번호</th>
+                              <th scope="col" class="last">입금상황</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -112,17 +119,19 @@ $(document).ready(function(){
                            </c:if>
                            <c:if test="${vo.totalCount > 0}">
                               <c:forEach var="reserv" items="${list}">
-                              <tr>
-                                 <td class="first"><input type="checkbox" name="no" id="no" value="${reserv.no}"/></td>
                                  <!-- 티켓리스트 페이지로 이동 -->
-                                 <td class="title"><a href="ticketlist.do?reservNo=${reserv.no}">${reserv.no}</a></td>
-                                 <td>${reserv.name}</td>   
-                                 <td>${reserv.reservDate}</td>
-                                 <td>${reserv.playNo}</td>
-                                 <td>${reserv.playName}</td>
-                                 <td>${reserv.playDate}</td>
-                                 <td>${reserv.runtime}</td>
-                                 <td class="last">${reserv.hallNo}</td>
+                              <tr class = 'list'>
+                                 <td class="first"><input type="checkbox" name="no" id="no" value="${reserv.reservNo}"/></td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.reservNo}</td>   
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.memberNo}';">${reserv.memberNo}</td>   
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.name}';">${reserv.name}</td>   
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservDate}';">${reserv.reservDate}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.playNo}';">${reserv.playNo}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.playName}';">${reserv.playName}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.playDate}';">${reserv.playDate}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.time}';">${reserv.time}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.hallNo}';">${reserv.hallNo}</td>
+                                 <td class="last" onclick="location.href='ticketlist.do?reservNo=${reserv.pay}';">${reserv.pay}</td>
                               </tr>
                               </c:forEach>                             
                            </c:if>
@@ -150,7 +159,6 @@ $(document).ready(function(){
                      </div>
                      <!-- //페이징 처리 -->
 
-                     <input type="submit" value="예약 페이지 이동" onclick="move();">
                      <!-- //search --> 
                   </div>
                   <!-- //blist -->

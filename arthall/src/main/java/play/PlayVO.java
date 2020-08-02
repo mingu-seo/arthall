@@ -6,22 +6,21 @@ import java.sql.Timestamp;
 public class PlayVO extends util.Parameter{
 
 	private int no;
+	private int hallNo;
+	private int playType;
 	private String playName;
 	private Date startDate;
 	private Date endDate;
-	private int runtime;
-	private int hallNo;
-	private String actor;
+	private String starring;
 	private String content;
-	private int playType;
-	private int priceA;
-	private int priceB;
-	private int priceC;
+	private String rating;
+	private int runningTime;
+	private String inquiry;
+	private String producer;
 	private int exhPrice;
 	
 	private Timestamp regdate;
 	private Timestamp moddate;
-	private String fileName;
 	
 	public PlayVO(){
 		super.setPage(1);
@@ -34,6 +33,22 @@ public class PlayVO extends util.Parameter{
 
 	public void setNo(int no) {
 		this.no = no;
+	}
+
+	public int getHallNo() {
+		return hallNo;
+	}
+
+	public void setHallNo(int hallNo) {
+		this.hallNo = hallNo;
+	}
+
+	public int getPlayType() {
+		return playType;
+	}
+
+	public void setPlayType(int playType) {
+		this.playType = playType;
 	}
 
 	public String getPlayName() {
@@ -60,28 +75,12 @@ public class PlayVO extends util.Parameter{
 		this.endDate = endDate;
 	}
 
-	public int getRuntime() {
-		return runtime;
+	public String getStarring() {
+		return starring;
 	}
 
-	public void setRuntime(int runtime) {
-		this.runtime = runtime;
-	}
-
-	public int getHallNo() {
-		return hallNo;
-	}
-
-	public void setHallNo(int hallNo) {
-		this.hallNo = hallNo;
-	}
-
-	public String getActor() {
-		return actor;
-	}
-
-	public void setActor(String actor) {
-		this.actor = actor;
+	public void setStarring(String starring) {
+		this.starring = starring;
 	}
 
 	public String getContent() {
@@ -92,52 +91,44 @@ public class PlayVO extends util.Parameter{
 		this.content = content;
 	}
 
-	public int getPriceA() {
-		return priceA;
+	public String getRating() {
+		return rating;
 	}
 
-	public void setPriceA(Integer priceA) {
-		if ( priceA == null ) {
-			this.priceA = 0;
-		} else {
-			this.priceA = priceA;
-		}
+	public void setRating(String rating) {
+		this.rating = rating;
 	}
 
-	public int getPriceB() {
-		return priceB;
+	public int getRunningTime() {
+		return runningTime;
 	}
 
-	public void setPriceB(Integer priceB) {
-		if ( priceB == null ) {
-			this.priceB = 0;
-		} else {
-			this.priceB = priceB;
-		}
+	public void setRunningTime(int runningTime) {
+		this.runningTime = runningTime;
 	}
 
-	public int getPriceC() {
-		return priceC;
+	public String getInquiry() {
+		return inquiry;
 	}
 
-	public void setPriceC(Integer priceC) {
-		if ( priceC == null ) {
-			this.priceC = 0;
-		} else {
-			this.priceC = priceC;
-		}
+	public void setInquiry(String inquiry) {
+		this.inquiry = inquiry;
+	}
+
+	public String getProducer() {
+		return producer;
+	}
+
+	public void setProducer(String producer) {
+		this.producer = producer;
 	}
 
 	public int getExhPrice() {
 		return exhPrice;
 	}
 
-	public void setExhPrice(Integer exhPrice) {
-		if ( exhPrice == null ) {
-			this.exhPrice = 0;
-		} else {
-			this.exhPrice = exhPrice;
-		}
+	public void setExhPrice(int exhPrice) {
+		this.exhPrice = exhPrice;
 	}
 
 	public Timestamp getRegdate() {
@@ -156,23 +147,6 @@ public class PlayVO extends util.Parameter{
 		this.moddate = moddate;
 	}
 
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-	public int getPlayType() {
-		return playType;
-	}
-
-	public void setPlayType(int playType) {
-		this.playType = playType;
-	}
-	
-	
 	
 	
 }

@@ -5,9 +5,11 @@
 	<select id = "count" parameterType="play.PlayVO" resultType="Integer">
 		SELECT COUNT(*) FROM play
 		<where>
-			<if test="sval != null and sval != ''">
-			playName LIKE '%${sval}%'
-			OR actor LIKE '%${sval}%'
+			<if test="stype != 'all' and sval != null and sval != ''">
+				${stype} like '%${sval}%'
+			</if>
+			<if test="stype == 'all' and sval != null and sval !=''">
+				playName like '%${sval}%' OR actor like '%${sval}%'
 			</if>
 		</where>
 	</select>
@@ -15,22 +17,23 @@
 	<select id = "list" parameterType="play.PlayVO" resultType="play.PlayVO">
 		SELECT * FROM play 
 		<where>
-			<if test="sval != null and sval != ''">
-			playName LIKE '%${sval}%'
-			OR actor LIKE '%${sval}%'
+			<if test="stype != 'all' and sval != null and sval != ''">
+				${stype} like '%${sval}%'
+			</if>
+			<if test="stype == 'all' and sval != null and sval !=''">
+				playName like '%${sval}%' OR actor like '%${sval}%'
 			</if>
 		</where>
-		ORDER BY regDate DESC LIMIT #{startRow}, #{size}
+		ORDER BY no DESC LIMIT #{startRow}, #{size}
 	</select>
 	
 	<insert id = "write" parameterType="play.PlayVO" useGeneratedKeys="true">
 		INSERT INTO play
-			(playName, startDate, endDate, runtime, hallNo, actor, content,
-			fileName, playType, priceA, priceB, priceC, exhPrice, regDate, modDate)
+			(playName, startDate, endDate, playType, starring, content,
+			rating, runningTime, inquiry, producer, filename)
 		VALUES
-			(#{playName}, #{startDate}, #{endDate}, #{runtime}, #{hallNo},
-			#{actor}, #{content}, #{fileName}, #{playType}, #{priceA}, #{priceB},
-			#{priceC}, #{exhPrice}, now(), now());
+			(#{playName}, #{startDate}, #{endDate}, #{playType}, #{starring},
+			#{content}, #{rating}, #{runningTime}, #{inquiry}, #{producer}, #{filename});
 		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
 			SELECT last_insert_id();
 		</selectKey>
@@ -39,4 +42,27 @@
 	<delete id = "delete" parameterType="play.PlayVO">
 		DELETE FROM play WHERE no = #{no}
 	</delete>
+	
+	<update id = "modify" parameterType="play.PlayVO">
+		UPDATE play SET
+		playName = #{playName},
+		startDate = #{startDate},
+		endDate = #{endDate},
+		runtime = #{runtime},
+		hallNo = #{hallNo},
+		actor = #{actor},
+		content = #{content},
+		fileName = #{filename},
+		playType = #{playType},
+		priceA = #{priceA},
+		priceB = #{priceB},
+		priceC = #{priceC},
+		exhPrice = #{exhPrice},
+		moddate = now()
+		WHERE no = #{no};
+	</update>
+	
+	<select id = "modifyView" parameterType="play.PlayVO" resultType="play.PlayVO">
+		SELECT * FROM play WHERE no = #{no};
+	</select>
 </mapper>

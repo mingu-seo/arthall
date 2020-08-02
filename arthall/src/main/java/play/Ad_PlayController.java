@@ -18,13 +18,45 @@ public class Ad_PlayController {
 	private PlayService playService;
 	
 	@RequestMapping("/admin/play/list.do")
-	public String list(Model model, HttpServletRequest req, PlayVO param) {
+	public String list(Model model, PlayVO param) {
 		List<PlayVO> list = playService.list(param);
 		
 		model.addAttribute("vo", param);
 		model.addAttribute("list", list);
+//		for (int i = 0 ; i < list.size();i++) {
+//			System.out.println(list.get(i).getFileName());
+//		}
 		
+		System.out.println(param.getStype());
 		return "admin/play/list";
+	}
+	
+	@RequestMapping("/admin/play/perform.do")
+	public String listPerform(Model model, PlayVO param) {
+		List<PlayVO> list = playService.list(param);
+		
+		model.addAttribute("vo", param);
+		model.addAttribute("list", list);
+//		for (int i = 0 ; i < list.size();i++) {
+//			System.out.println(list.get(i).getFileName());
+//		}
+//		
+//		System.out.println(param.getStype());
+		return "admin/play/perform";
+	}
+	
+	@RequestMapping("/admin/play/exhibit.do")
+	public String listExhibit(Model model, PlayVO param) {
+//		List<PlayVO> list = playService.list(param);
+//		
+//		model.addAttribute("vo", param);
+//		model.addAttribute("list", list);
+//		for (int i = 0 ; i < list.size();i++) {
+//			System.out.println(list.get(i).getFileName());
+//		}
+//		
+//		System.out.println(param.getStype());
+		return "admin/play/exhibit";
 	}
 	
 	@RequestMapping("/admin/play/writeForm.do")
@@ -50,21 +82,25 @@ public class Ad_PlayController {
 		
 		return pageName;
 	}
-//	
-//	@RequestMapping("/article/read.do")
-//	public String read2(Model model, HttpServletRequest req, ArticleVO param) {
-//		ArticleVO data = articleService.read2(param);
-//		int cnt = articleService.read_cnt(param);
-//		model.addAttribute("vo", param);
-//		model.addAttribute("data", data);
-//		model.addAttribute("cnt", cnt);
-//		return "article/readArticle";
-//	}
-//	
-//	@RequestMapping("/article/delete.do")
-//	public String deleteContent(Model model, ArticleVO param) {
-//		String  pageName = articleService.deleteContent(param);
-//		return pageName;
-//	}
+
+	@RequestMapping("/admin/play/fileView.do")
+	public String fileView(Model model,PlayVO param) {
+		model.addAttribute("vo",param);
+		
+		return "admin/play/fileView";
+	}
 	
+	@RequestMapping("/admin/play/modifyForm.do")
+	public String modifyView(Model model, PlayVO param) {
+		model.addAttribute("vo", playService.modifyView(param));
+		
+		return "admin/play/modifyForm";
+	}
+	
+	@RequestMapping("/admin/play/modify.do")
+	public String modify(HttpServletRequest req, PlayVO param, @RequestParam("filename_tmp") MultipartFile file) {
+		String pageName = playService.modify(req, param, file);
+		System.out.println("모디파이두");
+		return pageName;
+	}
 }

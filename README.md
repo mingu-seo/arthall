@@ -58,32 +58,30 @@ AUTO_INCREMENT=98
 
 ```
 
--play (#2. 07-27 18시 30분 수정)(#1. 07-26 19시 수정)
+-play (#3. play/perform/exhibit으로 분할 예정, 이후로는 최종 완성 이후 수정하겠습니다. - 현재 로컬 작업중)
 
 ```
 CREATE TABLE `play` (
-	`no` INT(11) NOT NULL AUTO_INCREMENT,
-	`playName` VARCHAR(50) NULL DEFAULT NULL,
-	`startDate` DATE NULL DEFAULT NULL,
-	`endDate` DATE NULL DEFAULT NULL,
-	`runtime` INT(11) NULL DEFAULT NULL,
-	`hallNo` INT(11) NULL DEFAULT NULL,
-	`actor` TEXT NULL DEFAULT NULL,
-	`content` TEXT NULL DEFAULT NULL,
-	`fileName` VARCHAR(50) NULL DEFAULT NULL,
-	`playType` INT(11) NULL DEFAULT NULL,
-	`priceA` INT(11) NULL DEFAULT NULL,
-	`priceB` INT(11) NULL DEFAULT NULL,
-	`priceC` INT(11) NULL DEFAULT NULL,
-	`exhPrice` INT(11) NULL DEFAULT NULL,
-	`regDate` TIMESTAMP NULL DEFAULT NULL,
-	`modDate` TIMESTAMP NULL DEFAULT NULL,
+	`no` INT(11) NOT NULL AUTO_INCREMENT COMMENT '공연번호',
+	`hallNo` INT(11) NULL DEFAULT NULL COMMENT '홀번호',
+	`playType` INT(1) NULL DEFAULT 1 COMMENT '공연1 전시회2',
+	`playName` VARCHAR(50) NULL DEFAULT NULL COMMENT '제목',
+	`startDate` DATE NULL DEFAULT NULL COMMENT '기간(시작일)',
+	`endDate` DATE NULL DEFAULT NULL COMMENT '기간(종료일)',
+	`starring` TEXT NULL DEFAULT NULL COMMENT '출연진/작가',
+	`content` TEXT NULL DEFAULT NULL COMMENT '내용(본문)',
+	`rating` VARCHAR(50) NULL DEFAULT NULL COMMENT '등급',
+	`runningTime` INT(11) NULL DEFAULT NULL COMMENT '러닝타임',
+	`inquiry` VARCHAR(50) NULL DEFAULT NULL COMMENT '문의',
+	`producer` VARCHAR(50) NULL DEFAULT NULL COMMENT '제작/주최',
+	`filename` VARCHAR(50) NULL DEFAULT NULL COMMENT '첨부파일',
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=22
+AUTO_INCREMENT=7
 ;
+
 
 ```
 -reserv
@@ -206,15 +204,17 @@ AUTO_INCREMENT=1
 ;
 ```
 
--member 김대영/신근영
+-member 200731_수정 김대영/신근영
 ```
 CREATE TABLE `member` (
 	`no` INT(11) NOT NULL AUTO_INCREMENT,
 	`id` VARCHAR(50) NULL DEFAULT NULL,
 	`password` VARCHAR(50) NULL DEFAULT NULL,
 	`name` VARCHAR(50) NULL DEFAULT NULL,
+	`gender` INT(11) NULL DEFAULT 4 COMMENT '1=남성 / 2=여성 / 3=제3의성  / 4=기재원치않음',
 	`tel` VARCHAR(50) NULL DEFAULT NULL,
 	`email` VARCHAR(50) NULL DEFAULT NULL,
+	`zipCode` VARCHAR(50) NULL DEFAULT NULL,
 	`addr1` VARCHAR(100) NULL DEFAULT NULL,
 	`addr2` VARCHAR(100) NULL DEFAULT NULL,
 	`birth` VARCHAR(50) NULL DEFAULT NULL,
@@ -228,6 +228,7 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 AUTO_INCREMENT=20
 ;
+
 ``` 
 
 예시)

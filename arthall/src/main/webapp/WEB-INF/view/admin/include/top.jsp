@@ -62,8 +62,12 @@ $(window).load(function(){
 		<div class="util">
 			<ul>
 				<li class="frist"><a href="<%=request.getContextPath()%>/admin" onclick="">Home</a></li>
+<<<<<<< HEAD
+				<li><a href="<%=request.getContextPath()%>/admin/logout.do">Logout</a></li>
+=======
 				<li><a href="<%=request.getContextPath()%>/admin/logout.do">LogOut</a></li>
 				<li><a href="<%=request.getContextPath()%>/">회원페이지</a></li>
+>>>>>>> branch 'master' of https://github.com/mingu-seo/arthall.git
 			</ul>
 		</div>
 		<!-- util : e --> 
@@ -72,8 +76,14 @@ $(window).load(function(){
   			<ul class="menu">
   				<li><a href="<%=request.getContextPath()%>/admin/member/index.do" class="parent"><span>회원관리</span></a></li>
   				<li><a href="<%=request.getContextPath()%>/admin/reserv/list.do" class="parent"><span>예약관리</span></a></li>
-				<li><a href="<%=request.getContextPath()%>/admin/play/list.do" class="parent"><span>공연관리</span></a></li>
-				  
+				<li><a href="<%=request.getContextPath()%>/admin/play/list.do" class="parent"><span>공연관리</span></a>
+				  	<div class="standard_left">
+					<ul>						
+						<li><a href="<%=request.getContextPath()%>/admin/admin/board/list.do"><span>공연/전시 정보</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/admin/board/perform.do"><span>공연 일정</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/admin/board/exhibit.do"><span>전시 일정</span></a></li>
+					</ul>
+					</div>
 				<li><a href="<%=request.getContextPath()%>/admin/board/notice/list.do" class="parent"><span>게시판</span></a>
 				
 					<div class="standard_left">

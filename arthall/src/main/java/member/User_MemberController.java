@@ -1,6 +1,7 @@
 package member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import admin.AdminVO;
+
 @Controller
 public class User_MemberController {
 
@@ -21,6 +24,15 @@ public class User_MemberController {
 	@RequestMapping("member/joinForm.do")
 	public String joinForm() {
 		return "member/joinForm";
+	}
+	
+	@RequestMapping("/member/dupId.do")
+	public void dup(HttpServletRequest req, MemberVO param, HttpServletResponse res) throws Exception {
+		String r = memberService.dupId(req, param);
+		res.setContentType("text/html; charset=utf-8");
+		PrintWriter out = res.getWriter();
+		out.print(r);
+		out.flush();
 	}
 	
 	@RequestMapping("member/join.do")
