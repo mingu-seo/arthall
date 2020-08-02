@@ -220,27 +220,31 @@
                         </div>
                         <div class="cont">
                             <table class="notice">
-                                <tr>
-                                    <td><a href="#" class="notice__tit">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio laudantium repellendus, hic ea. Eveniet, ipsa dolores nemo fugiat, architecto ratione esse magni ab exercitationem deserunt laborum? Natus praesentium, cupiditate blanditiis.</a></td>
-                                    <td>2020-02-12</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="notice__tit">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio laudantium repellendus, hic ea. Eveniet, ipsa dolores nemo fugiat, architecto ratione esse magni ab exercitationem deserunt laborum? Natus praesentium, cupiditate blanditiis.</a></td>
-                                    <td>2020-02-12</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="notice__tit">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio laudantium repellendus, hic ea. Eveniet, ipsa dolores nemo fugiat, architecto ratione esse magni ab exercitationem deserunt laborum? Natus praesentium, cupiditate blanditiis.</a></td>
-                                    <td>2020-02-12</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="notice__tit">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio laudantium repellendus, hic ea. Eveniet, ipsa dolores nemo fugiat, architecto ratione esse magni ab exercitationem deserunt laborum? Natus praesentium, cupiditate blanditiis.</a></td>
-                                    <td>2020-02-12</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="notice__tit">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio laudantium repellendus, hic ea. Eveniet, ipsa dolores nemo fugiat, architecto ratione esse magni ab exercitationem deserunt laborum? Natus praesentium, cupiditate blanditiis.</a></td>
-                                    <td>2020-02-12</td>
-                                </tr>
-                                
+                            	<tbody>
+								
+									<c:if test="${vo.totalCount ==0}">
+									<tbody>
+										<tr align="center" bgcolor="white">
+									
+											<td colspan="100%">게시글이 없습니다.</td>
+										</tr>
+									</tbody>
+									</c:if>
+									<c:if test="${vo.totalCount > 0}">
+									<c:forEach var="notice" items="${list}">
+									<tr>
+											<td class="title">
+												<a href="view.do?no=${notice.no}&page=${vo.page}">
+													<c:out value="${notice.title}"/>
+												</a>
+											</td>
+											<td>${notice.regDate}</td>
+										</tr>
+									</c:forEach>
+									</c:if>
+							
+						
+								</tbody>
                             </table>
                         </div>
                     </article>
