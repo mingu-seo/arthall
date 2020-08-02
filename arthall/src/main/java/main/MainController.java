@@ -13,10 +13,7 @@ public class MainController {
 
 	@RequestMapping("/index.do")
 	public String index(HttpServletRequest request) {
-//		HttpSession sess = request.getSession();
-//		MemberVO vo = new MemberVO();
-//		vo.setName("홍길동");
-//		sess.setAttribute("authUser", vo);
 		return "index";
 	}
 }
+

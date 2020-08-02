@@ -4,7 +4,7 @@
 
 
  <div class="header-inner cf">
-                <h1><a href="<%=request.getContextPath()%>/index.html"><span class="hidden">logo</span><img src="<%=request.getContextPath()%>/img/logo.png" alt="logo"></a>
+                <h1><a href="<%=request.getContextPath()%>/"><span class="hidden">logo</span><img src="<%=request.getContextPath()%>/img/logo.png" alt="logo"></a>
                 </h1>
             
                 <div class="mobile">
