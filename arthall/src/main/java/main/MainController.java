@@ -15,5 +15,9 @@ public class MainController {
 	public String index(HttpServletRequest request) {
 		return "index";
 	}
+	@RequestMapping("/design.do")
+	public String design(HttpServletRequest request) {
+		return "design";
+	}
 }
 

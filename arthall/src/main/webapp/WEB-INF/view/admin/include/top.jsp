@@ -62,12 +62,10 @@ $(window).load(function(){
 		<div class="util">
 			<ul>
 				<li class="frist"><a href="<%=request.getContextPath()%>/admin" onclick="">Home</a></li>
-<<<<<<< HEAD
+
 				<li><a href="<%=request.getContextPath()%>/admin/logout.do">Logout</a></li>
-=======
-				<li><a href="<%=request.getContextPath()%>/admin/logout.do">LogOut</a></li>
 				<li><a href="<%=request.getContextPath()%>/">회원페이지</a></li>
->>>>>>> branch 'master' of https://github.com/mingu-seo/arthall.git
+
 			</ul>
 		</div>
 		<!-- util : e --> 

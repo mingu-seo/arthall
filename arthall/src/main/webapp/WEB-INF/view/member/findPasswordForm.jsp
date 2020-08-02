@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
-
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/findPassword.css">
 </head>
 <div id = "wrap">
 	<a href="<%=request.getContextPath()%>/index.do" id="gomain">본문바로가기</a>
@@ -23,15 +23,15 @@
             <main id="main">
                 <div class="main__content">
                     <section class="content__innerConts">
-                        <h3 class="innerConts__tit">아이디 찾기</h3>
+                        <h3 class="innerConts__tit">비밀번호 찾기</h3>
                         <p>회원정보에 등록한 이메일과 입력한 이메일이 같아야 아이디&#183;비밀번호를 받을 수 있습니다. <br>개인정보는 확인용으로만 처리되며 본인확인 외 다른 용도로 사용되지 않습니다.</p>
                         <div class="innerConts__cont">
                             <div class="cont__find">
                                 <ul class="find__list cf">
-                                    <li class="on"><a href="findID.html">아이디 찾기</a></li>
-                                    <li><a href="findPassword.html">비밀번호 찾기</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/member/findIDForm.do">아이디 찾기</a></li>
+                                    <li class="on"><a href="<%=request.getContextPath()%>/member/findPasswordForm.do">비밀번호 찾기</a></li>
                                 </ul>
-                                <form method="post" action="#" name="findId" id="findId">
+                                <form method="post" action="<%=request.getContextPath()%>/member/findPassword.do" name="findPassword" id="findPassword">
                                     <fieldset>
                                         <legend>아이디 찾기</legend>
                                         <div class="form__info">
@@ -41,12 +41,16 @@
                                                     <input type="text" id="name" name="name" required>
                                                 </li>
                                                 <li class="cf">
+                                                    <label for="id">아이디</label>
+                                                    <input type="text" id="id" name="id" required>
+                                                </li>
+                                                <li class="cf">
                                                     <label for="email">이메일</label>
                                                     <input type="email" id="email" name="email" required>
                                                 </li>
                                             </ul>
                                         </div>
-                                        <input type="submit" value="아이디 찾기" class="form__submit">
+                                        <input type="submit" value="비밀번호 찾기" class="form__submit">
                                     </fieldset>
                                 </form>
                             </div>
