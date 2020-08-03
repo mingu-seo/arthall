@@ -43,11 +43,15 @@ public class ReservServiceImple implements ReservService{
 	}
 
 	@Override
-	public String delete(String[] nono, ReservVO param) {
+	public String cancle(String[] nono, ReservVO param) {
 		
 		for (int i = 0; i < nono.length; i++) {
 			param.setReservNo(nono[i]);
-			reservDao.delete(param);
+			System.out.println("list에서 날리기");
+			reservDao.cancleReserv(param);
+			System.out.println("ticket에서 날리기");
+			reservDao.cancleTicket(param);
+			
 		}
 		
 		return "redirect:list.do";

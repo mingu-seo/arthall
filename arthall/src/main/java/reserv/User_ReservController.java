@@ -15,11 +15,19 @@ public class User_ReservController {
 	@Autowired
 	private ReservService reservService;
 	
+	@RequestMapping("/index.do")
+	public String index() {
+//		PlayVO vo = reservService.playList();
+//		model.addAttribute("vo", vo);
+		return "reserv/index";
+	}
+	
+	
 	// 공연, 전시 구분해서 페이지 보여주기
-	@RequestMapping("/admin/reserv/reservForm.do")
+	@RequestMapping("/reservForm.do")
 	public String playReservForm(Model model) {
-		PlayVO vo = reservService.playList();
-		model.addAttribute("vo", vo);
+//		PlayVO vo = reservService.playList();
+//		model.addAttribute("vo", vo);
 		return "reserv/reservForm";
 	}
 

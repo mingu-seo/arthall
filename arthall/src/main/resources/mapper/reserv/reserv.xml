@@ -97,10 +97,17 @@
 		LIMIT #{startRow},#{size}
 	</select>
 	
-	<delete id="delete" parameterType="reserv.ReservVO">
-		DELETE FROM reserv
-			WHERE reservNo=#{reservNo}
-	</delete>
+	<update id="cancleReserv" parameterType="reserv.ReservVO">
+		UPDATE reserv SET
+			pay="결제취소"
+		WHERE reservNo=#{reservNo}
+	</update>
+	
+	<update id="cancleTicket" parameterType="reserv.ReservVO">
+		UPDATE ticket SET 
+			pay="결제취소" 
+		WHERE reservNo=#{reservNo}
+	</update>
 	
 	
 	<!-- ticket 조인.. -form 정준 -->

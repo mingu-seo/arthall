@@ -24,8 +24,12 @@ public class ReservDAO {
 		return sqlSession.selectList("reserv.list", param);
 	}
 	
-	public int delete(ReservVO param) {
-		return sqlSession.delete("reserv.delete", param);
+	public int cancleReserv(ReservVO param) {
+		return sqlSession.update("reserv.cancleReserv", param);
+	}
+	
+	public int cancleTicket(ReservVO param) {
+		return sqlSession.update("reserv.cancleTicket", param);
 	}
 	
 	// Ticket
@@ -33,7 +37,6 @@ public class ReservDAO {
 		return sqlSession.selectList("reserv.ticketlist", param);
 	}
 	
-	// 시작일, 종료일 받아서 다시 조회
 	
 	// User 예약
 	public int reservOne(ReservVO param) {

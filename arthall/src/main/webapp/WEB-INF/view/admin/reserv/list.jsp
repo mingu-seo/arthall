@@ -4,15 +4,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
-function del() {
-	if (confirm('정말로 삭제하시겠습니까?')) {
-		location.href="delete.do";
+function cancle() {
+	if (($("input:checkbox[name='no']:checked").length) !=0){
+		if (confirm("결제취소 하시겠습니까?")) {
+		   $("#frm").submit();
+	   }
+	   else{
+		   return;
+	   }
+	} else {
+		alert("결제 취소할 항목을 선택하여 주세요");
 	}
+
+	   
 }
 
 function move() {
 	location.href="reservForm.do"
+}
+
+function move1() {
+	location.href="/index.do"
 }
 
 $(document).ready(function(){
@@ -24,7 +38,6 @@ $(document).ready(function(){
         }
     })
 })
-
 
 
 </script>
@@ -46,6 +59,7 @@ $(document).ready(function(){
             <!-- //con_tit -->
             <div class="con">
             <input type="submit" value="예약 페이지 이동" onclick="move();">
+            <input type="submit" value="메인 페이지 이동" onclick="move1();">
             	<form name="searchForm" id="searchForm" action="list.do"  method="post">
 
 					<div class="search">
@@ -82,7 +96,7 @@ $(document).ready(function(){
                
                   <div id="blist">
                      <p><span><strong>총 ${vo.totalCount}개</strong>  |  ${vo.page}/${vo.endPage}페이지</span></p>
-                     <form name="frm" id="frm" action="delete.do" method="post">
+                     <form name="frm" id="frm" action="cancle.do" method="post">
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
                         <colgroup>
                            <col class="" />
@@ -123,15 +137,15 @@ $(document).ready(function(){
                               <tr class = 'list'>
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${reserv.reservNo}"/></td>
                                  <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.reservNo}</td>   
-                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.memberNo}';">${reserv.memberNo}</td>   
-                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.name}';">${reserv.name}</td>   
-                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservDate}';">${reserv.reservDate}</td>
-                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.playNo}';">${reserv.playNo}</td>
-                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.playName}';">${reserv.playName}</td>
-                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.playDate}';">${reserv.playDate}</td>
-                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.time}';">${reserv.time}</td>
-                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.hallNo}';">${reserv.hallNo}</td>
-                                 <td class="last" onclick="location.href='ticketlist.do?reservNo=${reserv.pay}';">${reserv.pay}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.memberNo}</td>   
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.name}</td>   
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.reservDate}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.playNo}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.playName}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.playDate}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.time}</td>
+                                 <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.hallNo}</td>
+                                 <td class="last" onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.pay}</td>
                               </tr>
                               </c:forEach>                             
                            </c:if>
@@ -140,7 +154,7 @@ $(document).ready(function(){
                      </form>
                      <div class="btn">
                         <div class="btnLeft">
-                           <a class="btns" href="javascript:$('#frm').submit();" onclick="del();"><strong>삭제</strong> </a>
+                           <a class="btns" href="#" onclick="cancle();"><strong>결제취소</strong> </a>
                         </div>
                      </div>
                      <!--//btn-->

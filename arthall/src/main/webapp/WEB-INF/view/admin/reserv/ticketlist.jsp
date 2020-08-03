@@ -27,10 +27,11 @@
 							<form name="frm" id="frm" action="index.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
-									<col class="w30" />
-									<col class="w30" />
 									<col class="w15" />
 									<col class="w25" />
+									<col class="w25" />
+									<col class="w15" />
+									<col class="w20" />
 								</colgroup>
 								<thead>
 									<tr>
@@ -38,6 +39,7 @@
 										<th scope="col">예약번호</th> 
 										<th scope="col">좌석타입</th>
 										<th scope="col">가격</th>
+										<th scope="col">결제상태</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -47,6 +49,7 @@
 										<td>${ticket.reservNo}</td>	
 										<td>${ticket.seatType}</td>
 										<td>${ticket.price}</td>
+										<td>${ticket.pay}</td>
 									</tr>
 									</c:forEach>
 								</tbody>
