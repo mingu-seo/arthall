@@ -19,9 +19,6 @@ function del() {
         }
     });
 });
-function modify(){
-	
-}
 </script>
 </head>
 <body> 
@@ -36,14 +33,14 @@ function modify(){
       <div id="container">
          <div id="content">
             <div class="con_tit">
-               <h2>공지사항 - [목록]</h2>
+               <h2>공연/전시 관리 - [작품정보]</h2>
             </div>
             <!-- //con_tit -->
             <div class="con">
                <!-- 내용 : s -->
                <div id="bbs">
-                  <div id="blist">									<!-- 페이지계산 수정 필요 -->
-                     <p><span><strong>총 "${vo.totalCount}"개</strong>  |  1/12페이지</span></p>
+                  <div id="blist">									
+                     <p><span><strong>총 "${vo.totalCount}"개</strong>  |  ${vo.page }/${vo.totalPage}페이지</span></p>
                      <form name="frm" id="frm" action="delete.do" method="post">
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
                         <colgroup>
@@ -52,9 +49,10 @@ function modify(){
                            <col class="w4" />
                            <col class="w5" />
                            <col class="w8" />
-                           <col class="w8" />
+                           <col class="w7" />
                            <col class="w7" />
                            <col class="w20" />
+                           <col class="w7" />
                            <col class="w7" />
                            <col class="w7" />
                            <col class="w7" />
@@ -68,20 +66,19 @@ function modify(){
                               <th scope="col" rowspan="2">공연번호</th>
                               <th scope="col" rowspan="2">홀번호</th>
                               <th scope="col" rowspan="2">공연/전시</th>
-                              <th scope="col" rowspan="2">공연명</th>
-                              <th scope="col" colspan="2">공연 기간</th>
-                              <th scope="col" rowspan="2">내용</th>                               
+                              <th scope="col" rowspan="2">제목</th>
+                              <th scope="col" colspan="2">기간</th>
+                              <th scope="col" rowspan="2">출연진/작가</th>                               
+                              <th scope="col" rowspan="2">내용</th> 
                               <th scope="col" rowspan="2">등급</th> 
-                              <th scope="col" colspan="3">러닝타임</th>
+                              <th scope="col" rowspan="2">러닝타임(분)</th>
+                              <th scope="col" rowspan="2">문의</th>
+                              <th scope="col" rowspan="2">제작/주최</th>
                               <th scope="col" class="last" rowspan="2">첨부파일</th>
                            </tr>
                            <tr>
                            	  <th scope="col">시작일</th> 
 	                          <th scope="col">종료일</th>
-
-	                          <th scope="col">A좌석</th>
-	                          <th scope="col">B좌석</th>
-	                          <th scope="col">C좌석</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -92,20 +89,20 @@ function modify(){
                            </c:if>
                            <c:if test="${vo.totalCount > 0}">
                               <c:forEach var="play" items="${list}">
-                              <tr id="tr" onclick="location.href='modifyForm.do?no=${play.no}'">
+                              <tr>
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${play.no}"/></td>
-                                 <td class="title">${play.no}</td>
-                                 <td>${play.playName}</td>
-                                 <td>${play.hallNo}</td>
-                                 <td>${play.startDate}</td>
-                                 <td>${play.endDate}</td>
-                                 <td>${play.runtime}</td>
-                                 <td>${play.actor}</td>
-                                 <td>${play.content}</td>
-                                 <td>${play.priceA}</td>
-                                 <td>${play.priceB}</td>
-                                 <td>${play.priceC}</td>
-                                 <td>${play.exhPrice}</td>
+                                 <td class="title" onclick="location.href='modifyForm.do?no=${play.no}'">${play.no}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.hallNo}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.playType}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.playName}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.startDate}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.endDate}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.starring}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.content}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.rating}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.runningTime}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.inquiry}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.producer}</td>
                                  <td class="last"><a class="fileview" href="fileView.do?filename=${play.filename}"><strong>${play.filename}</strong></a></td>
                               </tr>
                               <tr>

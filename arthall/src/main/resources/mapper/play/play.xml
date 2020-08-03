@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="play">
 
+<!-- play -->
 	<select id = "count" parameterType="play.PlayVO" resultType="Integer">
 		SELECT COUNT(*) FROM play
 		<where>
@@ -21,7 +22,7 @@
 				${stype} like '%${sval}%'
 			</if>
 			<if test="stype == 'all' and sval != null and sval !=''">
-				playName like '%${sval}%' OR actor like '%${sval}%'
+				playName like '%${sval}%' OR starring like '%${sval}%'
 			</if>
 		</where>
 		ORDER BY no DESC LIMIT #{startRow}, #{size}
@@ -63,4 +64,64 @@
 	<select id = "modifyView" parameterType="play.PlayVO" resultType="play.PlayVO">
 		SELECT * FROM play WHERE no = #{no};
 	</select>
+	
+<!-- Perform -->
+	<select id = "countP" parameterType="play.PerformVO" resultType="Integer">
+		SELECT COUNT(*) FROM perform
+		<where>
+			<if test="stype != 'all' and sval != null and sval != ''">
+				${stype} like '%${sval}%'
+			</if>
+			<if test="stype == 'all' and sval != null and sval !=''">
+				performName like '%${sval}%' OR actor like '%${sval}%'
+			</if>
+		</where>
+	</select>
+	
+	<select id = "listP" parameterType="play.PerformVO" resultType="play.PerformVO">
+		SELECT * FROM perform
+		<where>
+			<if test="stype != 'all' and sval != null and sval != ''">
+				${stype} like '%${sval}%'
+			</if>
+			<if test="stype == 'all' and sval != null and sval !=''">
+				playName like '%${sval}%' OR actor like '%${sval}%'
+			</if>
+		</where>
+		ORDER BY no DESC LIMIT #{startRow}, #{size}
+	</select>
+	
+	<insert id = "writeP" parameterType="play.PerformVO" useGeneratedKeys="true">
+		INSERT INTO perform
+			(performName, performNo, performDate, time, actor, priceA, priceB, priceC, filename)
+		VALUES
+			(#{performName}, #{performNo}, #{performDate}, #{time}, #{actor}, #{priceA},
+			#{priceB}, #{priceC}, #{filename});
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT last_insert_id();
+		</selectKey>
+	</insert>
+	
+	<delete id = "deleteP" parameterType="play.PerformVO">
+		DELETE FROM perform WHERE no = #{no}
+	</delete>
+	
+	<update id = "modifyP" parameterType="play.PerformVO">
+		UPDATE perform SET
+		performName = #{performName},
+		performNo = #{performNo},
+		performDate = #{performDate},
+		time = #{time},
+		actor = #{actor},
+		priceA = #{priceA},
+		priceB = #{priceB},
+		priceC = #{priceC},
+		filename = #{filename}
+		WHERE no = #{no};
+	</update>
+	
+	<select id = "modifyViewP" parameterType="play.PerformVO" resultType="play.PerformVO">
+		SELECT * FROM perform WHERE no = #{no};
+	</select>
+	
 </mapper>

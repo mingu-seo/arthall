@@ -56,7 +56,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공연/전시 - [추가]</h2>
+					<h2>공연/전시 - [수정]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">

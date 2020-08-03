@@ -91,7 +91,7 @@ function del() {
                               <c:forEach var="play" items="${list}">
                               <tr>
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${play.no}"/></td>
-                                 <td class="title" onclick="location.href='modifyForm.do?no=${play.no}'">${play.no}</td>
+                                 <td class="title" style="text-align:center" onclick="location.href='modifyForm.do?no=${play.no}'">${play.no}</td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.hallNo}</td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.playType}</td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.playName}</td>
