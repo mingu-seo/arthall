@@ -100,7 +100,7 @@ public class Ad_PlayController {
 	@RequestMapping("/admin/play/modify.do")
 	public String modify(HttpServletRequest req, PlayVO param, @RequestParam("filename_tmp") MultipartFile file) {
 		String pageName = playService.modify(req, param, file);
-		System.out.println("모디파이두");
+		System.out.println(param.getNo());
 		return pageName;
 	}
 }

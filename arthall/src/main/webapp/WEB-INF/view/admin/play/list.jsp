@@ -19,9 +19,6 @@ function del() {
         }
     });
 });
-function modify(){
-	
-}
 </script>
 </head>
 <body> 
@@ -42,8 +39,8 @@ function modify(){
             <div class="con">
                <!-- 내용 : s -->
                <div id="bbs">
-                  <div id="blist">									<!-- 페이지계산 수정 필요 -->
-                     <p><span><strong>총 "${vo.totalCount}"개</strong>  |  1/12페이지</span></p>
+                  <div id="blist">									
+                     <p><span><strong>총 "${vo.totalCount}"개</strong>  |  ${vo.page }/${vo.totalPage}페이지</span></p>
                      <form name="frm" id="frm" action="delete.do" method="post">
                      <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
                         <colgroup>
@@ -52,7 +49,7 @@ function modify(){
                            <col class="w4" />
                            <col class="w5" />
                            <col class="w8" />
-                           <col class="w8" />
+                           <col class="w7" />
                            <col class="w7" />
                            <col class="w20" />
                            <col class="w7" />
@@ -92,20 +89,20 @@ function modify(){
                            </c:if>
                            <c:if test="${vo.totalCount > 0}">
                               <c:forEach var="play" items="${list}">
-                              <tr id="tr" onclick="location.href='modifyForm.do?no=${play.no}'">
+                              <tr>
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${play.no}"/></td>
-                                 <td class="title">${play.no}</td>
-                                 <td>${play.hallNo}</td>
-                                 <td>${play.playType}</td>
-                                 <td>${play.playName}</td>
-                                 <td>${play.startDate}</td>
-                                 <td>${play.endDate}</td>
-                                 <td>${play.starring}</td>
-                                 <td>${play.content}</td>
-                                 <td>${play.rating}</td>
-                                 <td>${play.runningTime}</td>
-                                 <td>${play.inquiry}</td>
-                                 <td>${play.producer}</td>
+                                 <td class="title" onclick="location.href='modifyForm.do?no=${play.no}'">${play.no}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.hallNo}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.playType}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.playName}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.startDate}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.endDate}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.starring}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.content}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.rating}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.runningTime}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.inquiry}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.producer}</td>
                                  <td class="last"><a class="fileview" href="fileView.do?filename=${play.filename}"><strong>${play.filename}</strong></a></td>
                               </tr>
                               <tr>
