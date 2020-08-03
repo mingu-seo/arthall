@@ -9,7 +9,7 @@
                         <div class="links__sns cf">
                             <a href="https://ko-kr.facebook.com/chungmuartscenter/" target="_blank"><i class="fab fa-facebook-f fa-2x"></i></a>
                             <a href="https://twitter.com/chungmuholic" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
-                            <a href="admin/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+                            <a href="/admin/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
                             <a href="https://blog.naver.com/cmah_arthall" target="_blank"><i class="xi-naver xi-2x"></i></a>
                             <a href="https://www.youtube.com/channel/UC4UWAAwSsT4O3hcLjFL8kXQ" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
                         </div>

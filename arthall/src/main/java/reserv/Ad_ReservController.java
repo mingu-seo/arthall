@@ -54,7 +54,6 @@ public class Ad_ReservController {
 		// Ticket
 		@RequestMapping("/admin/reserv/ticketlist.do")
 		public String ticketlist(Model model, TicketVO param) {
-			
 			List<TicketVO> ticketlist = reservService.ticketlist(param);
 			
 			model.addAttribute("ticketlist",ticketlist);

@@ -99,7 +99,7 @@
 	
 	<delete id="delete" parameterType="reserv.ReservVO">
 		DELETE FROM reserv
-			WHERE no=#{no}
+			WHERE reservNo=#{reservNo}
 	</delete>
 	
 	

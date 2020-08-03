@@ -60,6 +60,22 @@ public class User_MemberController {
 		return pageName;
 	}
 	
+	@RequestMapping("member/findIDForm.do")
+	public String findIDForm() {
+		return "member/findIDForm";
+	}
+	@RequestMapping("member/findIDResult.do")
+	public String findIDResult() {
+		return "member/findIDResult";
+	}
+	@RequestMapping("member/findPasswordForm.do")
+	public String findPasswordForm() {
+		return "member/findPasswordForm";
+	}
+	@RequestMapping("member/findPasswordResult.do")
+	public String findPasswordResult() {
+		return "member/findPasswordResult";
+	}
 	@RequestMapping("member/logout.do")
 	public String logout(Model model, HttpSession sess, HttpServletResponse res) throws IOException {
 

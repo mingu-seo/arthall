@@ -46,7 +46,7 @@ public class ReservServiceImple implements ReservService{
 	public String delete(String[] nono, ReservVO param) {
 		
 		for (int i = 0; i < nono.length; i++) {
-			param.setNo(nono[i]);
+			param.setReservNo(nono[i]);
 			reservDao.delete(param);
 		}
 		
@@ -64,14 +64,7 @@ public class ReservServiceImple implements ReservService{
 	@Override
 	public String reservOne(ReservVO param) {
 		
-		param.setNo("m333333");
-		param.setRuntime(2);
-		param.setPlayDate(java.sql.Date.valueOf("2020-07-09"));
-		// session에서 가져올 값들을 미리 넣어서 실험해봄
-		param.setName("수민스똑똑이"); // 예약자명
-		param.setPlayNo("m123255"); // 공연번호
-		param.setPlayName("얍!"); // 공연명
-		param.setHallNo(1); // 홀번호
+		
 		
 		
 		reservDao.reservOne(param);
