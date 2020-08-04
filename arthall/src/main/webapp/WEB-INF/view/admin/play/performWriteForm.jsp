@@ -16,7 +16,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공연일정- [추가]</h2>
+					<h2>공연관리 - [일정 추가]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
@@ -96,7 +96,7 @@
 							
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="list.do"><strong>목록</strong></a>
+									<a class="btns" href="perform.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
 									<a class="btns" style="cursor:pointer;" href="javascript:$('#frm').submit();"><strong>저장</strong></a>

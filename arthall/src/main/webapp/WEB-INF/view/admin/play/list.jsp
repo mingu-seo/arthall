@@ -119,9 +119,6 @@ function del() {
                         <div class="btnRight">
                            <a class="wbtn" href="writeForm.do"><strong>등록</strong> </a>
                         </div>
-                        <div class="btnRight">
-                           <a class="wbtn" href="modifyForm.do?no=${vo.no}"><strong>수정</strong> </a>
-                        </div>
                      </div>
                      <!--//btn-->
                      <!-- 페이징 처리 -->

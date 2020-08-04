@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class PerformVO extends util.Parameter{
 	
-	// DB기준 (PlayVO)
 	private int no;
 	private String performName;
 	private int performNo;

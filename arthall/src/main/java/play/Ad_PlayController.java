@@ -133,11 +133,11 @@ public class Ad_PlayController {
 //	EXHIBIT
 	
 	@RequestMapping("/admin/play/exhibit.do")
-	public String listExhibit(Model model, PlayVO param) {
-//		List<PlayVO> list = playService.list(param);
-//		
-//		model.addAttribute("vo", param);
-//		model.addAttribute("list", list);
+	public String listExhibit(Model model, ExhibitVO param) {
+		List<ExhibitVO> list = playService.listE(param);
+		
+		model.addAttribute("vo", param);
+		model.addAttribute("list", list);
 //		for (int i = 0 ; i < list.size();i++) {
 //			System.out.println(list.get(i).getFileName());
 //		}
@@ -146,4 +146,37 @@ public class Ad_PlayController {
 		return "admin/play/exhibit";
 	}
 	
+	@RequestMapping("/admin/play/exhibitWriteForm.do")
+	public String exhibitWriteForm(HttpServletRequest req) {
+		return "admin/play/exhibitWriteForm";
+	}
+	
+	@RequestMapping("/admin/play/writeE.do")
+	public String writeE(HttpServletRequest req, ExhibitVO param, @RequestParam("filename_tmp") MultipartFile file) {
+		String pageName = playService.writeE(req, param, file);
+		
+		return pageName;
+	}	
+	@RequestMapping("/admin/play/exhibitModifyForm.do")
+	public String modifyViewE(Model model, ExhibitVO param) {
+		model.addAttribute("vo", playService.modifyViewE(param));
+		
+		return "admin/play/exhibitModifyForm";
+	}
+		
+	@RequestMapping("/admin/play/modifyE.do")
+	public String modifyE(HttpServletRequest req, ExhibitVO param, @RequestParam("filename_tmp") MultipartFile file) {
+		String pageName = playService.modifyE(req, param, file);
+		return pageName;
+	}
+
+	@RequestMapping("/admin/play/deleteE.do")
+	public String deleteCheckE(@RequestParam("no") int[] check, ExhibitVO param) {
+		for (int i = 0; i < check.length; i++) {
+			System.out.println(check[i]);
+		}
+		String pageName = playService.deleteE(check, param);
+		
+		return pageName;
+	}
 }

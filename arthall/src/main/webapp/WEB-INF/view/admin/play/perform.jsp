@@ -108,9 +108,6 @@ function del() {
                         <div class="btnRight">
                            <a class="wbtn" href="performWriteForm.do"><strong>등록</strong> </a>
                         </div>
-                        <div class="btnRight">
-                           <a class="wbtn" href="modifyForm.do?no=${vo.no}"><strong>수정</strong> </a>
-                        </div>
                      </div>
                      <!--//btn-->
                      <!-- 페이징 처리 -->
@@ -119,15 +116,15 @@ function del() {
                      <a href="list.do?page=${vo.startPage-5}">[이전]</a>
                   </c:if>
                   <c:forEach var="pNo" begin="${vo.startPage}" end="${vo.endPage}">
-                     <a href="list.do?page=${pNo}">[${pNo}]</a>
+                     <a href="perform.do?page=${pNo}">[${pNo}]</a>
 <!--                      &stype=${vo.stype}&sval=${vo.sval} -->
                   </c:forEach>
                   <c:if test="${vo.endPage < vo.totalPage}">
-                     <a href="list.do?page=${vo.startPage+5}">[다음]</a>
+                     <a href="perform.do?page=${vo.startPage+5}">[다음]</a>
                   </c:if>
                      </div>
                      <!-- //페이징 처리 -->
-                     <form name="searchForm" id="searchForm" action="list.do"  method="post">
+                     <form name="searchForm" id="searchForm" action="perform.do"  method="post">
                         <div class="search">
                            <select name="stype" title="검색을 선택해주세요">
                            	  <option value="all" <c:if test="${vo.stype == 'all'}">selected</c:if>>전체</option>

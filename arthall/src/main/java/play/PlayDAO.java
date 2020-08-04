@@ -58,5 +58,30 @@ public class PlayDAO {
 	
 	public PerformVO modifyViewP(PerformVO param){
 		return sqlSession.selectOne("play.modifyViewP", param);
-	}	
+	}
+	
+	//Exhibit
+	public List<ExhibitVO> listE(ExhibitVO param){
+		return sqlSession.selectList("play.listE", param);
+	}
+	
+	public int countE(ExhibitVO param) {
+		return sqlSession.selectOne("play.countE", param);
+	}
+	
+	public int writeE(ExhibitVO param) {
+		return sqlSession.insert("play.writeE", param);
+	}
+
+	public int deleteE(ExhibitVO param) {
+		return sqlSession.delete("play.deleteE", param);
+	}
+	public int modifyE(ExhibitVO param) {
+		return sqlSession.update("play.modifyE", param);
+	}
+	
+	public ExhibitVO modifyViewE(ExhibitVO param){
+		return sqlSession.selectOne("play.modifyViewE", param);
+	}
+		
 }

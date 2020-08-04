@@ -16,14 +16,14 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공연관리 - [일정 수정]</h2>
+					<h2>전시관리 - [일정 추가]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="modifyP.do" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="writeE.do" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col class="w1" />
@@ -32,54 +32,53 @@
 									<col class="w2" />
 								</colgroup>
 								<tbody>
-									<input type="hidden" id="no" name="no" value='${vo.no}'/>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 제목</label></th>
 										<td colspan="10">
-											<input type="text" id="performName" name="performName" class="w20" title="제목을 입력해주세요" value='${vo.performName}'/>	
+											<input type="text" id="exName" name="exName" class="w20" title="제목을 입력해주세요" value='이승효'/>	
 										</td>
 									</tr>
 									<tr>
-										<th scope="row" colspan="2"><label for="">* 공연번호</label></th>
+										<th scope="row" colspan="2"><label for="">* 전시번호</label></th>
 										<td colspan="10">
-											<input type="text" id="performNo" name="performNo" class="w20" title="제목을 입력해주세요" value='${vo.performNo}'/>	
+											<input type="text" id="exNo" name="exNo" class="w20" title="제목을 입력해주세요" value='21'/>	
 										</td>
 									</tr>
 									<tr>
-										<th scope="row" colspan="2"><label for="">* 공연일</label></th>
+										<th scope="row" colspan="2"><label for="">* 전시일</label></th>
 										<td colspan="2">
-											<input type="text" id="performDate" name="performDate" class="w5" placeholder="YYYY-MM-DD" value='${vo.performDate}'/>	
+											<input type="text" id="exDate" name="exDate" class="w5" placeholder="YYYY-MM-DD" value='2000-05-05'/>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"  colspan="2"><label for="">* 회차</label></th>
 										<td colspan="10">
-											<input type="text" id="time" name="time" class="w100" value='${vo.time}' />	
+											<input type="text" id="time" name="time" class="w100" value='' />	
 										</td>
 									</tr>
 									<tr>
-										<th scope="row" colspan="2"><label for="">* 출연진</label></th>
+										<th scope="row" colspan="2"><label for="">* 작가</label></th>
 										<td colspan="10">
-											<input type="text" id="actor" name="actor" class="w100" value='${vo.actor}' />
+											<input type="text" id="author" name="author" class="w100" value='작가 : 이승효' />
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" rowspan="3"><label for="">*가격</label></th>
-			                            <th scope="col">R석<br></th> 
+			                            <th scope="col">성인<br></th> 
 										<td colspan="2">
-											<input type="text" id="priceA" name="priceA" class="w5" value='${vo.priceA}'/>	
+											<input type="text" id="priceA" name="priceA" class="w5" value='9000'/>	
 										</td>
 									</tr>
 			                        <tr>
-				                        <th scope="col">S석<br></th>
+				                        <th scope="col">청소년<br></th>
 				                        <td colspan="2">
-											<input type="text" id="priceB" name="priceB" class="w5" value='${vo.priceB}' />	
+											<input type="text" id="priceB" name="priceB" class="w5" value='500' />	
 										</td>
 			                        </tr>									
 			                        <tr>
-				                        <th scope="col">A석<br></th>
+				                        <th scope="col">어린이<br></th>
 				                        <td colspan="2">
-											<input type="text" id="priceC" name="priceC" class="w5" value='${vo.priceC}' />	
+											<input type="text" id="priceC" name="priceC" class="w5" value='100' />	
 										</td>
 			                        </tr>									
 									<tr>
@@ -88,7 +87,7 @@
 											<c:if test="${!empty vo.filename}">
 												<td><img src='/upload/play/${vo.filename}'/></td>
 											</c:if>
-											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요." value='${vo.filename}'/>	
+											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요." value=''/>	
 										</td>
 									</tr>
 								</tbody>
@@ -97,7 +96,7 @@
 							
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="perform.do"><strong>목록</strong></a>
+									<a class="btns" href="exhibit.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
 									<a class="btns" style="cursor:pointer;" href="javascript:$('#frm').submit();"><strong>저장</strong></a>

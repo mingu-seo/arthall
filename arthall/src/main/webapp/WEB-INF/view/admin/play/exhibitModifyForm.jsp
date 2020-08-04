@@ -16,14 +16,14 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공연관리 - [일정 수정]</h2>
+					<h2>전시관리 - [일정 수정]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="modifyP.do" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="modifyE.do" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col class="w1" />
@@ -36,19 +36,19 @@
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 제목</label></th>
 										<td colspan="10">
-											<input type="text" id="performName" name="performName" class="w20" title="제목을 입력해주세요" value='${vo.performName}'/>	
+											<input type="text" id="exName" name="exName" class="w20" title="제목을 입력해주세요" value='${vo.exName}'/>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 공연번호</label></th>
 										<td colspan="10">
-											<input type="text" id="performNo" name="performNo" class="w20" title="제목을 입력해주세요" value='${vo.performNo}'/>	
+											<input type="text" id="exNo" name="exNo" class="w20" title="제목을 입력해주세요" value='${vo.exNo}'/>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 공연일</label></th>
 										<td colspan="2">
-											<input type="text" id="performDate" name="performDate" class="w5" placeholder="YYYY-MM-DD" value='${vo.performDate}'/>	
+											<input type="text" id="exDate" name="exDate" class="w5" placeholder="YYYY-MM-DD" value='${vo.exDate}'/>	
 										</td>
 									</tr>
 									<tr>
@@ -60,7 +60,7 @@
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 출연진</label></th>
 										<td colspan="10">
-											<input type="text" id="actor" name="actor" class="w100" value='${vo.actor}' />
+											<input type="text" id="author" name="author" class="w100" value='${vo.author}' />
 										</td>
 									</tr>
 									<tr>
@@ -97,7 +97,7 @@
 							
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="perform.do"><strong>목록</strong></a>
+									<a class="btns" href="exhibit.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
 									<a class="btns" style="cursor:pointer;" href="javascript:$('#frm').submit();"><strong>저장</strong></a>

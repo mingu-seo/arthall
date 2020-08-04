@@ -1,60 +1,94 @@
 package play;
 
-import util.Parameter;
+import java.sql.Date;
 
-public class ExhibitVO extends Parameter{
+public class ExhibitVO extends util.Parameter{
 	
-	private int exhibitNo;
-	private String playName;
-	private String actor;
-	private String content;
-	private int priceChildren;
-	private int priceTeenager;
-	private int priceAdult;
+	private int no;
+	private String exName;
+	private int exNo;
+	private Date exDate;
+	private int time;
+	private String author;
+	private int priceA;
+	private int priceB;
+	private int priceC;
 	
-	
-	public int getExhibitNo() {
-		return exhibitNo;
+	public ExhibitVO(){
+		super.setPage(1);
+		super.setSize(10);
 	}
-	public void setExhibitNo(int exhibitNo) {
-		this.exhibitNo = exhibitNo;
-	}
-	public String getPlayName() {
-		return playName;
-	}
-	public void setPlayName(String playName) {
-		this.playName = playName;
-	}
-	public String getActor() {
-		return actor;
-	}
-	public void setActor(String actor) {
-		this.actor = actor;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public int getPriceChildren() {
-		return priceChildren;
-	}
-	public void setPriceChildren(int priceChildren) {
-		this.priceChildren = priceChildren;
-	}
-	public int getPriceTeenager() {
-		return priceTeenager;
-	}
-	public void setPriceTeenager(int priceTeenager) {
-		this.priceTeenager = priceTeenager;
-	}
-	public int getPriceAdult() {
-		return priceAdult;
-	}
-	public void setPriceAdult(int priceAdult) {
-		this.priceAdult = priceAdult;
-	}
-	
 
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public String getExName() {
+		return exName;
+	}
+
+	public void setExName(String exName) {
+		this.exName = exName;
+	}
+
+	public int getExNo() {
+		return exNo;
+	}
+
+	public void setExNo(int exNo) {
+		this.exNo = exNo;
+	}
+
+	public Date getExDate() {
+		return exDate;
+	}
+
+	public void setExDate(Date exDate) {
+		this.exDate = exDate;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public int getPriceA() {
+		return priceA;
+	}
+
+	public void setPriceA(int priceA) {
+		this.priceA = priceA;
+	}
+
+	public int getPriceB() {
+		return priceB;
+	}
+
+	public void setPriceB(int priceB) {
+		this.priceB = priceB;
+	}
+
+	public int getPriceC() {
+		return priceC;
+	}
+
+	public void setPriceC(int priceC) {
+		this.priceC = priceC;
+	}
+	
 }

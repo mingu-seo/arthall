@@ -20,4 +20,10 @@ public interface PlayService {
 	public String deleteP(int[] check, PerformVO param);
 	public String modifyP(HttpServletRequest req, PerformVO param, MultipartFile file);
 	public PerformVO modifyViewP(PerformVO param);	
+
+	public List<ExhibitVO> listE(ExhibitVO param);
+	public String writeE(HttpServletRequest req, ExhibitVO param, MultipartFile file);
+	public String deleteE(int[] check, ExhibitVO param);
+	public String modifyE(HttpServletRequest req, ExhibitVO param, MultipartFile file);
+	public ExhibitVO modifyViewE(ExhibitVO param);	
 }
