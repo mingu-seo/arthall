@@ -47,7 +47,6 @@ footer{
     appearance:none;
     -webkit-appearance:none;
     -moz-appearance:none;
-    -ms-appearance:none;
     -o-appearance:none;
 }
 .links__list select option{color: #999;}

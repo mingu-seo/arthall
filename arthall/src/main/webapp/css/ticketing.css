@@ -2,19 +2,85 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 @import url(reset.css);
+@import url(header.css);
+@import url(footer.css);
+@import url(topBtn.css);
 
-main{
-    width: 1060px;
+.sub__tit{
+    position: relative;
+    height: 350px;
+    background: #ccc;
+}
+.sub__tit h2{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.sub__container{
+    width: 1260px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.sub__container .container__subClass,
+.sub__container main {float: left;}
+
+.sub__container .container__subClass{
+    width: 200px;
+    height: 100%;
+    background: gold;
+}
+.container__subClass .subClass__tit{
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    font-size: 30px;
+    background: skyblue;
+}
+
+.subClass__list li a{
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.subClass__list li a:hover{
+    color: #7fceff;
+    background: #434343;
+}
+
+main{width: 1060px;}
+
+main .main__siteLoad{padding: 5px;}
+.main__siteLoad a{
+    display: inline-block;
+    font-size: 13px;
+}
+
+main .main__content{
+    padding: 50px 0;
     text-align: center;
 }
+
+.content__innerConts .innerConts__tit{
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
 
 .ticketBox .ticketBox__titArea{
     padding: 0 50px;
     box-sizing: border-box;
+    background: pink;
 }
-.ticketBox .ticketBox__titArea h1{
+.ticketBox .ticketBox__titArea h4{
     float: right;
     width: 300px;
+    background: #ccc;
 }
 
 .ticketBox__ticketBoxInner .ticketBoxInner__tit{
@@ -29,6 +95,7 @@ main{
     height: 51px;
     line-height: 51px;
     border-bottom: 1px solid #ccc;
+    background: gold;
 }
 .ticketInfo .ticketBoxInner__tit{float: left;}
 .ticketInfo p{float: left;height: 100%;}
@@ -74,8 +141,8 @@ main{
 }
 .calendarContainer__calendars div:nth-child(2){border-left: 1px solid #4d4d4d;}
 
-.calendarContainer__calendars .sun{color: #d32e2e;}
-.calendarContainer__calendars .sat{color: #3e35ee;}
+.calendarContainer__calendars .sun{color: red;}
+.calendarContainer__calendars .sat{color: blue;}
 .calendarContainer__calendars thead .month{
     height: 50px;
     font-size: 25px;
@@ -101,8 +168,8 @@ main{
     text-align: center;
     cursor: pointer;
 }
-.calendarContainer__calendars .dates.today span{background: #555; color: #fff;}
-.calendarContainer__calendars .able.active span{background: #d32e2e; color:#fff;}
+.calendarContainer__calendars .dates.today span{background: pink; color: #fff;}
+.calendarContainer__calendars .able.active span{background: gold; color:#fff;}
 .calendarContainer__calendars .dates.disable span{opacity: 0.3; cursor: default;}
 
 
@@ -118,18 +185,14 @@ main{
     position: absolute;
     top: 0;
     left: 30px;
-    transition: all 0.5s;
     z-index: 3;
-}
-.calBtn > a:hover{
-    color:#d32e2e;
 }
 .calBtn > .calBtn__next{
     left: auto;
     right: 30px;
 }
 .calBtn > a.disable{opacity: 0.3; cursor: default;}
-.calBtn > a.disable:hover{color: #000}
+
 
 
 
@@ -159,7 +222,6 @@ main{
 }*/
 
 .timeInfo__timeTable .timeTable__list{
-    display: none;
     margin-bottom: 10px;
     padding: 10px 20px;
     text-align: left;
@@ -174,10 +236,10 @@ main{
     border-top: 1px solid #999;
     word-break: keep-all;
 }
-.timeTable__list.active p{border-color: #d32e2e;}
+
 .timeInfo__timeTable .timeTable__list.active{
     background: #ffc4c4;
-    border-color: #d32e2e;
+    border-color: red;
 }
 
 
@@ -195,7 +257,7 @@ main{
     margin-right: 10px;
     font-family: "Font Awesome 5 Free";
 }
-.classTable__classList.active{color: #d32e2e;}
+.classTable__classList.active{color: red;}
 .classTable__classList.active .classList__seatClass:before{content:'\f14a';}
 
 .classTable__classList .classList__seatPrice{float: right; margin-left: 10px;}
@@ -208,7 +270,7 @@ main{
     line-height: 30px;
     text-align: right;
 }
-.classTable__classList.active .classList__seatNumber{display: block; color: #d32e2e;}
+.classTable__classList.active .classList__seatNumber{display: block; color: red;}
 
 
 .tiketInfo{background: #d4d4d4;}
@@ -234,15 +296,9 @@ main{
     width: 100%;
     height: 100px;
     margin-top: 40px;
-    background: #d32e2e;
+    background: #d80000;
     text-align: center;
     color: #fff;
     font-size: 20px;
-    box-sizing: border-box;
-    transition:all 0.5s;
 }
-.tiketInfo__form .form__submit:hover{
-    background-color:#fff;
-    border:1px solid #d32e2e;
-    color:#d32e2e;
-}
+/*resultBox__price{display: none;}*/
