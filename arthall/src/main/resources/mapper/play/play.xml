@@ -121,7 +121,7 @@
 	</update>
 	
 	<select id = "modifyViewP" parameterType="play.PerformVO" resultType="play.PerformVO">
-		SELECT * FROM exhibit WHERE no = #{no};
+		SELECT * FROM perform WHERE no = #{no};
 	</select>
 	
 <!-- Exhibit -->

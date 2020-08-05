@@ -65,19 +65,19 @@
 									</tr>
 									<tr>
 										<th scope="row" rowspan="3"><label for="">*가격</label></th>
-			                            <th scope="col">R석<br></th> 
+			                            <th scope="col">성인<br></th> 
 										<td colspan="2">
 											<input type="text" id="priceA" name="priceA" class="w5" value='${vo.priceA}'/>	
 										</td>
 									</tr>
 			                        <tr>
-				                        <th scope="col">S석<br></th>
+				                        <th scope="col">청소년<br></th>
 				                        <td colspan="2">
 											<input type="text" id="priceB" name="priceB" class="w5" value='${vo.priceB}' />	
 										</td>
 			                        </tr>									
 			                        <tr>
-				                        <th scope="col">A석<br></th>
+				                        <th scope="col">어린이<br></th>
 				                        <td colspan="2">
 											<input type="text" id="priceC" name="priceC" class="w5" value='${vo.priceC}' />	
 										</td>
