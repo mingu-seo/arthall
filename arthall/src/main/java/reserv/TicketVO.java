@@ -6,10 +6,17 @@ public class TicketVO {
 	private String reservNo;
 	private String seatType;
 	private int price;
+	private String pay;
 	
 	
 	public String getNo() {
 		return no;
+	}
+	public String getPay() {
+		return pay;
+	}
+	public void setPay(String pay) {
+		this.pay = pay;
 	}
 	public void setNo(String no) {
 		this.no = no;

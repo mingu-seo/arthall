@@ -19,33 +19,25 @@ public class Ad_ReservController {
 		
 		@RequestMapping("/admin/reserv/list.do")
 		public String list(Model moedel, ReservVO param, HttpServletRequest req) {
-//			System.out.println(param.getStype());
-//			System.out.println(param.getSval());
-			System.out.println("처음이얌:"+param.getStartDate());
-			System.out.println(param.getEndDate());
-			System.out.println(req.getParameter("startDate2"));
+
 			
 			List<ReservVO> list = reservService.list(param);
 			
 			moedel.addAttribute("vo",param);
 			moedel.addAttribute("list",list);
-			
-			System.out.println("나갈때얌"+param.getStartDate());
-			System.out.println(param.getEndDate());
-//			System.out.println(param.getStype());
-//			System.out.println(param.getSval());
+
 //			
 			return "admin/reserv/list";
 		}
 		
-		@RequestMapping("/admin/reserv/delete.do")
+		@RequestMapping("/admin/reserv/cancle.do")
 		public String delete(@RequestParam("no") String[] nono, ReservVO param) {
 			
 			for (int i = 0; i < nono.length; i++) {
 				System.out.println(nono[i]);
 			}
 			
-			String pageName = reservService.delete(nono, param);
+			String pageName = reservService.cancle(nono, param);
 
 			return pageName;
 		}

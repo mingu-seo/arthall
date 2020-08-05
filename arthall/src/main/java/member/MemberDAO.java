@@ -43,16 +43,17 @@ public class MemberDAO {
 
 	// 로그인
 	public MemberVO login(String id, String password) {
+		System.out.println("Dao에서 id : "+id);
 		Map<String, Object> m = new HashMap<String, Object>();
 		m.put("id", id);
-		m.put("pwd", password);
+		m.put("password", password);
 		
 		return sqlSession.selectOne("member.login", m);
 	}
 	
 	// 마지막 방문 일자 수정
-		public MemberVO lastVisit(String id) {
-			return sqlSession.selectOne("member.lastVisit", id);
+		public int lastVisit(String id) {
+			return sqlSession.update("member.lastVisit", id);
 	}
 	
 	

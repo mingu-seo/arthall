@@ -1,38 +1,62 @@
 package play;
 
-import util.Parameter;
+import java.sql.Date;
 
-public class PerformVO extends Parameter{
+public class PerformVO extends util.Parameter{
 	
-	// DB기준 (PlayVO)
-	
-//				no
+	private int no;
+	private String performName;
 	private int performNo;
-				
-	private String playName;
-	private String content;
+	private Date performDate;
+	private int time;
+	private String actor;
 	private int priceA;
 	private int priceB;
 	private int priceC;
 	
+	public PerformVO(){
+		super.setPage(1);
+		super.setSize(10);
+	}
 	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	
+	public String getPerformName() {
+		return performName;
+	}
+
+	public void setPerformName(String performName) {
+		this.performName = performName;
+	}
+
 	public int getPerformNo() {
 		return performNo;
 	}
 	public void setPerformNo(int performNo) {
 		this.performNo = performNo;
 	}
-	public String getPlayName() {
-		return playName;
+	public Date getPerformDate() {
+		return performDate;
 	}
-	public void setPlayName(String playName) {
-		this.playName = playName;
+	public void setPerformDate(Date performDate) {
+		this.performDate = performDate;
 	}
-	public String getContent() {
-		return content;
+	public int getTime() {
+		return time;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setTime(int time) {
+		this.time = time;
+	}
+	public String getActor() {
+		return actor;
+	}
+	public void setActor(String actor) {
+		this.actor = actor;
 	}
 	public int getPriceA() {
 		return priceA;
@@ -53,5 +77,5 @@ public class PerformVO extends Parameter{
 		this.priceC = priceC;
 	}
 	
-
+	
 }

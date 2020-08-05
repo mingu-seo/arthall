@@ -20,6 +20,8 @@ public class MemberVO extends Parameter{
 	private Timestamp lastVisit;
 	private String banMem;
 	private String banSelect;
+	private String sendMail;
+	private String emailConfirm;
 
 	MemberVO() {
 		super.setPage(1);
@@ -145,6 +147,25 @@ public class MemberVO extends Parameter{
 	public void setBanSelect(String banSelect) {
 		this.banSelect = banSelect;
 	}
+
+	public String getSendMail() {
+		return sendMail;
+	}
+
+	public void setSendMail(String sendMail) {
+		this.sendMail = sendMail;
+	}
+
+	public String getEmailConfirm() {
+		return emailConfirm;
+	}
+
+	public void setEmailConfirm(String emailConfirm) {
+		this.emailConfirm = emailConfirm;
+	}
+
+	
+	
 }
 
 	

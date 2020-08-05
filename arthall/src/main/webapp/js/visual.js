@@ -1,6 +1,6 @@
 $(document).ready(function(){
 // 메인 슬라이드
-	$(".mainVisual .visual > div").on("mouseover", function(){
+	$(".mainVisual .visual > div").on("mouseenter", function(){
 		var idx = $(this).index();
 		$(this).children().addClass("on");
 
@@ -15,7 +15,7 @@ $(document).ready(function(){
 		$(".mainVisual .visualView > div").eq(idx).addClass("show");
 	});
 
-	$(".mainVisual .visual > div").on("mouseout", function(){
+	$(".mainVisual .visual > div").on("mouseleave", function(){
 		$(this).children().removeClass("on");
 
 		$(".mainVisual .visualView > div").removeClass("show");

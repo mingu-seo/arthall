@@ -10,7 +10,7 @@ public interface ReservService {
 	
 	public List<ReservVO> list(ReservVO param);
 	
-	public String delete(String[] nono, ReservVO param);
+	public String cancle(String[] nono, ReservVO param);
 
 	// Ticket
 	public List<TicketVO> ticketlist(TicketVO param);

@@ -39,7 +39,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공연 - [추가]</h2>
+					<h2>공연/전시 - [추가]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
@@ -58,7 +58,13 @@
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 제목</label></th>
 										<td colspan="10">
-											<input type="text" id="playName" name="playName" class="w20" title="제목을 입력해주세요" value='2000-05-05'/>	
+											<input type="text" id="playName" name="playName" class="w20" title="제목을 입력해주세요" value='TEST'/>	
+										</td>
+									</tr>
+									<tr>
+										<th scope="row" colspan="2"><label for="">* 홀번호</label></th>
+										<td colspan="10">
+											<input type="text" id="hallNo" name="hallNo" class="w20" title="제목을 입력해주세요" value='2'/>	
 										</td>
 									</tr>
 									<tr>
@@ -77,9 +83,9 @@
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 분류</label></th>
 										<td>
-											<SELECT id="playType" style="font-size: 12px">
-												<OPTION value="1" selected>공연</OPTION>
-												<OPTION value="2">전시</OPTION>
+											<SELECT id="playType" name="playType" style="font-size: 12px">
+												<OPTION value='1'>공연</OPTION>
+												<OPTION value='2'>전시</OPTION>
 											</SELECT>
 										</td>
 									</tr>
@@ -104,7 +110,7 @@
 									<tr>
 										<th scope="row"  colspan="2"><label for="">* 출연진/작가</label></th>
 										<td colspan="10">
-											<input type="text" id="starring" name="starring" class="w100" placeholder="0-전시, 1-오전, 2-오후, 3-오전오후" value='1' />	
+											<input type="text" id="starring" name="starring" class="w100" value='이승효역 이승효' />	
 										</td>
 									</tr>
 									<tr>
@@ -118,25 +124,25 @@
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 등급</label></th>
 										<td colspan="10">
-											<input type="text" id="rating" name="rating" class="w100" title="제목을 입력해주세요" value='1' />	
+											<input type="text" id="rating" name="rating" class="w100" title="제목을 입력해주세요" value='전체 이용가' />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 러닝타임</label></th>
 										<td colspan="10">
-											<input type="text" id="runningTime" name="runningTime" class="w100" title="제목을 입력해주세요" value='1' />	
+											<input type="text" id="runningTime" name="runningTime" class="w100" title="제목을 입력해주세요" value='800' />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 문의</label></th>
 										<td colspan="10">
-											<input type="text" id="inquiry" name="inquiry" class="w100" title="제목을 입력해주세요" value='1' />	
+											<input type="text" id="inquiry" name="inquiry" class="w100" title="제목을 입력해주세요" value='승효승효 010-9144-7776' />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 제작/주최</label></th>
 										<td colspan="10">
-											<input type="text" id="producer" name="producer" class="w100" title="제목을 입력해주세요" value='1' />	
+											<input type="text" id="producer" name="producer" class="w100" title="제목을 입력해주세요" value='승효컴퍼니' />	
 										</td>
 									</tr>
 									<tr>

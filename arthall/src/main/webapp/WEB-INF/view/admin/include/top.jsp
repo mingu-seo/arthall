@@ -77,9 +77,9 @@ $(window).load(function(){
 				<li><a href="<%=request.getContextPath()%>/admin/play/list.do" class="parent"><span>공연관리</span></a>
 				  	<div class="standard_left">
 					<ul>						
-						<li><a href="<%=request.getContextPath()%>/admin/admin/board/list.do"><span>공연/전시 정보</span></a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/admin/board/perform.do"><span>공연 일정</span></a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/admin/board/exhibit.do"><span>전시 일정</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/play/list.do"><span>공연/전시 정보</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/play/perform.do"><span>공연 일정</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/play/exhibit.do"><span>전시 일정</span></a></li>
 					</ul>
 					</div>
 				<li><a href="<%=request.getContextPath()%>/admin/board/notice/list.do" class="parent"><span>게시판</span></a>

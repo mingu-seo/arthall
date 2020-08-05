@@ -1,15 +1,14 @@
 package member;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
-
+import mail.SendMail;
 
 @Service
 public class MemberServiceImple implements MemberService{
@@ -46,7 +45,6 @@ public class MemberServiceImple implements MemberService{
 		return list;
 	}
 	
-	
 	@Override
 	public String join(MemberVO param, HttpServletRequest req) {
 		int numJoin = 0;
@@ -73,16 +71,43 @@ public class MemberServiceImple implements MemberService{
 		}
 		return r;
 	}
+	
+	@Override
+	public int sendMail(HttpServletRequest req, MemberVO param) throws Exception{;
+		int ran = new Random().nextInt(900000) + 100000;
+		SendMail.sendEmail("kdy7710@naver.com", param.getEmail(), "[충무아트홀] 인증번호", "인증번호 : "+ran);
+		return ran;
+	}
+	
+	@Override
+	public String emailConfirm(HttpServletRequest req, MemberVO param){;
+		
+		String r = "true";
+		String sendMail =  param.getSendMail();
+		System.out.println("sendMail : "+sendMail);
+		
+		String confMail = param.getEmailConfirm();
+		System.out.println("conf : "+confMail);
+		
+		
+		if(sendMail != confMail) {
+			r = "false";
+		}
+		return r;
+	}
+
 
 	@Override
 	public String login(HttpServletRequest req, String id, String password) {
 		String pageName = "";
+		System.out.println("서비스에서 id : "+id);
 		MemberVO vo = memberDao.login(id, password);
-		if (vo == null) {
-			pageName = "admin/member/loginForm";
+		if (vo == null) { 
+			pageName = "member/loginForm";
 		} else {
-			memberDao.lastVisit(id); // 마지막 방문일 수정
+			memberDao.lastVisit(vo.getId()); // 마지막 방문일 수정
 			req.getSession().setAttribute("authUser", vo);
+			
 			pageName = "redirect:/index.do";
 		}
 		
@@ -131,12 +156,11 @@ public class MemberServiceImple implements MemberService{
 		return pageName;
 	}
 
-
 	@Override
 	public MemberVO memberdetail(MemberVO param) {
 		MemberVO vo = memberDao.memberdetail(param);
 		
 		return vo;
-	}	
+	}
 
 }

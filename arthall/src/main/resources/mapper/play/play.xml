@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="play">
 
+<!-- play -->
 	<select id = "count" parameterType="play.PlayVO" resultType="Integer">
 		SELECT COUNT(*) FROM play
 		<where>
@@ -21,7 +22,7 @@
 				${stype} like '%${sval}%'
 			</if>
 			<if test="stype == 'all' and sval != null and sval !=''">
-				playName like '%${sval}%' OR actor like '%${sval}%'
+				playName like '%${sval}%' OR starring like '%${sval}%'
 			</if>
 		</where>
 		ORDER BY no DESC LIMIT #{startRow}, #{size}
@@ -29,10 +30,10 @@
 	
 	<insert id = "write" parameterType="play.PlayVO" useGeneratedKeys="true">
 		INSERT INTO play
-			(playName, startDate, endDate, playType, starring, content,
+			(playName, hallNo, startDate, endDate, playType, starring, content,
 			rating, runningTime, inquiry, producer, filename)
 		VALUES
-			(#{playName}, #{startDate}, #{endDate}, #{playType}, #{starring},
+			(#{playName}, #{hallNo}, #{startDate}, #{endDate}, #{playType}, #{starring},
 			#{content}, #{rating}, #{runningTime}, #{inquiry}, #{producer}, #{filename});
 		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
 			SELECT last_insert_id();
@@ -46,23 +47,140 @@
 	<update id = "modify" parameterType="play.PlayVO">
 		UPDATE play SET
 		playName = #{playName},
+		hallNo = #{hallNo},
 		startDate = #{startDate},
 		endDate = #{endDate},
-		runtime = #{runtime},
-		hallNo = #{hallNo},
-		actor = #{actor},
-		content = #{content},
-		fileName = #{filename},
 		playType = #{playType},
-		priceA = #{priceA},
-		priceB = #{priceB},
-		priceC = #{priceC},
-		exhPrice = #{exhPrice},
-		moddate = now()
+		starring = #{starring},
+		content = #{content},		
+		rating = #{rating},
+		runningTime = #{runningTime},
+		inquiry = #{inquiry},
+		producer = #{producer},
+		fileName = #{filename}
 		WHERE no = #{no};
 	</update>
 	
 	<select id = "modifyView" parameterType="play.PlayVO" resultType="play.PlayVO">
 		SELECT * FROM play WHERE no = #{no};
 	</select>
+	
+<!-- Perform -->
+	<select id = "countP" parameterType="play.PerformVO" resultType="Integer">
+		SELECT COUNT(*) FROM perform
+		<where>
+			<if test="stype != 'all' and sval != null and sval != ''">
+				${stype} like '%${sval}%'
+			</if>
+			<if test="stype == 'all' and sval != null and sval !=''">
+				performName like '%${sval}%' OR actor like '%${sval}%'
+			</if>
+		</where>
+	</select>
+	
+	<select id = "listP" parameterType="play.PerformVO" resultType="play.PerformVO">
+		SELECT * FROM perform
+		<where>
+			<if test="stype != 'all' and sval != null and sval != ''">
+				${stype} like '%${sval}%'
+			</if>
+			<if test="stype == 'all' and sval != null and sval !=''">
+				playName like '%${sval}%' OR actor like '%${sval}%'
+			</if>
+		</where>
+		ORDER BY no DESC LIMIT #{startRow}, #{size}
+	</select>
+	
+	<insert id = "writeP" parameterType="play.PerformVO" useGeneratedKeys="true">
+		INSERT INTO perform
+			(performName, performNo, performDate, time, actor, priceA, priceB, priceC, filename)
+		VALUES
+			(#{performName}, #{performNo}, #{performDate}, #{time}, #{actor}, #{priceA},
+			#{priceB}, #{priceC}, #{filename});
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT last_insert_id();
+		</selectKey>
+	</insert>
+	
+	<delete id = "deleteP" parameterType="play.PerformVO">
+		DELETE FROM perform WHERE no = #{no}
+	</delete>
+	
+	<update id = "modifyP" parameterType="play.PerformVO">
+		UPDATE perform SET
+		performName = #{performName},
+		performNo = #{performNo},
+		performDate = #{performDate},
+		time = #{time},
+		actor = #{actor},
+		priceA = #{priceA},
+		priceB = #{priceB},
+		priceC = #{priceC},
+		filename = #{filename}
+		WHERE no = #{no};
+	</update>
+	
+	<select id = "modifyViewP" parameterType="play.PerformVO" resultType="play.PerformVO">
+		SELECT * FROM exhibit WHERE no = #{no};
+	</select>
+	
+<!-- Exhibit -->
+	<select id = "countE" parameterType="play.ExhibitVO" resultType="Integer">
+		SELECT COUNT(*) FROM exhibit
+		<where>
+			<if test="stype != 'all' and sval != null and sval != ''">
+				${stype} like '%${sval}%'
+			</if>
+			<if test="stype == 'all' and sval != null and sval !=''">
+				exName like '%${sval}%' OR author like '%${sval}%'
+			</if>
+		</where>
+	</select>
+	
+	<select id = "listE" parameterType="play.ExhibitVO" resultType="play.ExhibitVO">
+		SELECT * FROM exhibit
+		<where>
+			<if test="stype != 'all' and sval != null and sval != ''">
+				${stype} like '%${sval}%'
+			</if>
+			<if test="stype == 'all' and sval != null and sval !=''">
+				playName like '%${sval}%' OR author like '%${sval}%'
+			</if>
+		</where>
+		ORDER BY no DESC LIMIT #{startRow}, #{size}
+	</select>
+	
+	<insert id = "writeE" parameterType="play.ExhibitVO" useGeneratedKeys="true">
+		INSERT INTO exhibit
+			(exName, exNo, exDate, time, author, priceA, priceB, priceC, filename)
+		VALUES
+			(#{exName}, #{exNo}, #{exDate}, #{time}, #{author}, #{priceA},
+			#{priceB}, #{priceC}, #{filename});
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT last_insert_id();
+		</selectKey>
+	</insert>
+	
+	<delete id = "deleteE" parameterType="play.ExhibitVO">
+		DELETE FROM exhibit WHERE no = #{no}
+	</delete>
+	
+	<update id = "modifyE" parameterType="play.ExhibitVO">
+		UPDATE exhibit SET
+		exName = #{exName},
+		exNo = #{exNo},
+		exDate = #{exDate},
+		time = #{time},
+		author = #{author},
+		priceA = #{priceA},
+		priceB = #{priceB},
+		priceC = #{priceC},
+		filename = #{filename}
+		WHERE no = #{no};
+	</update>
+	
+	<select id = "modifyViewE" parameterType="play.ExhibitVO" resultType="play.ExhibitVO">
+		SELECT * FROM exhibit WHERE no = #{no};
+	</select>
+	
 </mapper>

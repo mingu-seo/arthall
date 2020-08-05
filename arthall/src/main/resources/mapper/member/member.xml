@@ -110,7 +110,7 @@
 	
 	<update id="lastVisit" parameterType="String">
 		UPDATE member SET
-			lastVisit=#{lastVisit}
+			lastVisit=now()
 		WHERE id=#{id}		
 	</update>
 	
