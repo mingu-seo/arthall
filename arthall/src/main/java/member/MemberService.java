@@ -1,9 +1,9 @@
 package member;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 public interface MemberService {
@@ -22,11 +22,12 @@ public interface MemberService {
 	
 	public String dupId(HttpServletRequest req, MemberVO param);
 	
+	public int sendMail(HttpServletRequest req, MemberVO param) throws Exception;
+	
+	public String emailConfirm(HttpServletRequest req, MemberVO param);
+	
 	public String login(HttpServletRequest req, String id, String password);
 	
 	public String changePwd(HttpServletRequest req, String id, String password);
 	
-	//public String mail(HttpServletRequest req, String id, String password);
-	
-
 }

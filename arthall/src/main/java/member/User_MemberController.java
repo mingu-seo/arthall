@@ -2,6 +2,7 @@ package member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import admin.AdminVO;
 
 @Controller
 public class User_MemberController {
@@ -35,6 +34,31 @@ public class User_MemberController {
 		out.flush();
 	}
 	
+	//회원가입_이메일 인증
+	@RequestMapping("/member/sendMail.do")
+	public void sendMail(HttpServletRequest req, MemberVO param, HttpServletResponse res) throws Exception {
+		
+		int ran = memberService.sendMail(req, param);
+		String random = String.valueOf(ran);
+		
+		req.setAttribute("sendCode", random);
+		res.setContentType("text/html; charset=utf-8");
+		
+		PrintWriter out = res.getWriter();
+		out.print(ran);
+		out.flush();
+	}
+
+	@RequestMapping("/member/emailConfirm.do")
+	public void emailConf(HttpServletRequest req, MemberVO param, HttpServletResponse res) throws Exception {
+		String r = memberService.emailConfirm(req, param);
+		res.setContentType("text/html; charset=utf-8");
+		PrintWriter out = res.getWriter();
+		out.print(r);
+		out.flush();
+	}
+	
+
 	@RequestMapping("member/join.do")
 	public String join(HttpServletRequest req, MemberVO param) {
 		String pageName = memberService.join(param, req);
@@ -60,22 +84,6 @@ public class User_MemberController {
 		return pageName;
 	}
 	
-	@RequestMapping("member/findIDForm.do")
-	public String findIDForm() {
-		return "member/findIDForm";
-	}
-	@RequestMapping("member/findIDResult.do")
-	public String findIDResult() {
-		return "member/findIDResult";
-	}
-	@RequestMapping("member/findPasswordForm.do")
-	public String findPasswordForm() {
-		return "member/findPasswordForm";
-	}
-	@RequestMapping("member/findPasswordResult.do")
-	public String findPasswordResult() {
-		return "member/findPasswordResult";
-	}
 	@RequestMapping("member/logout.do")
 	public String logout(Model model, HttpSession sess, HttpServletResponse res) throws IOException {
 

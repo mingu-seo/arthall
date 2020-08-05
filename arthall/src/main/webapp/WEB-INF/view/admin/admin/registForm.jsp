@@ -39,7 +39,7 @@
 		$("input:not(#id)").keyup(empty).click(empty);
 
 		$("#reg_btn").click(function() {
-			$("#frm").attr('action', '/admin/admin/regist.do');
+			$("#frm").attr('action', '/member/join.do');
 			$("#frm").submit();
 		});
 
