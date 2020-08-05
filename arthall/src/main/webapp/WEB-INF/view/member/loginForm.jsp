@@ -6,6 +6,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/login.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+function check() {
+	if($("#id").val().trim() == '') {
+		alert("아이디를 입력해 주세요");
+		$("#id").focus();
+		return false;
+	}
+	if($("#password").val() == '') {
+		alert("비밀번호를 입력해 주세요");
+		$("#password").focus();
+		return false;
+	}
+} 
+</script>
 </head>
 <div id = "wrap">
 	<a href="<%=request.getContextPath()%>/index.do" id="gomain">본문바로가기</a>
