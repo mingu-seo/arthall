@@ -66,7 +66,7 @@ public class User_MemberController {
 	@RequestMapping("member/login.do")
 	public String login(HttpServletRequest req, @RequestParam("id") String id, 
 						@RequestParam("password") String password) {
-		
+		System.out.println("컨트롤러에서 id : "+id);
 		String pageName = memberService.login(req, id, password);
 		
 		return pageName;

@@ -6,6 +6,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/login.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+function check() {
+	if($("#id").val().trim() == '') {
+		alert("아이디를 입력해 주세요");
+		$("#id").focus();
+		
+	} else if($("#password").val() == '') {
+		alert("비밀번호를 입력해 주세요");
+		$("#password").focus();
+	} else {
+		$("#loginForm").submit();
+	}
+} 
+
+</script>
 </head>
 <div id = "wrap">
 	<a href="<%=request.getContextPath()%>/index.do" id="gomain">본문바로가기</a>
@@ -26,7 +42,7 @@
                         <p>로그인으로 충무아트센터의 멤버십혜택을 이용하실 수 있습니다.</p>
                         <div class="innerConts__cont">
                             <div class="cont__login">
-                                <form method="post" action="<%=request.getContextPath()%>/login.do" name="loginForm" id="loginForm">
+                                <form method="post" action="/member/login.do" name="loginForm" id="loginForm">
                                     <fieldset>
                                         <legend>로그인</legend>
                                         <div class="form__loginInfo">
@@ -36,14 +52,13 @@
                                                         <span class="hidden">이름</span>
                                                         <i class="fas fa-user"></i>
                                                     </label>
-                                                    <input type="text" id="id" name="id" required placeholder="아이디 / ID">
+                                                    <input type="text" id="id" name="id" placeholder="아이디 / ID">
                                                 </li>
                                                 <li class="cf">
                                                     <label for="password">
-                                                        <span class="hidden">이메일</span>
                                                         <i class="fas fa-unlock"></i>
                                                     </label>
-                                                    <input type="password" id="password" name="password" required placeholder="비밀번호 / PASSWORD">
+                                                    <input type="password" id="password" name="password" placeholder="비밀번호 / PASSWORD">
                                                 </li>
                                             </ul>
                                         </div>
@@ -52,7 +67,7 @@
                                             /
                                             <a href="<%=request.getContextPath()%>/member/findPasswordForm.do">비밀번호 찾기</a>
                                         </p>
-                                        <input type="submit" value="로그인" class="form__submit">
+                                        <input type="button" value="로그인" class="form__submit" onclick="check();">
                                         <a href="<%=request.getContextPath()%>/member/joinForm.do" class="form__joinBtn">회원가입</a>
                                     </fieldset>
                                 </form>

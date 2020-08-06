@@ -1,20 +1,25 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
-
 
  <div class="header-inner cf">
                 <h1><a href="<%=request.getContextPath()%>/"><span class="hidden">logo</span><img src="<%=request.getContextPath()%>/img/logo.png" alt="logo"></a>
                 </h1>
-            
                 <div class="mobile">
                    <a href="javascript:;" class="mobile__openBtn"><i class="fas fa-bars fa-3x"></i></a>
                    <a href="javascript:;" class="mobile__closeBtn"><i class="fas fa-times fa-3x"></i></a>
                     <div class="right_nav">
                         <ul class="tnb cf">
-                            <li><a href="<%=request.getContextPath()%>/member/loginForm.do">로그인</a></li>
-                            <li><a href="<%=request.getContextPath()%>/member/joinForm.do">회원가입</a></li>
-                            <li><a href="<%=request.getContextPath()%>/member/mypage/index.do">마이페이지</a></li>
+                        	<c:if test="${empty authUser }">
+	                            <li><a href="<%=request.getContextPath()%>/member/loginForm.do">로그인</a></li>
+	                            <li><a href="<%=request.getContextPath()%>/member/joinForm.do">회원가입</a></li>
+	                        </c:if>
+	                        <c:if test="${!empty authUser }">
+	                       		<li><a href="#">로그아웃</a></li>
+								<li><a href="#">마이페이지</a></li>
+	                        </c:if>
                         </ul>
                         <nav class="gnb">
                             <ul class="cf">

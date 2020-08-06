@@ -84,12 +84,14 @@ public class MemberServiceImple implements MemberService{
 	@Override
 	public String login(HttpServletRequest req, String id, String password) {
 		String pageName = "";
+		System.out.println("서비스에서 id : "+id);
 		MemberVO vo = memberDao.login(id, password);
-		if (vo == null) {
-			pageName = "admin/member/loginForm";
+		if (vo == null) { 
+			pageName = "member/loginForm";
 		} else {
-			memberDao.lastVisit(id); // 마지막 방문일 수정
+			memberDao.lastVisit(vo.getId()); // 마지막 방문일 수정
 			req.getSession().setAttribute("authUser", vo);
+			
 			pageName = "redirect:/index.do";
 		}
 		
