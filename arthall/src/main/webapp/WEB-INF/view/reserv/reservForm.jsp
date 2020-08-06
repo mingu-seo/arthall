@@ -6,9 +6,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>충무아트센터 | 예매하기</title>
-    <link rel="icon" sizes="16x16" type="<%=request.getContextPath() %>/image.png" href="<%=request.getContextPath() %>/img/favicon.png">
+    <link rel="icon" sizes="16x16" type="image.png" href="<%= request.getContextPath() %>/img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/ticketing.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/ticketing.css">
+    <script src="<%= request.getContextPath() %>/js/forEachPolyfill.js" defer></script>
+    <script src="<%= request.getContextPath() %>/js/calrendar.js" defer></script>
+    <script src="<%= request.getContextPath() %>/js/ticketing.js" defer></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+function check(){
+	if ($("#resultBox__date").val() == ""){
+		alert("날짜를 선택하세요");
+	} else if ($("#resultBox__time").val()== ""){
+		alert("시간을 선택하세요");
+	} else if ($("#resultBox__price").val() == ""){
+		alert("좌석을 선택하세요");
+	} else {
+		$("#tiket__form").submit();
+	}
+	
+}
+</script>
 </head>
 
 <body>
@@ -16,8 +34,7 @@
         <main id="main">
             <section class="content__innerConts ticketBox">
                 <div class="ticketBox__titArea cf">
-                    <h1><img src="<%=request.getContextPath() %>/img/logo-b.png" alt="충무아트센터 로고"></h1>
-                    <!--?-->
+                    <h1><img src="<%= request.getContextPath() %>/img/logo-b.png" alt="충무아트센터 로고"></h1>
                     <article class="ticketBox__ticketBoxInner ticketInfo cf">
                         <h2 class="ticketBoxInner__tit">예매하기</h2>
                         <p>
@@ -216,6 +233,7 @@
                         <h2 class="ticketBoxInner__tit">회차선택</h2>
                         <ol class="timeInfo__timeTable">
                             <li class="timeTable__list">
+                            <!-- 전시회랑 아닌거 if문 걸기 -->
                                 <span class="list__Time">11:00~20:00</span>
                                 <p>전시 입장 마감 시간은 19:00입니다.</p>
                             </li>
@@ -262,7 +280,7 @@
                     </article>
                     <article class="ticketBox__ticketBoxInner tiketInfo">
                         <h2 class="ticketBoxInner__tit">나의 예매현황</h2>
-                        <form method="post" action="#" name="tiket__form" id="tiket__form" class="tiketInfo__form">
+                        <form method="post" action="payment.do" name="tiket__form" id="tiket__form" class="tiketInfo__form">
                             <fieldset>
                                 <legend>예매현황</legend>
                                 <ul class="form__resultBox">
@@ -294,7 +312,7 @@
                                         <label for="resultBox__price">가격</label><input type="text" id="resultBox__price" value="" required disabled>
                                     </li>
                                 </ul>
-                                <input type="submit" class="form__submit" value="다음 단계로">
+                                <input type="button" class="form__submit" value="다음 단계로" onclick="check();">
                             </fieldset>
                         </form>
                     </article>
@@ -302,7 +320,6 @@
             </section>
         </main>
     </div>
+</body>
 
-    <script src="<%=request.getContextPath() %>/js/ticketingCalrendar.js"></script>
-    <script src="<%=request.getContextPath() %>/js/ticketing.js"></script>
-</body></html>
+</html>

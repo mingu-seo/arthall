@@ -15,29 +15,20 @@ public class User_ReservController {
 	@Autowired
 	private ReservService reservService;
 	
-	@RequestMapping("/index.do")
-	public String index() {
-//		PlayVO vo = reservService.playList();
-//		model.addAttribute("vo", vo);
-		return "reserv/index";
-	}
-	
-	
-	// 공연, 전시 구분해서 페이지 보여주기
-	@RequestMapping("/reservForm.do")
-	public String playReservForm(Model model) {
-//		PlayVO vo = reservService.playList();
-//		model.addAttribute("vo", vo);
-		return "reserv/reservForm";
-	}
 
-	@RequestMapping("/admin/reserv/reserv.do")
+	@RequestMapping("/reservForm.do")
 	public String reservOne(Model moedel, ReservVO param) {
 
-		String pageName = reservService.reservOne(param);
+		String pageName = "reserv/reservForm";
 		return pageName;
 	}
 	
+	@RequestMapping("/payment.do")
+	public String paymentForm(Model moedel, ReservVO param) {
+
+//		String pageName = "";
+		return "reserv/payment";
+	}
 	
 	
 }

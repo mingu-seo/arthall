@@ -99,12 +99,13 @@ function showPeriod() {
     const allTd = calendars.querySelectorAll("td"),
         periodArray = period.innerText.split("~"),
         lastPeriod = periodArray[1],
-        lastArray = lastPeriod.split("-"),
+        lastArray = lastPeriod.split("."),
         lastYear = Number(lastArray[0]),
         lastMonth = Number(lastArray[1]),
         lastDate = Number(lastArray[2]),
         toDate = new Date(finished.today.getFullYear(), finished.today.getMonth() + 1, finished.today.getDate(), 0, 0, 0, 0),
         lastPeriodDate = new Date(lastYear, lastMonth, lastDate, 0, 0, 0, 0);
+
     allTd.forEach(function (e) {
         const tdFdate = e.getAttribute("data-fdate");
 

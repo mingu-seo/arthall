@@ -111,7 +111,7 @@
                         <span>돌아온 창작뮤지컬의 전설!</span>
                         <h2>뮤지컬 프랑켄슈타인</h2>
                         <p>공연기간 : <span>2020.07.10~2020.08.13</span><br>공연장소 : <span>충무아트센터 대극장</span></p>
-                        <p class="cf"><a href="reservForm.do" class="ticketingBtn">예매하기</a><a href="#">상세정보</a></p>
+                        <p class="cf"><a href="javascript:;" class="ticketingBtn">예매하기</a><a href="#">상세정보</a></p>
                     </div>
                 </div>
                 <div class="bg2">
@@ -119,7 +119,7 @@
                         <span>4연에 빛나는 웰메이드 창작뮤지컬</span>
                         <h2>뮤지컬 팬레터</h2>
                         <p>공연기간 : <span>2020.07.05~2020.08.31</span><br>공연장소 : <span>충무아트센터 중극장 블랙</span></p>
-                        <p class="cf"><a href="reservForm.do" class="ticketingBtn">예매하기</a><a href="#">상세정보</a></p>
+                        <p class="cf"><a href="javascript:;" class="ticketingBtn">예매하기</a><a href="#">상세정보</a></p>
                     </div>
                 </div>
                 <div class="bg3">

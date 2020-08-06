@@ -27,14 +27,17 @@ input, button{
     vertical-align: middle;
     font:1.4rem 'Noto Sans KR','sans-serif';
 }
+input[type="submit"],input[type="reset"]{cursor: pointer;}
+input::placeholder{font:1.4rem 'Noto Sans KR','sans-serif';}
+select{font:1.4rem 'Noto Sans KR','sans-serif'; outline: none;}
 
 .hidden{
-    display: none;
+    display: block;
     width: 0;
     height: 0;
     line-height: 0;
+    font-size: 0;
     text-indent: -9999px;
-    opacity: 0;
     overflow: hidden;
 }
 

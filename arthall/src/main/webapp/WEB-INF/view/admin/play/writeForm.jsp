@@ -5,6 +5,35 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 <script>
+//smarteditor
+var oEditors = [];
+$(function() {
+	
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef: oEditors,
+		elPlaceHolder: "ct", // textarea ID
+		sSkinURI: "<%=request.getContextPath()%>/smarteditor/SmartEditor2Skin.html",	
+		htParams : {
+			bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+			bUseVerticalResizer : false,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+			bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+			fOnBeforeUnload : function(){
+				
+			}
+		}, //boolean
+		fOnAppLoad : function(){
+			//예제 코드
+			//oEditors.getById["contents"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+		},
+		fCreator: "createSEditor2"
+	});
+});
+
+
+	function check() {
+		 oEditors.getById['ct'].exec('UPDATE_CONTENTS_FIELD',[]);
+		}
+
 // $(function() {
 // 	$("#playType").change(function() {
 // 		if ($(this).val() == "1") {
@@ -46,7 +75,7 @@
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="write.do" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="write.do" onsubmit="return check()" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="0.05%" />
@@ -116,9 +145,7 @@
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 내용</label></th>
 										<td colspan="10">
-											<textarea cols="50" rows="6" id="content" name="content"
-											placeholder="PH {&#13;&#10;smarteditor 적용 해야함 &#13;&#10;1.창크기를 실제화면에 맞춰주면 좋을듯&#13;&#10;}"></textarea>
-<!-- 											<input type="text" id="hallNo" name="hallNo" class="w100" title="제목을 입력해주세요" value='1' />	 -->
+											<textarea id="ct" name="content"></textarea>
 										</td>
 									</tr>
 									<tr>
