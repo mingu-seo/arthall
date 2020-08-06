@@ -36,19 +36,13 @@
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 제목</label></th>
 										<td colspan="10">
-											<input type="text" id="performName" name="performName" class="w20" title="제목을 입력해주세요" value='${vo.performName}'/>	
+											<input type="text" id="playName" name="playName" class="w20" title="제목을 입력해주세요" value='${vo.playName}'/>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 공연번호</label></th>
 										<td colspan="10">
-											<input type="text" id="performNo" name="performNo" class="w20" title="제목을 입력해주세요" value='${vo.performNo}'/>	
-										</td>
-									</tr>
-									<tr>
-										<th scope="row" colspan="2"><label for="">* 공연일</label></th>
-										<td colspan="2">
-											<input type="text" id="performDate" name="performDate" class="w5" placeholder="YYYY-MM-DD" value='${vo.performDate}'/>	
+											<input type="text" id="playNo" name="playNo" class="w20" title="제목을 입력해주세요" value='${vo.playNo}'/>	
 										</td>
 									</tr>
 									<tr>

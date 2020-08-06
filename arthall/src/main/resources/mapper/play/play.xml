@@ -152,10 +152,10 @@
 	
 	<insert id = "writeE" parameterType="play.ExhibitVO" useGeneratedKeys="true">
 		INSERT INTO exhibit
-			(exName, exNo, exDate, time, author, priceA, priceB, priceC, filename)
+			(playName, playNo, artist, priceAdult, priceTeenager, priceChildren, filename)
 		VALUES
-			(#{exName}, #{exNo}, #{exDate}, #{time}, #{author}, #{priceA},
-			#{priceB}, #{priceC}, #{filename});
+			(#{playName}, #{playNo}, #{artist}, #{priceAdult}, #{priceTeenager}, #{priceChildren},
+			#{filename});
 		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
 			SELECT last_insert_id();
 		</selectKey>
@@ -167,14 +167,12 @@
 	
 	<update id = "modifyE" parameterType="play.ExhibitVO">
 		UPDATE exhibit SET
-		exName = #{exName},
-		exNo = #{exNo},
-		exDate = #{exDate},
-		time = #{time},
-		author = #{author},
-		priceA = #{priceA},
-		priceB = #{priceB},
-		priceC = #{priceC},
+		playName = #{playName},
+		playNo = #{playNo},
+		artist = #{artist},
+		priceAdult = #{priceAdult},
+		priceTeenager = #{priceTeenager},
+		priceChildren = #{priceChildren},
 		filename = #{filename}
 		WHERE no = #{no};
 	</update>
