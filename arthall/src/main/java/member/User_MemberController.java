@@ -58,7 +58,6 @@ public class User_MemberController {
 		out.flush();
 	}
 	
-
 	@RequestMapping("member/join.do")
 	public String join(HttpServletRequest req, MemberVO param) {
 		String pageName = memberService.join(param, req);

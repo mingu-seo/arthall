@@ -46,6 +46,16 @@ public class MemberServiceImple implements MemberService{
 	}
 	
 	@Override
+	public String dupId(HttpServletRequest req, MemberVO param) {
+		MemberVO vo = memberDao.dupId(param);
+		String r = "true";
+		if (vo != null) {
+			r = "false";
+		}
+		return r;
+	}
+	
+	@Override
 	public String join(MemberVO param, HttpServletRequest req) {
 		int numJoin = 0;
 		
@@ -62,15 +72,7 @@ public class MemberServiceImple implements MemberService{
 		return pageName;
 	}
 	
-	@Override
-	public String dupId(HttpServletRequest req, MemberVO param) {
-		MemberVO vo = memberDao.dupId(param);
-		String r = "true";
-		if (vo != null) {
-			r = "false";
-		}
-		return r;
-	}
+	
 	
 	@Override
 	public int sendMail(HttpServletRequest req, MemberVO param) throws Exception{;
