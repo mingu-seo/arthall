@@ -80,24 +80,6 @@ public class MemberServiceImple implements MemberService{
 		SendMail.sendEmail("kdy7710@naver.com", param.getEmail(), "[충무아트홀] 인증번호", "인증번호 : "+ran);
 		return ran;
 	}
-	
-	@Override
-	public String emailConfirm(HttpServletRequest req, MemberVO param){;
-		
-		String r = "true";
-		String sendMail =  param.getSendMail();
-		System.out.println("sendMail : "+sendMail);
-		
-		String confMail = param.getEmailConfirm();
-		System.out.println("conf : "+confMail);
-		
-		
-		if(sendMail != confMail) {
-			r = "false";
-		}
-		return r;
-	}
-
 
 	@Override
 	public String login(HttpServletRequest req, String id, String password) {
@@ -125,7 +107,7 @@ public class MemberServiceImple implements MemberService{
 		} else {
 			MemberVO param = new MemberVO();
 			param.setId(id);
-			param.setPassword(password);
+			param.setPw(password);
 			int r = memberDao.changePwd(param);
 			pageName = "member/changePwdSuccess";
 		}

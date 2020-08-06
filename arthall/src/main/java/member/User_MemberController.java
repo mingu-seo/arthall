@@ -39,9 +39,6 @@ public class User_MemberController {
 	public void sendMail(HttpServletRequest req, MemberVO param, HttpServletResponse res) throws Exception {
 		
 		int ran = memberService.sendMail(req, param);
-		String random = String.valueOf(ran);
-		
-		req.setAttribute("sendCode", random);
 		res.setContentType("text/html; charset=utf-8");
 		
 		PrintWriter out = res.getWriter();
@@ -49,14 +46,6 @@ public class User_MemberController {
 		out.flush();
 	}
 
-	@RequestMapping("/member/emailConfirm.do")
-	public void emailConf(HttpServletRequest req, MemberVO param, HttpServletResponse res) throws Exception {
-		String r = memberService.emailConfirm(req, param);
-		res.setContentType("text/html; charset=utf-8");
-		PrintWriter out = res.getWriter();
-		out.print(r);
-		out.flush();
-	}
 	
 	@RequestMapping("member/join.do")
 	public String join(HttpServletRequest req, MemberVO param) {

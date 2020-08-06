@@ -24,8 +24,6 @@ public interface MemberService {
 	
 	public int sendMail(HttpServletRequest req, MemberVO param) throws Exception;
 	
-	public String emailConfirm(HttpServletRequest req, MemberVO param);
-	
 	public String login(HttpServletRequest req, String id, String password);
 	
 	public String changePwd(HttpServletRequest req, String id, String password);

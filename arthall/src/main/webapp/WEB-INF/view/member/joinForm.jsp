@@ -15,6 +15,7 @@
 <script src="<%=request.getContextPath()%>/js/join.js"></script>
 <script>
 	// 중복확인
+	var idClickCheck = 0;
 	function check() {
 		if ($('#id').val().trim() != '') {
 			$.ajax({
@@ -33,6 +34,7 @@
 						} else {
 							alert("사용 가능한 아이디입니다.");
 							$("#dupChk").val('true');
+							idClickCheck = 1;
 						}
 					} else {
 						alert("첫글자는 영문이며 4~12자의 영문 대소문자와 숫자로만 입력해주세요.");	
@@ -68,7 +70,7 @@
 		} else {
 			alert("이메일을 입력해 주세요");
 		}
-		//return false;
+		return false;
 	}
 	
 	//인증번호 확인
@@ -86,23 +88,33 @@
 		} else {
 			alert("인증번호를 입력해 주세요");
 		}
+		return false;
 	}
 	
 	// 회원가입_확인버튼
 	function regist() {
 		 
-	 	var pattern_pw = /[a-zA-Z][a-zA-Z0-9+]{3,11}$/;
+	 	var pattern_pw = /^[a-zA-Z][a-zA-Z0-9+]{3,11}$/;
 	 	var pattern_birth = /[0-9+]{7}$/;
 	 	var pattern_tel = /[0-9+]{8,10}$/;
 	 	
 	 	if ($("#id").val().trim() == '' || $("#id").val().trim() == null) {
 			alert("아이디를 입력해 주세요.");
 			$("#id").focus();
+		} else if (idClickCheck != 1) {
+			alert("아이디 중복확인을 진행해주세요.");
+			$("#id").focus();
 		} else if ($("#pw").val().trim() == '' || $("#pw").val().trim() == null) {
-				alert("비밀번호를 입력해 주세요.");
-				$("#pw").focus();
+			alert("비밀번호를 입력해 주세요.");
+			$("#pw").focus();
 		} else if (pattern_pw.test($('#pw').val().trim())) {
 			alert("비밀번호의 첫글자는 영문이며 4~12자의 영문 대소문자와 숫자로만 입력해주세요.");
+			$("#pw").focus();
+		} else if ($("#pw2").val().trim() == '' || $("#pw2").val().trim() == null) {
+			alert("비밀번호 확인을 입력해 주세요.");
+			$("#pw2").focus();
+		} else if ($("#pw").val().trim() != $("#pw2").val().trim()) {
+			alert("비밀번호가 일치하지 않습니다.");
 			$("#pw").focus();
 		} else if ($("#name").val().trim() == '' || $("#name").val().trim() == null) {
 			alert("이름을 입력해 주세요.");
@@ -138,7 +150,8 @@
 			alert("회원가입을 진심으로 축하드립니다.");
 			$("#join_form").attr('action', '/member/join.do');
 			$("#join_form").submit();
-		}	 
+		}
+	 	return false;
 	}
 </script>
 
@@ -296,7 +309,7 @@
                                             </li>
 										</ul>
 										<div class="btn_yn">
-											<button id="joinRegist" onclick="regist();"><span>확인</span></button>
+											<button id="joinRegist" onclick="return regist();"><span>확인</span></button>
 											<button id="joinCancle"><span>취소</span></button>
 										</div>
 									</div>
