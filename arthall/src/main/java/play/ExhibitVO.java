@@ -5,14 +5,12 @@ import java.sql.Date;
 public class ExhibitVO extends util.Parameter{
 	
 	private int no;
-	private String exName;
-	private int exNo;
-	private Date exDate;
-	private int time;
-	private String author;
-	private int priceA;
-	private int priceB;
-	private int priceC;
+	private String playName;
+	private int playNo;
+	private String artist;
+	private int priceAdult;
+	private int priceTeenager;
+	private int priceChildren;
 	
 	public ExhibitVO(){
 		super.setPage(1);
@@ -27,68 +25,53 @@ public class ExhibitVO extends util.Parameter{
 		this.no = no;
 	}
 
-	public String getExName() {
-		return exName;
+	public String getPlayName() {
+		return playName;
 	}
 
-	public void setExName(String exName) {
-		this.exName = exName;
+	public void setPlayName(String playName) {
+		this.playName = playName;
 	}
 
-	public int getExNo() {
-		return exNo;
+	public int getPlayNo() {
+		return playNo;
 	}
 
-	public void setExNo(int exNo) {
-		this.exNo = exNo;
+	public void setPlayNo(int playNo) {
+		this.playNo = playNo;
 	}
 
-	public Date getExDate() {
-		return exDate;
+	public String getArtist() {
+		return artist;
 	}
 
-	public void setExDate(Date exDate) {
-		this.exDate = exDate;
+	public void setArtist(String artist) {
+		this.artist = artist;
 	}
 
-	public int getTime() {
-		return time;
+	public int getPriceAdult() {
+		return priceAdult;
 	}
 
-	public void setTime(int time) {
-		this.time = time;
+	public void setPriceAdult(int priceAdult) {
+		this.priceAdult = priceAdult;
 	}
 
-	public String getAuthor() {
-		return author;
+	public int getPriceTeenager() {
+		return priceTeenager;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setPriceTeenager(int priceTeenager) {
+		this.priceTeenager = priceTeenager;
 	}
 
-	public int getPriceA() {
-		return priceA;
+	public int getPriceChildren() {
+		return priceChildren;
 	}
 
-	public void setPriceA(int priceA) {
-		this.priceA = priceA;
+	public void setPriceChildren(int priceChildren) {
+		this.priceChildren = priceChildren;
 	}
 
-	public int getPriceB() {
-		return priceB;
-	}
-
-	public void setPriceB(int priceB) {
-		this.priceB = priceB;
-	}
-
-	public int getPriceC() {
-		return priceC;
-	}
-
-	public void setPriceC(int priceC) {
-		this.priceC = priceC;
-	}
 	
 }

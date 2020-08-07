@@ -48,20 +48,16 @@ function del() {
                            <col class="w10" />
                            <col class="w5" />
                            <col class="w6" />
-                           <col class="w3" />
-                           <col class="w10" />
                            <col class="w5" />
                            <col class="w5" />
                            <col class="w5" />
-                           <col class="w7" />
+                           <col class="w5" />
                         </colgroup>
                         <thead>
                            <tr>
                               <th scope="col" class="first" rowspan="2"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
                               <th scope="col" rowspan="2">제목</th>
                               <th scope="col" rowspan="2">전시번호</th>
-                              <th scope="col" rowspan="2">전시일</th>
-                              <th scope="col" rowspan="2">회차</th>
                               <th scope="col" rowspan="2">작가</th>
                               <th scope="col" colspan="3">가격</th>
                                                        
@@ -84,14 +80,12 @@ function del() {
                               <c:forEach var="exhibit" items="${list}">
                               <tr>
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${exhibit.no}"/></td>
-                                 <td class="title" style="text-align:center" onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.exName}</td>
-                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.exNo}</td>
-                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.exDate}</td>
-                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.time}</td>
-                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.author}</td>
-                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.priceA}</td>
-                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.priceB}</td>
-                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.priceC}</td>
+                                 <td class="title" style="text-align:center" onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.playName}</td>
+                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.playNo}</td>
+                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.artist}</td>
+                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.priceAdult}</td>
+                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.priceTeenager}</td>
+                                 <td onclick="location.href='exhibitModifyForm.do?no=${exhibit.no}'">${exhibit.priceChildren}</td>
                                  <td class="last"><a class="fileview" href="fileView.do?filename=${exhibit.filename}"><strong>${exhibit.filename}</strong></a></td>
                               </tr>
                               <tr>
