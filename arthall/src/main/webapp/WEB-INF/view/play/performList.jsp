@@ -1,13 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%@ include file="/WEB-INF/view/include/headHtml.jsp"%>
+
+    <title>충무아트센터 | 공연정보</title>
+    <script src="<%=request.getContextPath()%>/js/forEachPolyfill.js" defer></script>
+    <script src="<%=request.getContextPath()%>/js/ticketingPopup.js" defer></script>
+    <script src="<%=request.getContextPath()%>/js/perf-exhi.js" defer></script>
+    <script>
+    function getContextPath() {
+  var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+  return location.href.substring( hostIndex, location.href.indexOf(‘/’, hostIndex + 1) );
+};
+</script>
 </head>
 <body>
 <div class="sub__tit">
+
+
             <h2>공연정보</h2>
         </div>
         <div class="sub__container cf">
@@ -384,5 +397,8 @@
             </main>
             <a href="javascript:;" class="topBtn">TOP</a>
         </div>
+	<footer>
+<%@ include file="/WEB-INF/view/include/footer.jsp"%>
+</footer>
 </body>
 </html>
