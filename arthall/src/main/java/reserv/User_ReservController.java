@@ -28,7 +28,6 @@ public class User_ReservController {
 	
 	// 결제 창으로 이동
 	@RequestMapping("/payment.do")
-<<<<<<< HEAD
 	public String paymentForm(Model model, ReservVO param, TicketVO ticket) {
 		System.out.println(param.getReservDate());
 		System.out.println(param.getTime());
@@ -39,13 +38,7 @@ public class User_ReservController {
 		
 		model.addAttribute("vo", param);
 		model.addAttribute("ticket", ticket);
-		
-=======
-	public String paymentForm(Model moedel, ReservVO param) {
 
-//		String pageName = "";
-		System.out.println("가져온값 : "+param.getResultBox__date());
->>>>>>> branch 'master' of https://github.com/mingu-seo/arthall.git
 		return "reserv/payment";
 	}
 	
