@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/payment.css">
     <script src="<%= request.getContextPath() %>/js/forEachPolyfill.js"></script>
     <script src="<%= request.getContextPath() %>/js/payment.js" defer></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
 <body>
@@ -135,10 +136,10 @@
                                 <legend>결제정보</legend>
                                 <p class="paymentForm__paymentInfo">
                                     <span>뮤지컬 &lt;썸씽로튼&gt;</span>
-                                    <span>2020.08.15</span>
-                                    <span>오후 15:00</span>
+                                    <span>${vo.reservDate}</span>
+                                    <span>${vo.time}</span>
                                     <span>VIP석 1매</span>
-                                    <span>150,000원</span>
+                                    <span>${ticket.price}</span>
                                 </p>
                                 <input type="submit" class="paymentForm__submit" value="결제완료">
                             </fieldset>

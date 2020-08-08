@@ -16,6 +16,7 @@ public class ReservVO extends Parameter {
    private Date playDate;
    private String time;
    private int hallNo;
+   private String hallName;
    private String pay;
    
    private String startDate;
@@ -26,6 +27,13 @@ public class ReservVO extends Parameter {
 	      super.setSize(10);
 	   }
 
+   public String getHallName() {
+	   return hallName;
+   }
+   
+   public void setHallName(String hallName) {
+	   this.hallName = hallName;
+   }
 public String getNo() {
 	return no;
 }

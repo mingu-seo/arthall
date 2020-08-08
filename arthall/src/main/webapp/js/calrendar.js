@@ -42,7 +42,7 @@ function moveCalendar(e) {
         btnPrev.classList.remove("disable");
     } else {
         let prevMonthFdata = prevMonthText.getAttribute("data-fdate"),
-            prevMonthFdataArray = prevMonthFdata.split("."),
+            prevMonthFdataArray = prevMonthFdata.split("-"),
             prevMonthDate = new Date(prevMonthFdataArray[0], prevMonthFdataArray[1] - 1, 0, 0, 0, 0, 0),
             thisMonthDate = new Date(finished.today.getFullYear(), finished.today.getMonth() + 1, 0, 0, 0, 0, 0);
 
@@ -55,7 +55,7 @@ function moveCalendar(e) {
             createCalendar(finished.nextMonth(), nextContainer);
 
             let prevMonthFdata = prevMonthText.getAttribute("data-fdate"),
-                prevMonthFdataArray = prevMonthFdata.split("."),
+                prevMonthFdataArray = prevMonthFdata.split("-"),
                 prevMonthDate = new Date(prevMonthFdataArray[0], prevMonthFdataArray[1] - 1, 0, 0, 0, 0, 0),
                 thisMonthDate = new Date(finished.today.getFullYear(), finished.today.getMonth() + 1, 0, 0, 0, 0, 0);
 
@@ -99,7 +99,7 @@ function showPeriod() {
     const allTd = calendars.querySelectorAll("td"),
         periodArray = period.innerText.split("~"),
         lastPeriod = periodArray[1],
-        lastArray = lastPeriod.split("."),
+        lastArray = lastPeriod.split("-"),
         lastYear = Number(lastArray[0]),
         lastMonth = Number(lastArray[1]),
         lastDate = Number(lastArray[2]),
@@ -110,7 +110,7 @@ function showPeriod() {
         const tdFdate = e.getAttribute("data-fdate");
 
         if (tdFdate) {
-            const tdFdateArray = tdFdate.split("."),
+            const tdFdateArray = tdFdate.split("-"),
                 tdYear = tdFdateArray[0],
                 tdMonth = tdFdateArray[1],
                 tdDate = tdFdateArray[2],
@@ -153,7 +153,7 @@ function createCalendar(fullDate, Container) {
             if (!startCount) {
                 trtd += '<td>'
             } else {
-                let fullDate = yy + '.' + finished.addZero(mm + 1) + '.' + finished.addZero(countDay + 1);
+                let fullDate = yy + '-' + finished.addZero(mm + 1) + '-' + finished.addZero(countDay + 1);
                 //                let fullDate = yy + '.' + (mm + 1) + '.' + (countDay + 1);
                 trtd += '<td class="dates disable';
                 trtd += (markToday && markToday === countDay + 1) ? ' today" ' : '"';

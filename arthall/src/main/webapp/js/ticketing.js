@@ -96,8 +96,8 @@ function showResult(thisElement) {
                         resultWheelBox.value = `${tiketCount}매 ${numberWithCommas(wheelPrice)}원`;
                     }
                     resultPrice = vipPrice + rPrice + sPrice + aPrice + bPrice + wheelPrice;
-                    resultPriceBox.value = `${numberWithCommas(resultPrice)}원`;
-                    console.log(vipPrice);
+                    resultPriceBox.value = `${numberWithCommas(resultPrice)}`;
+                    console.log(resultPriceBox);
                 });
             });
 
@@ -108,7 +108,7 @@ function showResult(thisElement) {
                 resultVipBox.value = vipPrice;
             } else if (thisElement.parentNode.classList.contains("rClass")) {
                 resultRBox.parentNode.style.display = "none";
-                rPrice = 0;
+                rPrice = "";
                 resultRBox.value = rPrice;
             } else if (thisElement.parentNode.classList.contains("sClass")) {
                 resultSBox.parentNode.style.display = "none";

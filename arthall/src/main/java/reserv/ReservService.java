@@ -16,9 +16,9 @@ public interface ReservService {
 	public List<TicketVO> ticketlist(TicketVO param);
 	
 	// play, member 가져오기에서 play만 가져오기
-	public PlayVO playList();
+	public PlayVO playOne(ReservVO param);
 	
 	// User 예약
-	public String reservOne(ReservVO param);
+//	public String reservOne(ReservVO param);
 	
 }

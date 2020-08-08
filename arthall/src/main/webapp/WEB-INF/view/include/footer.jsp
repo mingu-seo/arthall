@@ -54,4 +54,4 @@
  <script src="<%=request.getContextPath()%>/js/topBtn.js"></script>
     <script src="<%=request.getContextPath()%>/js/siteOpen.js"></script>
     <script src="<%=request.getContextPath()%>/js/sec_slide.js"></script>
-    <script src="<%=request.getContextPath()%>/js/ticketingPopup.js"></script>
+    

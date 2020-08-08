@@ -120,14 +120,17 @@
 	
 	<insert id="reservOne" parameterType="reserv.ReservVO">
 		INSERT INTO reserv
-			(no, name, reservDate, playNo, playName, playDate, runtime, hallNo)
+			(reservNo, memberNo, name, reservDate, playNo, playName, playDate, time, hallNo, hallName, pay)
 		VALUES
-			(#{no}, #{name}, now(), #{playNo}, #{playName}, #{playDate},
-			#{runtime}, #{hallNo});
+			(#{reservNo}, #{memberNo}, #{name}, now(), #{playNo}, #{playName}, #{playDate},
+				#{time}, #{hallNo}, #{hallName}, #{pay});
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT last_insert_id();
+		</selectKey>
 	</insert>
 	
-	<select id="playAll" parameterType="play.PlayVO" resultType="play.PlayVO">
-		select * from play
+	<select id="playOne" parameterType="reserv.ReservVO" resultType="play.PlayVO">
+		select * from play WHERE no = #{playNo}
 	</select>
 	
 </mapper>

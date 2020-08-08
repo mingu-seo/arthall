@@ -37,14 +37,18 @@ public class ReservDAO {
 		return sqlSession.selectList("reserv.ticketlist", param);
 	}
 	
+	public List<PlayVO> playlist(PlayVO play){
+		return sqlSession.selectList("reserv.playList", play);
+	}
+	
 	
 	// User 예약
 	public int reservOne(ReservVO param) {
 		return sqlSession.insert("reserv.reservOne", param);
 	}
 	
-	public PlayVO play() {
-		return sqlSession.selectOne("reserv.playAll");
+	public PlayVO play(ReservVO param) {
+		return sqlSession.selectOne("reserv.playOne", param);
 	}
 	
 }

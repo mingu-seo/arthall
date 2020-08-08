@@ -65,20 +65,20 @@ public class ReservServiceImple implements ReservService{
 		return ticketlist;
 	}
 
-	@Override
-	public String reservOne(ReservVO param) {
-		
-		
-		
-		
-		reservDao.reservOne(param);
-		
-		return "admin/reserv/list";
-	}
+//	@Override
+//	public String reservOne(ReservVO param) {
+//		
+//		
+//		
+//		
+//		reservDao.reservOne(param);
+//		
+//		return "admin/reserv/list";
+//	}
 
 	@Override
-	public PlayVO playList() {
-		PlayVO playList = reservDao.play();
+	public PlayVO playOne(ReservVO param) {
+		PlayVO playList = reservDao.play(param);
 		return playList;
 	}
 

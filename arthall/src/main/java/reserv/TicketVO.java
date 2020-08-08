@@ -5,7 +5,7 @@ public class TicketVO {
 	private String no;
 	private String reservNo;
 	private String seatType;
-	private int price;
+	private String price;
 	private String pay;
 	
 	
@@ -33,12 +33,13 @@ public class TicketVO {
 	public void setSeatType(String seatType) {
 		this.seatType = seatType;
 	}
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
+
 	
 	
 }

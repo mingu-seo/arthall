@@ -5,7 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
-
+<script>
+function reservForm(){
+	window.open('reservForm.do?playNo=${play.no}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');return false
+}
+</script>
 </head>
 <body>
 <div id = "wrap">
@@ -40,7 +44,7 @@
                         <span>돌아온 창작뮤지컬의 전설!</span>
                         <h2>뮤지컬 프랑켄슈타인</h2>
                         <p>공연기간 : <span>2020.07.10~2020.08.13</span><br>공연장소 : <span>충무아트센터 대극장</span></p>
-                        <p class="cf"><a href="javascript:;" class="ticketingBtn">예매하기</a><a href="#">상세정보</a></p>
+                        <p class="cf"><a class="ticketingBtn" onclick="reservForm();">예매하기</a><a href="#">상세정보</a></p>
                     </div>
                 </div>
                 <div class="bg2">
