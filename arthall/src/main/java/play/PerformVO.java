@@ -5,9 +5,8 @@ import java.sql.Date;
 public class PerformVO extends util.Parameter{
 	
 	private int no;
-	private String performName;
-	private int performNo;
-	private Date performDate;
+	private String playName;
+	private int playNo;
 	private int time;
 	private String actor;
 	private int priceA;
@@ -26,26 +25,22 @@ public class PerformVO extends util.Parameter{
 		this.no = no;
 	}
 	
-	public String getPerformName() {
-		return performName;
+	public String getPlayName() {
+		return playName;
 	}
 
-	public void setPerformName(String performName) {
-		this.performName = performName;
+	public void setPlayName(String playName) {
+		this.playName = playName;
 	}
 
-	public int getPerformNo() {
-		return performNo;
+	public int getPlayNo() {
+		return playNo;
 	}
-	public void setPerformNo(int performNo) {
-		this.performNo = performNo;
+
+	public void setPlayNo(int playNo) {
+		this.playNo = playNo;
 	}
-	public Date getPerformDate() {
-		return performDate;
-	}
-	public void setPerformDate(Date performDate) {
-		this.performDate = performDate;
-	}
+
 	public int getTime() {
 		return time;
 	}

@@ -37,6 +37,8 @@
 	 
 	</select>
 	
+	
+	
 	<insert id="write" parameterType="board.notice.NoticeVO" useGeneratedKeys="true">
 		INSERT INTO notice
 			(writer,title,regDate,readCnt,content,filename,modDate,filename_org)

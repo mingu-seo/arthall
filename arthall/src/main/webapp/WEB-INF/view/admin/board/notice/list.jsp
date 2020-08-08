@@ -27,7 +27,7 @@
 	})
 	
 	function move() {
-		location.href="mainForm.do";
+		location.href="notice.do";
 	}
 	
 </script>

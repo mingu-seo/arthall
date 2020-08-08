@@ -50,7 +50,7 @@ function logout() {
                                     </ul>
                                 </li>
                                 <li class="hover">
-                                    <a href="<%=request.getContextPath()%>/board/news/notice.do"><span>뉴스·소식</span></a>
+                                    <a href="<%=request.getContextPath()%>/board/notice/index.do"><span>뉴스·소식</span></a>
                                     <ul>
                                         <li><a href="<%=request.getContextPath()%>/board/notice/index.do">공지사항</a></li>
                                         <li><a href="<%=request.getContextPath()%>/board/news/index.do">뉴스/이슈</a></li>

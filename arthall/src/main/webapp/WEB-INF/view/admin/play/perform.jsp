@@ -46,7 +46,6 @@ function del() {
                         <colgroup>
                            <col class="w3" />
                            <col class="w10" />
-                           <col class="w5" />
                            <col class="w6" />
                            <col class="w3" />
                            <col class="w10" />
@@ -60,7 +59,6 @@ function del() {
                               <th scope="col" class="first" rowspan="2"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
                               <th scope="col" rowspan="2">제목</th>
                               <th scope="col" rowspan="2">공연번호</th>
-                              <th scope="col" rowspan="2">공연일</th>
                               <th scope="col" rowspan="2">회차</th>
                               <th scope="col" rowspan="2">출연진</th>
                               <th scope="col" colspan="3">가격</th>
@@ -84,9 +82,8 @@ function del() {
                               <c:forEach var="perform" items="${list}">
                               <tr>
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${perform.no}"/></td>
-                                 <td class="title" style="text-align:center" onclick="location.href='performModifyForm.do?no=${perform.no}'">${perform.performName}</td>
-                                 <td onclick="location.href='performModifyForm.do?no=${perform.no}'">${perform.performNo}</td>
-                                 <td onclick="location.href='performModifyForm.do?no=${perform.no}'">${perform.performDate}</td>
+                                 <td class="title" style="text-align:center" onclick="location.href='performModifyForm.do?no=${perform.no}'">${perform.playName}</td>
+                                 <td onclick="location.href='performModifyForm.do?no=${perform.no}'">${perform.playNo}</td>
                                  <td onclick="location.href='performModifyForm.do?no=${perform.no}'">${perform.time}</td>
                                  <td onclick="location.href='performModifyForm.do?no=${perform.no}'">${perform.actor}</td>
                                  <td onclick="location.href='performModifyForm.do?no=${perform.no}'">${perform.priceA}</td>

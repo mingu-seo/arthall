@@ -36,50 +36,38 @@
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 제목</label></th>
 										<td colspan="10">
-											<input type="text" id="exName" name="exName" class="w20" title="제목을 입력해주세요" value='${vo.exName}'/>	
+											<input type="text" id="playName" name="playName" class="w20" title="제목을 입력해주세요" value='${vo.playName}'/>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 공연번호</label></th>
 										<td colspan="10">
-											<input type="text" id="exNo" name="exNo" class="w20" title="제목을 입력해주세요" value='${vo.exNo}'/>	
+											<input type="text" id="playNo" name="playNo" class="w20" title="제목을 입력해주세요" value='${vo.playNo}'/>	
 										</td>
 									</tr>
 									<tr>
-										<th scope="row" colspan="2"><label for="">* 공연일</label></th>
-										<td colspan="2">
-											<input type="text" id="exDate" name="exDate" class="w5" placeholder="YYYY-MM-DD" value='${vo.exDate}'/>	
-										</td>
-									</tr>
-									<tr>
-										<th scope="row"  colspan="2"><label for="">* 회차</label></th>
+										<th scope="row" colspan="2"><label for="">* 작가</label></th>
 										<td colspan="10">
-											<input type="text" id="time" name="time" class="w100" value='${vo.time}' />	
-										</td>
-									</tr>
-									<tr>
-										<th scope="row" colspan="2"><label for="">* 출연진</label></th>
-										<td colspan="10">
-											<input type="text" id="author" name="author" class="w100" value='${vo.author}' />
+											<input type="text" id="artist" name="artist" class="w100" value='${vo.artist}' />
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" rowspan="3"><label for="">*가격</label></th>
 			                            <th scope="col">성인<br></th> 
 										<td colspan="2">
-											<input type="text" id="priceA" name="priceA" class="w5" value='${vo.priceA}'/>	
+											<input type="text" id="priceAdult" name="priceAdult" class="w5" value='${vo.priceAdult}'/>	
 										</td>
 									</tr>
 			                        <tr>
 				                        <th scope="col">청소년<br></th>
 				                        <td colspan="2">
-											<input type="text" id="priceB" name="priceB" class="w5" value='${vo.priceB}' />	
+											<input type="text" id="priceTeenager" name="priceTeenager" class="w5" value='${vo.priceTeenager}' />	
 										</td>
 			                        </tr>									
 			                        <tr>
 				                        <th scope="col">어린이<br></th>
 				                        <td colspan="2">
-											<input type="text" id="priceC" name="priceC" class="w5" value='${vo.priceC}' />	
+											<input type="text" id="priceChildren" name="priceChildren" class="w5" value='${vo.priceChildren}' />	
 										</td>
 			                        </tr>									
 									<tr>
