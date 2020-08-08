@@ -30,10 +30,10 @@
 	
 	<insert id = "write" parameterType="play.PlayVO" useGeneratedKeys="true">
 		INSERT INTO play
-			(playName, hallNo, startDate, endDate, playType, starring, content,
+			(playName, hallNo, startDate, endDate, playType, playSubType, starring, content,
 			rating, runningTime, inquiry, producer, filename)
 		VALUES
-			(#{playName}, #{hallNo}, #{startDate}, #{endDate}, #{playType}, #{starring},
+			(#{playName}, #{hallNo}, #{startDate}, #{endDate}, #{playType}, #{playSubType}, #{starring},
 			#{content}, #{rating}, #{runningTime}, #{inquiry}, #{producer}, #{filename});
 		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
 			SELECT last_insert_id();
@@ -51,6 +51,7 @@
 		startDate = #{startDate},
 		endDate = #{endDate},
 		playType = #{playType},
+		playSubType = #{playSubType},
 		starring = #{starring},
 		content = #{content},		
 		rating = #{rating},
