@@ -285,7 +285,11 @@ function check(){
                                 <legend>예매현황</legend>
                                 <ul class="form__resultBox">
                                     <li class="cf">
+<<<<<<< HEAD
                                         <label for="resultBox__date">날짜</label><input type="text" name="reservDate" id="resultBox__date" value="" required readonly>
+=======
+                                        <label for="resultBox__date">날짜</label><input type="text" id="resultBox__date" name="resultBox__date" value="" required disabled>
+>>>>>>> branch 'master' of https://github.com/mingu-seo/arthall.git
                                     </li>
                                     <li class="cf">
                                         <label for="resultBox__time">시간</label><input type="text" name="time" id="resultBox__time" value="" required readonly>

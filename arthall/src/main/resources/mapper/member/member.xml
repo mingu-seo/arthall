@@ -86,7 +86,7 @@
 	</select>
 	
 	<update id="detail" parameterType="member.MemberVO">
-		UPDATE member SET id = #{id}, password = #{password}, name = #{name}, gender = #{gender}, 
+		UPDATE member SET id = #{id}, pw = #{pw}, name = #{name}, gender = #{gender}, 
 		tel = #{tel}, email = #{email}, zipCode = #{zipCode}, addr1 = #{addr1}, addr2 = #{addr2},
 		birth = #{birth}, joinDate = #{joinDate}, lastVisit = #{lastVisit}, banMem = #{banMem} WHERE no = #{no}
 	</update>
@@ -99,13 +99,22 @@
 	
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="member.MemberVO">
-		insert into member (id, password, name, tel, email, addr, birth, joinDate)
+		insert into member
+		(id, pw, name, gender, tel, email, birth,
+		 sample4_postcode, sample4_roadAddress, sample4_jibunAddress, sample4_detailAddress,
+		 joinDate, banMem, ad_email, ad_tel)
 		values
-		( #{id}, PASSWORD(#{password}), #{name}, #{gender}, #{tel}, #{email}, #{zipCode}, #{addr1}, #{addr2}, #{birth}, now())
+		( #{id}, PASSWORD(#{pw}), #{name}, #{gender}, #{tel}, #{email}, #{birth},
+		  #{sample4_postcode}, #{sample4_roadAddress}, #{sample4_jibunAddress}, #{sample4_detailAddress},
+		  now(), #{banMem}, #{ad_email}, #{ad_tel})
 	</insert>
 	
 	<select id="login" parameterType="java.util.Map" resultType="member.MemberVO">
-		select * from member where id=#{id} and password=#{password}
+		select * from member where id=#{id} and pw= PASSWORD(#{pw})
+	</select>
+	
+	<select id="findId" parameterType="member.MemberVO" resultType="member.MemberVO">
+		select * from member where name=#{name} and email=#{email}
 	</select>
 	
 	<update id="lastVisit" parameterType="String">

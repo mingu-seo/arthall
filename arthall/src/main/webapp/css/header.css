@@ -153,6 +153,7 @@ header.show{background:rgba(0,0,0,0.7);}
     border:none;
     background: #fff;
 }
+.search .t_box::placeholder{line-height: 30px;}
 .search .submit{
     position:absolute;
     width: 30px;

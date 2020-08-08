@@ -206,28 +206,26 @@ AUTO_INCREMENT=1
 
 -member 200731_수정 김대영/신근영
 ```
-CREATE TABLE `member` (
-	`no` INT(11) NOT NULL AUTO_INCREMENT,
-	`id` VARCHAR(50) NULL DEFAULT NULL,
-	`password` VARCHAR(50) NULL DEFAULT NULL,
-	`name` VARCHAR(50) NULL DEFAULT NULL,
-	`gender` INT(11) NULL DEFAULT 4 COMMENT '1=남성 / 2=여성 / 3=제3의성  / 4=기재원치않음',
-	`tel` VARCHAR(50) NULL DEFAULT NULL,
-	`email` VARCHAR(50) NULL DEFAULT NULL,
-	`zipCode` VARCHAR(50) NULL DEFAULT NULL,
-	`addr1` VARCHAR(100) NULL DEFAULT NULL,
-	`addr2` VARCHAR(100) NULL DEFAULT NULL,
-	`birth` VARCHAR(50) NULL DEFAULT NULL,
-	`joinDate` TIMESTAMP NULL DEFAULT NULL,
-	`lastVisit` TIMESTAMP NULL DEFAULT NULL,
-	`banMem` VARCHAR(50) NULL DEFAULT NULL,
-	PRIMARY KEY (`no`)
-)
-COMMENT='회원테이블'
-COLLATE='utf8_general_ci'
-ENGINE=InnoDB
-AUTO_INCREMENT=20
-;
+CREATE TABLE IF NOT EXISTS `member` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `id` varchar(50) DEFAULT NULL,
+  `pw` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `gender` int(11) DEFAULT 4 COMMENT '1=남성 / 2=여성 / 3=제3의성  / 4=기재원치않음',
+  `tel` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `sample4_postcode` varchar(50) DEFAULT NULL,
+  `sample4_roadAddress` varchar(100) DEFAULT NULL,
+  `sample4_jibunAddress` varchar(100) DEFAULT NULL,
+  `sample4_detailAddress` varchar(100) DEFAULT NULL,
+  `birth` varchar(50) DEFAULT NULL,
+  `joinDate` timestamp NULL DEFAULT NULL,
+  `lastVisit` timestamp NULL DEFAULT NULL,
+  `banMem` varchar(50) DEFAULT NULL,
+  `ad_email` varchar(100) DEFAULT '0' COMMENT '메일 광고 동의 check 0=비선택 / 1=선택',
+  `ad_tel` varchar(100) DEFAULT '0' COMMENT 'sms 광고 동의 check 0=비선택 / 1=선택',
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='회원테이블';
 
 ``` 
 

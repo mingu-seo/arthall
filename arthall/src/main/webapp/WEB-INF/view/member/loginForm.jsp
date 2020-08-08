@@ -13,13 +13,13 @@ function check() {
 		alert("아이디를 입력해 주세요");
 		$("#id").focus();
 		
-	} else if($("#password").val() == '') {
+	} else if($("#pw").val() == '') {
 		alert("비밀번호를 입력해 주세요");
-		$("#password").focus();
+		$("#pw").focus();
 	} else {
 		$("#loginForm").submit();
 	}
-} 
+}
 
 </script>
 </head>
@@ -55,17 +55,16 @@ function check() {
                                                     <input type="text" id="id" name="id" placeholder="아이디 / ID">
                                                 </li>
                                                 <li class="cf">
-                                                    <label for="password">
+                                                    <label for="pw">
                                                         <i class="fas fa-unlock"></i>
                                                     </label>
-                                                    <input type="password" id="password" name="password" placeholder="비밀번호 / PASSWORD">
+                                                    <input type="password" id="pw" name="pw" placeholder="비밀번호 / Password">
                                                 </li>
                                             </ul>
                                         </div>
                                         <p class="form__findBtns">
                                             <a href="<%=request.getContextPath()%>/member/findIDForm.do">아이디 찾기</a>
-                                            /
-                                            <a href="<%=request.getContextPath()%>/member/findPasswordForm.do">비밀번호 찾기</a>
+                                            <a href="<%=request.getContextPath()%>/member/findpasswordForm.do">비밀번호 찾기</a>
                                         </p>
                                         <input type="button" value="로그인" class="form__submit" onclick="check();">
                                         <a href="<%=request.getContextPath()%>/member/joinForm.do" class="form__joinBtn">회원가입</a>

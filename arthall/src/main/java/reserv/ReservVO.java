@@ -19,6 +19,8 @@ public class ReservVO extends Parameter {
    private String hallName;
    private String pay;
    
+   private String resultBox__date;
+   
    private String startDate;
    private String endDate;
    
@@ -26,6 +28,20 @@ public class ReservVO extends Parameter {
 	      super.setPage(1);
 	      super.setSize(10);
 	   }
+   
+   
+
+public String getResultBox__date() {
+	return resultBox__date;
+}
+
+
+
+public void setResultBox__date(String resultBox__date) {
+	this.resultBox__date = resultBox__date;
+}
+
+
 
    public String getHallName() {
 	   return hallName;

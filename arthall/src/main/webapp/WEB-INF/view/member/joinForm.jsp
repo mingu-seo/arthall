@@ -15,6 +15,7 @@
 <script src="<%=request.getContextPath()%>/js/join.js"></script>
 <script>
 	// 중복확인
+	var idClickCheck = 0;
 	function check() {
 		if ($('#id').val().trim() != '') {
 			$.ajax({
@@ -33,6 +34,7 @@
 						} else {
 							alert("사용 가능한 아이디입니다.");
 							$("#dupChk").val('true');
+							idClickCheck = 1;
 						}
 					} else {
 						alert("첫글자는 영문이며 4~12자의 영문 대소문자와 숫자로만 입력해주세요.");	
@@ -68,7 +70,7 @@
 		} else {
 			alert("이메일을 입력해 주세요");
 		}
-		//return false;
+		return false;
 	}
 	
 	//인증번호 확인
@@ -86,23 +88,45 @@
 		} else {
 			alert("인증번호를 입력해 주세요");
 		}
+		return false;
 	}
 	
 	// 회원가입_확인버튼
 	function regist() {
-		 
-	 	var pattern_pw = /[a-zA-Z][a-zA-Z0-9+]{3,11}$/;
-	 	var pattern_birth = /[0-9+]{7}$/;
-	 	var pattern_tel = /[0-9+]{8,10}$/;
+		
+	 	var pattern_pw = /^[a-zA-Z][a-zA-Z0-9+]{3,11}$/;
+	 	var pattern_birth = /^[0-9+]{8}$/;
+	 	var pattern_tel = /^[0-9+]{9,11}$/;
+	 	
+	 	if ($('input:checkbox[id="chk1"]').is(":checked") == true ) {
+	 		$("#ad_email").val(1);
+	 	} else {
+	 		$("#ad_email").val(0);
+	 	}
+	 	
+	 	if ($('input:checkbox[id="chk2"]').is(":checked") == true ) {
+	 		$("#ad_tel").val(1);
+	 	} else {
+	 		$("#ad_tel").val(0);
+	 	}
 	 	
 	 	if ($("#id").val().trim() == '' || $("#id").val().trim() == null) {
 			alert("아이디를 입력해 주세요.");
 			$("#id").focus();
+		} else if (idClickCheck != 1) {
+			alert("아이디 중복확인을 진행해주세요.");
+			$("#id").focus();
 		} else if ($("#pw").val().trim() == '' || $("#pw").val().trim() == null) {
-				alert("비밀번호를 입력해 주세요.");
-				$("#pw").focus();
-		} else if (pattern_pw.test($('#pw').val().trim())) {
+			alert("비밀번호를 입력해 주세요.");
+			$("#pw").focus();
+		} else if (pattern_pw.test($('#pw').val().trim()) != true) {
 			alert("비밀번호의 첫글자는 영문이며 4~12자의 영문 대소문자와 숫자로만 입력해주세요.");
+			$("#pw").focus();
+		} else if ($("#pw2").val().trim() == '' || $("#pw2").val().trim() == null) {
+			alert("비밀번호 확인을 입력해 주세요.");
+			$("#pw2").focus();
+		} else if ($("#pw").val().trim() != $("#pw2").val().trim()) {
+			alert("비밀번호가 일치하지 않습니다.");
 			$("#pw").focus();
 		} else if ($("#name").val().trim() == '' || $("#name").val().trim() == null) {
 			alert("이름을 입력해 주세요.");
@@ -110,13 +134,13 @@
 		} else if ($("#birth").val().trim() == '' || $("#birth").val().trim() == null) {
 			alert("생년월일을 입력해 주세요.");
 			$("#birth").focus();
-		} else if (pattern_birth.test($('#birth').val().trim())) {
+		} else if (pattern_birth.test($('#birth').val().trim()) != true) {
 			alert("생년월일을 형식에 맞게 작성해 주세요.");
 			$("#birth").focus();
 		} else if ($("#tel").val().trim() == '' || $("#tel").val().trim() == null) {
 			alert("연락처를 입력해 주세요.");
 			$("#tel").focus();
-		} else if (pattern_tel.test($('#tel').val().trim())) {
+		} else if (pattern_tel.test($('#tel').val().trim()) != true) {
 			alert("연락처를 형식에 맞게 작성해 주세요.");
 			$("#tel").focus();
 		} else if ($("#sample4_postcode").val().trim() == '' || $("#sample4_postcode").val().trim() == null){
@@ -135,10 +159,13 @@
 			alert("인증번호를 입력 후 인증번호 확인 버튼을 눌러주세요.");
 			$("#emailConfirm").focus();			
 		} else {
+			var gender = $('input[name="sex"]:checked').val();
+		 	$("#gender").val(gender);
+			
 			alert("회원가입을 진심으로 축하드립니다.");
-			$("#join_form").attr('action', '/member/join.do');
 			$("#join_form").submit();
-		}	 
+		}
+	 	return false;
 	}
 </script>
 
@@ -203,19 +230,12 @@
 		</div>
 		<div class="sub__container cf">
 			<main id="main">
-				<div class="main__siteLoad">
-					<p>
-						<a href="#">대메뉴</a> > 
-						<a href="#">중메뉴</a> > 
-						<a href="#">소메뉴</a>
-					</p>
-				</div>
 				<div class="main__content">
 					<div class="content__innerConts">
-						<h3 class="innerConts__tit">충무아트센터</h3>
+						<h3 class="innerConts__tit">충무아트센터 회원가입</h3>
 						<p>회원가입을 통해 충무아트센터의 멤버십혜택을 누려보세요.</p>
 						<div class="innerConts__cont">
-							<form class="join_form" method="post" action="" name="join_form"><!-- onsubmit="return regist();" -->
+							<form class="join_form" method="post" action="/member/join.do" id="join_form" name="join_form">
 								<fieldset>
 									<legend></legend>
 									<div class="form_list">
@@ -239,12 +259,14 @@
 												<input type="text" name="name" id="name" placeholder="이름을 입력해 주세요" >
 											</li>
 											<li>
-												<label for="sex"><span>*</span>성별</label>
+												<label for="gender"><span>*</span>성별</label>
 												<div class="sex">
-													<input type="radio" name="sex" id="sex_man"><label for="sex_man">남성</label>
-													<input type="radio" name="sex" id="sex_women"><label for="sex_three">여성</label>
-													<input type="radio" name="sex" id="sex_three"><label for="sex_three">제 3의성</label>
-													<input type="radio" name="sex" id="sex_none" checked="checked"><label for="sex_none">기재원치않음</label>
+													<input type="radio" name="sex" id="sex_man" value="1"><label for="sex_man">남성</label>
+													<input type="radio" name="sex" id="sex_women" value="2"><label for="sex_three">여성</label>
+													<input type="radio" name="sex" id="sex_three" value="3"><label for="sex_three">제 3의성</label>
+													<input type="radio" name="sex" id="sex_none" value="4" checked="checked"><label for="sex_none">기재원치않음</label>
+													<input type="hidden" name="gender" id="gender">
+													
 												</div>
 											</li>
 											<li>
@@ -259,11 +281,11 @@
 											
 											<li class="add_area">
                                                 <label for="sample4_postcode"><span>*</span>주소</label>
-                                                <input type="text" id="sample4_postcode" placeholder="우편번호" readonly>
+                                                <input type="text" id="sample4_postcode" name="sample4_postcode" placeholder="우편번호" readonly>
                                                 <input type="button" onclick="zipcode();" value="우편번호 찾기" id="post_btn">
-                                                <input type="text" id="sample4_roadAddress" placeholder="도로명주소" readonly>
-                                                <input type="text" id="sample4_jibunAddress" placeholder="지번주소" readonly>
-                                                <input type="text" id="sample4_detailAddress" placeholder="상세주소">
+                                                <input type="text" id="sample4_roadAddress" name="sample4_roadAddress" placeholder="도로명주소" readonly>
+                                                <input type="text" id="sample4_jibunAddress" name="sample4_jibunAddress" placeholder="지번주소" readonly>
+                                                <input type="text" id="sample4_detailAddress" name="sample4_detailAddress" placeholder="상세주소">
                                             </li> 
 											 
 											<li class="email_area">
@@ -289,14 +311,16 @@
 											<li class="chk-1 chk_area">
                                                 <input type="checkbox" name="chk1" id="chk1">
                                                 <label for="chk1">충무아트센터에서 제공하는 정보를 메일로 받아보시겠습니까? (선택)</label>
+                                                <input type="hidden" name="ad_email" id="ad_email">
                                             </li>
                                             <li class="chk-2 chk_area">
                                                 <input type="checkbox" name="chk2" id="chk2">
                                                 <label for="chk2">충무아트센터에서 제공하는 정보를 SMS로 받아보시겠습니까? (선택)</label>
+                                                <input type="hidden" name="ad_tel" id="ad_tel">
                                             </li>
 										</ul>
 										<div class="btn_yn">
-											<button id="joinRegist" onclick="regist();"><span>확인</span></button>
+											<button id="joinRegist" onclick="return regist();"><span>확인</span></button>
 											<button id="joinCancle"><span>취소</span></button>
 										</div>
 									</div>
