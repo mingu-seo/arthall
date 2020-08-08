@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import mail.SendMail;
 
@@ -57,19 +58,14 @@ public class MemberServiceImple implements MemberService{
 	
 	@Override
 	public String join(MemberVO param, HttpServletRequest req) {
-		int numJoin = 0;
 		
-		MemberVO vo = memberDao.dupId(param);
-		if(vo == null) {
-			numJoin = memberDao.join(param);
-		}
-		String pageName = "";
-		if(numJoin != 0) {
-			req.setAttribute("msg", "회원가입 실패");
-			req.setAttribute("url", "index.do");
-			pageName = "common/alert";
-		}
-		return pageName;
+		String email_Id = param.getEmail_id();
+		String email_Add = param.getEmail_add();
+		String email = email_Id+'@'+email_Add;
+		param.setEmail(email);
+		
+		memberDao.join(param);
+		return "redirect:/index.do";
 	}
 	
 	
@@ -82,36 +78,40 @@ public class MemberServiceImple implements MemberService{
 	}
 
 	@Override
-	public String login(HttpServletRequest req, String id, String password) {
+	public String login(Model model, HttpServletRequest req, String id, String pw) {
+		
+		MemberVO vo = memberDao.login(id, pw);
+		
 		String pageName = "";
-		System.out.println("서비스에서 id : "+id);
-		MemberVO vo = memberDao.login(id, password);
-		if (vo == null) { 
-			pageName = "member/loginForm";
-		} else {
+		
+		if (vo != null) { 
 			memberDao.lastVisit(vo.getId()); // 마지막 방문일 수정
 			req.getSession().setAttribute("authUser", vo);
-			
 			pageName = "redirect:/index.do";
+		} else {
+			model.addAttribute("msg", "아이디와 비밀번호를 확인해주세요.");
+			model.addAttribute("url", "/member/loginForm.do");
+
+			pageName = "common/alert";
 		}
-		
 		return pageName;
 	}
-
+	
 	@Override
-	public String changePwd(HttpServletRequest req, String id, String password) {
+	public String findId(Model model, HttpServletRequest req, MemberVO param) {
+		
+		MemberVO vo = memberDao.findId(param);
+		
 		String pageName = "";
 		
-		MemberVO member = memberDao.login(id, req.getParameter("curPwd"));
-		if (member == null) {
-			req.setAttribute("pwdNotEqual", "true");
-			pageName = "member/changePwdForm";
+		if (vo != null) { 
+			model.addAttribute("vo", param);
+			pageName = "redirect:/member/findIDResult.do";
 		} else {
-			MemberVO param = new MemberVO();
-			param.setId(id);
-			param.setPw(password);
-			int r = memberDao.changePwd(param);
-			pageName = "member/changePwdSuccess";
+			model.addAttribute("msg", "일치하는 계정이 없습니다. 이름과 이메일을 확인해주세요.");
+			model.addAttribute("url", "/member/findIDForm.do");
+
+			pageName = "common/alert";
 		}
 		return pageName;
 	}
@@ -146,5 +146,8 @@ public class MemberServiceImple implements MemberService{
 		
 		return vo;
 	}
+	
+	
+	
 
 }

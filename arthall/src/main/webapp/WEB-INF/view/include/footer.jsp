@@ -4,7 +4,7 @@
 
 <div class="footerinner">
                 <div class="footerinner__top cf">
-                    <h2><a href="index.html"><img src="img/logo.png" alt="로고"></a></h2>
+                    <h2><a href="index.html"><img src="<%=request.getContextPath()%>/img/logo.png" alt="로고"></a></h2>
                     <div class="top__links">
                         <div class="links__sns cf">
                             <a href="https://ko-kr.facebook.com/chungmuartscenter/" target="_blank"><i class="fab fa-facebook-f fa-2x"></i></a>

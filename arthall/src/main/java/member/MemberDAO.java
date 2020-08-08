@@ -37,30 +37,29 @@ public class MemberDAO {
 	
 	// 회원가입_DB등록
 	public int join(MemberVO param) {
-
 		return sqlSession.insert("member.join", param);
 	}
 
 	// 로그인
-	public MemberVO login(String id, String password) {
+	public MemberVO login(String id, String pw) {
 		System.out.println("Dao에서 id : "+id);
 		Map<String, Object> m = new HashMap<String, Object>();
 		m.put("id", id);
-		m.put("password", password);
+		m.put("pw", pw);
 		
 		return sqlSession.selectOne("member.login", m);
 	}
+	
+	// 아이디찾기
+	public MemberVO findId(MemberVO param) {
+		
+		return sqlSession.selectOne("member.findId", param);
+	}	
 	
 	// 마지막 방문 일자 수정
 		public int lastVisit(String id) {
 			return sqlSession.update("member.lastVisit", id);
 	}
-	
-	
-	public int changePwd(MemberVO param) {
-		return sqlSession.update("member.changePwd", param);
-	}
-	
 
 	
 	// 회원정지

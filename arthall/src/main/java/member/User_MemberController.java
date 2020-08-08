@@ -52,11 +52,7 @@ public class User_MemberController {
 		String pageName = memberService.join(param, req);
 		return pageName;
 	}
-	
-	@RequestMapping("member/joinSuccess.do")
-	public String joinSuccess() {
-		return "member/joinSuccess";
-	}
+
 	
 	@RequestMapping("member/loginForm.do")
 	public String loginForm() {
@@ -64,10 +60,9 @@ public class User_MemberController {
 	}
 	
 	@RequestMapping("member/login.do")
-	public String login(HttpServletRequest req, @RequestParam("id") String id, 
-						@RequestParam("password") String password) {
-		System.out.println("컨트롤러에서 id : "+id);
-		String pageName = memberService.login(req, id, password);
+	public String login(Model model, HttpServletRequest req, @RequestParam("id") String id, 
+						@RequestParam("pw") String pw) {
+		String pageName = memberService.login(model, req, id, pw);
 		
 		return pageName;
 	}
@@ -82,19 +77,26 @@ public class User_MemberController {
 		return "common/alert";
 	}
 	
-	@RequestMapping("member/changePwdForm.do")
-	public String changePwdForm() {
-		return "member/changePwdForm";
+	@RequestMapping("member/findIDForm.do")
+	public String findIDForm(){
+		return "member/findIDForm";
 	}
 	
-	@RequestMapping("member/changePwd.do")
-	public String changePwd(HttpServletRequest req, HttpSession sess,
-							@RequestParam("newPwd") String newPwd) {
+	@RequestMapping("member/findId.do")
+	public String findID(Model model, HttpServletRequest req, MemberVO param){
 		
-		MemberVO vo = (MemberVO)sess.getAttribute("authUser");
-		String pageName = memberService.changePwd(req, vo.getId(), newPwd);
+		String pageName = memberService.findId(model, req, param);
 		return pageName;
 	}
 	
+	@RequestMapping("member/findIDResult.do")
+	public String findIDResult(){
+		return "member/findIDResult";
+	}
+	
+	@RequestMapping("member/findPasswordForm.do")
+	public String findPasswordForm() {
+		return "member/findPasswordForm";
+	}
 	
 }

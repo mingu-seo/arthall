@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.ui.Model;
+
 
 public interface MemberService {
 	
@@ -24,8 +26,9 @@ public interface MemberService {
 	
 	public int sendMail(HttpServletRequest req, MemberVO param) throws Exception;
 	
-	public String login(HttpServletRequest req, String id, String password);
+	public String login(Model model, HttpServletRequest req, String id, String pw);
 	
-	public String changePwd(HttpServletRequest req, String id, String password);
+	public String findId(Model model, HttpServletRequest req, MemberVO param);
+	
 	
 }

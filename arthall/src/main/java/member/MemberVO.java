@@ -9,9 +9,12 @@ public class MemberVO extends Parameter{
 	private String id;
 	private String pw;
 	private String name;
+	private int gender;
 	private String sex;
 	private String tel;
 	private String email;
+	private String email_id;
+	private String email_add;
 	private String birth;
 	
 	private String sample4_postcode;
@@ -26,6 +29,8 @@ public class MemberVO extends Parameter{
 	
 	private String chk1;
 	private String chk2;
+	private int ad_email;
+	private int ad_tel;
 	
 	MemberVO() {
 		super.setPage(1);
@@ -64,6 +69,18 @@ public class MemberVO extends Parameter{
 		this.name = name;
 	}
 
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
 	public String getSex() {
 		return sex;
 	}
@@ -72,16 +89,28 @@ public class MemberVO extends Parameter{
 		this.sex = sex;
 	}
 
-	public String getTel() {
-		return tel;
-	}
-
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
 
 	public String getEmail() {
 		return email;
+	}
+	
+	public String getEmail_id() {
+		return email_id;
+	}
+
+	public void setEmail_id(String email_id) {
+		this.email_id = email_id;
+	}
+
+	public String getEmail_add() {
+		return email_add;
+	}
+
+	public void setEmail_add(String email_add) {
+		this.email_add = email_add;
 	}
 
 	public void setEmail(String email) {
@@ -175,7 +204,23 @@ public class MemberVO extends Parameter{
 	public void setChk2(String chk2) {
 		this.chk2 = chk2;
 	}
-	
+
+	public int getAd_email() {
+		return ad_email;
+	}
+
+	public void setAd_email(int ad_email) {
+		this.ad_email = ad_email;
+	}
+
+	public int getAd_tel() {
+		return ad_tel;
+	}
+
+	public void setAd_tel(int ad_tel) {
+		this.ad_tel = ad_tel;
+	}
+
 }
 
 	

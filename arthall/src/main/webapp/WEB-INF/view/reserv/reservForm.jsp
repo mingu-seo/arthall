@@ -285,7 +285,7 @@ function check(){
                                 <legend>예매현황</legend>
                                 <ul class="form__resultBox">
                                     <li class="cf">
-                                        <label for="resultBox__date">날짜</label><input type="text" id="resultBox__date" value="" required disabled>
+                                        <label for="resultBox__date">날짜</label><input type="text" id="resultBox__date" name="resultBox__date" value="" required disabled>
                                     </li>
                                     <li class="cf">
                                         <label for="resultBox__time">시간</label><input type="text" id="resultBox__time" value="" required disabled>

@@ -27,6 +27,7 @@ public class User_ReservController {
 	public String paymentForm(Model moedel, ReservVO param) {
 
 //		String pageName = "";
+		System.out.println("가져온값 : "+param.getResultBox__date());
 		return "reserv/payment";
 	}
 	

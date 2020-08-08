@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script>
+function logout() {
+	location.href = "/member/logout.do";
+}
+</script>
+
  <div class="header-inner cf">
                 <h1><a href="<%=request.getContextPath()%>/"><span class="hidden">logo</span><img src="<%=request.getContextPath()%>/img/logo.png" alt="logo"></a>
                 </h1>
@@ -17,7 +23,7 @@
 	                            <li><a href="<%=request.getContextPath()%>/member/joinForm.do">회원가입</a></li>
 	                        </c:if>
 	                        <c:if test="${!empty authUser }">
-	                       		<li><a href="#">로그아웃</a></li>
+	                       		<li><a href="#" onclick="logout();">로그아웃</a></li>
 								<li><a href="#">마이페이지</a></li>
 	                        </c:if>
                         </ul>
