@@ -58,8 +58,6 @@ $(document).ready(function(){
             </div>
             <!-- //con_tit -->
             <div class="con">
-            <input type="submit" value="예약 페이지 이동" onclick="move();">
-            <input type="submit" value="메인 페이지 이동" onclick="move1();">
             	<form name="searchForm" id="searchForm" action="list.do"  method="post">
 
 					<div class="search">
