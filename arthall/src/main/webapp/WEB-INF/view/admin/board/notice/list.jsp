@@ -134,7 +134,7 @@
 								<c:if test="${vo.endPage < vo.totalPage}">
 										<a href="list.do?page=${vo.startPage+5}">[다음]</a>
 								</c:if>
-															</div>
+									</div>
 							<!-- //페이징 처리 -->
 							<form name="searchForm" id="searchForm" action="list.do"  method="post">
 								<div class="search">
@@ -144,10 +144,11 @@
 										<option value="content" <c:if test="${vo.stype=='content'}">selected</c:if>>내용</option>
 									</select>
 									<input type="text" name="sval" value="${vo.sval }" title="검색할 내용을 입력해주세요" />
+									
 									<input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />
 								</div>
 							</form>
-							<input type="submit" value="메인페이지이동" onclick='move();'>
+						
 							<!-- //search --> 
 						</div>
 						<!-- //blist -->

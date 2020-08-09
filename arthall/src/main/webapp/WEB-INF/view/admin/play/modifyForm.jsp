@@ -133,6 +133,7 @@ $(function() {
 												<OPTION value='1'>공연</OPTION>
 												<OPTION value='2'>전시</OPTION>
 											</SELECT>
+											<input type="text" id="playSubType" name="playSubType" class="w500" value='${vo.playSubType}' />
 										</td>
 									</tr>
 <!-- 									<tr id="priceTr0"> -->

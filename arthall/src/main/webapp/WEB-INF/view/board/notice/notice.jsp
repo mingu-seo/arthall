@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Ãæ¹«¾ÆÆ®¼¾ÅÍ | ´º½º&middot;ÀÌ½´</title>
+    <title>ì¶©ë¬´ì•„íŠ¸ì„¼í„° | ë‰´ìŠ¤&middot;ì´ìŠˆ</title>
     <link rel="icon" sizes="16x16" type="image.png" href="<%=request.getContextPath()%>/img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -17,14 +17,14 @@
     <script src="<%=request.getContextPath()%>/js/header.js" defer></script>
     <script src="<%=request.getContextPath()%>/js/topBtn.js" defer></script>
     <script src="<%=request.getContextPath()%>/js/footerSiteOpen.js" defer></script>
-    <script src="<%=request.getContextPath()%>/js/pagenation.js" defer></script>
+ <!--  <script src="<%=request.getContextPath()%>/js/pagenation.js" defer></script>-->
     <script src="<%=request.getContextPath()%>/js/jquery-1.11.3.min.js" defer></script>
     <script src="<%=request.getContextPath()%>/js/notice.js" defer></script>
 </head>
 
 <body>
     <div id="wrap">
-        <a href="#main" id="gomain">º»¹®¹Ù·Î°¡±â</a>
+        <a href="#main" id="gomain">ë³¸ë¬¸ë°”ë¡œê°€ê¸°</a>
         <header>
             <div class="header-inner cf">
                 <h1><a href="<%=request.getContextPath()%>/"><span class="hidden">logo</span><img src="<%=request.getContextPath()%>/img/logo.png" alt="logo"></a>
@@ -34,61 +34,61 @@
                     <a href="javascript:;" class="mobile__openBtn"><i class="far fa-newspaper"></i></a>
                     <div class="right_nav">
                         <ul class="tnb cf">
-                            <li><a href="<%=request.getContextPath()%>/member/loginForm.do">·Î±×ÀÎ</a></li>
-                            <li><a href="<%=request.getContextPath()%>/member/joinForm.do">È¸¿ø°¡ÀÔ</a></li>
-                          <!--   <li><a href="./mypage.html">¸¶ÀÌÆäÀÌÁö</a></li> -->
+                            <li><a href="<%=request.getContextPath()%>/member/loginForm.do">ë¡œê·¸ì¸</a></li>
+                            <li><a href="<%=request.getContextPath()%>/member/joinForm.do">íšŒì›ê°€ìž…</a></li>
+                          <!--   <li><a href="./mypage.html">ë§ˆì´íŽ˜ì´ì§€</a></li> -->
                         </ul>
                         <nav class="gnb">
                             <ul class="cf">
                                 <li class="hover">
-                                    <a href="#"><span>Ãæ¹«¾ÆÆ®¼¾ÅÍ ¼Ò°³</span></a>
+                                    <a href="#"><span>ì¶©ë¬´ì•„íŠ¸ì„¼í„° ì†Œê°œ</span></a>
                                     <ul>
-                                        <li><a href="#">±â°ü ¹× Àç´Ü¼Ò°³</a></li>
-                                        <li><a href="#">ÁÂ¼®¹èÄ¡µµ</a></li>
-                                        <li><a href="#">Ãþº°¾È³»</a></li>
-                                        <li><a href="#">¿À½Ã´Â±æ</a></li>
-                                        <li><a href="#">ÆíÀÇ½Ã¼³</a></li>
-                                        <li><a href="#">ÁÖÂ÷½Ã¼³</a></li>
+                                        <li><a href="#">ê¸°ê´€ ë° ìž¬ë‹¨ì†Œê°œ</a></li>
+                                        <li><a href="#">ì¢Œì„ë°°ì¹˜ë„</a></li>
+                                        <li><a href="#">ì¸µë³„ì•ˆë‚´</a></li>
+                                        <li><a href="#">ì˜¤ì‹œëŠ”ê¸¸</a></li>
+                                        <li><a href="#">íŽ¸ì˜ì‹œì„¤</a></li>
+                                        <li><a href="#">ì£¼ì°¨ì‹œì„¤</a></li>
                                     </ul>
                                 </li>
                                 <li class="hover">
-                                    <a href="calendar.html"><span>°ø¿¬¡¤Àü½Ã¡¤Çà»ç</span></a>
+                                    <a href="calendar.html"><span>ê³µì—°Â·ì „ì‹œÂ·í–‰ì‚¬</span></a>
                                     <ul>
-                                        <li><a href="calendar.html">Ä¶¸°´õ</a></li>
-                                        <li><a href="perf_info.html">°ø¿¬Á¤º¸</a></li>
-                                        <li><a href="exhi_info.html">Àü½ÃÁ¤º¸</a></li>
-                                        <li><a href="event_info.html">Çà»çÁ¤º¸</a></li>
+                                        <li><a href="calendar.html">ìº˜ë¦°ë”</a></li>
+                                        <li><a href="perf_info.html">ê³µì—°ì •ë³´</a></li>
+                                        <li><a href="exhi_info.html">ì „ì‹œì •ë³´</a></li>
+                                        <li><a href="event_info.html">í–‰ì‚¬ì •ë³´</a></li>
                                     </ul>
                                 </li>
                                 <li class="hover">
-                                    <a href="<%=request.getContextPath()%>/board/notice/index.do"><span>´º½º¡¤¼Ò½Ä</span></a>
+                                    <a href="<%=request.getContextPath()%>/board/notice/index.do"><span>ë‰´ìŠ¤Â·ì†Œì‹</span></a>
                                     <ul>
-                                        <li><a href="<%=request.getContextPath()%>/board/notice/index.do">°øÁö»çÇ×</a></li>
-                                        <li><a href="<%=request.getContextPath()%>/board/news/news.do">´º½º/ÀÌ½´</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/board/notice/index.do">ê³µì§€ì‚¬í•­</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/board/news/news.do">ë‰´ìŠ¤/ì´ìŠˆ</a></li>
                                     </ul>
                                 </li>
                                 <li class="hover">
-                                    <a href="rentalGuidance.html"><span>´ë°ü¾È³»</span></a>
+                                    <a href="rentalGuidance.html"><span>ëŒ€ê´€ì•ˆë‚´</span></a>
                                     <ul>
-                                        <li><a href="rentalGuidance.html">´ë°üÀýÂ÷</a></li>
-                                        <li><a href="rentalPlace.html">´ë°ü½Ã¼³</a></li>
-                                        <li><a href="rentalApply.html">´ë°ü½ÅÃ»</a></li>
+                                        <li><a href="rentalGuidance.html">ëŒ€ê´€ì ˆì°¨</a></li>
+                                        <li><a href="rentalPlace.html">ëŒ€ê´€ì‹œì„¤</a></li>
+                                        <li><a href="rentalApply.html">ëŒ€ê´€ì‹ ì²­</a></li>
                                     </ul>
                                 </li>
                                 <li class="hover">
-                                    <a href="<%=request.getContextPath()%>/board/faq/index.do"><span>°í°´¼¾ÅÍ</span></a>
+                                    <a href="<%=request.getContextPath()%>/board/faq/index.do"><span>ê³ ê°ì„¼í„°</span></a>
                                     <ul>
-                                  		<li><a href="<%=request.getContextPath()%>/board/faq/index.do">ÀÚÁÖÇÏ´Â Áú¹®</a></li>
-                                        <li><a href="<%=request.getContextPath()%>/board/qna/index.do">1:1 ¹®ÀÇ</a></li>
-                                        <li><a href="etiquette.html">°ü¶÷¿¹Àý</a></li>
-                                        <li><a href="benefits.html">È¸¿øÇýÅÃ</a></li>
+                                  		<li><a href="<%=request.getContextPath()%>/board/faq/index.do">ìžì£¼í•˜ëŠ” ì§ˆë¬¸</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/board/qna/index.do">1:1 ë¬¸ì˜</a></li>
+                                        <li><a href="etiquette.html">ê´€ëžŒì˜ˆì ˆ</a></li>
+                                        <li><a href="benefits.html">íšŒì›í˜œíƒ</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                     <form class="search" action="action_page.php">
-                        <input type="search" name="search" class="t_box" placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä">
+                        <input type="search" name="search" class="t_box" placeholder="ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”">
                         <button type="submit" class="submit"><i class="fa fa-search"></i></button>
                     </form>
                     <a href="javascript:;" class="mobile__closeBtn"><i class="fas fa-times fa-3x"></i></a>
@@ -97,31 +97,31 @@
         </header>
 
         <div class="sub__tit">
-            <h2>´º½º&middot;ÀÌ½´</h2>
+            <h2>ë‰´ìŠ¤&middot;ì´ìŠˆ</h2>
         </div>
         <div class="sub__container cf">
             <aside class="container__subClass">
-                <h3 class="subClass__tit"><i class="far fa-newspaper"></i><br>´º½º&middot;¼Ò½Ä</h3>
+                <h3 class="subClass__tit"><i class="far fa-newspaper"></i><br>ë‰´ìŠ¤&middot;ì†Œì‹</h3>
                 <nav class="subClass__list">
                     <ul>
-                        <li><a href="<%=request.getContextPath()%>/board/notice/index.do">°øÁö»çÇ×</a></li>
-                        <li><a href="<%=request.getContextPath()%>/board/news/news.do">´º½º&middot;ÀÌ½´</a></li>
+                        <li><a href="<%=request.getContextPath()%>/board/notice/index.do">ê³µì§€ì‚¬í•­</a></li>
+                        <li><a href="<%=request.getContextPath()%>/board/news/news.do">ë‰´ìŠ¤&middot;ì´ìŠˆ</a></li>
                     </ul>
                 </nav>
             </aside>
             <main id="main">
                 <div class="main__content">
                     <section class="content__innerConts">
-                        <h3 class="innerConts__tit">´º½º&middot;ÀÌ½´</h3>
-                        <p>Ãæ¹«¾ÆÆ®¼¾ÅÍ È¸¿ø °¡ÀÔÇÏ½Ã¸é Ãæ¹«¾ÆÆ®¼¾ÅÍ ´º½º &amp; ÀÌ½´¸¦ ¸ÞÀÏ·Î ¹Þ¾Æº¸½Ç ¼ö ÀÖ½À´Ï´Ù.</p>
+                        <h3 class="innerConts__tit">ê³µì§€ì‚¬í•­</h3>
+                        <p>ì¶©ë¬´ì•„íŠ¸ì„¼í„° íšŒì› ê°€ìž…í•˜ì‹œë©´ ì¶©ë¬´ì•„íŠ¸ì„¼í„° ê³µì§€ì‚¬í•­ì„ ë©”ì¼ë¡œ ë°›ì•„ë³´ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</p>
                         <div class="innerConts__cont">
                             <div class="cont__noticeContainer">
                                 <table class="noticeContainer__notice notice">
                                     <thead>
                                         <tr>
-                                            <th class="numTit">¹øÈ£</th>
-                                            <th class="titTit">Á¦¸ñ</th>
-                                            <th class="dateTit">ÀÛ¼ºÀÏ</th>
+                                            <th class="numTit">ë²ˆí˜¸</th>
+                                            <th class="titTit">ì œëª©</th>
+                                            <th class="dateTit">ìž‘ì„±ì¼</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -129,7 +129,7 @@
 									<tbody>
 									<tr align="center" bgcolor="white">
 								
-										<td colspan="100%">°Ô½Ã±ÛÀÌ ¾ø½À´Ï´Ù.</td>
+										<td colspan="100%">ê²Œì‹œê¸€ì´ ì—†ìŠµë‹ˆë‹¤.</td>
 									</tr>
 									</tbody>
 									</c:if>
@@ -150,30 +150,60 @@
                                      
                                     </tbody>
                                 </table>
-                                <!-- <a href="notice_submit.html" class="writeBtn"><i class="fas fa-edit"></i>¹®ÀÇÇÏ±â</a> -->
-                                <div class="pagenation">
-                                	<c:if test="${vo.startPage > 5}">
-                                    <a href="javascript:;" class="pageBtn doublePrevBtn"><i class="fas fa-angle-double-left"></i></a>
-                                    <a href="javascript:;" class="pageBtn prevBtn"><i class="fas fa-angle-left"></i></a>
-                               		</c:if>
+                                <!-- <a href="notice_submit.html" class="writeBtn"><i class="fas fa-edit"></i>ë¬¸ì˜í•˜ê¸°</a> -->
+                              	<div class="pagenation">
+                               		
+                            		  
+                            	   <c:if test="${vo.startPage > 10}">
+                                    <a href="index.do?page=${vo.startPage - 10}" class="pageBtn doublePrevBtn"><i class="fas fa-angle-double-left"></i></a>
+                              		</c:if>
+                              		<c:if test="${vo.startPage > 5}">
+                                    <a href="index.do?page=${vo.startPage - 5}" class="pageBtn prevBtn"><i class="fas fa-angle-left"></i></a>
+                              		</c:if>
+                              		
+                              		
                                		<c:forEach var="pNo" begin="${vo.startPage}"
 									end="${vo.endPage}">
 									<a href="index.do?page=${pNo}&stype=${vo.stype}&sval=${vo.sval}">${pNo}</a>
 									</c:forEach>
                                		
                                		<c:if test="${vo.endPage < vo.totalPage}">
-                                    <a href="javascript:;" class="pageBtn nextBtn"><i class="fas fa-angle-right"></i></a>
-                                    <a href="javascript:;" class="pageBtn doubleNextBtn"><i class="fas fa-angle-double-right"></i></a>
+                                    <a href="index.do?page=${vo.startPage+5}" class="pageBtn nextBtn"><i class="fas fa-angle-right"></i></a>
+                                    
+                                    <a href="index.do?page=${vo.startPage+10}" class="pageBtn doubleNextBtn"><i class="fas fa-angle-double-right"></i></a> 
                                 	</c:if>
-                                </div>
-                                <form class="search_notice" action="index.do" method="post">
-                                	<div>
+                                	</div>
                                 
+                                	
+                                	<!-- 
+                                	<form class="searchForm" name ="searchForm" action="index.do" method="post">
+                                	<select name="stype" title="ê²€ìƒ‰ì„ ì„ íƒí•´ì£¼ì„¸ìš”">
+										<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>ì „ì²´</option>
+										<option value="title" <c:if test="${vo.stype=='title'}">selected</c:if>>ì œëª©</option>
+										<option value="content" <c:if test="${vo.stype=='content'}">selected</c:if>>ë‚´ìš©</option>
+									</select>
+									<input type="text" name="sval" value="${vo.sval}" class="search_nt" placeholder="ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”"> 
+                                   	<button type="submit" class="submit"><i class="fa fa-search"></i></button>
+                                	  </form>	
+                                  	
+                                 
+                                     -->
+                                   	<form class="search_notice" action="index.do" method="post">
+                                   	<select name="stype" title="ê²€ìƒ‰ì„ ì„ íƒí•´ì£¼ì„¸ìš”">
+										<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>ì „ì²´</option>
+										<option value="title" <c:if test="${vo.stype=='title'}">selected</c:if>>ì œëª©</option>
+										<option value="content" <c:if test="${vo.stype=='content'}">selected</c:if>>ë‚´ìš©</option>
+									</select>
+                                    <input type="text" name="sval"  value="${vo.sval}" class="search_nt" placeholder="ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”"><br>
                                     <button type="submit" class="submit"><i class="fa fa-search"></i></button>
-                                   <!--  <input type="text" name="search_nt" class="search_nt" placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä"> -->
-                                   <input type="text" name="sval" value="${vo.sval}" placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä">
-                                    </div>
-                                </form>
+                                    
+                                	</form>
+                       				 
+									
+                                    
+                               
+                                
+                                
                             </div>
                         </div>
                     </section>
@@ -184,7 +214,7 @@
         <footer>
             <div class="footerinner">
                 <div class="footerinner__top cf">
-                    <h2><a href="index.html"><img src="<%=request.getContextPath()%>/img/logo.png" alt="·Î°í"></a></h2>
+                    <h2><a href="index.html"><img src="<%=request.getContextPath()%>/img/logo.png" alt="ë¡œê³ "></a></h2>
                     <div class="top__links">
                         <div class="links__sns cf">
                             <a href="https://ko-kr.facebook.com/chungmuartscenter/" target="_blank"><i class="fab fa-facebook-f fa-2x"></i></a>
@@ -194,17 +224,17 @@
                             <a href="https://www.youtube.com/channel/UC4UWAAwSsT4O3hcLjFL8kXQ" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
                         </div>
                         <ul class="links__list cf">
-                            <li><a href="#">ÀÌ¿ë¾à°ü</a></li>
-                            <li><a href="#">ÇàÁ¤Á¤º¸°ø°³</a></li>
-                            <li><a href="#">ÀÌ¸ÞÀÏ¼öÁý°ÅºÎ</a></li>
-                            <li><a href="#">°³ÀÎÁ¤º¸Ãë±Þ¹æÄ§</a></li>
-                            <li><a href="#">»çÀÌÆ®¸Ê</a></li>
+                            <li><a href="#">ì´ìš©ì•½ê´€</a></li>
+                            <li><a href="#">í–‰ì •ì •ë³´ê³µê°œ</a></li>
+                            <li><a href="#">ì´ë©”ì¼ìˆ˜ì§‘ê±°ë¶€</a></li>
+                            <li><a href="#">ê°œì¸ì •ë³´ì·¨ê¸‰ë°©ì¹¨</a></li>
+                            <li><a href="#">ì‚¬ì´íŠ¸ë§µ</a></li>
                             <li>
                                 <select name="siteBox" id="siteBox">
-                                    <option value="">°ü·Ã»çÀÌÆ® ¹Ù·Î°¡±â</option>
-                                    <option value="http://www.beautifulmindcharity.org/">ºäÆ¼Ç®¸¶ÀÎµå</option>
-                                    <option value="http://www.chimff.com/2019/">Ãæ¹«·Î ¹ÂÁöÄÃ ¿µÈ­Á¦</option>
-                                    <option value="https://www.e-junggulib.or.kr/SJGL/">¼­¿ïÁß±¸ ÅëÇÕ ÀüÀÚµµ¼­°ü</option>
+                                    <option value="">ê´€ë ¨ì‚¬ì´íŠ¸ ë°”ë¡œê°€ê¸°</option>
+                                    <option value="http://www.beautifulmindcharity.org/">ë·°í‹°í’€ë§ˆì¸ë“œ</option>
+                                    <option value="http://www.chimff.com/2019/">ì¶©ë¬´ë¡œ ë®¤ì§€ì»¬ ì˜í™”ì œ</option>
+                                    <option value="https://www.e-junggulib.or.kr/SJGL/">ì„œìš¸ì¤‘êµ¬ í†µí•© ì „ìžë„ì„œê´€</option>
                                 </select>
                             </li>
                         </ul>
@@ -213,18 +243,18 @@
                 <div class="footerinner__bottom cf">
                     <div class="bottom__left">
                         <address>
-                            »ç¾÷ÀÚµî·Ï¹øÈ£ : 201-82-06405 <br>
-                            Åë½ÅÆÇ¸Å¹øÈ£ : Á¦2008-¼­¿ïÁß±¸-1218È£ <br>
-                            ÁÖ¼Ò : ¼­¿ï½Ã Áß±¸ Åð°è·Î 387(ÈïÀÎµ¿ 131)
+                            ì‚¬ì—…ìžë“±ë¡ë²ˆí˜¸ : 201-82-06405 <br>
+                            í†µì‹ íŒë§¤ë²ˆí˜¸ : ì œ2008-ì„œìš¸ì¤‘êµ¬-1218í˜¸ <br>
+                            ì£¼ì†Œ : ì„œìš¸ì‹œ ì¤‘êµ¬ í‡´ê³„ë¡œ 387(í¥ì¸ë™ 131)
                         </address>
                         <p>COPY &copy; CHUNGMU ARTS CENTER</p>
                     </div>
                     <div class="bottom__right">
                         <a href="tel:02-2230-6600">02.2230.6600</a>
                         <p>
-                            »ó´ã½Ã°£ : ¿ù~±Ý 09:30~18:30 <br>
-                            Á¡½É½Ã°£ : 12:00~13:00 <br>
-                            ÁÖ¸» ¹× °øÈÞÀÏ ÈÞ¹«
+                            ìƒë‹´ì‹œê°„ : ì›”~ê¸ˆ 09:30~18:30 <br>
+                            ì ì‹¬ì‹œê°„ : 12:00~13:00 <br>
+                            ì£¼ë§ ë° ê³µíœ´ì¼ íœ´ë¬´
                         </p>
                     </div>
                 </div>

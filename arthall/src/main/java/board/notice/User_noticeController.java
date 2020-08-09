@@ -16,7 +16,7 @@ public class User_noticeController {
 	private NoticeService noticeservice;
 	
 	@RequestMapping("/board/notice/index.do")
-	public String main(Model model, NoticeVO param) {
+	public String list(Model model, NoticeVO param) {
 		
 		List<NoticeVO> list = noticeservice.list(param);
 		
@@ -24,7 +24,7 @@ public class User_noticeController {
 		model.addAttribute("vo", param);
 		model.addAttribute("list",list);	
 		
-		
+		System.out.println(param.getSval());
 		return "board/notice/notice";
 	}
 	

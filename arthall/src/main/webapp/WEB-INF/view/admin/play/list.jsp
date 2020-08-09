@@ -93,7 +93,14 @@ function del() {
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${play.no}"/></td>
                                  <td class="title" style="text-align:center" onclick="location.href='modifyForm.do?no=${play.no}'">${play.no}</td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.hallNo}</td>
-                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.playType}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">
+                    	         	<c:choose>
+	                                    <c:when test="${play.playType eq 1}">공연</c:when>
+	                                    <c:when test="${play.playType eq 2}">전시</c:when>
+	                                    <c:otherwise>${play.playType}</c:otherwise>
+	                                </c:choose>
+	                                - ${play.playSubType}
+	                             </td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.playName}</td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.startDate}</td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.endDate}</td>

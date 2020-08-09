@@ -8,6 +8,7 @@ public class PlayVO extends util.Parameter{
 	private int no;
 	private int hallNo;
 	private int playType;
+	private String playSubType;
 	private String playName;
 	private Date startDate;
 	private Date endDate;
@@ -49,6 +50,14 @@ public class PlayVO extends util.Parameter{
 
 	public void setPlayType(int playType) {
 		this.playType = playType;
+	}
+
+	public String getPlaySubType() {
+		return playSubType;
+	}
+
+	public void setPlaySubType(String playSubType) {
+		this.playSubType = playSubType;
 	}
 
 	public String getPlayName() {
