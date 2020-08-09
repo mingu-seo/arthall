@@ -26,9 +26,7 @@
 		});
 	})
 	
-	function move() {
-		location.href="notice.do";
-	}
+
 	
 </script>
 </head>
