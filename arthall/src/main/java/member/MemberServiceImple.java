@@ -104,9 +104,18 @@ public class MemberServiceImple implements MemberService{
 		
 		String pageName = "";
 		
+		String maskingId = vo.getId();
+		
+		maskingId = maskingId.replaceAll("(?<=.{3}).", "*");
+		
+		vo.setId(maskingId);
+		
+		System.out.println(maskingId);
+
+		
 		if (vo != null) { 
-			model.addAttribute("vo", param);
-			pageName = "redirect:/member/findIDResult.do";
+			model.addAttribute("vo", vo);
+			pageName = "member/findIDResult";
 		} else {
 			model.addAttribute("msg", "일치하는 계정이 없습니다. 이름과 이메일을 확인해주세요.");
 			model.addAttribute("url", "/member/findIDForm.do");

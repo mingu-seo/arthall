@@ -98,6 +98,8 @@
 	 	var pattern_birth = /^[0-9+]{8}$/;
 	 	var pattern_tel = /^[0-9+]{9,11}$/;
 	 	
+	 	/^[a-zA-Z][a-zA-Z0-9+]{3,11}$/;
+	 	
 	 	if ($('input:checkbox[id="chk1"]').is(":checked") == true ) {
 	 		$("#ad_email").val(1);
 	 	} else {

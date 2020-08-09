@@ -6,6 +6,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/findPassword.css">
+    
+<script>
+function check() {
+	
+	alert("임시비밀번호를 작성한 이메일로 발송하였습니다. \n임시비밀번호로 로그인 후 비밀번호 변경을 해주세요.");
+	
+	/*
+	if($("#name").val().trim() == '') {
+		alert("이름을 입력해 주세요");
+		$("#name").focus();		
+	} else if($("#id").val() == '') {
+		alert("아이디를 입력해 주세요");
+		$("#id").focus();
+	} else if($("#email").val() == '') {
+		alert("이메일을 입력해 주세요");
+		$("#email").focus();
+	} else {
+		$("#findPassword").submit();
+		
+	}
+	*/
+	
+	return false;
+}
+
+</script>
 </head>
 <div id = "wrap">
 	<a href="<%=request.getContextPath()%>/index.do" id="gomain">본문바로가기</a>
@@ -50,7 +76,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <input type="submit" value="비밀번호 찾기" class="form__submit">
+                                        <input type="button" value="비밀번호 찾기" class="form__submit" onclick="return check()">
                                     </fieldset>
                                 </form>
                             </div>
