@@ -130,7 +130,11 @@
 	</insert>
 	
 	<select id="playOne" parameterType="reserv.ReservVO" resultType="play.PlayVO">
-		select * from play WHERE no = #{playNo}
+		select * from play WHERE playName = #{playName}
+	</select>
+	
+	<select id="playList" parameterType="reserv.ReservVO" resultType="play.PerformVO">
+		select * from perform WHERE playName = "#{playName}"
 	</select>
 	
 </mapper>

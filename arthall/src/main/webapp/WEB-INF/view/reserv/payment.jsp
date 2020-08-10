@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -12,6 +13,12 @@
     <script src="<%= request.getContextPath() %>/js/forEachPolyfill.js"></script>
     <script src="<%= request.getContextPath() %>/js/payment.js" defer></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+    	function check(){
+    		alert("결제 완료 되었습니다");
+    		window.close();
+    	}
+    </script>
 </head>
 
 <body>
@@ -131,17 +138,25 @@
                     </article>
                     <article class="paymentBox__resultPayment">
                        <h2 class="resultPayment__tit"><span>결제정보</span></h2>
-                        <form method="post" action="#" name="paymentForm" id="paymentForm">
+                        <form method="post" action="reservOne.do" name="paymentForm" id="paymentForm">
                             <fieldset>
                                 <legend>결제정보</legend>
-                                <p class="paymentForm__paymentInfo">
-                                    <span>뮤지컬 &lt;썸씽로튼&gt;</span>
-                                    <span>${vo.reservDate}</span>
-                                    <span>${vo.time}</span>
-                                    <span>VIP석 1매</span>
-                                    <span>${ticket.price}</span>
+                                <p class="paymentForam__paymentInfo">
+                                    <span>뮤지컬 &lt;${vo.playName}&gt;</span><br>
+                                    <span>${vo.reservDate}</span><br>
+                                    <span>${vo.time}</span><br>
+                                    <c:if test="${ticket.seatType != ''}">
+                                    	<span>${ticket.seatType}</span><br>
+                                    </c:if>
+                                    <c:if test="${ticket.seatType1 != ''}">
+                                    	<span>${ticket.seatType1}</span><br>
+                                    </c:if>
+                                    <c:if test="${ticket.seatType2 != ''}">
+                                    	<span>${ticket.seatType2}, ${ㅔㄱ }</span><br>
+                                    </c:if>
+                                    <span>${ticket.priceAll}</span>
                                 </p>
-                                <input type="submit" class="paymentForm__submit" value="결제완료">
+                                <input type="submit" class="paymentForm__submit" value="결제완료" onclick="check();">
                             </fieldset>
                         </form>
                     </article>

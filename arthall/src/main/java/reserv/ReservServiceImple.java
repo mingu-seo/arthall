@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import play.PerformVO;
 import play.PlayVO;
 
 
@@ -65,20 +66,16 @@ public class ReservServiceImple implements ReservService{
 		return ticketlist;
 	}
 
-//	@Override
-//	public String reservOne(ReservVO param) {
-//		
-//		
-//		
-//		
-//		reservDao.reservOne(param);
-//		
-//		return "admin/reserv/list";
-//	}
 
 	@Override
 	public PlayVO playOne(ReservVO param) {
 		PlayVO playList = reservDao.play(param);
+		return playList;
+	}
+
+	@Override
+	public List<PerformVO> playList(ReservVO param) {
+		List<PerformVO> playList = reservDao.playList(param);
 		return playList;
 	}
 

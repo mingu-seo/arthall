@@ -7,7 +7,7 @@
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
 <script>
 function reservForm(){
-	window.open('reservForm.do?playNo=${play.no}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');return false
+	window.open('reservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');return false
 }
 </script>
 </head>
