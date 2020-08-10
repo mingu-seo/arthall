@@ -45,7 +45,7 @@
                             상담시간 : 월~금 09:30~18:30 <br>
                             점심시간 : 12:00~13:00 <br>
                             주말 및 공휴일 휴무
-                        </p>
+                        </p>ㅇ
                     </div>
                 </div>
             </div>
@@ -54,4 +54,3 @@
  <script src="<%=request.getContextPath()%>/js/topBtn.js"></script>
     <script src="<%=request.getContextPath()%>/js/siteOpen.js"></script>
     <script src="<%=request.getContextPath()%>/js/sec_slide.js"></script>
-    

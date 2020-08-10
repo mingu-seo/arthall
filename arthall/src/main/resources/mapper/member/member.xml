@@ -117,10 +117,21 @@
 		select * from member where name=#{name} and email=#{email}
 	</select>
 	
+	<update id="findPassword" parameterType="member.MemberVO">
+		UPDATE member SET 
+			pw = PASSWORD(#{pw}) 
+		WHERE NAME=#{name} AND id=#{id} AND email= #{email}
+	</update>
+	
 	<update id="lastVisit" parameterType="String">
 		UPDATE member SET
 			lastVisit=now()
 		WHERE id=#{id}		
 	</update>
+	
+	<!-- 내 정보 조회_비밀번호 확인 -->
+	<select id="confirmPw" parameterType="member.MemberVO" resultType="member.MemberVO">
+		select * from member where id = #{id} and pw= PASSWORD(#{pw})
+	</select>
 	
 </mapper>

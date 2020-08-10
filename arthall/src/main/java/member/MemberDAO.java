@@ -54,11 +54,16 @@ public class MemberDAO {
 	public MemberVO findId(MemberVO param) {
 		
 		return sqlSession.selectOne("member.findId", param);
-	}	
+	}
+	
+	// 임시비밀번호 업데이트
+	public int findPassword(MemberVO param) {
+		return sqlSession.update("member.findPassword", param);
+	}
 	
 	// 마지막 방문 일자 수정
-		public int lastVisit(String id) {
-			return sqlSession.update("member.lastVisit", id);
+	public int lastVisit(String id) {
+		return sqlSession.update("member.lastVisit", id);
 	}
 
 	
@@ -73,6 +78,12 @@ public class MemberDAO {
 	
 	public MemberVO memberdetail(MemberVO param) {
 		return sqlSession.selectOne("member.memberdetail", param);
+	}
+	
+	//
+	public MemberVO confirmPw(MemberVO param) {
+		MemberVO vo = sqlSession.selectOne("member.confirmPw", param);
+		return vo;
 	}
 	
 	

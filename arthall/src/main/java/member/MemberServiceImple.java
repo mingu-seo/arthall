@@ -71,7 +71,7 @@ public class MemberServiceImple implements MemberService{
 	
 	
 	@Override
-	public int sendMail(HttpServletRequest req, MemberVO param) throws Exception{;
+	public int sendMail(HttpServletRequest req, MemberVO param) throws Exception{
 		int ran = new Random().nextInt(900000) + 100000;
 		SendMail.sendEmail("kdy7710@naver.com", param.getEmail(), "[충무아트홀] 인증번호", "인증번호 : "+ran);
 		return ran;
@@ -103,25 +103,55 @@ public class MemberServiceImple implements MemberService{
 		MemberVO vo = memberDao.findId(param);
 		
 		String pageName = "";
-		
-		String maskingId = vo.getId();
-		
-		maskingId = maskingId.replaceAll("(?<=.{3}).", "*");
-		
-		vo.setId(maskingId);
-		
-		System.out.println(maskingId);
-
-		
-		if (vo != null) { 
+		String maskingId = "";
+	
+		if (vo != null) { 			
+			maskingId = vo.getId();
+			vo.setId(maskingId.replaceAll("(?<=.{3}).", "*"));
+			
 			model.addAttribute("vo", vo);
 			pageName = "member/findIDResult";
 		} else {
 			model.addAttribute("msg", "일치하는 계정이 없습니다. 이름과 이메일을 확인해주세요.");
 			model.addAttribute("url", "/member/findIDForm.do");
-
+			
 			pageName = "common/alert";
 		}
+		return pageName;
+	}
+	
+	
+	@Override
+	public String findPassword(Model model, HttpServletRequest req, MemberVO param) throws Exception {
+		
+		String pageName = "";
+		String tempPw = "";
+		
+		char pwCollection[] = new char[] {
+				'1','2','3','4','5','6','7','8','9','0',
+				'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+				'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+		
+		for (int i = 0; i < 10; i++) {
+		 int selectRandomPw = (int)(Math.random()*(pwCollection.length));
+		 tempPw += pwCollection[selectRandomPw];
+		}
+		
+		param.setPw(tempPw);
+		int check = memberDao.findPassword(param);
+
+		if (check == 1) { 
+			model.addAttribute("vo", param);
+			
+			SendMail.sendEmail("kdy7710@naver.com", param.getEmail(), "[충무아트홀] 임시 비밀번호", "임시비밀번호 : "+tempPw);
+			pageName = "member/findPasswordResult";
+			
+		} else {
+			model.addAttribute("msg", "일치하는 계정이 없습니다. 이름, 아이디, 이메일을 확인해주세요.");
+			model.addAttribute("url", "/member/findPasswordForm.do");
+			pageName = "common/alert";
+		}
+		
 		return pageName;
 	}
 	
@@ -143,9 +173,7 @@ public class MemberServiceImple implements MemberService{
 		if (r > 0) {
 			memberDao.detail(param);
 			pageName = "redirect:index.do?page=";
-			
 		}
-		
 		return pageName;
 	}
 
@@ -155,6 +183,32 @@ public class MemberServiceImple implements MemberService{
 		
 		return vo;
 	}
+	
+	@Override
+	public String confirmPw(HttpServletRequest req, MemberVO param) {
+		
+		MemberVO vo = (MemberVO)req.getSession().getAttribute("authUser");
+		
+		param.setId(vo.getId());
+		MemberVO param_confirmPw = memberDao.confirmPw(param);
+		
+		String r = "false";
+		if (param_confirmPw != null) {
+			r = "true";
+		}
+		
+		System.out.println("검색결과 : "+r);
+		return r;
+	}
+	
+	
+	@Override
+	public String myInfoLoad(Model model, HttpServletRequest req, MemberVO param) {
+		String pageName = "";
+		
+		return pageName;
+	}
+	
 	
 	
 	

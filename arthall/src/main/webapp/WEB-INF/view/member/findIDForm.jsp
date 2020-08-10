@@ -56,11 +56,11 @@ function check() {
                                             <ul class="info__inputs">
                                                 <li class="cf">
                                                     <label for="name">이름</label>
-                                                    <input type="text" id="name" name="name" value="김대영" required>
+                                                    <input type="text" id="name" name="name" required>
                                                 </li>
                                                 <li class="cf">
                                                     <label for="email">이메일</label>
-                                                    <input type="email" id="email" name="email" value="kdy77110@gmail.com" required>
+                                                    <input type="email" id="email" name="email" required>
                                                 </li>
                                             </ul>
                                         </div>

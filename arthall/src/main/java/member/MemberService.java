@@ -30,5 +30,10 @@ public interface MemberService {
 	
 	public String findId(Model model, HttpServletRequest req, MemberVO param);
 	
+	public String findPassword(Model model, HttpServletRequest req, MemberVO param) throws Exception;
+		
+	public String confirmPw(HttpServletRequest req, MemberVO param);
+	
+	public String myInfoLoad(Model model, HttpServletRequest req, MemberVO param);
 	
 }
