@@ -4,6 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<style>.hasDatepicker{cursor:pointer;}</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script>
 //smarteditor
 var oEditors = [];
@@ -56,21 +58,65 @@ $(function() {
 // }
 
 // 수정시 playType이 selected 되어있게 하는 함수
-	function test() {
+function test() {
 
-		var length = document.getElementById("playType").options.length;
+	var length = document.getElementById("playType").options.length;
 
-		for (i = 0; i < length; i++) {
-			if (document.getElementById("playType").options[i].value == "${vo.playType}") {
-				document.getElementById("playType").options[i].selected = true;
-				break;
-			}
+	for (i = 0; i < length; i++) {
+		if (document.getElementById("playType").options[i].value == "${vo.playType}") {
+			document.getElementById("playType").options[i].selected = true;
+			break;
 		}
 	}
+}
 
-	$(function() {
-		$("#playType").val("${vo.playType}").attr("selected", "true");
+$(function() {
+	$("#playType").val("${vo.playType}").attr("selected", "true");
+});
+
+function delfile(){
+	$("#filespan").text("");
+    //$("#filename").removeAttr("name");
+    $("#filename").val("noupdate");
+    $("#delbtn").hide();
+    $("#preview").hide();
+    $("#file").hide();
+}
+</script>
+<!-- datepicker -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$(function(){
+	$("#startDate").datepicker({
+		dateFormat: 'yy-mm-dd',
+		showMonthAfterYear:true,
+		changeYear:true,
+		changeMonth:true,
+		monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		dayNamesMin: ['일','월','화','수','목','금','토']
 	});
+	$("#endDate").datepicker({
+		dateFormat: 'yy-mm-dd',
+		showMonthAfterYear:true,
+		changeYear:true,
+		changeMonth:true,
+		monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		dayNamesMin: ['일','월','화','수','목','금','토']
+	});
+});
+</script>
+<script>
+// file preview 1
+function setPreview(event) {
+	var reader = new FileReader();
+	reader.onload = function(event) {
+		var img = document.createElement("img");
+		img.setAttribute("src", event.target.result);
+		document.querySelector("div#file_container").appendChild(img);
+	};
+	reader.readAsDataURL(event.target.files[0]);
+}
 </script>
 </head>
 <body> 
@@ -104,26 +150,26 @@ $(function() {
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 제목</label></th>
 										<td colspan="10">
-											<input type="text" id="playName" name="playName" class="w20" title="제목을 입력해주세요" value='${vo.playName}'/>	
+											<input type="text" id="playName" name="playName" class="w20" value='${vo.playName}'/>	
 										</td>
 									</tr>
 									<tr>
-										<th scope="row" colspan="2"><label for="">* 홀번호</label></th>
+										<th scope="row" colspan="2"><label for="">* 홀이름</label></th>
 										<td colspan="10">
-											<input type="text" id="hallNo" name="hallNo" class="w20" title="제목을 입력해주세요" value='${vo.hallNo}'/>	
+											<input type="text" id="hallName" name="hallName" class="w20" value='${vo.hallName}'/>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" rowspan="2"><label for="">*기간</label></th>
-			                            <th scope="col">시작일<br>(캘린더적용?)</th> 
+			                            <th scope="col">시작일</th> 
 										<td colspan="2">
-											<input type="text" id="startDate" name="startDate" class="w5" placeholder="YYYY-MM-DD" value='${vo.startDate}'/>	
+											<input type="text" id="startDate" name="startDate" autocomplete="off" value='${vo.startDate}'/>	
 										</td>
 									</tr>
 			                        <tr>
-				                        <th scope="col">종료일<br>(캘린더적용?)</th>
+				                        <th scope="col">종료일</th>
 				                        <td colspan="2">
-											<input type="text" id="endDate" name="endDate" class="w5" placeholder="YYYY-MM-DD" value='${vo.endDate}' />	
+											<input type="text" id="endDate" name="endDate" autocomplete="off" value='${vo.endDate}'/>	
 										</td>
 			                        </tr>
 									<tr>
@@ -140,9 +186,9 @@ $(function() {
 <!-- 									'가격' 한 줄로 추가해서 콤보박스(공연/전시), 공연이면 세개 전시면 회색처리 -->
 <!-- 										<th scope="row" colspan="2"><label for="" colspan="2">* 가격(공연)</label></th> -->
 <!-- 										<td colspan="10"> -->
-<!-- 											<input type="text" id="priceA" name="priceA" class="w100" title="제목을 입력해주세요" value='' />	 -->
-<!-- 											<input type="text" id="priceB" name="priceB" class="w100" title="제목을 입력해주세요" value='' />	 -->
-<!-- 											<input type="text" id="priceC" name="priceC" class="w100" title="제목을 입력해주세요" value='' /> -->
+<!-- 											<input type="text" id="priceA" name="priceA" class="w100"   value='' />	 -->
+<!-- 											<input type="text" id="priceB" name="priceB" class="w100"  value='' />	 -->
+<!-- 											<input type="text" id="priceC" name="priceC" class="w100"  value='' /> -->
 <!-- 											<input type="hidden" id="playType" name="playType" value="1" /> -->
 <!-- 										</td> -->
 <!-- 									</tr> -->
@@ -150,7 +196,7 @@ $(function() {
 <!-- 									'가격' 한 줄로 추가해서 콤보박스(공연/전시), 공연이면 세개 전시면 회색처리 -->
 <!-- 										<th scope="row" colspan="2"><label for="">* 가격(전시회)</label></th> -->
 <!-- 										<td colspan="10"> -->
-<!-- 											<input type="text" id="exhPrice" name="exhPrice" class="w100" title="제목을 입력해주세요" value='' /> -->
+<!-- 											<input type="text" id="exhPrice" name="exhPrice" class="w100"  value='' /> -->
 <!-- 											<input type="hidden" id="playType" name="playType" value="2" />	 -->
 <!-- 										</td> -->
 <!-- 									</tr> -->
@@ -164,40 +210,57 @@ $(function() {
 										<th scope="row" colspan="2"><label for="">* 내용</label></th>
 										<td colspan="10">
 											<textarea cols="50" rows="6" id="ct" name="content">${vo.content}</textarea>
-<!-- 											<input type="text" id="hallNo" name="hallNo" class="w100" title="제목을 입력해주세요" value='1' />	 -->
+<!-- 											<input type="text" id="hallNo" name="hallNo" class="w100"  value='1' />	 -->
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 등급</label></th>
 										<td colspan="10">
-											<input type="text" id="rating" name="rating" class="w100" title="제목을 입력해주세요" value='${vo.rating}' />	
+											<input type="text" id="rating" name="rating" class="w100"  value='${vo.rating}' />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 러닝타임</label></th>
 										<td colspan="10">
-											<input type="text" id="runningTime" name="runningTime" class="w100" title="제목을 입력해주세요" value='${vo.runningTime}' />	
+											<input type="text" id="runningTime" name="runningTime" class="w100"  value='${vo.runningTime}' />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 문의</label></th>
 										<td colspan="10">
-											<input type="text" id="inquiry" name="inquiry" class="w100" title="제목을 입력해주세요" value='${vo.inquiry}' />	
+											<input type="text" id="inquiry" name="inquiry" class="w100"  value='${vo.inquiry}' />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">* 제작/주최</label></th>
 										<td colspan="10">
-											<input type="text" id="producer" name="producer" class="w100" title="제목을 입력해주세요" value='${vo.producer}' />	
+											<input type="text" id="producer" name="producer" class="w100"  value='${vo.producer}' />	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" colspan="2"><label for="">첨부파일</label></th>
 										<td colspan="10">
-											<c:if test="${!empty vo.filename}">
-												<td><img src='/upload/play/${vo.filename}'/></td>
+<%-- 											<c:if test="${vo.filename == null}"> --%>
+<!-- 												<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요." value='첨부파일이 없습니다.'/>	 -->
+<%-- 											</c:if> --%>
+<%-- 											<c:if test="${!empty vo.filename}"> --%>
+<!-- 												미리보기(400*500)<br> -->
+<%-- 												<img src="/upload/play/${vo.filename}" width="400" height="500"/> --%>
+<!-- 												<input type="button" id="delbtn" onclick="delfile();" value=" 파일 삭제 " style="font-size: 12px"/> -->
+<%-- 											</c:if> --%>
+											<c:if test="${vo.filename == null}">
+												<input type="file" id="filename_tmp" name="filename_tmp" class="w100" onchange="setPreview(event);"/>
+												<div id = "file_container"></div>	
 											</c:if>
-											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요." value='수정시에 파일구현(한철이)'/>	
+											<c:if test="${vo.filename != null}">
+												<span id="filespan">현재 파일 : ${vo.filename}</span><br>
+												<span id="preview" style="font-size: 10px"/>현재파일 미리보기(265*300)</span><br>
+												<img id="file" src="/upload/play/${vo.filename}" width="265" height="300"/>
+												<input type="button" id="delbtn" onclick="delfile();" value="파일삭제" />
+												<input type="file" id="filename_tmp" name="filename_tmp" class="w100" onchange="setPreview(event);"/>
+												<div id = "file_container"></div>
+												<input type="hidden" id="filename" name="filename" value="${vo.filename}" />
+											</c:if>
 										</td>
 									</tr>
 								</tbody>

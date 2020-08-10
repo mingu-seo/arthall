@@ -85,7 +85,7 @@
 	                                    <div class="perf_view_wrap_des">
 	                                    	<input type="hidden" value="${play.no}"/>
 	                                        <h3>${play.playName}</h3>
-	                                        <h4>장소 : ${play.hallNo}</h4>
+	                                        <h4>장소 : ${play.hallName}</h4>
 	                                        <span>
 	                                        <fmt:formatDate value="${play.startDate}" pattern="yy.MM.dd"/>
 	                                         ~ 

@@ -26,11 +26,7 @@ public class Ad_PlayController {
 		
 		model.addAttribute("vo", param);
 		model.addAttribute("list", list);
-//		for (int i = 0 ; i < list.size();i++) {
-//			System.out.println(list.get(i).getFileName());
-//		}
 		
-		System.out.println(param.getStype());
 		return "admin/play/list";
 	}
 	
