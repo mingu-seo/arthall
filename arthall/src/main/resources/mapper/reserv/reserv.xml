@@ -133,8 +133,9 @@
 		select * from play WHERE playName = #{playName}
 	</select>
 	
+	<!-- 여기 reservVO에 playName이 있고 이걸로 perform에서 조회하는거 -->
 	<select id="playList" parameterType="reserv.ReservVO" resultType="play.PerformVO">
-		select * from perform WHERE playName = "#{playName}"
+		select * from perform WHERE playName = #{playName}
 	</select>
 	
 </mapper>

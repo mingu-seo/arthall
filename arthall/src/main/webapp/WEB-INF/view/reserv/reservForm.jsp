@@ -35,6 +35,9 @@ function check(){
 		$("#tiket__form").submit();
 	}
 	
+	
+	
+	
 }
 
 </script>
@@ -240,16 +243,15 @@ function check(){
                     </div>
                 </article>
                 <div class="ticketBox__choose cf">
-                    <article class="ticketBox__ticketBoxInner timeInfo">
+                <article class="ticketBox__ticketBoxInner timeInfo">
                         <h2 class="ticketBoxInner__tit">회차선택</h2>
                         <ol class="timeInfo__timeTable">
+                        	<c:forEach var="play" items="${playList}">
                             <li class="timeTable__list">
-                            <!-- 전시회랑 아닌거 if문 걸기 -->
-		                        <c:forEach var="play" items="${playList}">
-		                                <span class="list__Time">${play.time}</span>
-		                                <p>출연 : ${play.content}</p>
-		                        </c:forEach>
+                                <span class="list__Time">${play.time}</span>
+                                <p>배우 : ${play.actor}</p>
                             </li>
+                        	</c:forEach>
                         </ol>
                     </article>
                     <article class="ticketBox__ticketBoxInner classInfo">
@@ -261,7 +263,7 @@ function check(){
                                 <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
                             </li>
                             <li class="classTable__classList rClass cf">
-                                <span class="classList__seatClass">R석</span>
+                                <span class="classList__seatClass" id>R석</span>
                                 <span class="classList__seatPrice">130,000원</span>
                                 <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
                             </li>
@@ -305,22 +307,28 @@ function check(){
                                         <label for="resultBox__time">시간</label><input type="text" name="time" id="resultBox__time" value="" required readonly>
                                     </li>
                                     <li class="resultBox__classList cf" id="resultBox__classList">
-                                        <label for="resultBox__vipClass">VIP석</label><input type="text" id="resultBox__vipClass" class="resultBox__class" value="" readonly>
+                                        <label for="resultBox__vipClass">VIP석</label>
+                                        <input type="text" id="resultBox__vipClass" class="resultBox__class" value="" readonly>
                                     </li>
                                     <li class="resultBox__classList cf">
                                         <label for="">R석</label><input type="text" id="resultBox__rClass" class="resultBox__class" value="" readonly>
+                                        <input type="hidden" value="R석">
                                     </li> 
                                     <li class="resultBox__classList cf">
                                         <label for="">S석</label><input type="text" id="resultBox__sClass" class="resultBox__class" value="" readonly>
+                                        <input type="hidden" value="R석">
                                     </li>
                                     <li class="resultBox__classList cf">
                                         <label for="">A석</label><input type="text" id="resultBox__aClass" class="resultBox__class" value="" readonly>
+                                        <input type="hidden" value="R석">
                                     </li>
                                     <li class="resultBox__classList cf">
                                         <label for="">B석</label><input type="text" id="resultBox__bClass" class="resultBox__class" value="" readonly>
+                                        <input type="hidden" value="B석">
                                     </li>
                                     <li class="resultBox__classList cf">
                                         <label for="">휠체어석</label><input type="text" id="resultBox__wheelClass" class="resultBox__class" value="" readonly>
+                                        <input type="hidden" value="휠체어석">
                                     </li>
                                     <li class="cf">
                                         <label for="resultBox__price">가격</label><input type="text" name="priceAll" id="resultBox__price" value="" required readonly>

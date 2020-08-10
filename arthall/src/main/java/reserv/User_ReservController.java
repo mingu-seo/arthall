@@ -22,6 +22,7 @@ public class User_ReservController {
 	// 예약 폼으로 이동
 	@RequestMapping("/reservForm.do")
 	public String reservForm(Model model, ReservVO param) {
+		System.out.println("친구야 이건 된거지?");
 		PlayVO playOne = reservService.playOne(param);
 		List<PerformVO> playList = reservService.playList(param);
 		// 이거 perform에서 전시 시간 받아올라그랬는데 왜 안댐

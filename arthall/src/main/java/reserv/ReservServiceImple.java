@@ -75,7 +75,9 @@ public class ReservServiceImple implements ReservService{
 
 	@Override
 	public List<PerformVO> playList(ReservVO param) {
+		System.out.println("친구야 이건 perform목록을 가져오는거야 이 작업을 해주지 않을래?");
 		List<PerformVO> playList = reservDao.playList(param);
+		System.out.println("고마우!");
 		return playList;
 	}
 
