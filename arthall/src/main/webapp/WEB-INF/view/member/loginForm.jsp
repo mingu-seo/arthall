@@ -64,7 +64,7 @@ function check() {
                                         </div>
                                         <p class="form__findBtns">
                                             <a href="<%=request.getContextPath()%>/member/findIDForm.do">아이디 찾기</a>
-                                            <a href="<%=request.getContextPath()%>/member/findpasswordForm.do">비밀번호 찾기</a>
+                                            <a href="<%=request.getContextPath()%>/member/findPasswordForm.do">비밀번호 찾기</a>
                                         </p>
                                         <input type="button" value="로그인" class="form__submit" onclick="check();">
                                         <a href="<%=request.getContextPath()%>/member/joinForm.do" class="form__joinBtn">회원가입</a>

@@ -240,7 +240,7 @@ function reservForm(){
 									<tr>
 											<td class="title">
 
-												<a href="/board/notice/view.do?no=${notice.no}&page=${vo.page}">
+												<a href="/board/notice/notice_view.do?no=${notice.no}&page=${vo.page}">
 													<c:out value="${notice.title}"/>
 												</a>
 											</td>

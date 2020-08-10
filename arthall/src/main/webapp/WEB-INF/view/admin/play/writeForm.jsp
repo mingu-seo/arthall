@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<style>.hasDatepicker{cursor:pointer;}</style>
 <script>
 //smarteditor
 var oEditors = [];
@@ -34,6 +35,8 @@ $(function() {
 		 oEditors.getById['ct'].exec('UPDATE_CONTENTS_FIELD',[]);
 		}
 
+
+	
 // $(function() {
 // 	$("#playType").change(function() {
 // 		if ($(this).val() == "1") {
@@ -56,6 +59,30 @@ $(function() {
 // 	}
 // }
 </script>
+<!-- datepicker -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	$(function(){
+$("#startDate").datepicker({
+	dateFormat: 'yy-mm-dd',
+	showMonthAfterYear:true,
+	changeYear:true,
+	changeMonth:true,
+	monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	dayNamesMin: ['일','월','화','수','목','금','토']
+});
+$("#endDate").datepicker({
+	dateFormat: 'yy-mm-dd',
+	showMonthAfterYear:true,
+	changeYear:true,
+	changeMonth:true,
+	monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	dayNamesMin: ['일','월','화','수','목','금','토']
+});
+	});
+</script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body> 
 <div id="wrap">
@@ -98,24 +125,25 @@ $(function() {
 									</tr>
 									<tr>
 										<th scope="row" rowspan="2"><label for="">*기간</label></th>
-			                            <th scope="col">시작일<br>(캘린더적용?)</th> 
+			                            <th scope="col">시작일</th> 
 										<td colspan="2">
-											<input type="text" id="startDate" name="startDate" class="w5" placeholder="YYYY-MM-DD" value='2000-05-05'/>	
+											<input type="text" id="startDate" name="startDate" autocomplete="off"/>	
 										</td>
 									</tr>
 			                        <tr>
-				                        <th scope="col">종료일<br>(캘린더적용?)</th>
+				                        <th scope="col">종료일</th>
 				                        <td colspan="2">
-											<input type="text" id="endDate" name="endDate" class="w5" placeholder="YYYY-MM-DD" value='2000-05-05' />	
+											<input type="text" id="endDate" name="endDate" autocomplete="off"/>	
 										</td>
 			                        </tr>
 									<tr>
-										<th scope="row" colspan="2"><label for="">* 분류</label></th>
+										<th scope="row" colspan="2"><label for="">* 대분류/소분류</label></th>
 										<td>
 											<SELECT id="playType" name="playType" style="font-size: 12px">
 												<OPTION value='1'>공연</OPTION>
 												<OPTION value='2'>전시</OPTION>
 											</SELECT>
+											<input type="text" id="playSubType" name="playSubType" class="w500" value='' />
 										</td>
 									</tr>
 <!-- 									<tr id="priceTr0"> -->

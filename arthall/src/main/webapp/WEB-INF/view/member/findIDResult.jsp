@@ -7,6 +7,7 @@
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/findID.css">
 </head>
+
 <div id = "wrap">
 	<a href="<%=request.getContextPath()%>/index.do" id="gomain">본문바로가기</a>
 	<!-- S T A R T :: headerArea-->
@@ -33,11 +34,11 @@
                                 </ul>
                                 <table class="idResult">
                                    <tr>
-                                       <td>회원님의 아이디는<br><span>${vo.id }</span><br>입니다.</td>
+                                       <td>회원님의 아이디는<br><span>[ ${vo.id} ]</span><br>입니다.</td>
                                    </tr>                              
                                </table>
                                <div class="idResultBtn">
-                                   <a href="<%=request.getContextPath()%>/loginForm.do" class="form__loginBtn">로그인</a>
+                                   <a href="<%=request.getContextPath()%>/member/loginForm.do" class="form__loginBtn">로그인</a>
                                </div>
                             </div>
                         </div>
