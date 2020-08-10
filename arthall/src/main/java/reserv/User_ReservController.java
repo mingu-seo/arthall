@@ -4,11 +4,14 @@ package reserv;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import member.MemberVO;
 import play.PerformVO;
 import play.PlayVO;
 
@@ -38,52 +41,21 @@ public class User_ReservController {
 	@RequestMapping("/payment.do")
 	public String paymentForm(Model model, ReservVO param, TicketVO ticket) {
 		
-		System.out.println(param.getReservDate());
-		System.out.println(ticket.getPriceAll());
-		System.out.println(param.getPlayName());
-		System.out.println(ticket.getSeatType());
-		System.out.println(ticket.getSeatType1());
-		System.out.println(ticket.getSeatType2());
-		
-		int idx, idx1, idx2, idx3;
-		
-		if (ticket.getSeatType() != "" & ticket.getSeatType() != null) {
-			idx = ticket.getSeatType().indexOf("/");
-			idx1 = ticket.getSeatType().indexOf("매");
-			idx2 = ticket.getSeatType().lastIndexOf(" ");
-			idx3 = ticket.getSeatType().lastIndexOf("원");
-			// 이건 vip석 + 갯수+매
-			System.out.println(ticket.getSeatType().substring(0, idx)+ " "+ticket.getSeatType().substring(idx+1, idx1)+"매");
-			ticket.setSeatType(ticket.getSeatType().substring(0, idx)+ " "+ticket.getSeatType().substring(idx+1, idx1)+"매");
-		}
-		
-		if (ticket.getSeatType1() != "" & ticket.getSeatType1() != null ) {
-			idx = ticket.getSeatType1().indexOf("/");
-			idx1 = ticket.getSeatType1().indexOf("매");
-			idx2 = ticket.getSeatType1().lastIndexOf(" ");
-			idx3 = ticket.getSeatType1().lastIndexOf("원");
-			// 이건 r석 + 갯수+매
-			System.out.println(ticket.getSeatType1().substring(0, idx)+ " "+ticket.getSeatType1().substring(idx+1, idx1)+"매");
-			ticket.setSeatType1(ticket.getSeatType1().substring(0, idx)+ " "+ticket.getSeatType1().substring(idx+1, idx1)+"매");
-		}
-		
-		idx = ticket.getSeatType2().indexOf("/");
-		idx1 = ticket.getSeatType2().indexOf("매");
-		idx2 = ticket.getSeatType2().lastIndexOf(" ");
-		idx3 = ticket.getSeatType2().lastIndexOf("원");
-		if (ticket.getSeatType2() != "" & ticket.getSeatType2() != null) {
-			// 이건 s석 + 갯수+매
-			System.out.println(ticket.getSeatType2().substring(0, idx)+ " "+ticket.getSeatType2().substring(idx+1, idx1)+"매");
-			ticket.setSeatType2(ticket.getSeatType2().substring(0, idx)+ " "+ticket.getSeatType2().substring(idx+1, idx1)+"매");
-		}
-		
-		// 티켓 좌석 가격은 play에서 playNo로 받아오면 될듯
-		 
+		TicketVO reservTicket = reservService.reservTicket(ticket);
 		
 		model.addAttribute("vo", param);
-		model.addAttribute("ticket", ticket);
+		model.addAttribute("ticket", reservTicket);
 		return "reserv/payment";
 	}
 	
+	@RequestMapping("reservOne.do")
+	public String myreserv(HttpSession sess, ReservVO param, MemberVO member, TicketVO ticket) {
+		
+		System.out.println("이 값들이 지금 필요한 값들");
+		String pageName = reservService.reservOne(sess, param, member, ticket);
+		System.out.println("값은 잘 들어간거?");
+		
+		return pageName;
+	}
 	
 }
