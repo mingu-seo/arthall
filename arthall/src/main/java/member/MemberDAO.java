@@ -75,5 +75,21 @@ public class MemberDAO {
 		return sqlSession.selectOne("member.memberdetail", param);
 	}
 	
+	// 회원탈퇴
+	public int deleteId(String id) {
+		return sqlSession.delete("member.deleteId", id);
+	}
+	
+	// 탈퇴 시 비밀번호 확인
+	public boolean checkPw(String id, String password) {
+		boolean result = false;
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("id", id);
+		m.put("password", password);
+		int count = sqlSession.selectOne("member.checkPw", m);
+		if(count == 1) result = true;
+		return result;
+	}
+
 	
 }

@@ -99,4 +99,16 @@ public class User_MemberController {
 		return "member/findPasswordForm";
 	}
 	
+	@RequestMapping("member/deleteId.do")
+	public String deleteId(@RequestParam String id, @RequestParam String password, Model model) {
+		boolean result = memberService.checkPw(id, password);
+		if(result) { // 일치하면 메인으로..?
+			memberService.deleteId(id);
+			return "/index.do";
+		} else { // 불일치하면 다시 탈퇴화면
+			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
+			return "member/deleteId";
+		}
+	}
+	
 }

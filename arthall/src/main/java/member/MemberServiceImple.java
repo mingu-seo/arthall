@@ -156,7 +156,16 @@ public class MemberServiceImple implements MemberService{
 		return vo;
 	}
 	
+	// 회원탈퇴
+	@Override
+	public void deleteId(String id) {
+		memberDao.deleteId(id);
+	}
 	
-	
+	// 회원탈퇴 시 비밀번호 체크
+	@Override
+	public boolean checkPw(String id, String password) {
+		return memberDao.checkPw(id, password);
+	}
 
 }

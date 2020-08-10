@@ -29,6 +29,14 @@ public interface MemberService {
 	public String login(Model model, HttpServletRequest req, String id, String pw);
 	
 	public String findId(Model model, HttpServletRequest req, MemberVO param);
+
+	public void deleteId(String id);
+
+	public boolean checkPw(String id, String password);
+
+	
+
+
 	
 	
 }

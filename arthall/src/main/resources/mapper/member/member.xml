@@ -123,4 +123,15 @@
 		WHERE id=#{id}		
 	</update>
 	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteId">
+		DELETE FROM member
+		WHERE id=#{id}
+	</delete>
+	
+	<!-- 탈퇴시 비밀번호 확인 -->
+	<select id="checkPw" resultType="int">
+		SELECT COUNT(*) FROM member
+		WHERE id = #{id} AND password = #{password}
+	</select>
 </mapper>
