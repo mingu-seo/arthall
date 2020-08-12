@@ -1,8 +1,9 @@
 package reserv;
 
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -155,39 +156,30 @@ public class ReservServiceImple implements ReservService{
       param.setHallName(hall.getHallName());
       param.setPay(param.getPay().substring(0, param.getPay().indexOf(",")));
       
-      
-      // 시작
+      Date date = new Date();
 
-      //Calendar cal = Calendar.getInstance();
-      
-
-
-      SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
       SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMdd");
-
-      //String num1 = format2.format(date);
+      
+      int lastReservDate = Integer.parseInt(format2.format(reservDate.getReservDate()));
+      int today = Integer.parseInt(format2.format(date));
+      
+      String num1 = format2.format(date);
       
       String num2 = String.format("%03d", play.getNo());
       
       String num3 = String.format("%04d", vo.getNo());
       
       int num4 = 0;
-
-
-//      if (time1 == time2) {
-//         System.out.println("이건 날짜가 같을때 ");
-//         num4 = Integer.parseInt(reservDate.getReservNo().substring(17))+1;
-//      } else {
-//         System.out.println("날짜가 같지 않을때");
-//         num4 = 1;
-//      }
+      if (lastReservDate == today) {
+         num4 = Integer.parseInt(reservDate.getReservNo().substring(17))+1;
+      } else {
+         num4 = 1;
+      }
       
       if (play.getPlayType() == 1) {
-          System.out.println("공연일 때 예매번호");
-          param.setReservNo("RM"+  num2 + num3 + num4);
+          param.setReservNo("RM"+ num1 + num2 + num3 + num4);
       } else if (play.getPlayType() == 2) {
-    	  param.setReservNo("RE" + num2 + num3 + num4);
-    	  //cal.get(cal.YEAR)+(cal.get(cal.MONTH)+1)+cal.get(cal.DATE) + vo.getNo()
+    	  param.setReservNo("RE" + num1 + num2 + num3 + num4);
       }
       reservDao.reservOne(param);
       

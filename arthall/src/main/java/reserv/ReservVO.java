@@ -10,7 +10,7 @@ public class ReservVO extends Parameter {
    private String reservNo;
    private int memberNo;
    private String name;
-   private String reservDate;
+   private Date reservDate;
    private int playNo;
    private String playName;
    private Date playDate;
@@ -78,11 +78,11 @@ public class ReservVO extends Parameter {
 		this.name = name;
 	}
 	
-	public String getReservDate() {
+	public Date getReservDate() {
 		return reservDate;
 	}
 	
-	public void setReservDate(String reservDate) {
+	public void setReservDate(Date reservDate) {
 		this.reservDate = reservDate;
 	}
 	
