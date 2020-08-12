@@ -16,7 +16,7 @@ public class Ad_ReservController {
 	@Autowired
 	private ReservService reservService;
 
-		
+		// 예매 목록
 		@RequestMapping("/admin/reserv/list.do")
 		public String list(Model moedel, ReservVO param, HttpServletRequest req) {
 
@@ -26,12 +26,14 @@ public class Ad_ReservController {
 			moedel.addAttribute("vo",param);
 			moedel.addAttribute("list",list);
 
-//			
+		
 			return "admin/reserv/list";
 		}
 		
+		
+		// 예매 취소
 		@RequestMapping("/admin/reserv/cancle.do")
-		public String delete(@RequestParam("no") String[] nono, ReservVO param) {
+		public String delete(@RequestParam("reservNo") String[] nono, ReservVO param) {
 			
 			for (int i = 0; i < nono.length; i++) {
 				System.out.println(nono[i]);
@@ -43,7 +45,7 @@ public class Ad_ReservController {
 		}
 		
 		
-		// Ticket
+		// 티켓 목록
 		@RequestMapping("/admin/reserv/ticketlist.do")
 		public String ticketlist(Model model, TicketVO param) {
 			List<TicketVO> ticketlist = reservService.ticketlist(param);

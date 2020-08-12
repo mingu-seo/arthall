@@ -273,8 +273,8 @@ main .main__content{
 .classTable__classList.active .classList__seatNumber{display: block; color: red;}
 
 
-.tiketInfo{background: #d4d4d4;}
-.tiketInfo .tiketInfo__form{text-align: left;}
+.ticketInfo{background: #d4d4d4;}
+.ticketInfo .ticketInfo__form{text-align: left;}
 .form__resultBox{
     overflow-y: auto;
     height: 116px;
@@ -292,7 +292,7 @@ main .main__content{
 }
 .form__resultBox .resultBox__classList {display: none;}
 
-.tiketInfo__form .form__submit{
+.ticketInfo__form .form__submit{
     width: 100%;
     height: 100px;
     margin-top: 40px;

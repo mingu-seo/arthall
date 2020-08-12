@@ -16,47 +16,57 @@ import play.PlayVO;
 
 @Repository
 public class ReservDAO {
-	
-	@Autowired
-	private SqlSessionTemplate sqlSession;
-	
-	public int count(ReservVO param) {
-		return sqlSession.selectOne("reserv.count", param);
-	}
-	
-	public List<ReservVO> list(ReservVO param) {
-		return sqlSession.selectList("reserv.list", param);
-	}
-	
-	public int cancleReserv(ReservVO param) {
-		return sqlSession.update("reserv.cancleReserv", param);
-	}
-	
-	public int cancleTicket(ReservVO param) {
-		return sqlSession.update("reserv.cancleTicket", param);
-	}
-	
-	// Ticket
-	public List<TicketVO> ticketlist(TicketVO param) {
-		return sqlSession.selectList("reserv.ticketlist", param);
-	}
-	
-	// 선택된 공연 하나 가져오기
-	public PlayVO play(ReservVO param) {
-		return sqlSession.selectOne("reserv.playOne", param);
-	}
-	
-	// 예약정보 삽입
-	public int reservOne(ReservVO param) {
-		return sqlSession.insert("reserv.reservOne", param);
-	}
-	
-	// 회차, 좌석 정보 가져오기
-	public List<PerformVO> playList(ReservVO param){
-		return sqlSession.selectList("reserv.playList", param);
-	}
-	
-	public HallVO hall(ReservVO param){
-		return sqlSession.selectOne("reserv.hall", param);
-	}
+   
+   @Autowired
+   private SqlSessionTemplate sqlSession;
+   
+
+   public int count(ReservVO param) {
+      return sqlSession.selectOne("reserv.count", param);
+   }
+   
+   // 예매 목록
+   public List<ReservVO> list(ReservVO param) {
+      return sqlSession.selectList("reserv.list", param);
+   }
+   
+   // 티켓 목록
+   public List<TicketVO> ticketlist(TicketVO param) {
+      return sqlSession.selectList("reserv.ticketlist", param);
+   }
+   
+   // 예약 취소
+   public int cancleReserv(ReservVO param) {
+      return sqlSession.update("reserv.cancleReserv", param);
+   }
+  
+   // 예약 취소에 따른 티켓 취소
+   public int cancleTicket(ReservVO param) {
+      return sqlSession.update("reserv.cancleTicket", param);
+   }
+   
+   // 선택된 공연 가져오기
+   public PlayVO play(ReservVO param) {
+      return sqlSession.selectOne("reserv.playOne", param);
+   }
+   
+   // 예약정보 삽입
+   public int reservOne(ReservVO param) {
+      return sqlSession.insert("reserv.reservOne", param);
+   }
+   
+   // 회차, 좌석 정보 가져오기
+   public List<PerformVO> playList(ReservVO param){
+      return sqlSession.selectList("reserv.playList", param);
+   }
+   
+   // 좌석 개수 차감?
+   public HallVO hall(ReservVO param){
+      return sqlSession.selectOne("reserv.hall", param);
+   }
+   
+   // 예약번호 생성, 삽입
+   public ReservVO reservNumber() {
+      return sqlSession.selectOne("reserv.reservNumber");
+   }
 }

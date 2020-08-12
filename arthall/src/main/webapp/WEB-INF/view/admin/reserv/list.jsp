@@ -7,7 +7,7 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
 function cancle() {
-	if (($("input:checkbox[name='no']:checked").length) !=0){
+	if (($("input:checkbox[name='reservNo']:checked").length) !=0){
 		if (confirm("결제취소 하시겠습니까?")) {
 		   $("#frm").submit();
 	   }
@@ -32,9 +32,9 @@ function move1() {
 $(document).ready(function(){
     $("#allChk").click(function(){
         if($("#allChk").prop("checked")){
-            $("input[name=no]").prop("checked",true);
+            $("input[name=reservNo]").prop("checked",true);
         }else{
-            $("input[name=no]").prop("checked",false);
+            $("input[name=reservNo]").prop("checked",false);
         }
     })
 })
@@ -133,7 +133,7 @@ $(document).ready(function(){
                               <c:forEach var="reserv" items="${list}">
                                  <!-- 티켓리스트 페이지로 이동 -->
                               <tr class = 'list'>
-                                 <td class="first"><input type="checkbox" name="no" id="no" value="${reserv.reservNo}"/></td>
+                                 <td class="first"><input type="checkbox" name="reservNo" id="reservNo" value="${reserv.reservNo}"/></td>
                                  <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.reservNo}</td>   
                                  <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.memberNo}</td>   
                                  <td onclick="location.href='ticketlist.do?reservNo=${reserv.reservNo}';">${reserv.name}</td>   

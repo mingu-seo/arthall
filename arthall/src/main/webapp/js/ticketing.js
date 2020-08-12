@@ -33,32 +33,32 @@ function showResult(thisElement) {
         resultTimeBox.value = timeText;
     } else if (thisElement.classList.contains("classList__seatClass")) {
         let price = JSON.parse(thisElement.parentNode.children[1].innerText.split(",")[0]),
-            tiketCount = JSON.parse(thisElement.parentNode.children[2].value);
+            ticketCount = JSON.parse(thisElement.parentNode.children[2].value);
 
         if (thisElement.parentNode.classList.contains("vipClass")) {
             resultVipBox.parentNode.style.display = "block";
-            vipPrice = price*tiketCount*1000;
-            resultVipBox.value = `${tiketCount}매 ${numberWithCommas(vipPrice)}원`;
+            vipPrice = price*ticketCount*1000;
+            resultVipBox.value = `${ticketCount}매 ${numberWithCommas(vipPrice)}원`;
         } else if (thisElement.parentNode.classList.contains("rClass")) {
             resultRBox.parentNode.style.display = "block";
-            rPrice = price*tiketCount*1000;
-            resultRBox.value = `${tiketCount}매 ${numberWithCommas(rPrice)}원`;
+            rPrice = price*ticketCount*1000;
+            resultRBox.value = `${ticketCount}매 ${numberWithCommas(rPrice)}원`;
         } else if (thisElement.parentNode.classList.contains("sClass")) {
             resultSBox.parentNode.style.display = "block";
-            sPrice = price*tiketCount*1000;
-            resultSBox.value = `${tiketCount}매 ${numberWithCommas(sPrice)}원`;
+            sPrice = price*ticketCount*1000;
+            resultSBox.value = `${ticketCount}매 ${numberWithCommas(sPrice)}원`;
         } else if (thisElement.parentNode.classList.contains("aClass")) {
             resultABox.parentNode.style.display = "block";
-            aPrice = price*tiketCount*1000;
-            resultABox.value = `${tiketCount}매 ${numberWithCommas(aPrice)}원`;
+            aPrice = price*ticketCount*1000;
+            resultABox.value = `${ticketCount}매 ${numberWithCommas(aPrice)}원`;
         } else if (thisElement.parentNode.classList.contains("bClass")) {
             resultBBox.parentNode.style.display = "block";
-            bPrice = price*tiketCount*1000;
-            resultBBox.value = `${tiketCount}매 ${numberWithCommas(bPrice)}원`;
+            bPrice = price*ticketCount*1000;
+            resultBBox.value = `${ticketCount}매 ${numberWithCommas(bPrice)}원`;
         } else if (thisElement.parentNode.classList.contains("wheelClass")) {
             resultWheelBox.parentNode.style.display = "block";
-            wheelPrice = price*tiketCount*1000;
-            resultWheelBox.value = `${tiketCount}매 ${numberWithCommas(wheelPrice)}원`;
+            wheelPrice = price*ticketCount*1000;
+            resultWheelBox.value = `${ticketCount}매 ${numberWithCommas(wheelPrice)}원`;
         }
 
         if (thisElement.parentNode.classList.contains("active")) {
@@ -68,32 +68,32 @@ function showResult(thisElement) {
                     const thisClassList = i.target.parentNode.classList;
 
                     price = JSON.parse(i.target.parentNode.children[1].innerText.split(",")[0]);
-                    tiketCount = JSON.parse(i.target.parentNode.children[2].value);
+                    ticketCount = JSON.parse(i.target.parentNode.children[2].value);
 
                     if (thisClassList.contains("vipClass")) {
                         resultVipBox.parentNode.style.display = "block";
-                        vipPrice = price*tiketCount*1000;
-                        resultVipBox.value = `${tiketCount}매 ${numberWithCommas(vipPrice)}원`;
+                        vipPrice = price*ticketCount*1000;
+                        resultVipBox.value = `${ticketCount}매 ${numberWithCommas(vipPrice)}원`;
                     } else if (thisClassList.contains("rClass")) {
                         resultRBox.parentNode.style.display = "block";
-                        rPrice = price*tiketCount*1000;
-                        resultRBox.value = `${tiketCount}매 ${numberWithCommas(rPrice)}원`;
+                        rPrice = price*ticketCount*1000;
+                        resultRBox.value = `${ticketCount}매 ${numberWithCommas(rPrice)}원`;
                     } else if (thisClassList.contains("sClass")) {
                         resultSBox.parentNode.style.display = "block";
-                        sPrice = price*tiketCount*1000;
-                        resultSBox.value = `${tiketCount}매 ${numberWithCommas(sPrice)}원`;
+                        sPrice = price*ticketCount*1000;
+                        resultSBox.value = `${ticketCount}매 ${numberWithCommas(sPrice)}원`;
                     } else if (thisClassList.contains("aClass")) {
                         resultABox.parentNode.style.display = "block";
-                        aPrice = price*tiketCount*1000;
-                        resultABox.value = `${tiketCount}매 ${numberWithCommas(aPrice)}원`;
+                        aPrice = price*ticketCount*1000;
+                        resultABox.value = `${ticketCount}매 ${numberWithCommas(aPrice)}원`;
                     } else if (thisClassList.contains("bClass")) {
                         resultBBox.parentNode.style.display = "block";
-                        bPrice = price*tiketCount*1000;
-                        resultBBox.value = `${tiketCount}매 ${numberWithCommas(bPrice)}원`;
+                        bPrice = price*ticketCount*1000;
+                        resultBBox.value = `${ticketCount}매 ${numberWithCommas(bPrice)}원`;
                     } else if (thisClassList.contains("wheelClass")) {
                         resultWheelBox.parentNode.style.display = "block";
-                        wheelPrice = price*tiketCount*1000;
-                        resultWheelBox.value = `${tiketCount}매 ${numberWithCommas(wheelPrice)}원`;
+                        wheelPrice = price*ticketCount*1000;
+                        resultWheelBox.value = `${ticketCount}매 ${numberWithCommas(wheelPrice)}원`;
                     }
                     resultPrice = vipPrice + rPrice + sPrice + aPrice + bPrice + wheelPrice;
                     resultPriceBox.value = `${numberWithCommas(resultPrice)}`;
@@ -108,7 +108,7 @@ function showResult(thisElement) {
                 resultVipBox.value = vipPrice;
             } else if (thisElement.parentNode.classList.contains("rClass")) {
                 resultRBox.parentNode.style.display = "none";
-                rPrice = "";
+                rPrice = 0;
                 resultRBox.value = rPrice;
             } else if (thisElement.parentNode.classList.contains("sClass")) {
                 resultSBox.parentNode.style.display = "none";
