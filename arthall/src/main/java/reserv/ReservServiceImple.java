@@ -155,6 +155,8 @@ public class ReservServiceImple implements ReservService{
       param.setHallNo(hall.getNo());
       param.setHallName(hall.getHallName());
       param.setPay(param.getPay().substring(0, param.getPay().indexOf(",")));
+      param.setPrice(ticket.getPriceAll());
+      param.setSeat(ticket.getSeatType()+" "+ticket.getSeatType1()+" "+ticket.getSeatType2());
       
       Date date = new Date();
 
@@ -181,19 +183,15 @@ public class ReservServiceImple implements ReservService{
       } else if (play.getPlayType() == 2) {
     	  param.setReservNo("RE" + num1 + num2 + num3 + num4);
       }
+      
+      
+      
       reservDao.reservOne(param);
       
-      return "index";
+      return "common/alert2";
       
    }
    
    
-//
-//   @Override
-//   public HallVO hall(ReservVO param) {
-//      HallVO hall = reservDao.hall(param);
-//      return hall;
-//   }
-
 
 }
