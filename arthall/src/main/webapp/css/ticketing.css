@@ -97,8 +97,8 @@ main .main__content{
     border-bottom: 1px solid #ccc;
     background: gold;
 }
-.ticketInfo .ticketBoxInner__tit{float: left;}
-.ticketInfo p{float: left;height: 100%;}
+.ticketInfo .ticketBoxInner__tit{}
+.ticketInfo p{float: left; height: 100%;}
 .ticketInfo p .ticketInfo__showName{
     margin: 0 20px;
     font-size: 20px;
