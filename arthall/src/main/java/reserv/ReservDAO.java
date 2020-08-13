@@ -90,4 +90,9 @@ public class ReservDAO {
    public List<ReservVO> reservSess(MemberVO member) {
 	   return sqlSession.selectList("reserv.reservSess", member);
    }
+   
+   // 결제 취소한 공연 정보
+   public List<ReservVO> reservSessCancle(MemberVO member) {
+	   return sqlSession.selectList("reserv.reservSessCancle", member);
+   }
 }

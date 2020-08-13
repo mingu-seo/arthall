@@ -16,6 +16,7 @@ public interface ReservService {
 	
 	public String cancle(String[] nono, ReservVO param);
 
+	public String cancle(ReservVO param);
 	// Ticket
 	public List<TicketVO> ticketlist(TicketVO param);
 	

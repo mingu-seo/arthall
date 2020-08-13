@@ -47,6 +47,7 @@ public class User_ReservController {
 		return "reserv/payment";
 	}
 	
+	// 결제 후 나의 예매 페이지 이동
 	@RequestMapping("reservOne.do")
 	public String myreservForm(Model model, HttpSession sess, ReservVO param, MemberVO member, TicketVO ticket) {
 		
@@ -58,10 +59,19 @@ public class User_ReservController {
 		return pageName;
 	}
 	
+	// 나의 예매 페이지
 	@RequestMapping("myreserv.do")
-	public String myreserv(Model model, HttpSession sess) {
+	public String myReserv(Model model, HttpSession sess) {
 		MemberVO member = (MemberVO)sess.getAttribute("authUser");
 		String pageName = reservService.reservSess(model, member);
+		return pageName;
+	}
+	
+	// 예매 취소
+	@RequestMapping("cancle.do")
+	public String cancle(Model model, ReservVO param) {
+		System.out.println(param.getReservNo());
+		String pageName = reservService.cancle(param);
 		return pageName;
 	}
 	

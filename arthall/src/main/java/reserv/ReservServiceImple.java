@@ -75,6 +75,13 @@ public class ReservServiceImple implements ReservService{
    
    }
 
+	@Override
+	public String cancle(ReservVO param) {
+		reservDao.cancleReserv(param);
+		reservDao.cancleTicket(param);
+		return "redirect:myreserv.do";
+	}
+
    
    // 결제 창 넘어갈 때 좌석 정보 넘기기, 코드 더 짧게 안되나?
    @Override
@@ -254,10 +261,13 @@ public class ReservServiceImple implements ReservService{
 	public String reservSess(Model model, MemberVO member) {
 		List<ReservVO> reservMyPass = reservDao.reservSessPass(member);
 		List<ReservVO> reservMy = reservDao.reservSess(member);
+		List<ReservVO> reservMyCancle = reservDao.reservSessCancle(member);
 		model.addAttribute("reservMyPass", reservMyPass);
 		model.addAttribute("reservMy", reservMy);
+		model.addAttribute("reservMyCancle", reservMyCancle);
 		return "reserv/myreserv";
 	}
+
    
    
 

@@ -16,6 +16,13 @@
     <script src="<%=request.getContextPath() %>/js/topBtn.js" defer></script>
     <script src="<%=request.getContextPath() %>/js/footerSiteOpen.js" defer></script>
     <script src="<%=request.getContextPath() %>/js/ticketHistoryDayCount.js" defer></script>
+    <script>
+    function cancle(reservNo){
+    	if (confirm("예매 취소하시겠습니까?")){
+    		location.href="cancle.do?reservNo="+reservNo;
+    	}
+    }
+    </script>
 </head>
 
 <body>
@@ -130,33 +137,55 @@
                                             <li class="listContainer__listInfo cf">가격 <span>${reservMy.price}</span></li>
                                         </ul>
                                         <p class="infoContainer__timerContainer"><i class="fas fa-sync-alt fa-spin"></i><span class="timerContainer__timer">D-53</span></p>
-                                        <p class="infoContainer__btnContainer"><a href="javascript:confirm('정말 취소하시겠습니까?');" class="cancleBtn">예매취소</a></p>
+                                        <p class="infoContainer__btnContainer"><a class="cancleBtn" onclick="cancle('${reservMy.reservNo}');">예매취소</a></p>
                                     </article>
                                 </div>
                                 </c:forEach>
-                                
                             </section>
                             <section class="cont__watched">
                                 <h4 class="watched__tit">관람한 공연&middot;전시&middot;행사</h4>
                                 <c:forEach var="reservMyPass" items="${reservMyPass}">
-                                <div class="watched__ticket cf">
-                                    <figure class="ticket__imgContainer">
-                                        <img src="<%=request.getContextPath() %>/img/per/sub-pos-8.jpg" alt="지젤 포스터">
-                                    </figure>
-                                    <article class="ticket__infoContainer">
-                                        <h5 class="infoContainer__tit">공연이름 ${reservMyPass.playName}</h5>
-                                        <ul class="infoContainer__listContainer">
-                                           <li class="listContainer__listInfo cf">예매번호 <span>${reservMyPass.reservNo}</span></li>
-                                            <li class="listContainer__listInfo cf">장소 <span>${reservMyPass.hallName}</span></li>
-                                            <li class="listContainer__listInfo cf">관람일 <span>${reservMyPass.playDate}</span></li>
-                                            <li class="listContainer__listInfo cf">관람시간 <span>${reservMyPass.time}</span></li>
-                                            <li class="listContainer__listInfo cf">입장권 <span>${reservMyPass.seat}</span></li>
-                                            <li class="listContainer__listInfo cf">가격 <span>${reservMyPass.price}</span></li>
-                                        </ul>
-                                    </article>
-                                </div>
+	                                <div class="watched__ticket cf">
+	                                    <figure class="ticket__imgContainer">
+	                                        <img src="<%=request.getContextPath() %>/img/per/sub-pos-8.jpg" alt="지젤 포스터">
+	                                    </figure>
+	                                    <article class="ticket__infoContainer">
+	                                        <h5 class="infoContainer__tit">공연이름 ${reservMyPass.playName}</h5>
+	                                        <ul class="infoContainer__listContainer">
+	                                           <li class="listContainer__listInfo cf">예매번호 <span>${reservMyPass.reservNo}</span></li>
+	                                            <li class="listContainer__listInfo cf">장소 <span>${reservMyPass.hallName}</span></li>
+	                                            <li class="listContainer__listInfo cf">관람일 <span>${reservMyPass.playDate}</span></li>
+	                                            <li class="listContainer__listInfo cf">관람시간 <span>${reservMyPass.time}</span></li>
+	                                            <li class="listContainer__listInfo cf">입장권 <span>${reservMyPass.seat}</span></li>
+	                                            <li class="listContainer__listInfo cf">가격 <span>${reservMyPass.price}</span></li>
+	                                        </ul>
+	                                    </article>
+	                                </div>
                                 </c:forEach>
-                    </section>
+                    		</section>
+                    		<section class="cont__watched">
+                                <h4 class="watched__tit">예매취소 내역&middot;전시&middot;행사</h4>
+                                <c:forEach var="reservMyCancle" items="${reservMyCancle}">
+	                                <div class="watched__ticket cf">
+	                                    <figure class="ticket__imgContainer">
+	                                        <img src="<%=request.getContextPath() %>/img/per/sub-pos-8.jpg" alt="지젤 포스터">
+	                                    </figure>
+	                                    <article class="ticket__infoContainer">
+	                                        <h5 class="infoContainer__tit">공연이름 ${reservMyCancle.playName}</h5>
+	                                        <ul class="infoContainer__listContainer">
+	                                           <li class="listContainer__listInfo cf">예매번호 <span>${reservMyCancle.reservNo}</span></li>
+	                                            <li class="listContainer__listInfo cf">장소 <span>${reservMyCancle.hallName}</span></li>
+	                                            <li class="listContainer__listInfo cf">관람일 <span>${reservMyCancle.playDate}</span></li>
+	                                            <li class="listContainer__listInfo cf">관람시간 <span>${reservMyCancle.time}</span></li>
+	                                            <li class="listContainer__listInfo cf">입장권 <span>${reservMyCancle.seat}</span></li>
+	                                            <li class="listContainer__listInfo cf">가격 <span>${reservMyCancle.price}</span></li>
+	                                        </ul>
+	                                    </article>
+	                                </div>
+                                </c:forEach>
+                    		</section>
+                		</div>
+                	</section>
                 </div>
             </main>
             <a href="javascript:;" class="topBtn">TOP</a>
