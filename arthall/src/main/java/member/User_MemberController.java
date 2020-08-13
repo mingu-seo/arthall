@@ -145,6 +145,14 @@ public class User_MemberController {
 		
 		return "member/myInfo_edit";
 	}
+	
+	@RequestMapping("member/myInfo_modify.do")
+	public String myInfo_modify(Model model, HttpServletRequest req, MemberVO param){
+		
+		String pageName = memberService.myInfo_modify(model, req, param);
+		
+		return pageName;
+	}
 
 	@RequestMapping("member/deleteId.do")
 	public String deleteId(@RequestParam String id, @RequestParam String password, Model model) {

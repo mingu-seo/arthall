@@ -326,7 +326,9 @@ main .main__content{
     color:#fff;
 }
 
-.form_list ul>li.email_conf_area{display: none;}
+.form_list ul>li.email_conf_area{
+	position: relative;
+}
 
 .form_list .btn_yn{
     margin: 3% 0 3% 0;

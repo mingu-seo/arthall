@@ -80,10 +80,14 @@ public class MemberDAO {
 		return sqlSession.selectOne("member.memberdetail", param);
 	}
 	
-	//
+	// 회원정보_마이페이지 접근시 비밀번호 확인
 	public MemberVO confirmPw(MemberVO param) {
 		MemberVO vo = sqlSession.selectOne("member.confirmPw", param);
 		return vo;
+	}
+	
+	public int myInfo_modify(MemberVO param) {
+		return sqlSession.update("member.myInfo_modify", param);
 	}
 	
 

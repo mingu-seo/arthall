@@ -134,6 +134,25 @@
 		select * from member where id = #{id} and pw= PASSWORD(#{pw})
 	</select>
 	
+	<!-- 내정보 조회_정보수정 -->
+	<update id="myInfo_modify" parameterType="member.MemberVO">
+		UPDATE member SET
+			pw = PASSWORD(#{pw}),
+			name = #{name},
+			gender = #{gender},
+			tel = #{tel},
+			email = #{email},
+			birth = #{birth},
+			sample4_postcode = #{sample4_postcode},
+			sample4_roadAddress = #{sample4_roadAddress},
+			sample4_jibunAddress = #{sample4_jibunAddress},
+			sample4_detailAddress = #{sample4_detailAddress},
+			ad_tel = #{ad_email},
+			ad_email = #{ad_tel}
+		WHERE
+			id = #{id}
+	</update>
+	
 	<!-- 회원탈퇴 -->
 	<delete id="deleteId">
 		DELETE FROM member

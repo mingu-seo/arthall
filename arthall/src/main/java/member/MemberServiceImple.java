@@ -272,6 +272,30 @@ public class MemberServiceImple implements MemberService{
 		
 	}
 	
+	// 회원정보수정
+	@Override
+	public String myInfo_modify(Model model, HttpServletRequest req, MemberVO param) {
+		
+		String pageName = "";
+		
+		String email_Id = param.getEmail_id();
+		String email_Add = param.getEmail_add();
+		String email = email_Id+'@'+email_Add;
+		param.setEmail(email);
+		
+		String birth = param.getBirth();
+		birth = birth.substring(0, 4) + "-" + birth.substring(4, 6) + "-" + birth.substring(6, birth.length());
+		param.setBirth(birth);
+		
+		param.setBanMem("정상");
+		
+		memberDao.myInfo_modify(param);
+		
+		pageName = "redirect:/index.do";
+		
+		return pageName;
+	}
+	
 	// 회원탈퇴
 	@Override
 	public void deleteId(String id) {

@@ -42,5 +42,5 @@ public interface MemberService {
 	
 	public void myInfo_edit(Model model, HttpServletRequest req) throws Exception;
 	
-	
+	public String myInfo_modify(Model model, HttpServletRequest req, MemberVO param);
 }
