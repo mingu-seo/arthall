@@ -87,34 +87,45 @@ AUTO_INCREMENT=7
 -reserv
 ```
 CREATE TABLE `reserv` (
-	`no` VARCHAR(50) NOT NULL DEFAULT '\'\'',
-	`name` VARCHAR(50) NULL DEFAULT NULL,
-	`reservDay` DATE NULL DEFAULT NULL,
-	`playNo` INT(11) NULL DEFAULT NULL,
-	`playName` VARCHAR(50) NULL DEFAULT NULL,
-	`playDay` DATE NULL DEFAULT NULL,
-	`runtime` INT(11) NULL DEFAULT NULL,
-	`hallNo` INT(11) NULL DEFAULT NULL,
+	`no` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'index',
+	`reservNo` VARCHAR(50) NOT NULL DEFAULT '0' COMMENT '예약번호',
+	`memberNo` INT(11) NULL DEFAULT NULL COMMENT '예약자회원번호',
+	`name` VARCHAR(50) NULL DEFAULT NULL COMMENT '예약자명',
+	`reservDate` DATE NULL DEFAULT NULL COMMENT '예약일자',
+	`playNo` INT(11) NULL DEFAULT NULL COMMENT '전시회공연번호',
+	`playName` VARCHAR(50) NULL DEFAULT NULL COMMENT '전시회공연이름',
+	`playDate` DATE NULL DEFAULT NULL COMMENT '전시회공연일자',
+	`time` VARCHAR(50) NULL DEFAULT NULL COMMENT '공연시작시간',
+	`hallNo` INT(11) NOT NULL DEFAULT 0 COMMENT '홀번호',
+	`hallName` VARCHAR(50) NOT NULL DEFAULT '0' COMMENT '홀이름',
+	`pay` VARCHAR(50) NOT NULL DEFAULT '미입금' COMMENT '결제현황',
+	`price` VARCHAR(50) NULL DEFAULT NULL COMMENT '전체 가격',
+	`seat` VARCHAR(50) NULL DEFAULT NULL COMMENT '좌석 정보',
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
+AUTO_INCREMENT=142
 ;
+
 
 
 ```
 -ticket
 ```
 CREATE TABLE `ticket` (
-	`no` VARCHAR(50) NOT NULL DEFAULT '\'\'',
-	`reservNo` VARCHAR(50) NOT NULL DEFAULT '\'\'',
+	`no` INT(11) NOT NULL AUTO_INCREMENT COMMENT '티켓 번호',
+	`reservNo` VARCHAR(50) NOT NULL DEFAULT '\'\'' COMMENT '예약 번호',
 	`seatType` VARCHAR(50) NULL DEFAULT NULL COMMENT 'null이면 전시회',
-	`price` INT(11) NOT NULL DEFAULT 0,
+	`price` VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'int',
+	`pay` VARCHAR(50) NULL DEFAULT '미입금' COMMENT '결제현황',
 	PRIMARY KEY (`no`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
+AUTO_INCREMENT=130
 ;
+
 
 ```
 board/notice 황동민 20200730 filename_org 추가
