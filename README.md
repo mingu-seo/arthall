@@ -84,7 +84,7 @@ AUTO_INCREMENT=7
 
 
 ```
--reserv
+-reserv 이정준 2020-08-13
 ```
 CREATE TABLE `reserv` (
 	`no` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'index',
@@ -111,7 +111,7 @@ AUTO_INCREMENT=142
 
 
 ```
--ticket
+-ticket 이정준 2020-08-13
 ```
 CREATE TABLE `ticket` (
 	`no` INT(11) NOT NULL AUTO_INCREMENT COMMENT '티켓 번호',
