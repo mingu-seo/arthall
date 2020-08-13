@@ -2,12 +2,17 @@ package reserv;
 
 
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import member.MemberVO;
+import play.PerformVO;
 import play.PlayVO;
 
 
@@ -19,28 +24,38 @@ public class User_ReservController {
 	
 	// 예약 폼으로 이동
 	@RequestMapping("/reservForm.do")
-	public String reservOne(Model model, ReservVO param) {
-		PlayVO playList = reservService.playOne(param);
-		model.addAttribute("play", playList);
+	public String reservForm(Model model, ReservVO param) {
+		System.out.println("친구야 이건 된거지?");
+		PlayVO playOne = reservService.playOne(param);
+		List<PerformVO> playList = reservService.playList(param);
+		// 이거 perform에서 전시 시간 받아올라그랬는데 왜 안댐
+		model.addAttribute("playList", playList);
+		model.addAttribute("play", playOne);
 		String pageName = "reserv/reservForm";
 		return pageName;
 	}
 	
+	
+	
 	// 결제 창으로 이동
 	@RequestMapping("/payment.do")
 	public String paymentForm(Model model, ReservVO param, TicketVO ticket) {
-		System.out.println(param.getReservDate());
-		System.out.println(param.getTime());
-		System.out.println(ticket.getPrice());
-		System.out.println(ticket.getSeatType());
 		
-		
+		TicketVO reservTicket = reservService.reservTicket(ticket);
 		
 		model.addAttribute("vo", param);
-		model.addAttribute("ticket", ticket);
-
+		model.addAttribute("ticket", reservTicket);
 		return "reserv/payment";
 	}
 	
+	@RequestMapping("reservOne.do")
+	public String myreserv(HttpSession sess, ReservVO param, MemberVO member, TicketVO ticket) {
+		
+		System.out.println("이 값들이 지금 필요한 값들");
+		String pageName = reservService.reservOne(sess, param, member, ticket);
+		System.out.println("값은 잘 들어간거?");
+		
+		return pageName;
+	}
 	
 }

@@ -24,11 +24,10 @@ public class User_noticeController {
 		model.addAttribute("vo", param);
 		model.addAttribute("list",list);	
 		
-		System.out.println(param.getSval());
 		return "board/notice/notice";
 	}
 	
-	@RequestMapping("/board/notice/view.do")
+	@RequestMapping("/board/notice/notice_view.do")
 	public String view_img(Model model, HttpServletRequest req, NoticeVO param) {
 		
 		NoticeVO data = noticeservice.view_img(param);
@@ -36,7 +35,8 @@ public class User_noticeController {
 		model.addAttribute("vo",param);
 		model.addAttribute("data",data);
 		
-		return "/board/notice/notice_view";
+		
+		return "board/notice/notice_view";
 	}
 	
 

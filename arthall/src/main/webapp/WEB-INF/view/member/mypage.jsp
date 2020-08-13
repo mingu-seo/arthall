@@ -26,7 +26,7 @@
 						$("#pw").val("");
 						$("#pw").focus();
 					} else {
-						alert("일치 다음페이지 이동");
+						$("#passwordCheck").submit();
 					}
 					
 				}
@@ -75,7 +75,7 @@
 							        <p><i class="fas fa-lock fa-3x"></i>비밀번호를 한 번 더 입력해주세요.</p>
 							        <ul>
 							            <li>
-							                <label for="password">비밀번호 확인</label><input type="password" id="pw" name="pw" required>
+							                <label for="password">비밀번호 확인</label><input type="password" id="pw" name="pw" value="eodud123" required>
 							            </li>
 							            <li>
 							                <input type="submit" value="확인" onclick="return check();">

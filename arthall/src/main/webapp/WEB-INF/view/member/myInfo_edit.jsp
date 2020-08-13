@@ -13,7 +13,28 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/myInfo_edit.css">
 
-
+<script>
+	$(document).ready(function(){
+		
+		// 성별 체크
+		$("input:radio[name='sex']:radio[value='${vo.gender}']").prop('checked', true);		
+		
+		// 이메일 광고 체크
+		if ('${vo.ad_email}' == 1){
+			$("input:checkbox[id='chk1']").attr("checked", true);
+		} else {
+			$("input:checkbox[id='chk1']").attr("checked", false);
+		}
+		
+		// sms 광고 체크
+		if ('${vo.ad_tel}' == 1){
+			$("input:checkbox[id='chk2']").attr("checked", true);
+		} else {
+			$("input:checkbox[id='chk2']").attr("checked", false);
+		}	
+		
+	});
+</script>
 </head>
 <body>
 	<div id="wrap">
@@ -61,44 +82,44 @@
                                             </li>
                                             <li class="name_area">
                                                 <label for="name"><span>&nbsp;&nbsp;</span>이름</label>
-                                                <input type="text" name="name" id="name" placeholder="이름을 입력해 주세요">
+                                                <input type="text" name="name" id="name" value="${vo.name }" placeholder="이름을 입력해 주세요">
                                             </li>
                                             <li class="sex_area">
                                                 <label for="sex"><span>&nbsp;&nbsp;</span>성별</label>
                                                 <div class="sex" id="sex">
-                                                    <input type="radio" name="sex" id="sex_man"><label for="sex_man">남성</label>
-                                                    <input type="radio" name="sex" id="sex_women"><label for="sex_women">여성</label>
-                                                    <input type="radio" name="sex" id="sex_three"><label for="sex_three">제 3의성</label>
-                                                    <input type="radio" name="sex" id="sex_none"><label for="sex_none">기재원치않음</label>
+                                                    <input type="radio" name="sex" id="sex_man" value="1"><label for="sex_man">남성</label>
+                                                    <input type="radio" name="sex" id="sex_women" value="2"><label for="sex_women">여성</label>
+                                                    <input type="radio" name="sex" id="sex_three" value="3"><label for="sex_three">제 3의성</label>
+                                                    <input type="radio" name="sex" id="sex_none" value="4"><label for="sex_none">기재원치않음</label>
                                                 </div>
                                             </li>
                                             <li class="date_area">
                                                 <label for="datepicker"><span>&nbsp;&nbsp;</span>생년월일</label>
-                                                <input type="text" class="datepicker" id="datepicker" placeholder="년도 / 월 / 일을 입력해주세요 (ex: 19920510)" numberOnly maxlength="8">
+                                                <input type="text" class="datepicker" id="datepicker" value="${vo.birth }" placeholder="년도 / 월 / 일을 입력해주세요 (ex: 19920510)" numberOnly maxlength="8">
                                             </li>
                                             <li class="tel_area">
                                                 <label for="tel"><span>&nbsp;&nbsp;</span>연락처</label>
-                                                <input type="text" name="tel" id="tel" placeholder="숫자만 입력해주세요" numberOnly maxlength="11">
+                                                <input type="text" name="tel" id="tel" value="${vo.tel }" placeholder="숫자만 입력해주세요" numberOnly maxlength="11">
                                             </li>
                                             <li class="add_area">
                                                 <label for="sample4_postcode"><span>&nbsp;&nbsp;</span>주소</label>
-                                                <input type="text" id="sample4_postcode" placeholder="우편번호" readonly>
+                                                <input type="text" id="sample4_postcode" value="${vo.sample4_postcode }" placeholder="우편번호" readonly>
                                                 <input type="button" onclick="sample4_execDaumPostcode();" value="우편번호 찾기" id="post_btn">
-                                                <input type="text" id="sample4_roadAddress" placeholder="도로명주소" readonly>
-                                                <input type="text" id="sample4_jibunAddress" placeholder="지번주소" readonly>
+                                                <input type="text" id="sample4_roadAddress" value="${vo.sample4_roadAddress }" placeholder="도로명주소" readonly>
+                                                <input type="text" id="sample4_jibunAddress" value="${vo.sample4_jibunAddress }" placeholder="지번주소" readonly>
                                                 <span id="guide" style="color:#999;display:none"></span>
-                                                <input type="text" id="sample4_detailAddress" placeholder="상세주소">
+                                                <input type="text" id="sample4_detailAddress" value="${vo.sample4_detailAddress }" placeholder="상세주소">
                                             </li>
                                             <li class="email_area">
                                                 <label for="email"><span>&nbsp;&nbsp;</span>이메일</label>
-                                                <input type="text" name="email_id" id="email_id">
+                                                <input type="text" name="email_id" id="email_id" value="${vo.email_id }" >
                                                 <span>@</span>
-                                                <input type="text" name="email_add" id="email_add" value="naver.com">
+                                                <input type="text" name="email_add" id="email_add" value="${vo.email_add }">
                                                 <select class="email_sel" name="email_sel" id="email_sel" onchange="change_email();">
-                                                    <option value="" selected>직접입력</option>
-                                                    <option value="naver.com">naver.com</option>
-                                                    <option value="hanmail.com">hanmail.com</option>
-                                                    <option value="google.com">google.com</option>
+                                                   <option value="" selected>직접입력</option>
+                                                    <option value="naver.com">네이버</option>
+                                                    <option value="hanmail.com">다음</option>
+                                                    <option value="gmail.com">구글</option>
                                                 </select>
                                                 <button onclick="email_send();">인증번호 발송</button>
                                             </li>
@@ -118,7 +139,7 @@
                                         </ul>
                                         <div class="btn_yn">
                                             <button type="submit" onclick="validate()">확인</button>
-                                            <button type="reset" id="cancle">취소</button>
+                                            <button type="reset" id="cancle" onclick="cancel()">취소</button>
                                         </div>
                                     </div>
                                 </fieldset>

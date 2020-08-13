@@ -12,7 +12,7 @@
     <link rel="icon" sizes="16x16" type="image.png" href="<%=request.getContextPath()%>/img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/news.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/notice.css">
     <script src="<%=request.getContextPath()%>/js/forEachPolyfill.js" defer></script>
     <script src="<%=request.getContextPath()%>/js/header.js" defer></script>
     <script src="<%=request.getContextPath()%>/js/topBtn.js" defer></script>
@@ -64,7 +64,7 @@
                                     <a href="<%=request.getContextPath()%>/board/notice/index.do"><span>뉴스·소식</span></a>
                                     <ul>
                                         <li><a href="<%=request.getContextPath()%>/board/notice/index.do">공지사항</a></li>
-                                        <li><a href="<%=request.getContextPath()%>/board/news/news.do">뉴스/이슈</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/board/news/index.do">뉴스/이슈</a></li>
                                     </ul>
                                 </li>
                                 <li class="hover">
@@ -97,7 +97,9 @@
         </header>
 
         <div class="sub__tit">
-            <h2>뉴스&middot;이슈</h2>
+        
+        <!--   <h2>뉴스&middot;이슈</h2>-->
+        <h2>공지사항</h2>
         </div>
         <div class="sub__container cf">
             <aside class="container__subClass">
@@ -105,7 +107,7 @@
                 <nav class="subClass__list">
                     <ul>
                         <li><a href="<%=request.getContextPath()%>/board/notice/index.do">공지사항</a></li>
-                        <li><a href="<%=request.getContextPath()%>/board/news/news.do">뉴스&middot;이슈</a></li>
+                        <li><a href="<%=request.getContextPath()%>/board/news/index.do">뉴스&middot;이슈</a></li>
                     </ul>
                 </nav>
             </aside>
@@ -139,7 +141,7 @@
                                         <tr>
                                             <td class="notice__num"><c:out value="${notice.no}"/></td>
                                             <td class="notice__tit">
-                                            <a href="news_view.html">
+                                            <a href="<%=request.getContextPath()%>/board/notice/notice_view.do?no=${notice.no}&page=${vo.page}">
                                             	<c:out value="${notice.title}"/>
                                             </a></td>
                                             <td class="notice__date">${notice.regDate}</td>
@@ -175,19 +177,8 @@
                                 	</div>
                                 
                                 	
-                                	<!-- 
-                                	<form class="searchForm" name ="searchForm" action="index.do" method="post">
-                                	<select name="stype" title="검색을 선택해주세요">
-										<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>
-										<option value="title" <c:if test="${vo.stype=='title'}">selected</c:if>>제목</option>
-										<option value="content" <c:if test="${vo.stype=='content'}">selected</c:if>>내용</option>
-									</select>
-									<input type="text" name="sval" value="${vo.sval}" class="search_nt" placeholder="검색어를 입력해주세요"> 
-                                   	<button type="submit" class="submit"><i class="fa fa-search"></i></button>
-                                	  </form>	
-                                  	
-                                 
-                                     -->
+                              
+                                   
                                    	<form class="search_notice" action="index.do" method="post">
                                    	<select name="stype" title="검색을 선택해주세요">
 										<option value="all" <c:if test="${vo.stype=='all'}">selected</c:if>>전체</option>
@@ -198,7 +189,7 @@
                                     <button type="submit" class="submit"><i class="fa fa-search"></i></button>
                                     
                                 	</form>
-                       				 
+                                	
 									
                                     
                                

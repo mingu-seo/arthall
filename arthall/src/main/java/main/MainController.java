@@ -24,7 +24,7 @@ public class MainController {
 	public String index(Model model, NoticeVO param, HttpServletRequest request) {
 		List<NoticeVO> list = noticeservice.list(param);
 		PlayVO play = new PlayVO();
-		play.setNo(4);
+		play.setPlayName("횽아");
 		model.addAttribute("vo", param);
 		model.addAttribute("list",list);
 		model.addAttribute("play", play);

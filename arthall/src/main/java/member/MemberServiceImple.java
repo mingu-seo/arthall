@@ -1,5 +1,8 @@
 package member;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -63,6 +66,12 @@ public class MemberServiceImple implements MemberService{
 		String email_Add = param.getEmail_add();
 		String email = email_Id+'@'+email_Add;
 		param.setEmail(email);
+		
+		String birth = param.getBirth();
+		birth = birth.substring(0, 4) + "-" + birth.substring(4, 6) + "-" + birth.substring(6, birth.length());
+		param.setBirth(birth);
+		
+		param.setBanMem("정상");
 		
 		memberDao.join(param);
 		return "redirect:/index.do";
@@ -201,16 +210,81 @@ public class MemberServiceImple implements MemberService{
 		return r;
 	}
 	
-	
 	@Override
-	public String myInfoLoad(Model model, HttpServletRequest req, MemberVO param) {
-		String pageName = "";
+	public String myInfoLoad(Model model, HttpServletRequest req, MemberVO param) throws Exception {
+
+		MemberVO vo = (MemberVO)req.getSession().getAttribute("authUser");
 		
-		return pageName;
+		// 생년월일 포멧
+		SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy년 MM월 dd일");
+
+		Date changeDate = dateFormat1.parse(vo.getBirth());
+		
+		System.out.println("생일 출력 : "+vo.getBirth());
+		String birth = (dateFormat2.format(changeDate));
+		vo.setBirth(birth);		
+		
+		// 연락처 포멧
+		String Tel = vo.getTel();
+	    if (Tel.length() == 8) {
+	    	Tel = Tel.replaceFirst("^([0-9]{4})([0-9]{4})$", "$1-$2");
+	    } else if (Tel.length() == 12) {
+	    	Tel = Tel.replaceFirst("(^[0-9]{4})([0-9]{4})([0-9]{4})$", "$1-$2-$3");
+	    } else {
+	    	Tel = Tel.replaceFirst("(^02|[0-9]{3})([0-9]{3,4})([0-9]{4})$", "$1-$2-$3");	    	
+	    }
+	    vo.setTel(Tel);
+		
+		model.addAttribute("vo", vo);
+		return "member/myInfo_show";
 	}
 	
+	@Override
+	public void myInfo_edit(Model model, HttpServletRequest req) throws Exception {
+		
+		MemberVO vo = (MemberVO)req.getSession().getAttribute("authUser");
+		
+		// 생년월일 포멧
+		String birth = vo.getBirth();
+		birth = birth.replace("년 ", "-");
+		birth = birth.replace("월 ", "-");
+		birth = birth.replace("일", "");
+		vo.setBirth(birth);
+		
+		// 연락처 포멧
+		String Tel = vo.getTel();
+		Tel = Tel.replace("-", "");
+		vo.setTel(Tel);	
+		
+		 // 이메일 포멧
+	    String email = vo.getEmail();
+	    
+        int idx = email.indexOf("@"); 
+        
+        String email_id = email.substring(0, idx);
+        String email_add = email.substring(idx+1);
+        
+        vo.setEmail_id(email_id);
+        vo.setEmail_add(email_add);		
+		
+		model.addAttribute("vo", vo);
+		
+	}
 	
+	// 회원탈퇴
+	@Override
+	public void deleteId(String id) {
+		memberDao.deleteId(id);
+	}
+
 	
+	// 회원탈퇴 시 비밀번호 체크
+	@Override
+	public boolean checkPw(String id, String password) {
+		return memberDao.checkPw(id, password);
+	}
+
 	
 
 }

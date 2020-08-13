@@ -22,4 +22,9 @@ public class User_PlayController {
 		System.out.println(param.getStype());
 		return "play/performList";
 	}
+	
+	@RequestMapping("play/performInfo.do")
+	public String performInfo() {
+		return "play/performInfo";
+	}
 }

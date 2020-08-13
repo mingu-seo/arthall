@@ -52,13 +52,13 @@ function check() {
                                                         <span class="hidden">이름</span>
                                                         <i class="fas fa-user"></i>
                                                     </label>
-                                                    <input type="text" id="id" name="id" placeholder="아이디 / ID">
+                                                    <input type="text" id="id" name="id" value="kdy7710" placeholder="아이디 / ID">
                                                 </li>
                                                 <li class="cf">
                                                     <label for="pw">
                                                         <i class="fas fa-unlock"></i>
                                                     </label>
-                                                    <input type="password" id="pw" name="pw" placeholder="비밀번호 / Password">
+                                                    <input type="password" id="pw" name="pw" value="eodud123" placeholder="비밀번호 / Password">
                                                 </li>
                                             </ul>
                                         </div>

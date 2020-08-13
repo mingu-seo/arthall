@@ -11,7 +11,7 @@ public class ReservVO extends Parameter {
    private int memberNo;
    private String name;
    private Date reservDate;
-   private String playNo;
+   private int playNo;
    private String playName;
    private Date playDate;
    private String time;
@@ -90,11 +90,11 @@ public void setReservDate(Date reservDate) {
 	this.reservDate = reservDate;
 }
 
-public String getPlayNo() {
+public int getPlayNo() {
 	return playNo;
 }
 
-public void setPlayNo(String playNo) {
+public void setPlayNo(int playNo) {
 	this.playNo = playNo;
 }
 

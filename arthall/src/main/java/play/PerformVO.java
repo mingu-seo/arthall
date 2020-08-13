@@ -7,7 +7,7 @@ public class PerformVO extends util.Parameter{
 	private int no;
 	private String playName;
 	private int playNo;
-	private int time;
+	private String time;
 	private String actor;
 	private int priceA;
 	private int priceB;
@@ -41,10 +41,10 @@ public class PerformVO extends util.Parameter{
 		this.playNo = playNo;
 	}
 
-	public int getTime() {
+	public String getTime() {
 		return time;
 	}
-	public void setTime(int time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 	public String getActor() {

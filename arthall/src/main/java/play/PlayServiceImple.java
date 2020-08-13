@@ -38,12 +38,8 @@ public class PlayServiceImple implements PlayService {
 		param.setTotalCount(totalCount);
 		param.setTotalPage(totalPage);
 	
-		// 모두 list로 집어넣는다.
+		// 모두 list로
 		List<PlayVO> list = playDao.list(param);
-		
-//		for (int i = 0 ; i < list.size();i++) {
-//			System.out.println(list.get(i).getFilename());
-//		}
 		
 		return list;
 	}

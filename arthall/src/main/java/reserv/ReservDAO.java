@@ -2,10 +2,14 @@ package reserv;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import member.MemberVO;
+import play.PerformVO;
 import play.PlayVO;
 
 
@@ -37,18 +41,22 @@ public class ReservDAO {
 		return sqlSession.selectList("reserv.ticketlist", param);
 	}
 	
-	public List<PlayVO> playlist(PlayVO play){
-		return sqlSession.selectList("reserv.playList", play);
-	}
-	
-	
-	// User 예약
-	public int reservOne(ReservVO param) {
-		return sqlSession.insert("reserv.reservOne", param);
-	}
-	
+	// 선택된 공연 하나 가져오기
 	public PlayVO play(ReservVO param) {
 		return sqlSession.selectOne("reserv.playOne", param);
 	}
 	
+	// 예약정보 삽입
+	public int reservOne(ReservVO param) {
+		return sqlSession.insert("reserv.reservOne", param);
+	}
+	
+	// 회차, 좌석 정보 가져오기
+	public List<PerformVO> playList(ReservVO param){
+		return sqlSession.selectList("reserv.playList", param);
+	}
+	
+	public HallVO hall(ReservVO param){
+		return sqlSession.selectOne("reserv.hall", param);
+	}
 }

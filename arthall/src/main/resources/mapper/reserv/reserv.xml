@@ -118,6 +118,16 @@
 		WHERE reservNo = #{reservNo}
 	</select>
 	
+	<select id="playOne" parameterType="reserv.ReservVO" resultType="play.PlayVO">
+		select * from play WHERE playName = #{playName}
+	</select>
+	
+	<!-- 여기 reservVO에 playName이 있고 이걸로 perform에서 조회하는거 -->
+	<select id="playList" parameterType="reserv.ReservVO" resultType="play.PerformVO">
+		select * from perform WHERE playName = #{playName}
+	</select>
+	
+	
 	<insert id="reservOne" parameterType="reserv.ReservVO">
 		INSERT INTO reserv
 			(reservNo, memberNo, name, reservDate, playNo, playName, playDate, time, hallNo, hallName, pay)
@@ -129,8 +139,7 @@
 		</selectKey>
 	</insert>
 	
-	<select id="playOne" parameterType="reserv.ReservVO" resultType="play.PlayVO">
-		select * from play WHERE no = #{playNo}
+	<select id="hall" parameterType="reserv.ReservVO" resultType="reserv.HallVO">
+		SELECT * FROM hall WHERE hallName = #{hallName}
 	</select>
-	
 </mapper>

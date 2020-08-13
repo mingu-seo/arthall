@@ -48,23 +48,23 @@
                             <ul class="cont__myInfo">
                                 <li class="myInfo__list myInfoName cf">
                                     <span>이름</span>
-                                    <span>나범기</span>
+                                    <span>${vo.name }</span>
                                 </li>
                                 <li class="myInfo__list myInfoBirth cf">
                                     <span>생년월일</span>
-                                    <span>1992년 06월 09일</span>
+                                    <span>${vo.birth }</span>
                                 </li>
                                 <li class="myInfo__list myInfoTel cf">
                                     <span>연락처</span>
-                                    <span>010-1234-5678</span>
+                                    <span>${vo.tel }</span>
                                 </li>
                                 <li class="myInfo__list myInfoAddr cf">
                                     <span>주소</span>
-                                    <span>경기 성남시 분당구 판교역로 4 <br> 푸르지오 1차 853동 6458호</span>
+                                    <span>${vo.sample4_roadAddress }<br>${vo.sample4_detailAddress } </span>
                                 </li>
                                 <li class="myInfo__list myInfoEmail cf">
                                     <span>이메일</span>
-                                    <span>nabeomki@naver.com</span>
+                                    <span>${vo.email }</span>
                                 </li>
                             </ul>
                             <p class="cont__memberBtn">

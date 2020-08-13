@@ -126,15 +126,10 @@ public class User_MemberController {
 		out.flush();
 	}
 	
-	@RequestMapping("member/myInfo_edit.do")
-	public String myInfo_edit(){
-		return "member/myInfo_edit";
-	}
-	
 	@RequestMapping("member/myInfoLoad.do")
-	public String myInfoLoad(Model model, HttpServletRequest req, MemberVO param){
+	public String myInfoLoad(Model model, HttpServletRequest req, MemberVO param) throws Exception {
 		
-		String pageName = memberService.myInfoLoad(model, req, param);
+		String pageName = memberService.myInfoLoad(model, req, param) ;
 		return pageName;
 	}
 	
@@ -142,4 +137,25 @@ public class User_MemberController {
 	public String myInfo_show(){
 		return "member/myInfo_show";
 	}
+	
+	@RequestMapping("member/myInfo_edit.do")
+	public String myInfo_edit(Model model, HttpServletRequest req) throws Exception {
+		
+		memberService.myInfo_edit(model, req);
+		
+		return "member/myInfo_edit";
+	}
+
+	@RequestMapping("member/deleteId.do")
+	public String deleteId(@RequestParam String id, @RequestParam String password, Model model) {
+		boolean result = memberService.checkPw(id, password);
+		if(result) { // 일치하면 메인으로..?
+			memberService.deleteId(id);
+			return "/index.do";
+		} else { // 불일치하면 다시 탈퇴화면
+			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
+			return "member/deleteId";
+		}
+	}
+	
 }

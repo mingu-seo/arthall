@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -12,6 +13,28 @@
     <script src="<%= request.getContextPath() %>/js/forEachPolyfill.js"></script>
     <script src="<%= request.getContextPath() %>/js/payment.js" defer></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+   	function check(){
+//    		if ($("#cardCorp option:selected").val() != null){
+//    			alert("1");
+//    			$('input[name=pay]').val("신용/체크카드");
+//    		}
+//    		if ($("#smartphonePaymentCorp option:selected").val() != null){
+//    			alert("2");
+//    			$('input[name=pay]').val("간편 결제");
+//    		}
+//    		if ($("#bankCorp option:selected").val() != null){
+//    			alert("3");
+//    			$('input[name=pay]').val("무통장입금");
+//    		}
+//    		if ($("#mobilePaymentCorp option:selected").val() != null){
+//    			alert("4");
+//    			$('input[name=pay]').val("휴대폰 결제");
+//    		}
+   		alert("결제 완료 되었습니다");
+//    		window.close();
+   	}
+    </script>
 </head>
 
 <body>
@@ -24,19 +47,19 @@
                         <h2 class="paymentMethod__tit"><span>결제방법</span></h2>
                         <ul class="paymentMethod__paymentMethodContainer paymentMethodContainer cf">
                             <li class="paymentMethodContainer__list">
-                                <input type="radio" id="card" name="paymentMethod" value="1" form="paymentForm" class="hidden"> 
+                                <input type="radio" id="card" name="pay" value="신용/체크카드" form="paymentForm" class="hidden"> 
                                 <label for="card"><i class="fas fa-credit-card fa-3x"></i>신용/체크카드</label>
                             </li>
                             <li class="paymentMethodContainer__list">
-                                <input type="radio" id="smartphonePayment" name="paymentMethod" value="2" form="paymentForm" class="hidden">
+                                <input type="radio" id="smartphonePayment" name="pay" value="간편 결제" form="paymentForm" class="hidden">
                                 <label for="smartphonePayment"><i class="fas fa-money-check-alt fa-3x"></i>간편 결제</label>
                             </li>
                             <li class="paymentMethodContainer__list">
-                                <input type="radio" id="bank" name="paymentMethod" value="3" form="paymentForm" class="hidden"> 
+                                <input type="radio" id="bank" name="pay" value="무통장입금" form="paymentForm" class="hidden"> 
                                 <label for="bank"><i class="fas fa-piggy-bank fa-3x"></i>무통장입금</label>
                             </li>
                             <li class="paymentMethodContainer__list">
-                                <input type="radio" id="mobilePayment" name="paymentMethod" value="4" form="paymentForm" class="hidden"> 
+                                <input type="radio" id="mobilePayment" name="pay" value="휴대폰 결제" form="paymentForm" class="hidden"> 
                                 <label for="mobilePayment"><i class="fas fa-mobile-alt fa-3x"></i>휴대폰 결제</label>
                             </li>
                         </ul>
@@ -131,17 +154,29 @@
                     </article>
                     <article class="paymentBox__resultPayment">
                        <h2 class="resultPayment__tit"><span>결제정보</span></h2>
-                        <form method="post" action="#" name="paymentForm" id="paymentForm">
+                        <form method="post" action="reservOne.do" name="paymentForm" id="paymentForm">
+                        <input type="hidden" name="pay" value="">
+                        <input type="hidden" name="playName" value="${vo.playName}">
+                        <input type="hidden" name="time" value="${vo.time}">
+                        <input type="hidden" name="playDate" value="${vo.reservDate}">
                             <fieldset>
                                 <legend>결제정보</legend>
-                                <p class="paymentForm__paymentInfo">
-                                    <span>뮤지컬 &lt;썸씽로튼&gt;</span>
-                                    <span>${vo.reservDate}</span>
-                                    <span>${vo.time}</span>
-                                    <span>VIP석 1매</span>
-                                    <span>${ticket.price}</span>
+                                <p class="paymentForam__paymentInfo">
+                                    <span>뮤지컬 &lt;${vo.playName}&gt;</span><br>
+                                    <span>${vo.reservDate}</span><br>
+                                    <span>${vo.time}</span><br>
+                                    <c:if test="${ticket.seatType != ''}">
+                                    	<span>${ticket.seatType}</span><br>
+                                    </c:if>
+                                    <c:if test="${ticket.seatType1 != ''}">
+                                    	<span>${ticket.seatType1}</span><br>
+                                    </c:if>
+                                    <c:if test="${ticket.seatType2 != ''}">
+                                    	<span>${ticket.seatType2}</span><br>
+                                    </c:if>
+                                    <span>${ticket.priceAll}</span>
                                 </p>
-                                <input type="submit" class="paymentForm__submit" value="결제완료">
+                                <input type="submit" class="paymentForm__submit" value="결제완료" onclick="check();">
                             </fieldset>
                         </form>
                     </article>
