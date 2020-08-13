@@ -50,14 +50,24 @@ public class ReservDAO {
       return sqlSession.selectOne("reserv.playOne", param);
    }
    
-   // 예약정보 삽입
+   // 예매정보 삽입
    public int reservOne(ReservVO param) {
       return sqlSession.insert("reserv.reservOne", param);
    }
    
-   // 회차, 좌석 정보 가져오기
+   // 티켓 예매 삽입
+   public int reservTicket(TicketVO param) {
+	   return sqlSession.insert("reserv.reservTicket", param);
+   }
+   
+   // 회차 정보 가져오기
    public List<PerformVO> playList(ReservVO param){
       return sqlSession.selectList("reserv.playList", param);
+   }
+   
+   // 좌석 가격 가져오기
+   public PerformVO playPrice(ReservVO param){
+	   return sqlSession.selectOne("reserv.playPrice", param);
    }
    
    // 좌석 개수 차감?
@@ -68,5 +78,16 @@ public class ReservDAO {
    // 예약번호 생성, 삽입
    public ReservVO reservNumber() {
       return sqlSession.selectOne("reserv.reservNumber");
+   }
+   
+   
+   // 지난 공연 정보
+   public List<ReservVO> reservSessPass(MemberVO member) {
+	   return sqlSession.selectList("reserv.reservSessPass", member);
+   }
+   
+   // 남은 공연 정보
+   public List<ReservVO> reservSess(MemberVO member) {
+	   return sqlSession.selectList("reserv.reservSess", member);
    }
 }

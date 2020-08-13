@@ -2,7 +2,6 @@ package reserv;
 
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import member.MemberVO;
 import play.PerformVO;
@@ -171,11 +171,17 @@ public class ReservServiceImple implements ReservService{
       
       String num3 = String.format("%04d", vo.getNo());
       
-      int num4 = 0;
+      String num4 = "";
       if (lastReservDate == today) {
-         num4 = Integer.parseInt(reservDate.getReservNo().substring(17))+1;
+    	 System.out.println(reservDate.getReservNo());
+         int preFormat = Integer.parseInt(reservDate.getReservNo().substring(17))+1;
+         System.out.println(reservDate.getReservNo().substring(17));
+         System.out.println(Integer.parseInt(reservDate.getReservNo().substring(17)));
+         System.out.println(preFormat);
+         num4 = String.format("%03d", preFormat);
+         System.out.println(num4);
       } else {
-         num4 = 1;
+         num4 = "001";
       }
       
       if (play.getPlayType() == 1) {
@@ -184,13 +190,74 @@ public class ReservServiceImple implements ReservService{
     	  param.setReservNo("RE" + num1 + num2 + num3 + num4);
       }
       
-      
-      
       reservDao.reservOne(param);
+      
+      PerformVO perform = reservDao.playPrice(param);
+      int idx, idx1, idx2, cnt, cnt1, cnt2;
+      
+      System.out.println("좌석1");
+      if (ticket.getSeatType() != "") {
+    	  idx = ticket.getSeatType().indexOf(" ");
+    	  idx1 = ticket.getSeatType().indexOf("매");
+    	  idx2 = ticket.getSeatType().indexOf("석");
+    	  cnt = Integer.parseInt(ticket.getSeatType().substring(idx+1,idx1));
+    	  for (int i = 0; i < cnt; i++) {
+    		  ticket.setSeatType(ticket.getSeatType().substring(0,idx2));
+    		  ticket.setReservNo(param.getReservNo()+"t"+i);
+    		  ticket.setPrice(perform.getPriceA());
+    		  ticket.setPay(param.getPay());
+    		  reservDao.reservTicket(ticket);
+    	  }
+      }
+      System.out.println("좌석2");
+      System.out.println(ticket.getSeatType1());
+      if (ticket.getSeatType1() != "") {
+    	  System.out.println("1");
+    	  idx = ticket.getSeatType1().indexOf(" ");
+    	  System.out.println("2");
+    	  idx1 = ticket.getSeatType1().indexOf("매");
+    	  System.out.println("3");
+    	  idx2 = ticket.getSeatType1().indexOf("석");
+    	  System.out.println("4");
+    	  cnt1 = Integer.parseInt(ticket.getSeatType1().substring(idx+1,idx1));
+    	  System.out.println("5");
+    	  for (int i = 0; i < cnt1; i++) {
+    		  ticket.setSeatType(ticket.getSeatType1().substring(0,idx2));
+    		  ticket.setReservNo(param.getReservNo()+"t"+i);
+    		  ticket.setPrice(perform.getPriceB());
+    		  ticket.setPay(param.getPay());
+    		  reservDao.reservTicket(ticket);
+    	  }
+      }
+      System.out.println("좌석3");
+      if (ticket.getSeatType2() != "") {
+    	  idx = ticket.getSeatType2().indexOf(" ");
+    	  idx1 = ticket.getSeatType2().indexOf("매");
+    	  idx2 = ticket.getSeatType2().indexOf("석");
+    	  cnt2 = Integer.parseInt(ticket.getSeatType2().substring(idx+1,idx1));
+    	  for (int i = 0; i < cnt2; i++) {
+    		  ticket.setSeatType(ticket.getSeatType2().substring(0,idx2));
+    		  ticket.setReservNo(param.getReservNo()+"t"+i);
+    		  ticket.setPrice(perform.getPriceC());
+    		  ticket.setPay(param.getPay());
+    		  reservDao.reservTicket(ticket);
+    	  }
+      }
+      
       
       return "common/alert2";
       
    }
+
+
+	@Override
+	public String reservSess(Model model, MemberVO member) {
+		List<ReservVO> reservMyPass = reservDao.reservSessPass(member);
+		List<ReservVO> reservMy = reservDao.reservSess(member);
+		model.addAttribute("reservMyPass", reservMyPass);
+		model.addAttribute("reservMy", reservMy);
+		return "reserv/myreserv";
+	}
    
    
 

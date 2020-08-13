@@ -52,7 +52,6 @@ public class User_ReservController {
 		
 		
 		String pageName = reservService.reservOne(sess, param, member, ticket);
-		
 		model.addAttribute("msg", "결제 완료 되었습니다");
 		model.addAttribute("url", "myreserv.do");
 		
@@ -60,9 +59,10 @@ public class User_ReservController {
 	}
 	
 	@RequestMapping("myreserv.do")
-	public String myreserv(Model model, HttpSession sess, ReservVO param, MemberVO member, TicketVO ticket) {
-		
-		return "reserv/myreserv";
+	public String myreserv(Model model, HttpSession sess) {
+		MemberVO member = (MemberVO)sess.getAttribute("authUser");
+		String pageName = reservService.reservSess(model, member);
+		return pageName;
 	}
 	
 }

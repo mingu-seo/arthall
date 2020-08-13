@@ -20,14 +20,40 @@ public class ReservVO extends Parameter {
    private String pay;
    private String price;
    private String Seat;
+   private String startDate;
+   private String endDate;
    
-   ReservVO() {
+
+   
+
+
+
+
+
+
+
+ReservVO() {
 	      super.setPage(1);
 	      super.setSize(10);
 	   }
    
 
 
+	
+	
+	
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
    public String getHallName() {
 	   return hallName;
    }
@@ -126,15 +152,24 @@ public class ReservVO extends Parameter {
 
 
 
+
+
+
 	public String getPrice() {
 		return price;
 	}
 
 
 
+
+
+
 	public void setPrice(String price) {
 		this.price = price;
 	}
+
+
+
 
 
 

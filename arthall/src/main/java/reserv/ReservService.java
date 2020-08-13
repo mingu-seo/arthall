@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.Model;
+
 import member.MemberVO;
 import play.PerformVO;
 import play.PlayVO;
@@ -32,6 +34,6 @@ public interface ReservService {
 	// 회차, 좌석 정보 가져오기
 	public List<PerformVO> playList(ReservVO param);
 	
-	// 홀 정보 가져오기
-//	public HallVO hall(ReservVO param);
+	// 멤버 정보 받아오기
+	public String reservSess(Model model, MemberVO member);
 }

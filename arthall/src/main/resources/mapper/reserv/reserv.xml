@@ -130,6 +130,10 @@
       select * from perform WHERE playName = #{playName}
    </select>
    
+   <select id="playPrice" parameterType="reserv.ReservVO" resultType="play.PerformVO">
+      select * from perform WHERE playName = #{playName} AND time = #{time}
+   </select>
+   
    
    <insert id="reservOne" parameterType="reserv.ReservVO">
       INSERT INTO reserv
@@ -138,6 +142,16 @@
       VALUES
          (#{reservNo}, #{memberNo}, #{name}, now(), #{playNo}, #{playName}, #{playDate},
             #{time}, #{hallNo}, #{hallName}, #{pay}, #{price}, #{seat});
+      <selectKey keyProperty="no" resultType="Integer" order="AFTER">
+         SELECT last_insert_id();
+      </selectKey>
+   </insert>
+   
+   <insert id="reservTicket" parameterType="reserv.TicketVO">
+      INSERT INTO ticket
+         (reservNo, seatType, price, pay)
+      VALUES
+         (#{reservNo}, #{seatType}, #{price}, #{pay});
       <selectKey keyProperty="no" resultType="Integer" order="AFTER">
          SELECT last_insert_id();
       </selectKey>
@@ -152,6 +166,16 @@
    
    <!--  -->
    <select id="reservNumber" resultType="reserv.ReservVO">
-      SELECT * FROM reserv ORDER BY reservDate desc LIMIT 1
+      SELECT * FROM reserv ORDER BY NO DESC LIMIT 1
+   </select>
+   
+   <!-- 지난 공연 정보 -->
+   <select id="reservSessPass" parameterType="member.MemberVO" resultType="reserv.ReservVO">
+   	  SELECT * FROM reserv WHERE memberNo = #{no} and now() > playDate ORDER BY playDate desc
+   </select>
+   
+   <!-- 남은 공연 정보 -->
+   <select id="reservSess" parameterType="member.MemberVO" resultType="reserv.ReservVO">
+   	  SELECT * FROM reserv WHERE memberNo = #{no} and playDate > now() ORDER BY playDate desc
    </select>
 </mapper>

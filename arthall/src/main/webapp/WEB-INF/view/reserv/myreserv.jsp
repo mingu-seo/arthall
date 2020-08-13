@@ -114,79 +114,48 @@
                         <div class="innerConts__cont">
                             <section class="cont__reserve">
                                 <h4 class="reserve__tit">예매한 공연&middot;전시&middot;행사</h4>
+                                <c:forEach var="reservMy" items="${reservMy}">
                                 <div class="reserve__ticket cf">
                                     <figure class="ticket__imgContainer">
                                         <img src="<%=request.getContextPath() %>/img/per/sub-pos-8.jpg" alt="지젤 포스터">
                                     </figure>
                                     <article class="ticket__infoContainer">
-                                        <h5 class="infoContainer__tit">공연이름 지젤</h5>
+                                        <h5 class="infoContainer__tit">공연이름 ${reservMy.playName}</h5>
                                         <ul class="infoContainer__listContainer">
-                                            <li class="listContainer__listInfo cf">예매번호 <span>no.20204572354</span></li>
-                                            <li class="listContainer__listInfo cf">장소 <span>대극장</span></li>
-                                            <li class="listContainer__listInfo cf">관람일 <span class="dDayBox">2020-08-09</span></li>
-                                            <li class="listContainer__listInfo cf">관람시간 <span>15:00</span></li>
-                                            <li class="listContainer__listInfo cf">입장권 <span>VIP석 3매, R석 5매</span></li>
-                                            <li class="listContainer__listInfo cf">가격 <span>1,100,000</span></li>
+                                            <li class="listContainer__listInfo cf">예매번호 <span>${reservMy.reservNo}</span></li>
+                                            <li class="listContainer__listInfo cf">장소 <span>${reservMy.hallName}</span></li>
+                                            <li class="listContainer__listInfo cf">관람일 <span class="dDayBox">${reservMy.playDate}</span></li>
+                                            <li class="listContainer__listInfo cf">관람시간 <span>${reservMy.time}</span></li>
+                                            <li class="listContainer__listInfo cf">입장권 <span>${reservMy.seat}</span></li>
+                                            <li class="listContainer__listInfo cf">가격 <span>${reservMy.price}</span></li>
                                         </ul>
                                         <p class="infoContainer__timerContainer"><i class="fas fa-sync-alt fa-spin"></i><span class="timerContainer__timer">D-53</span></p>
                                         <p class="infoContainer__btnContainer"><a href="javascript:confirm('정말 취소하시겠습니까?');" class="cancleBtn">예매취소</a></p>
                                     </article>
                                 </div>
-                                <div class="reserve__ticket cf">
-                                    <figure class="ticket__imgContainer">
-                                        <img src="<%=request.getContextPath() %>/img/per/sub-pos-8.jpg" alt="지젤 포스터">
-                                    </figure>
-                                    <article class="ticket__infoContainer">
-                                        <h5 class="infoContainer__tit">공연이름 지젤</h5>
-                                        <ul class="infoContainer__listContainer">
-                                           <li class="listContainer__listInfo cf">예매번호 <span>no.20204572354</span></li>
-                                            <li class="listContainer__listInfo cf">장소 <span>대극장</span></li>
-                                            <li class="listContainer__listInfo cf">관람일 <span class="dDayBox">2020-08-20</span></li>
-                                            <li class="listContainer__listInfo cf">관람시간 <span>15:00</span></li>
-                                            <li class="listContainer__listInfo cf">입장권 <span>VIP석 3매, R석 5매</span></li>
-                                            <li class="listContainer__listInfo cf">가격 <span>1,100,000</span></li>
-                                        </ul>
-                                        <p class="infoContainer__timerContainer"><i class="fas fa-sync-alt fa-spin"></i><span class="timerContainer__timer">D-53</span></p>
-                                        <p class="infoContainer__btnContainer"><a href="javascript:confirm('정말 취소하시겠습니까?');" class="cancleBtn">예매취소</a></p>
-                                    </article>
-                                </div>
+                                </c:forEach>
+                                
                             </section>
                             <section class="cont__watched">
                                 <h4 class="watched__tit">관람한 공연&middot;전시&middot;행사</h4>
+                                <c:forEach var="reservMyPass" items="${reservMyPass}">
                                 <div class="watched__ticket cf">
                                     <figure class="ticket__imgContainer">
                                         <img src="<%=request.getContextPath() %>/img/per/sub-pos-8.jpg" alt="지젤 포스터">
                                     </figure>
                                     <article class="ticket__infoContainer">
-                                        <h5 class="infoContainer__tit">공연이름 지젤</h5>
+                                        <h5 class="infoContainer__tit">공연이름 ${reservMyPass.playName}</h5>
                                         <ul class="infoContainer__listContainer">
-                                           <li class="listContainer__listInfo cf">예매번호 <span>no.20204572354</span></li>
-                                            <li class="listContainer__listInfo cf">장소 <span>대극장</span></li>
-                                            <li class="listContainer__listInfo cf">관람일 <span>2020-09-15</span></li>
-                                            <li class="listContainer__listInfo cf">관람시간 <span>15:00</span></li>
-                                            <li class="listContainer__listInfo cf">입장권 <span>VIP석 10매, R석 10매, S석 10매, A석 10매, B석 10매, 휠체어석 10매</span></li>
-                                            <li class="listContainer__listInfo cf">가격 <span>1,100,000</span></li>
+                                           <li class="listContainer__listInfo cf">예매번호 <span>${reservMyPass.reservNo}</span></li>
+                                            <li class="listContainer__listInfo cf">장소 <span>${reservMyPass.hallName}</span></li>
+                                            <li class="listContainer__listInfo cf">관람일 <span>${reservMyPass.playDate}</span></li>
+                                            <li class="listContainer__listInfo cf">관람시간 <span>${reservMyPass.time}</span></li>
+                                            <li class="listContainer__listInfo cf">입장권 <span>${reservMyPass.seat}</span></li>
+                                            <li class="listContainer__listInfo cf">가격 <span>${reservMyPass.price}</span></li>
                                         </ul>
                                     </article>
                                 </div>
-                                <div class="watched__ticket cf">
-                                    <figure class="ticket__imgContainer">
-                                        <img src="<%=request.getContextPath() %>/img/per/sub-pos-8.jpg" alt="지젤 포스터">
-                                    </figure>
-                                    <article class="ticket__infoContainer">
-                                        <h5 class="infoContainer__tit">공연이름 지젤</h5>
-                                        <ul class="infoContainer__listContainer">
-                                           <li class="listContainer__listInfo cf">예매번호 <span>no.20204572354</span></li>
-                                            <li class="listContainer__listInfo cf">장소 <span>대극장</span></li>
-                                            <li class="listContainer__listInfo cf">관람일 <span>2020-08-20</span></li>
-                                            <li class="listContainer__listInfo cf">관람시간 <span>15:00</span></li>
-                                            <li class="listContainer__listInfo cf">입장권 <span>VIP석 3매, R석 5매</span></li>
-                                            <li class="listContainer__listInfo cf">가격 <span>1,100,000</span></li>
-                                        </ul>
-                                    </article>
-                                </div>
-                            </section>
-                        </div>
+                                </c:forEach>
                     </section>
                 </div>
             </main>
