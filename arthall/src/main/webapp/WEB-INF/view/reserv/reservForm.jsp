@@ -18,7 +18,7 @@
 function check(){
 	if ($("#resultBox__date").val() == ""){
 		alert("날짜를 선택하세요");
-	} else if ($("#resultBox__time").val()== ""){
+	} else if ($("#resultBox__time").val() == ""){
 		alert("시간을 선택하세요");
 	} else if ($("#resultBox__price").val() == "" || $("#resultBox__price").val() == "0원"){
 		alert("좌석을 선택하세요");
@@ -32,7 +32,7 @@ function check(){
 		if ($('#resultBox__sClass').val() != "") {
 			$('input[name=seatType2]').val('S석/'+$('#resultBox__sClass').val());
 		}
-		$("#tiket__form").submit();
+		$("#ticket__form").submit();
 	}
 	
 	
@@ -263,7 +263,7 @@ function check(){
                                 <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
                             </li>
                             <li class="classTable__classList rClass cf">
-                                <span class="classList__seatClass" id>R석</span>
+                                <span class="classList__seatClass">R석</span>
                                 <span class="classList__seatPrice">130,000원</span>
                                 <input type="number" value="1" min="1" max="10" step="1" class="classList__seatNumber">
                             </li>
@@ -289,9 +289,9 @@ function check(){
                             </li>
                         </ul>
                     </article>
-                    <article class="ticketBox__ticketBoxInner tiketInfo">
+                    <article class="ticketBox__ticketBoxInner ticketInfo">
                         <h2 class="ticketBoxInner__tit">나의 예매현황</h2>
-                        <form method="post" action="payment.do" name="tiket__form" id="tiket__form" class="tiketInfo__form">
+                        <form method="post" action="payment.do" name="ticket__form" id="ticket__form" class="ticketInfo__form">
                             <input type="hidden" name="playNo" value="${play.no}">
                             <input type="hidden" name="playName" value="${play.playName}">
                             <input type="hidden" name="seatType" value="">
@@ -312,24 +312,19 @@ function check(){
                                     </li>
                                     <li class="resultBox__classList cf">
                                         <label for="">R석</label><input type="text" id="resultBox__rClass" class="resultBox__class" value="" readonly>
-                                        <input type="hidden" value="R석">
                                     </li> 
                                     <li class="resultBox__classList cf">
                                         <label for="">S석</label><input type="text" id="resultBox__sClass" class="resultBox__class" value="" readonly>
-                                        <input type="hidden" value="R석">
                                     </li>
                                     <li class="resultBox__classList cf">
                                         <label for="">A석</label><input type="text" id="resultBox__aClass" class="resultBox__class" value="" readonly>
-                                        <input type="hidden" value="R석">
                                     </li>
                                     <li class="resultBox__classList cf">
                                         <label for="">B석</label><input type="text" id="resultBox__bClass" class="resultBox__class" value="" readonly>
-                                        <input type="hidden" value="B석">
                                     </li>
                                     <li class="resultBox__classList cf">
                                         <label for="">휠체어석</label><input type="text" id="resultBox__wheelClass" class="resultBox__class" value="" readonly>
-                                        <input type="hidden" value="휠체어석">
-                                    </li>
+                                     </li>
                                     <li class="cf">
                                         <label for="resultBox__price">가격</label><input type="text" name="priceAll" id="resultBox__price" value="" required readonly>
                                     </li>

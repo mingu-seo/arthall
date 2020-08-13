@@ -2,7 +2,7 @@ package reserv;
 
 public class TicketVO {
 
-	private String no;
+	private int no;
 	private String reservNo;
 	private String seatType;
 	private String seatType1;
@@ -32,7 +32,7 @@ public class TicketVO {
 	}
 	
 	
-	public String getNo() {
+	public int getNo() {
 		return no;
 	}
 	public String getPay() {
@@ -41,7 +41,7 @@ public class TicketVO {
 	public void setPay(String pay) {
 		this.pay = pay;
 	}
-	public void setNo(String no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 	public String getReservNo() {

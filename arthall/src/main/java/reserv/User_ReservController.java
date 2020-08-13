@@ -25,7 +25,6 @@ public class User_ReservController {
 	// 예약 폼으로 이동
 	@RequestMapping("/reservForm.do")
 	public String reservForm(Model model, ReservVO param) {
-		System.out.println("친구야 이건 된거지?");
 		PlayVO playOne = reservService.playOne(param);
 		List<PerformVO> playList = reservService.playList(param);
 		// 이거 perform에서 전시 시간 받아올라그랬는데 왜 안댐
@@ -49,13 +48,21 @@ public class User_ReservController {
 	}
 	
 	@RequestMapping("reservOne.do")
-	public String myreserv(HttpSession sess, ReservVO param, MemberVO member, TicketVO ticket) {
+	public String myreservForm(Model model, HttpSession sess, ReservVO param, MemberVO member, TicketVO ticket) {
 		
-		System.out.println("이 값들이 지금 필요한 값들");
+		
 		String pageName = reservService.reservOne(sess, param, member, ticket);
-		System.out.println("값은 잘 들어간거?");
+		
+		model.addAttribute("msg", "결제 완료 되었습니다");
+		model.addAttribute("url", "myreserv.do");
 		
 		return pageName;
+	}
+	
+	@RequestMapping("myreserv.do")
+	public String myreserv(Model model, HttpSession sess, ReservVO param, MemberVO member, TicketVO ticket) {
+		
+		return "reserv/myreserv";
 	}
 	
 }

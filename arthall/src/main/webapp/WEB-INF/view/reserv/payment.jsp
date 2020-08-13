@@ -15,24 +15,11 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
    	function check(){
-//    		if ($("#cardCorp option:selected").val() != null){
-//    			alert("1");
-//    			$('input[name=pay]').val("신용/체크카드");
-//    		}
-//    		if ($("#smartphonePaymentCorp option:selected").val() != null){
-//    			alert("2");
-//    			$('input[name=pay]').val("간편 결제");
-//    		}
-//    		if ($("#bankCorp option:selected").val() != null){
-//    			alert("3");
-//    			$('input[name=pay]').val("무통장입금");
-//    		}
-//    		if ($("#mobilePaymentCorp option:selected").val() != null){
-//    			alert("4");
-//    			$('input[name=pay]').val("휴대폰 결제");
-//    		}
-   		alert("결제 완료 되었습니다");
-//    		window.close();
+   		if (confirm("결제하시겠습니까?")) {
+		   $("#paymentForm").submit();
+	   } else{
+		   return;
+	   }
    	}
     </script>
 </head>
@@ -158,7 +145,11 @@
                         <input type="hidden" name="pay" value="">
                         <input type="hidden" name="playName" value="${vo.playName}">
                         <input type="hidden" name="time" value="${vo.time}">
+                        <input type="hidden" name="price" value="${ticket.priceAll}">
                         <input type="hidden" name="playDate" value="${vo.reservDate}">
+                        <input type="hidden" name="seatType" value="${ticket.seatType}">
+                        <input type="hidden" name="seatType1" value="${ticket.seatType1}">
+                        <input type="hidden" name="seatType2" value="${ticket.seatType2}">
                             <fieldset>
                                 <legend>결제정보</legend>
                                 <p class="paymentForam__paymentInfo">
@@ -176,7 +167,7 @@
                                     </c:if>
                                     <span>${ticket.priceAll}</span>
                                 </p>
-                                <input type="submit" class="paymentForm__submit" value="결제완료" onclick="check();">
+                                <input type="button" class="paymentForm__submit" value="결제완료" onclick="check();">
                             </fieldset>
                         </form>
                     </article>
