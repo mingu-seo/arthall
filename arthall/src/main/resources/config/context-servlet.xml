@@ -54,7 +54,8 @@
     <mvc:interceptors>
        <mvc:interceptor>
           <mvc:mapping path="/member/changePwdForm.do"/>
-          <mvc:mapping path="/member/changePwd.do"/> 
+          <mvc:mapping path="/member/changePwd.do"/>
+          <mvc:mapping path="/member/mypage.do"/>  
           <mvc:mapping path="/mypage/**"/> 
           <mvc:mapping path="/article/writeForm.do"/> 
           <mvc:mapping path="/article/write.do"/> 

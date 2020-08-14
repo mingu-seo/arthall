@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -17,15 +18,28 @@
 function check(){
 	if ($("#resultBox__date").val() == ""){
 		alert("날짜를 선택하세요");
-	} else if ($("#resultBox__time").val()== ""){
+	} else if ($("#resultBox__time").val() == ""){
 		alert("시간을 선택하세요");
 	} else if ($("#resultBox__price").val() == "" || $("#resultBox__price").val() == "0원"){
 		alert("좌석을 선택하세요");
 	} else {
-		$("#tiket__form").submit();
+		if ($('#resultBox__vipClass').val() != ""){
+			$('input[name=seatType]').val('VIP석/'+$('#resultBox__vipClass').val());
+		}
+		if ($('#resultBox__rClass').val() != "") {
+			$('input[name=seatType1]').val('R석/'+$('#resultBox__rClass').val());
+		}
+		if ($('#resultBox__sClass').val() != "") {
+			$('input[name=seatType2]').val('S석/'+$('#resultBox__sClass').val());
+		}
+		$("#ticket__form").submit();
 	}
 	
+	
+	
+	
 }
+
 </script>
 </head>
 
@@ -229,18 +243,15 @@ function check(){
                     </div>
                 </article>
                 <div class="ticketBox__choose cf">
-                    <article class="ticketBox__ticketBoxInner timeInfo">
+                <article class="ticketBox__ticketBoxInner timeInfo">
                         <h2 class="ticketBoxInner__tit">회차선택</h2>
                         <ol class="timeInfo__timeTable">
+                        	<c:forEach var="play" items="${playList}">
                             <li class="timeTable__list">
-                            <!-- 전시회랑 아닌거 if문 걸기 -->
-                                <span class="list__Time">11:00~20:00</span>
-                                <p>전시 입장 마감 시간은 19:00입니다.</p>
+                                <span class="list__Time">${play.time}</span>
+                                <p>배우 : ${play.actor}</p>
                             </li>
-                            <li class="timeTable__list">
-                                <span class="list__Time">20:00</span>
-                                <p>출연 : 박건형 · 최우혁 · 박혜나 · 이지수 · 홍경수 · 이희정</p>
-                            </li>
+                        	</c:forEach>
                         </ol>
                     </article>
                     <article class="ticketBox__ticketBoxInner classInfo">
@@ -278,9 +289,14 @@ function check(){
                             </li>
                         </ul>
                     </article>
-                    <article class="ticketBox__ticketBoxInner tiketInfo">
+                    <article class="ticketBox__ticketBoxInner ticketInfo">
                         <h2 class="ticketBoxInner__tit">나의 예매현황</h2>
-                        <form method="post" action="payment.do" name="tiket__form" id="tiket__form" class="tiketInfo__form">
+                        <form method="post" action="payment.do" name="ticket__form" id="ticket__form" class="ticketInfo__form">
+                            <input type="hidden" name="playNo" value="${play.no}">
+                            <input type="hidden" name="playName" value="${play.playName}">
+                            <input type="hidden" name="seatType" value="">
+                            <input type="hidden" name="seatType1" value="">
+                            <input type="hidden" name="seatType2" value="">
                             <fieldset>
                                 <legend>예매현황</legend>
                                 <ul class="form__resultBox">
@@ -291,7 +307,8 @@ function check(){
                                         <label for="resultBox__time">시간</label><input type="text" name="time" id="resultBox__time" value="" required readonly>
                                     </li>
                                     <li class="resultBox__classList cf" id="resultBox__classList">
-                                        <label for="resultBox__vipClass">VIP석</label><input type="text" id="resultBox__vipClass" class="resultBox__class" value="" readonly>
+                                        <label for="resultBox__vipClass">VIP석</label>
+                                        <input type="text" id="resultBox__vipClass" class="resultBox__class" value="" readonly>
                                     </li>
                                     <li class="resultBox__classList cf">
                                         <label for="">R석</label><input type="text" id="resultBox__rClass" class="resultBox__class" value="" readonly>
@@ -307,9 +324,9 @@ function check(){
                                     </li>
                                     <li class="resultBox__classList cf">
                                         <label for="">휠체어석</label><input type="text" id="resultBox__wheelClass" class="resultBox__class" value="" readonly>
-                                    </li>
+                                     </li>
                                     <li class="cf">
-                                        <label for="resultBox__price">가격</label><input type="text" name="price" id="resultBox__price" value="" required readonly>
+                                        <label for="resultBox__price">가격</label><input type="text" name="priceAll" id="resultBox__price" value="" required readonly>
                                     </li>
                                 </ul>
                                 <input type="button" class="form__submit" value="다음 단계로" onclick="check();">

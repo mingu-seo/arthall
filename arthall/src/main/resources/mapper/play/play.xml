@@ -28,12 +28,28 @@
 		ORDER BY no DESC LIMIT #{startRow}, #{size}
 	</select>
 	
+	<select id = "performCount" parameterType="play.PlayVO" resultType="Integer">
+		SELECT COUNT(*) FROM play WHERE playType = 1;
+	</select>
+	
+	<select id = "performList" parameterType="play.PlayVO" resultType="play.PlayVO">
+		SELECT * FROM play WHERE playType = 1;
+	</select>
+	
+	<select id = "exhibitCount" parameterType="play.PlayVO" resultType="Integer">
+		SELECT COUNT(*) FROM play WHERE playType = 2;
+	</select>
+	
+	<select id = "exhibitList" parameterType="play.PlayVO" resultType="play.PlayVO">
+		SELECT * FROM play WHERE playType = 2; 
+	</select>
+	
 	<insert id = "write" parameterType="play.PlayVO" useGeneratedKeys="true">
 		INSERT INTO play
-			(playName, hallNo, startDate, endDate, playType, starring, content,
+			(playName, hallName, startDate, endDate, playType, playSubType, starring, content,
 			rating, runningTime, inquiry, producer, filename)
 		VALUES
-			(#{playName}, #{hallNo}, #{startDate}, #{endDate}, #{playType}, #{starring},
+			(#{playName}, #{hallName}, #{startDate}, #{endDate}, #{playType}, #{playSubType}, #{starring},
 			#{content}, #{rating}, #{runningTime}, #{inquiry}, #{producer}, #{filename});
 		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
 			SELECT last_insert_id();
@@ -47,10 +63,11 @@
 	<update id = "modify" parameterType="play.PlayVO">
 		UPDATE play SET
 		playName = #{playName},
-		hallNo = #{hallNo},
+		hallName = #{hallName},
 		startDate = #{startDate},
 		endDate = #{endDate},
 		playType = #{playType},
+		playSubType = #{playSubType},
 		starring = #{starring},
 		content = #{content},		
 		rating = #{rating},

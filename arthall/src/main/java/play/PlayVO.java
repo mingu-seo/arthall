@@ -6,8 +6,9 @@ import java.sql.Timestamp;
 public class PlayVO extends util.Parameter{
 
 	private int no;
-	private int hallNo;
+	private String hallName;
 	private int playType;
+	private String playSubType;
 	private String playName;
 	private Date startDate;
 	private Date endDate;
@@ -35,12 +36,12 @@ public class PlayVO extends util.Parameter{
 		this.no = no;
 	}
 
-	public int getHallNo() {
-		return hallNo;
+	public String getHallName() {
+		return hallName;
 	}
 
-	public void setHallNo(int hallNo) {
-		this.hallNo = hallNo;
+	public void setHallName(String hallName) {
+		this.hallName = hallName;
 	}
 
 	public int getPlayType() {
@@ -49,6 +50,14 @@ public class PlayVO extends util.Parameter{
 
 	public void setPlayType(int playType) {
 		this.playType = playType;
+	}
+
+	public String getPlaySubType() {
+		return playSubType;
+	}
+
+	public void setPlaySubType(String playSubType) {
+		this.playSubType = playSubType;
 	}
 
 	public String getPlayName() {

@@ -4,6 +4,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<style type="text/css">
+  .long{
+/*   display:block; */
+  white-space: pre;
+  width: 10%;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  
+  line-height: 1.2em;
+  height: 3.6em;
+  }
+</style>
+<!-- #frm > table > tbody > tr:nth-child(1) > td:nth-child(8) -->
+<!-- 출처: https://rongscodinghistory.tistory.com/43 [악덕고용주의 개발 일기] -->
 <script>
 function del() {
    if (confirm('정말로 삭제하시겠습니까?')) {
@@ -40,31 +54,30 @@ function del() {
                <!-- 내용 : s -->
                <div id="bbs">
                   <div id="blist">									
-                     <p><span><strong>총 "${vo.totalCount}"개</strong>  |  ${vo.page }/${vo.totalPage}페이지</span></p>
+                     <p><span><strong>총 "${vo.totalCount}"개</strong>  |  ${vo.page}/${vo.totalPage}페이지</span></p>
                      <form name="frm" id="frm" action="delete.do" method="post">
-                     <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;" summary="관리자 관리목록입니다.">
                         <colgroup>
-                           <col class="w3" />
-                           <col class="w5" />
-                           <col class="w4" />
-                           <col class="w5" />
-                           <col class="w8" />
-                           <col class="w7" />
-                           <col class="w7" />
-                           <col class="w20" />
-                           <col class="w7" />
-                           <col class="w7" />
-                           <col class="w7" />
-                           <col class="w7" />
-                           <col class="w7" />
-                           <col class="w7" />
-                           <col class="w7" />
+                           <col width="3%" />
+                           <col width="3%" />
+                           <col width="5%" />
+                           <col width="5%" />
+                           <col width="7%" />
+                           <col width="5%" />
+                           <col width="5%" />
+                           <col width="7%" />
+                           <col width="7%" />
+                           <col width="5%" />
+                           <col width="5%" />
+                           <col width="7%" />
+                           <col width="7%" />
+                           <col width="5%" />
                         </colgroup>
                         <thead>
                            <tr>
                               <th scope="col" class="first" rowspan="2"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
                               <th scope="col" rowspan="2">공연번호</th>
-                              <th scope="col" rowspan="2">홀번호</th>
+                              <th scope="col" rowspan="2">홀이름</th>
                               <th scope="col" rowspan="2">공연/전시</th>
                               <th scope="col" rowspan="2">제목</th>
                               <th scope="col" colspan="2">기간</th>
@@ -92,17 +105,24 @@ function del() {
                               <tr>
                                  <td class="first"><input type="checkbox" name="no" id="no" value="${play.no}"/></td>
                                  <td class="title" style="text-align:center" onclick="location.href='modifyForm.do?no=${play.no}'">${play.no}</td>
-                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.hallNo}</td>
-                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.playType}</td>
-                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.playName}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.hallName}</td>
+                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">
+                    	         	<c:choose>
+	                                    <c:when test="${play.playType eq 1}">공연</c:when>
+	                                    <c:when test="${play.playType eq 2}">전시</c:when>
+	                                    <c:otherwise>${play.playType}</c:otherwise>
+	                                </c:choose>
+	                                - ${play.playSubType}
+	                             </td>
+                                 <td class="long" onclick="location.href='modifyForm.do?no=${play.no}'">${play.playName}</td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.startDate}</td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.endDate}</td>
-                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.starring}</td>
-                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.content}</td>
+                                 <td class="long" onclick="location.href='modifyForm.do?no=${play.no}'">${play.starring}</td>
+                                 <td class="long" onclick="location.href='modifyForm.do?no=${play.no}'"><nobr>${play.content}</nobr></td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.rating}</td>
                                  <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.runningTime}</td>
-                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.inquiry}</td>
-                                 <td onclick="location.href='modifyForm.do?no=${play.no}'">${play.producer}</td>
+                                 <td class="long"onclick="location.href='modifyForm.do?no=${play.no}'">${play.inquiry}</td>
+                                 <td class="long"onclick="location.href='modifyForm.do?no=${play.no}'">${play.producer}</td>
                                  <td class="last"><a class="fileview" href="fileView.do?filename=${play.filename}"><strong>${play.filename}</strong></a></td>
                               </tr>
                               <tr>
@@ -139,8 +159,8 @@ function del() {
                         <div class="search">
                            <select name="stype" title="검색을 선택해주세요">
                            	  <option value="all" <c:if test="${vo.stype == 'all'}">selected</c:if>>전체</option>
-                           	  <option value="playName" <c:if test="${vo.stype == 'playName'}">selected</c:if>>공연명</option>
-                              <option value="actor" <c:if test="${vo.stype=='actor'}">selected</c:if>>배우</option>
+                           	  <option value="playName" <c:if test="${vo.stype == 'playName'}">selected</c:if>>제목</option>
+                              <option value="starring" <c:if test="${vo.stype == 'starring'}">selected</c:if>>출연진/작가</option>
                            </select>
                            <input type="text" name="sval" value="${vo.sval}" title="검색할 내용을 입력해주세요" />
                            <input type="image" src="<%=request.getContextPath()%>/img/admin/btn_search.gif" class="sbtn" alt="검색" />

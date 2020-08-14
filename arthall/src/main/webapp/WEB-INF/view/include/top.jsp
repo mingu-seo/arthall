@@ -24,7 +24,7 @@ function logout() {
 	                        </c:if>
 	                        <c:if test="${!empty authUser }">
 	                       		<li><a href="#" onclick="logout();">로그아웃</a></li>
-								<li><a href="#">마이페이지</a></li>
+								<li><a href="<%=request.getContextPath()%>/member/mypage.do">마이페이지</a></li>
 	                        </c:if>
                         </ul>
                         <nav class="gnb">
@@ -41,10 +41,10 @@ function logout() {
                                     </ul>
                                 </li>
                                 <li class="hover">
-                                    <a href="#"><span>공연·전시·행사</span></a>
+                                    <a href="<%=request.getContextPath()%>/play/performList.do"><span>공연·전시·행사</span></a>
                                     <ul>
                                         <li><a href="#">캘린더</a></li>
-                                        <li><a href="perf_info.html">공연정보</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/play/performList.do">공연정보</a></li>
                                         <li><a href="exhi_info.html">전시정보</a></li>
                                         <li><a href="event_info.html">행사정보</a></li>
                                     </ul>

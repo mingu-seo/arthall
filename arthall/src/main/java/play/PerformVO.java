@@ -7,11 +7,11 @@ public class PerformVO extends util.Parameter{
 	private int no;
 	private String playName;
 	private int playNo;
-	private int time;
+	private String time;
 	private String actor;
-	private int priceA;
-	private int priceB;
-	private int priceC;
+	private String priceA;
+	private String priceB;
+	private String priceC;
 	
 	public PerformVO(){
 		super.setPage(1);
@@ -41,10 +41,10 @@ public class PerformVO extends util.Parameter{
 		this.playNo = playNo;
 	}
 
-	public int getTime() {
+	public String getTime() {
 		return time;
 	}
-	public void setTime(int time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 	public String getActor() {
@@ -53,24 +53,31 @@ public class PerformVO extends util.Parameter{
 	public void setActor(String actor) {
 		this.actor = actor;
 	}
-	public int getPriceA() {
+
+	public String getPriceA() {
 		return priceA;
 	}
-	public void setPriceA(int priceA) {
+
+	public void setPriceA(String priceA) {
 		this.priceA = priceA;
 	}
-	public int getPriceB() {
+
+	public String getPriceB() {
 		return priceB;
 	}
-	public void setPriceB(int priceB) {
+
+	public void setPriceB(String priceB) {
 		this.priceB = priceB;
 	}
-	public int getPriceC() {
+
+	public String getPriceC() {
 		return priceC;
 	}
-	public void setPriceC(int priceC) {
+
+	public void setPriceC(String priceC) {
 		this.priceC = priceC;
 	}
+	
 	
 	
 }

@@ -52,19 +52,19 @@ function check() {
                                                         <span class="hidden">이름</span>
                                                         <i class="fas fa-user"></i>
                                                     </label>
-                                                    <input type="text" id="id" name="id" placeholder="아이디 / ID">
+                                                    <input type="text" id="id" name="id" value="kdy7710" placeholder="아이디 / ID">
                                                 </li>
                                                 <li class="cf">
                                                     <label for="pw">
                                                         <i class="fas fa-unlock"></i>
                                                     </label>
-                                                    <input type="password" id="pw" name="pw" placeholder="비밀번호 / Password">
+                                                    <input type="password" id="pw" name="pw" value="eodud123" placeholder="비밀번호 / Password">
                                                 </li>
                                             </ul>
                                         </div>
                                         <p class="form__findBtns">
                                             <a href="<%=request.getContextPath()%>/member/findIDForm.do">아이디 찾기</a>
-                                            <a href="<%=request.getContextPath()%>/member/findpasswordForm.do">비밀번호 찾기</a>
+                                            <a href="<%=request.getContextPath()%>/member/findPasswordForm.do">비밀번호 찾기</a>
                                         </p>
                                         <input type="button" value="로그인" class="form__submit" onclick="check();">
                                         <a href="<%=request.getContextPath()%>/member/joinForm.do" class="form__joinBtn">회원가입</a>

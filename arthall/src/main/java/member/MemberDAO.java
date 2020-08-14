@@ -54,11 +54,16 @@ public class MemberDAO {
 	public MemberVO findId(MemberVO param) {
 		
 		return sqlSession.selectOne("member.findId", param);
-	}	
+	}
+	
+	// 임시비밀번호 업데이트
+	public int findPassword(MemberVO param) {
+		return sqlSession.update("member.findPassword", param);
+	}
 	
 	// 마지막 방문 일자 수정
-		public int lastVisit(String id) {
-			return sqlSession.update("member.lastVisit", id);
+	public int lastVisit(String id) {
+		return sqlSession.update("member.lastVisit", id);
 	}
 
 	
@@ -75,5 +80,33 @@ public class MemberDAO {
 		return sqlSession.selectOne("member.memberdetail", param);
 	}
 	
+	// 회원정보_마이페이지 접근시 비밀번호 확인
+	public MemberVO confirmPw(MemberVO param) {
+		MemberVO vo = sqlSession.selectOne("member.confirmPw", param);
+		return vo;
+	}
+	
+	public int myInfo_modify(MemberVO param) {
+		return sqlSession.update("member.myInfo_modify", param);
+	}
+	
+
+	// 회원탈퇴
+	public int deleteId(String id) {
+		return sqlSession.delete("member.deleteId", id);
+	}
+	
+	// 탈퇴 시 비밀번호 확인
+	public boolean checkPw(String id, String password) {
+		boolean result = false;
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("id", id);
+		m.put("password", password);
+		int count = sqlSession.selectOne("member.checkPw", m);
+		if(count == 1) result = true;
+		return result;
+	}
+
+
 	
 }

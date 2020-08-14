@@ -9,16 +9,18 @@
      
 <script>
 function check() {
-	if($("#id").val().trim() == '') {
-		alert("아이디를 입력해 주세요");
-		$("#id").focus();
+	if($("#name").val().trim() == '') {
+		alert("이름을 입력해 주세요");
+		$("#name").focus();
 		
-	} else if($("#pw").val() == '') {
-		alert("비밀번호를 입력해 주세요");
-		$("#pw").focus();
+	} else if($("#email").val() == '') {
+		alert("이메일을 입력해 주세요");
+		$("#email").focus();
 	} else {
 		$("#findId").submit();
 	}
+	
+	return false;
 }
 
 </script>
@@ -62,7 +64,7 @@ function check() {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <input type="submit" value="아이디 찾기" class="form__submit">
+                                        <input type="button" value="아이디 찾기" class="form__submit" onclick="return check()">
                                     </fieldset>
                                 </form>
                             </div>

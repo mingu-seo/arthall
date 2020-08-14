@@ -4,6 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+<style>.hasDatepicker{cursor:pointer;}</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script>
 //smarteditor
 var oEditors = [];
@@ -34,6 +36,8 @@ $(function() {
 		 oEditors.getById['ct'].exec('UPDATE_CONTENTS_FIELD',[]);
 		}
 
+
+	
 // $(function() {
 // 	$("#playType").change(function() {
 // 		if ($(this).val() == "1") {
@@ -55,6 +59,58 @@ $(function() {
 // 		$("#priceTr0").remove();
 // 	}
 // }
+</script>
+<!-- datepicker -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$(function(){
+	$("#startDate").datepicker({
+		dateFormat: 'yy-mm-dd',
+		showMonthAfterYear:true,
+		changeYear:true,
+		changeMonth:true,
+		monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		dayNamesMin: ['일','월','화','수','목','금','토']
+	});
+	$("#endDate").datepicker({
+		dateFormat: 'yy-mm-dd',
+		showMonthAfterYear:true,
+		changeYear:true,
+		changeMonth:true,
+		monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		dayNamesMin: ['일','월','화','수','목','금','토']
+	});
+});
+</script>
+<script>
+// file preview 1
+function setPreview(event) {
+	var reader = new FileReader();
+	reader.onload = function(event) {
+		var img = document.createElement("img");
+		img.setAttribute("src", event.target.result);
+		document.querySelector("div#file_container").appendChild(img);
+	};
+	reader.readAsDataURL(event.target.files[0]);
+}
+
+//// file preview 2 (안됨)
+// function readURL(input){
+// 	if(input.files && input.files[0]){
+// 		var reader = new FileReader();
+		
+// 		reader.onload = function(e) {
+// 			$("#filename_tmp").attr("src", e.target.result);
+// 		}
+		
+// 		reader.readAsDataURL(input.files[0]);
+// 	}
+// }
+
+// $("#file_container").change(function(){
+// 	serPreview(this);
+// });
 </script>
 </head>
 <body> 
@@ -79,8 +135,8 @@ $(function() {
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="0.05%" />
-									<col class="w2" />
-									<col class="w2" />
+									<col width="1%" />
+									<col width="" />
 									<col width="10%" />
 								</colgroup>
 								<tbody>
@@ -91,31 +147,32 @@ $(function() {
 										</td>
 									</tr>
 									<tr>
-										<th scope="row" colspan="2"><label for="">* 홀번호</label></th>
+										<th scope="row" colspan="2"><label for="">* 홀이름</label></th>
 										<td colspan="10">
-											<input type="text" id="hallNo" name="hallNo" class="w20" title="제목을 입력해주세요" value='2'/>	
+											<input type="text" id="hallName" name="hallName" class="w20" title="제목을 입력해주세요" value='2'/>	
 										</td>
 									</tr>
 									<tr>
 										<th scope="row" rowspan="2"><label for="">*기간</label></th>
-			                            <th scope="col">시작일<br>(캘린더적용?)</th> 
+			                            <th scope="col">시작일</th> 
 										<td colspan="2">
-											<input type="text" id="startDate" name="startDate" class="w5" placeholder="YYYY-MM-DD" value='2000-05-05'/>	
+											<input type="text" id="startDate" name="startDate" autocomplete="off"/>	
 										</td>
 									</tr>
 			                        <tr>
-				                        <th scope="col">종료일<br>(캘린더적용?)</th>
+				                        <th scope="col">종료일</th>
 				                        <td colspan="2">
-											<input type="text" id="endDate" name="endDate" class="w5" placeholder="YYYY-MM-DD" value='2000-05-05' />	
+											<input type="text" id="endDate" name="endDate" autocomplete="off"/>	
 										</td>
 			                        </tr>
 									<tr>
-										<th scope="row" colspan="2"><label for="">* 분류</label></th>
+										<th scope="row" colspan="2"><label for="">* 대분류/소분류</label></th>
 										<td>
 											<SELECT id="playType" name="playType" style="font-size: 12px">
 												<OPTION value='1'>공연</OPTION>
 												<OPTION value='2'>전시</OPTION>
 											</SELECT>
+											<input type="text" id="playSubType" name="playSubType" class="w500" value='' />
 										</td>
 									</tr>
 <!-- 									<tr id="priceTr0"> -->
@@ -175,10 +232,8 @@ $(function() {
 									<tr>
 										<th scope="row" colspan="2"><label for="">첨부파일</label></th>
 										<td colspan="10">
-											<c:if test="${!empty vo.filename}">
-												<td><img src='/upload/play/${vo.filename}'/></td>
-											</c:if>
-											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" title="첨부파일을 업로드 해주세요." value=''/>	
+											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" onchange="setPreview(event);" />
+											<div id = "file_container"></div>	
 										</td>
 									</tr>
 								</tbody>
