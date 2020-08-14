@@ -34,9 +34,13 @@ public interface MemberService {
 
 	public boolean checkPw(String id, String password);
 
+	public String findPassword(Model model, HttpServletRequest req, MemberVO param) throws Exception;
+		
+	public String confirmPw(HttpServletRequest req, MemberVO param);
 	
-
-
+	public String myInfoLoad(Model model, HttpServletRequest req, MemberVO param) throws Exception;
 	
+	public void myInfo_edit(Model model, HttpServletRequest req) throws Exception;
 	
+	public String myInfo_modify(Model model, HttpServletRequest req, MemberVO param);
 }

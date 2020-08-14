@@ -24,7 +24,7 @@ function logout() {
 	                        </c:if>
 	                        <c:if test="${!empty authUser }">
 	                       		<li><a href="#" onclick="logout();">로그아웃</a></li>
-								<li><a href="#">마이페이지</a></li>
+								<li><a href="<%=request.getContextPath()%>/member/mypage.do">마이페이지</a></li>
 	                        </c:if>
                         </ul>
                         <nav class="gnb">

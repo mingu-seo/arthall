@@ -24,7 +24,7 @@
                 <div class="main__content">
                     <section class="content__innerConts">
                         <h3 class="innerConts__tit">비밀번호 찾기</h3>
-                        <p>회원정보에 등록한 이메일과 입력한 이메일이 같아야 아이디&#183;비밀번호를 받을 수 있습니다. <br>개인정보는 확인용으로만 처리되며 본인확인 외 다른 용도로 사용되지 않습니다.</p>
+                        <p>회원정보에 등록한 이메일과 입력한 이메일이 같아야 비밀번호를 확인 할 수 있습니다. <br>개인정보는 확인용으로만 처리되며 본인확인 외 다른 용도로 사용되지 않습니다.</p>
                         <div class="innerConts__cont">
                             <div class="cont__find">
                                 <ul class="find__list cf">
@@ -33,7 +33,7 @@
                                 </ul>
                                <table class="pwResult">
                                    <tr>
-                                       <td>회원님의 임시 비밀번호는<br><span>'임시비밀번호'</span><br>입니다.</td>
+                                       <td>회원님의 임시 비밀번호를 입력하신 이메일로 발송하였습니다.<br>임시 비밀번호로 로그인 후 비밀번호 변경을 해주세요.</td>
                                    </tr>                              
                                </table>
                                <div class="pwResultBtn">

@@ -268,13 +268,11 @@
 													<input type="radio" name="sex" id="sex_three" value="3"><label for="sex_three">제 3의성</label>
 													<input type="radio" name="sex" id="sex_none" value="4" checked="checked"><label for="sex_none">기재원치않음</label>
 													<input type="hidden" name="gender" id="gender">
-													
 												</div>
 											</li>
 											<li>
 												<label for="datepicker"><span>*</span>생년월일</label> 
 												<input type="text" class="datepicker" id="birth" name="birth" placeholder="년도 / 월 / 일을 입력해주세요 (ex: 19920510)">
-												<!-- 다시 작업 필요 -->
 											</li>
 											<li>
 												<label for="tel"><span>*</span>연락처</label> 

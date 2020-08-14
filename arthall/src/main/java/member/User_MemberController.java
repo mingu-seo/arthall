@@ -99,6 +99,61 @@ public class User_MemberController {
 		return "member/findPasswordForm";
 	}
 	
+	@RequestMapping("member/findPassword.do")
+	public String findPassword(Model model, HttpServletRequest req, MemberVO param) throws Exception{
+		
+		String pageName = memberService.findPassword(model, req, param) ;
+		return pageName;
+	}
+	
+	@RequestMapping("member/findPasswordResult.do")
+	public String findPasswordResult(){
+		return "member/findPasswordResult";
+	}
+	
+	@RequestMapping("member/mypage.do")
+	public String mypage(){
+		return "member/mypage";
+	}
+	
+	//내 정보 조회_비밀번호 확인
+	@RequestMapping("/member/confirmPw.do")
+	public void confirmPw(HttpServletRequest req, MemberVO param, HttpServletResponse res) throws Exception {
+		String r = memberService.confirmPw(req, param);
+		res.setContentType("text/html; charset=utf-8");
+		PrintWriter out = res.getWriter();
+		out.print(r);
+		out.flush();
+	}
+	
+	@RequestMapping("member/myInfoLoad.do")
+	public String myInfoLoad(Model model, HttpServletRequest req, MemberVO param) throws Exception {
+		
+		String pageName = memberService.myInfoLoad(model, req, param) ;
+		return pageName;
+	}
+	
+	@RequestMapping("member/myInfo_show.do")
+	public String myInfo_show(){
+		return "member/myInfo_show";
+	}
+	
+	@RequestMapping("member/myInfo_edit.do")
+	public String myInfo_edit(Model model, HttpServletRequest req) throws Exception {
+		
+		memberService.myInfo_edit(model, req);
+		
+		return "member/myInfo_edit";
+	}
+	
+	@RequestMapping("member/myInfo_modify.do")
+	public String myInfo_modify(Model model, HttpServletRequest req, MemberVO param){
+		
+		String pageName = memberService.myInfo_modify(model, req, param);
+		
+		return pageName;
+	}
+
 	@RequestMapping("member/deleteId.do")
 	public String deleteId(@RequestParam String id, @RequestParam String password, Model model) {
 		boolean result = memberService.checkPw(id, password);

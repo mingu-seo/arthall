@@ -7,7 +7,6 @@
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/findID.css">
 </head>
-
 <div id = "wrap">
 	<a href="<%=request.getContextPath()%>/index.do" id="gomain">본문바로가기</a>
 	<!-- S T A R T :: headerArea-->

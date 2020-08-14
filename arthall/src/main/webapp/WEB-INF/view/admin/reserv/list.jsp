@@ -21,13 +21,7 @@ function cancle() {
 	   
 }
 
-function move() {
-	location.href="reservForm.do"
-}
 
-function move1() {
-	location.href="/index.do"
-}
 
 $(document).ready(function(){
     $("#allChk").click(function(){
