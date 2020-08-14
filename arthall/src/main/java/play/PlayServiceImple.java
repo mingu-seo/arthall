@@ -15,6 +15,7 @@ public class PlayServiceImple implements PlayService {
 
 	@Autowired PlayDAO playDao;
 	
+	/// Admin page
 	@Override
 	public List<PlayVO> list(PlayVO param) {
 		
@@ -282,5 +283,64 @@ public class PlayServiceImple implements PlayService {
 	}
 
 
+	/// User page
+	@Override
+	public List<PlayVO> performList(PlayVO param) {
+		
+		int startRow = (param.getPage()-1) * param.getSize(); //limit 시작값
+		int totalCount = playDao.performCount(param); // 총갯수
+		int totalPage = totalCount / param.getSize(); // 총 페이지수
+		if (totalCount % param.getSize() > 0) totalPage++;
+		
+		// 목록 하단 페이징 시작페이지
+		int startPage = param.getPage()/5*5+1;
+		if (param.getPage() % 5 == 0) startPage -= 5;
+		
+		// 목록 하단 페이징 마지막페이지
+		int endPage = startPage + 4;
+		if (endPage > totalPage) endPage = totalPage;
+		
+		
+		param.setStartRow(startRow);
+		param.setStartPage(startPage);
+		param.setEndPage(endPage);
+		param.setTotalCount(totalCount);
+		param.setTotalPage(totalPage);
+	
+		// 모두 list로
+		List<PlayVO> performList = playDao.performList(param);
+		
+		return performList;
+	}
 
+	
+	@Override
+	public List<PlayVO> exhibitList(PlayVO param) {
+		
+		int startRow = (param.getPage()-1) * param.getSize(); //limit 시작값
+		int totalCount = playDao.exhibitCount(param); // 총갯수
+		int totalPage = totalCount / param.getSize(); // 총 페이지수
+		if (totalCount % param.getSize() > 0) totalPage++;
+		
+		// 목록 하단 페이징 시작페이지
+		int startPage = param.getPage()/5*5+1;
+		if (param.getPage() % 5 == 0) startPage -= 5;
+		
+		// 목록 하단 페이징 마지막페이지
+		int endPage = startPage + 4;
+		if (endPage > totalPage) endPage = totalPage;
+		
+		
+		param.setStartRow(startRow);
+		param.setStartPage(startPage);
+		param.setEndPage(endPage);
+		param.setTotalCount(totalCount);
+		param.setTotalPage(totalPage);
+	
+		// 모두 list로
+		List<PlayVO> exhibitList = playDao.exhibitList(param);
+		
+		return exhibitList;
+	}
+	
 }

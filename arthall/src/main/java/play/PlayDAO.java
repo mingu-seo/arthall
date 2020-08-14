@@ -12,7 +12,8 @@ public class PlayDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	//Play
+	/// Admin page
+	// Play
 	public List<PlayVO> list(PlayVO param){
 		return sqlSession.selectList("play.list", param);
 	}
@@ -36,7 +37,7 @@ public class PlayDAO {
 		return sqlSession.selectOne("play.modifyView", param);
 	}
 	
-	//Perform
+	// Perform
 	public List<PerformVO> listP(PerformVO param){
 		return sqlSession.selectList("play.listP", param);
 	}
@@ -60,7 +61,7 @@ public class PlayDAO {
 		return sqlSession.selectOne("play.modifyViewP", param);
 	}
 	
-	//Exhibit
+	// Exhibit
 	public List<ExhibitVO> listE(ExhibitVO param){
 		return sqlSession.selectList("play.listE", param);
 	}
@@ -84,4 +85,21 @@ public class PlayDAO {
 		return sqlSession.selectOne("play.modifyViewE", param);
 	}
 		
+	/// User page
+	public int performCount(PlayVO param) {
+		return sqlSession.selectOne("play.performCount", param);
+	}
+	
+	public List<PlayVO> performList(PlayVO param){
+		return sqlSession.selectList("play.performList", param);
+	}
+	
+	public int exhibitCount(PlayVO param) {
+		return sqlSession.selectOne("play.exhibitCount", param);
+	}
+	
+	public List<PlayVO> exhibitList(PlayVO param){
+		return sqlSession.selectList("play.exhibitList", param);
+
+	}
 }

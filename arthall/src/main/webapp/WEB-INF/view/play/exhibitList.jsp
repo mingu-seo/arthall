@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <%@ include file="/WEB-INF/view/include/headHtml.jsp"%>
 
-<title>충무아트센터 | 공연정보</title>
+<title>충무아트센터 | 전시정보</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/perf-exhi_info.css">
 <script>
 //1
@@ -47,7 +47,7 @@
 			<%@ include file="/WEB-INF/view/include/top.jsp" %>
 		</header>
 	<div class="sub__tit">
-		<h2>공연정보</h2>
+		<h2>전시정보</h2>
 	</div>
     <div class="sub__container cf">
     	<aside class="container__subClass">
@@ -78,7 +78,7 @@
                     </div>
                     <div class="perf_view">
                         <ul>
-                        	<c:forEach var="play" items="${performList}">
+                        	<c:forEach var="play" items="${exhibitList}">
 	                            <li>
 	                                <div class="perf_view_wrap">
 	                                    <img src= "/upload/play/${play.filename}" alt="perf_img">

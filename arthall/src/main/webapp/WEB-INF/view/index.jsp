@@ -108,106 +108,18 @@ function reservForm(){
                         </div>
                         <div class="slide__show">
                             <ul class="show__showList cf">
-                                <li class="showList__cont slide1">
-                                    <div class="cont__wrap">
-                                        <div class="wrap__inner">
-                                            <h3>뮤지컬 팬레터</h3>
-                                            <p>충무아트센터 중극장 블랙 <br>2020.07.05~2020.08.31<br>매주 월요일 공연 없음</p>
-                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-                                            <a href="#">상세정보</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="showList__cont slide2">
-                                    <div class="cont__wrap">
-                                        <div class="wrap__inner">
-                                            <h3>전시 마음을 안다</h3>
-                                            <p>충무아트센터 갤러리 <br>2020.06.01~2020.06.31</p>
-                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-                                            <a href="#">상세정보</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="showList__cont slide3">
-                                    <div class="cont__wrap">
-                                        <div class="wrap__inner">
-                                            <h3>발레 오네긴</h3>
-                                            <p>충무아트센터 대극장 <br>2020.10.02~2020.11.01<br>매주 월요일 공연 없음 </p>
-                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-                                            <a href="#">상세정보</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="showList__cont slide4">
-                                    <div class="cont__wrap">
-                                        <div class="wrap__inner">
-                                            <h3>뮤지컬 시데레우스</h3>
-                                            <p>충무아트센터 중극장 블랙 <br>2020.11.01~2020.11.31<br>매주 월요일 공연 없음</p>
-                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-                                            <a href="#">상세정보</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="showList__cont slide5">
-                                    <div class="cont__wrap">
-                                        <div class="wrap__inner">
-                                            <h3>뮤지컬 썸씽로튼</h3>
-                                            <p>충무아트센터 대극장 <br>2020.08.14~2020.10.01<br>매주 월요일 공연 없음</p>
-                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-                                            <a href="#">상세정보</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="showList__cont slide6">
-                                    <div class="cont__wrap">
-                                        <div class="wrap__inner">
-                                            <h3>전시 암흑물질</h3>
-                                            <p>충무아트센터 갤러리 <br>2020.08.01~2020.08.31</p>
-                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-                                            <a href="#">상세정보</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="showList__cont slide7">
-                                    <div class="cont__wrap">
-                                        <div class="wrap__inner">
-                                            <h3>발레 지젤</h3>
-                                            <p>충무아트센터 대극장 <br>2020.12.01~2020.12.10</p>
-                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-                                            <a href="#">상세정보</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="showList__cont slide8">
-                                    <div class="cont__wrap">
-                                        <div class="wrap__inner">
-                                            <h3>뮤지컬 프랑켄슈타인</h3>
-                                            <p>충무아트센터 대극장 <br>2020.07.10~2020.08.13<br>매주 월요일 공연 없음</p>
-                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-                                            <a href="#">상세정보</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="showList__cont slide9">
-                                    <div class="cont__wrap">
-                                        <div class="wrap__inner">
-                                            <h3>뮤지컬<br>브라더스까라마조프</h3>
-                                            <p>충무아트센터 중극장 블랙 <br>2020.09.01~2020.09.31<br>매주 월요일 공연 없음</p>
-                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-                                            <a href="#">상세정보</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="showList__cont slide10">
-                                    <div class="cont__wrap">
-                                        <div class="wrap__inner">
-                                            <h3>뮤지컬 제이미</h3>
-                                            <p>충무아트센터 대극장 <br>2020.12.12~2020.12.31<br>매주 월요일 공연 없음</p>
-                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-                                            <a href="#">상세정보</a>
-                                        </div>
-                                    </div>
-                                </li>
+                            	<c:forEach var="play" items="${playList}" varStatus="vs" begin=1, end=11>
+	                                <li class="showList__cont slide${vs.count}">
+	                                    <div class="cont__wrap">
+	                                        <div class="wrap__inner">
+	                                            <h3>뮤지컬 팬레터</h3>
+	                                            <p>충무아트센터 중극장 블랙 <br>2020.07.05~2020.08.31<br>매주 월요일 공연 없음</p>
+	                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
+	                                            <a href="#">상세정보</a>
+	                                        </div>
+	                                    </div>
+	                                </li>
+	                            </c:forEach>
                             </ul>
                         </div>
                     </div>
@@ -226,7 +138,7 @@ function reservForm(){
                             <table class="notice">
                             	<tbody>
 								
-									<c:if test="${vo.totalCount ==0}">
+									<c:if test="${noticeVo.totalCount ==0}">
 									<tbody>
 										<tr align="center" bgcolor="white">
 									
@@ -234,13 +146,13 @@ function reservForm(){
 										</tr>
 									</tbody>
 									</c:if>
-									<c:if test="${vo.totalCount > 0}">
-									<c:forEach var="notice" items="${list}" varStatus="status">
+									<c:if test="${noticeVo.totalCount > 0}">
+									<c:forEach var="notice" items="${noticeList}" varStatus="status">
 									<c:if test="${status.count <= 5}">
 									<tr>
 											<td class="title">
 
-												<a href="/board/notice/notice_view.do?no=${notice.no}&page=${vo.page}">
+												<a href="/board/notice/notice_view.do?no=${notice.no}&page=${noticeVo.page}">
 													<c:out value="${notice.title}"/>
 												</a>
 											</td>

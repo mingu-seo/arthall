@@ -15,10 +15,10 @@ public class User_PlayController {
 	
 	@RequestMapping("play/performList.do")
 	public String performList(Model model, PlayVO param) {
-		List<PlayVO> list = playService.list(param);
+		List<PlayVO> performList = playService.performList(param);
 		
 		model.addAttribute("vo", param);
-		model.addAttribute("list", list);
+		model.addAttribute("performList", performList);
 		System.out.println(param.getStype());
 		return "play/performList";
 	}
@@ -27,4 +27,15 @@ public class User_PlayController {
 	public String performInfo() {
 		return "play/performInfo";
 	}
+	
+	@RequestMapping("play/exhibitList.do")
+	public String exhibitList(Model model, PlayVO param) {
+		List<PlayVO> exhibitList = playService.exhibitList(param);
+		
+		model.addAttribute("vo", param);
+		model.addAttribute("exhibitList", exhibitList);
+		System.out.println(param.getStype());
+		return "play/exhibitList";
+	}
+	
 }
