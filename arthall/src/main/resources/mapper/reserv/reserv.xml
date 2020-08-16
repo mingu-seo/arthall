@@ -2,52 +2,53 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reserv">
 
-   <select id="count" parameterType="reserv.ReservVO" resultType="Integer"> 
-      SELECT COUNT(*) FROM reserv
-         <where>
-         <!-- 날짜x, 검색어 o,x -->
-            <if test="startDate == null or startDate == '' or endDate == null or endDate == ''">
-               <!-- 특정 항목에서 검색  -->
-               <if test="stype != 'all' and sval != null and sval !=''" >
-                   ${stype} like '%${sval}%'
-               </if>
-               <!-- 전체 항목에서 검색 -->
-               <if test="stype == 'all' and sval != null and sval !=''" >
-                   name like '%${sval}%' OR playName like '%${sval}%' OR hallNo like '%${sval}%'
-               </if>
+	<!-- 예매 목록에서 검색 -->
+	<select id="count" parameterType="reserv.ReservVO" resultType="Integer"> 
+	SELECT COUNT(*) FROM reserv
+		<where>
+        	<!-- 날짜x, 검색어 o,x -->
+        	<if test="startDate == null or startDate == '' or endDate == null or endDate == ''">
+        		<!-- 특정 항목에서 검색  -->
+				<if test="stype != 'all' and sval != null and sval !=''" >
+                	${stype} like '%${sval}%'
+                </if>
+               	<!-- 전체 항목에서 검색 -->
+               	<if test="stype == 'all' and sval != null and sval !=''" >
+               	    name like '%${sval}%' OR playName like '%${sval}%' OR hallNo like '%${sval}%'
+               	</if>
             </if>
             
             <!-- 날짜o, 검색어 o,x -->
             <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
-               <!-- 검색어 없을때 -->
-               <if test="stype == 'all' and (sval == null or sval =='') " >
-                   reservDate BETWEEN #{startDate} AND #{endDate}
-                   
-               </if>
-               <!-- stype:all, sval:o -->
-               <!-- stype all인 경우는 검색어가 확실히? 있음  -->
-               <if test="stype == 'all' and (sval != null and sval !='') ">
-                  (name like '%${sval}%' OR playName like '%${sval}%' OR hallNo LIKE '%${sval}%') AND
-                  reservDate in 
-                  (SELECT distinct reservDate 
-                  FROM reserv WHERE reservDate 
-                  BETWEEN #{startDate} AND #{endDate})
-               </if>
-               
-               <!-- stype!=all, sval: o -->
-               <!-- stype all이 아닌 경우는 검색어가 확실히? 있음-->
-               <if test="stype != 'all' and sval != null and sval !=''">
-                  (${stype} like '%${sval}%') AND
-                  reservDate in 
-                  (SELECT distinct reservDate 
-                  FROM reserv WHERE reservDate 
-                  BETWEEN #{startDate} AND #{endDate})
-               </if>
-            </if>
-         </where>
-   </select>
+            	<!-- 검색어 없을때 -->
+               	<if test="stype == 'all' and (sval == null or sval =='') " >
+                	reservDate BETWEEN #{startDate} AND #{endDate}
+               	</if>
+               	<!-- stype:all, sval:o -->
+               	<!-- stype all인 경우는 검색어가 확실히? 있음  -->
+               	<if test="stype == 'all' and (sval != null and sval !='') ">
+                  	(name like '%${sval}%' OR playName like '%${sval}%' OR hallNo LIKE '%${sval}%') AND
+                  	reservDate in 
+                  	(SELECT distinct reservDate 
+                  	FROM reserv WHERE reservDate 
+                  	BETWEEN #{startDate} AND #{endDate})
+               	</if>
+	         
+	         	<!-- stype!=all, sval: o -->
+	         	<!-- stype all이 아닌 경우는 검색어가 확실히? 있음-->
+	            <if test="stype != 'all' and sval != null and sval !=''">
+					(${stype} like '%${sval}%') AND
+					reservDate in 
+					(SELECT distinct reservDate 
+					FROM reserv WHERE reservDate 
+					BETWEEN #{startDate} AND #{endDate})
+	            </if>
+	         </if>
+	      </where>
+	</select>
 
-	<!-- reservlist -->
+
+	<!-- 예매 목록 -->
 	<select id="list" parameterType="reserv.ReservVO" resultType="reserv.ReservVO">
 	   SELECT * FROM reserv
 	   <where>
@@ -96,14 +97,14 @@
 	</select>
 	
 	
-	   <!-- ticketlist -->
+	<!-- 티켓 목록 -->
 	<select id="ticketlist" parameterType="reserv.TicketVO" resultType="reserv.TicketVO">
 	   SELECT * FROM ticket
 	   WHERE reservNo like '%${reservNo}%' 
 	</select>
    
    
-   <!-- 예매취소 reserv-->
+    <!-- 예매 취소 reserv-->
    <update id="cancleReserv" parameterType="reserv.ReservVO">
       UPDATE reserv SET
          pay="결제취소"
@@ -111,7 +112,7 @@
    </update>
    
    
-   <!-- 예매취소 ticket -->
+   <!-- 예매 취소 ticket -->
    <update id="cancleTicket" parameterType="reserv.ReservVO">
       UPDATE ticket SET 
          pay="결제취소" 
@@ -119,7 +120,7 @@
    </update>
    
    
-	<!-- 뭐ㅣ? -->  
+	<!--  -->  
    <select id="playOne" parameterType="reserv.ReservVO" resultType="play.PlayVO">
       select * from play WHERE playName = #{playName}
    </select>
@@ -129,12 +130,13 @@
    <select id="playList" parameterType="reserv.ReservVO" resultType="play.PerformVO">
       select * from perform WHERE playName = #{playName}
    </select>
-   
+
    <select id="playPrice" parameterType="reserv.ReservVO" resultType="play.PerformVO">
       select * from perform WHERE playName = #{playName} AND time = #{time}
    </select>
+
    
-   
+   <!-- 예매 정보 -->
    <insert id="reservOne" parameterType="reserv.ReservVO">
       INSERT INTO reserv
          (reservNo, memberNo, name, reservDate, playNo, playName, playDate, time, hallNo, hallName, pay,
@@ -147,6 +149,7 @@
       </selectKey>
    </insert>
    
+   <!-- 티켓 정보 -->
    <insert id="reservTicket" parameterType="reserv.TicketVO">
       INSERT INTO ticket
          (reservNo, seatType, price, pay)
@@ -158,16 +161,17 @@
    </insert>
    
    
-   <!--  -->
+   <!-- 홀정보 -->
    <select id="hall" parameterType="reserv.ReservVO" resultType="reserv.HallVO">
       SELECT * FROM hall WHERE hallName = #{hallName}
    </select>
    
    
-   <!--  -->
+   <!-- 마지막 예매 정보 -->
    <select id="reservNumber" resultType="reserv.ReservVO">
       SELECT * FROM reserv ORDER BY NO DESC LIMIT 1
    </select>
+   
    
    <!-- 지난 공연 정보 -->
    <select id="reservSessPass" parameterType="member.MemberVO" resultType="reserv.ReservVO">
@@ -183,4 +187,18 @@
    <select id="reservSessCancle" parameterType="member.MemberVO" resultType="reserv.ReservVO">
    	  SELECT * FROM reserv WHERE memberNo = #{no} and (playDate > now()) and (pay="결제취소") ORDER BY playDate desc
    </select>
+   
+   
+   	<!-- 전시 -->  
+	<select id="exhibitOne" parameterType="reserv.ReservVO" resultType="play.PlayVO">
+		select * from play WHERE playName = #{playName}
+   	</select>
+   
+   	<select id="exhibitList" parameterType="reserv.ReservVO" resultType="play.ExhibitVO">
+		select * from exhibit WHERE playName = #{playName}
+   	</select>
+
+	<select id="exhibitPrice" parameterType="reserv.ReservVO" resultType="play.ExhibitVO">
+		select * from exhibit WHERE playName = #{playName}
+	</select>
 </mapper>

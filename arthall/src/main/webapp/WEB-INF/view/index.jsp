@@ -7,7 +7,15 @@
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
 <script>
 function reservForm(e){
-	window.open('reservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');return false
+// 	if ("${play.playType} == 1") {
+// 		window.open('reservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
+// 		return false;
+// 	} else if ("${play.playType} == 2") {
+// 		window.open('exhibitreservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
+// 		return false;
+// 	}
+	window.open('exhibitReservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
+ 	return false;
 }
 </script>
 </head>
@@ -52,7 +60,7 @@ function reservForm(e){
                         <span>4연에 빛나는 웰메이드 창작뮤지컬</span>
                         <h2>뮤지컬 팬레터</h2>
                         <p>공연기간 : <span>2020.07.05~2020.08.31</span><br>공연장소 : <span>충무아트센터 중극장 블랙</span></p>
-                        <p class="cf"><a href="javascript:;" class="ticketingBtn">예매하기</a><a href="#">상세정보</a></p>
+                        <p class="cf"><a class="ticketingBtn" onclick="reservForm();">예매하기</a><a href="#">상세정보</a></p>
                     </div>
                 </div>
                 <div class="bg3">
@@ -107,19 +115,19 @@ function reservForm(e){
                             <a href="javascript:;" class="btns__rightBtn"><i class="fas fa-chevron-right fa-3x"></i></a>
                         </div>
                         <div class="slide__show">
-                            <ul class="show__showList cf">
-                            	<c:forEach var="play" items="${playList}" varStatus="vs" begin=1, end=11>
-	                                <li class="showList__cont slide${vs.count}">
-	                                    <div class="cont__wrap">
-	                                        <div class="wrap__inner">
-	                                            <h3>뮤지컬 팬레터</h3>
-	                                            <p>충무아트센터 중극장 블랙 <br>2020.07.05~2020.08.31<br>매주 월요일 공연 없음</p>
-	                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
-	                                            <a href="#">상세정보</a>
-	                                        </div>
-	                                    </div>
-	                                </li>
-	                            </c:forEach>
+<!--                             <ul class="show__showList cf"> -->
+<%--                             	<c:forEach var="play" items="${playList}" varStatus="vs" begin=1, end=11> --%>
+<%-- 	                                <li class="showList__cont slide${vs.count}"> --%>
+<!-- 	                                    <div class="cont__wrap"> -->
+<!-- 	                                        <div class="wrap__inner"> -->
+<!-- 	                                            <h3>뮤지컬 팬레터</h3> -->
+<!-- 	                                            <p>충무아트센터 중극장 블랙 <br>2020.07.05~2020.08.31<br>매주 월요일 공연 없음</p> -->
+<!-- 	                                            <a href="javascript:;" class="ticketingBtn">예매하기</a> -->
+<!-- 	                                            <a href="#">상세정보</a> -->
+<!-- 	                                        </div> -->
+<!-- 	                                    </div> -->
+<!-- 	                                </li> -->
+<%-- 	                            </c:forEach> --%>
                             </ul>
                         </div>
                     </div>

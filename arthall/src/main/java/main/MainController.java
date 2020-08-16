@@ -11,28 +11,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import board.notice.NoticeService;
 import board.notice.NoticeVO;
-import play.PlayService;
 import play.PlayVO;
 
 @Controller
 public class MainController {
 	@Autowired
 	private NoticeService noticeservice;
-	@Autowired
-	private PlayService playservice;
+
 
 
 	@RequestMapping("/index.do")
-	public String index(Model model, NoticeVO noticeParam, PlayVO playParam, HttpServletRequest request) {
-		List<NoticeVO> noticeList = noticeservice.list(noticeParam);
-		List<PlayVO> playList = playservice.list(playParam);
-		
-		model.addAttribute("noticeVo", noticeParam);
-		model.addAttribute("noticeList", noticeList);
-
-		model.addAttribute("playVo", playParam);
-		model.addAttribute("playList", playList);
-		
+	public String index(Model model, NoticeVO param, HttpServletRequest request) {
+		List<NoticeVO> list = noticeservice.list(param);
+		PlayVO play = new PlayVO();
+		play.setPlayName("가나다");
+		model.addAttribute("vo", param);
+		model.addAttribute("list", list);
+		model.addAttribute("play", play);
+		System.out.println("플레이넘버");
+		System.out.println(play.getPlayType());
 		return "index";
 	}
 	
@@ -41,4 +38,6 @@ public class MainController {
 		return "design";
 	}
 }
+
+
 

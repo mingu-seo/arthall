@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import member.MemberVO;
+import play.ExhibitVO;
 import play.PerformVO;
 import play.PlayVO;
 
@@ -89,6 +90,7 @@ public class ReservServiceImple implements ReservService{
 	   
 	   int idx, idx1, idx2, idx3;
 
+	   
 	   if (ticket.getSeatType() != "" & ticket.getSeatType() != null) {
 		   idx = ticket.getSeatType().indexOf("/");
 		   idx1 = ticket.getSeatType().indexOf("매");
@@ -119,12 +121,13 @@ public class ReservServiceImple implements ReservService{
           System.out.println(ticket.getSeatType2().substring(0, idx) + " " + ticket.getSeatType2().substring(idx+1, idx1) + "매");
           ticket.setSeatType2(ticket.getSeatType2().substring(0, idx) + " " + ticket.getSeatType2().substring(idx+1, idx1) + "매");
 	   }
+
 	   return ticket;
    
    }
 
    
-   // 이거 뭐지
+
    @Override
    public PlayVO playOne(ReservVO param) {
       PlayVO playList = reservDao.play(param);
@@ -132,8 +135,7 @@ public class ReservServiceImple implements ReservService{
    }
    
 
-   
-   // 이건 뭘까
+  
    @Override
    public List<PerformVO> playList(ReservVO param) {
 
@@ -200,18 +202,19 @@ public class ReservServiceImple implements ReservService{
       reservDao.reservOne(param);
       
       PerformVO perform = reservDao.playPrice(param);
+      ExhibitVO exhibit = reservDao.exhibitPrice(param);
       int idx, idx1, idx2, cnt, cnt1, cnt2;
       
       System.out.println("좌석1");
       if (ticket.getSeatType() != "") {
     	  idx = ticket.getSeatType().indexOf(" ");
     	  idx1 = ticket.getSeatType().indexOf("매");
-    	  idx2 = ticket.getSeatType().indexOf("석");
+    	  idx2 = ticket.getSeatType().indexOf("");
     	  cnt = Integer.parseInt(ticket.getSeatType().substring(idx+1,idx1));
     	  for (int i = 0; i < cnt; i++) {
     		  ticket.setSeatType(ticket.getSeatType().substring(0,idx2));
     		  ticket.setReservNo(param.getReservNo()+"t"+i);
-    		  ticket.setPrice(perform.getPriceA());
+    		  ticket.setPrice(exhibit.getPriceAdult());
     		  ticket.setPay(param.getPay());
     		  reservDao.reservTicket(ticket);
     	  }
@@ -224,14 +227,14 @@ public class ReservServiceImple implements ReservService{
     	  System.out.println("2");
     	  idx1 = ticket.getSeatType1().indexOf("매");
     	  System.out.println("3");
-    	  idx2 = ticket.getSeatType1().indexOf("석");
+    	  idx2 = ticket.getSeatType1().indexOf("");
     	  System.out.println("4");
     	  cnt1 = Integer.parseInt(ticket.getSeatType1().substring(idx+1,idx1));
     	  System.out.println("5");
     	  for (int i = 0; i < cnt1; i++) {
     		  ticket.setSeatType(ticket.getSeatType1().substring(0,idx2));
     		  ticket.setReservNo(param.getReservNo()+"t"+i);
-    		  ticket.setPrice(perform.getPriceB());
+    		  ticket.setPrice(exhibit.getPriceTeenager());
     		  ticket.setPay(param.getPay());
     		  reservDao.reservTicket(ticket);
     	  }
@@ -240,12 +243,12 @@ public class ReservServiceImple implements ReservService{
       if (ticket.getSeatType2() != "") {
     	  idx = ticket.getSeatType2().indexOf(" ");
     	  idx1 = ticket.getSeatType2().indexOf("매");
-    	  idx2 = ticket.getSeatType2().indexOf("석");
+    	  idx2 = ticket.getSeatType2().indexOf(" ");
     	  cnt2 = Integer.parseInt(ticket.getSeatType2().substring(idx+1,idx1));
     	  for (int i = 0; i < cnt2; i++) {
     		  ticket.setSeatType(ticket.getSeatType2().substring(0,idx2));
     		  ticket.setReservNo(param.getReservNo()+"t"+i);
-    		  ticket.setPrice(perform.getPriceC());
+    		  ticket.setPrice(exhibit.getPriceChildren());
     		  ticket.setPay(param.getPay());
     		  reservDao.reservTicket(ticket);
     	  }
@@ -267,6 +270,26 @@ public class ReservServiceImple implements ReservService{
 		model.addAttribute("reservMyCancle", reservMyCancle);
 		return "reserv/myreserv";
 	}
+	
+	
+	// 전시
+	@Override
+	public PlayVO exhibitOne(ReservVO param) {
+		PlayVO playList = reservDao.play(param);
+		return playList;
+	}
+		   
+
+		  
+	@Override
+	public List<ExhibitVO> exhibitList(ReservVO param) {
+
+		List<ExhibitVO> exhibitList = reservDao.exhibitList(param);
+		return exhibitList;
+			  
+	}
+		   
+		   
 
    
    

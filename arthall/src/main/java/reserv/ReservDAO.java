@@ -9,10 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import member.MemberVO;
+import play.ExhibitVO;
 import play.PerformVO;
 import play.PlayVO;
-
-
 
 @Repository
 public class ReservDAO {
@@ -35,12 +34,12 @@ public class ReservDAO {
       return sqlSession.selectList("reserv.ticketlist", param);
    }
    
-   // 예약 취소
+   // 예매 취소
    public int cancleReserv(ReservVO param) {
       return sqlSession.update("reserv.cancleReserv", param);
    }
   
-   // 예약 취소에 따른 티켓 취소
+   // 예매 취소에 따른 티켓 취소
    public int cancleTicket(ReservVO param) {
       return sqlSession.update("reserv.cancleTicket", param);
    }
@@ -50,28 +49,29 @@ public class ReservDAO {
       return sqlSession.selectOne("reserv.playOne", param);
    }
    
-   // 예매정보 삽입
+   // 예매 정보 삽입
    public int reservOne(ReservVO param) {
       return sqlSession.insert("reserv.reservOne", param);
    }
    
-   // 티켓 예매 삽입
+   // 티켓 정보 삽입
    public int reservTicket(TicketVO param) {
 	   return sqlSession.insert("reserv.reservTicket", param);
    }
    
    // 회차 정보 가져오기
-   public List<PerformVO> playList(ReservVO param){
-      return sqlSession.selectList("reserv.playList", param);
+   public List<PerformVO> playList(ReservVO param) {
+	   return sqlSession.selectList("reserv.playList", param);
    }
    
    // 좌석 가격 가져오기
-   public PerformVO playPrice(ReservVO param){
+   public PerformVO playPrice(ReservVO param) {
 	   return sqlSession.selectOne("reserv.playPrice", param);
    }
    
-   // 좌석 개수 차감?
-   public HallVO hall(ReservVO param){
+   
+   // hall
+   public HallVO hall(ReservVO param) {
       return sqlSession.selectOne("reserv.hall", param);
    }
    
@@ -79,6 +79,7 @@ public class ReservDAO {
    public ReservVO reservNumber() {
       return sqlSession.selectOne("reserv.reservNumber");
    }
+   
    
    
    // 지난 공연 정보
@@ -95,4 +96,19 @@ public class ReservDAO {
    public List<ReservVO> reservSessCancle(MemberVO member) {
 	   return sqlSession.selectList("reserv.reservSessCancle", member);
    }
+
+   
+   	// 전시
+
+   	public PlayVO exhibit(ReservVO param) {
+       return sqlSession.selectOne("reserv.exhibitOne", param);
+    }
+
+   	public List<ExhibitVO> exhibitList(ReservVO param) {
+   		return sqlSession.selectList("reserv.exhibitList", param);
+   	}
+
+    public ExhibitVO exhibitPrice(ReservVO param) {
+ 	   return sqlSession.selectOne("reserv.exhibitPrice", param);
+    }
 }
