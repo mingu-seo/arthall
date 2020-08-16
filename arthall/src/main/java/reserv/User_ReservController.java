@@ -38,16 +38,15 @@ public class User_ReservController {
 		
 		return pageName;
 	}
-	
-	
+
 	// 전시 예약 폼으로 이동
 	@RequestMapping("/exhibitReservForm.do")
 	public String exhibitReservForm(Model model, ReservVO param) {
 		System.out.println("컨트롤러 시작");
 		PlayVO exhibitOne = reservService.exhibitOne(param);
-		//List<ExhibitVO> playList = reservService.playList(param);
+		//List<ExhibitVO> exhibitList = reservService.exhibitList(param);
 
-		//model.addAttribute("playList", playList);
+		//model.addAttribute("exhibitList", playList);
 		model.addAttribute("play", exhibitOne);
 		String pageName = "reserv/exhibitReservForm";
 		System.out.println("컨트롤러 리턴");

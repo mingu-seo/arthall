@@ -104,9 +104,9 @@ public class ReservDAO {
        return sqlSession.selectOne("reserv.exhibitOne", param);
     }
 
-   	public List<ExhibitVO> exhibitList(ReservVO param) {
-   		return sqlSession.selectList("reserv.exhibitList", param);
-   	}
+//   	public List<ExhibitVO> exhibitList(ReservVO param) {
+//   		return sqlSession.selectList("reserv.exhibitList", param);
+//   	}
 
     public ExhibitVO exhibitPrice(ReservVO param) {
  	   return sqlSession.selectOne("reserv.exhibitPrice", param);

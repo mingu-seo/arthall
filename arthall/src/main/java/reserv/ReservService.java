@@ -42,7 +42,8 @@ public interface ReservService {
 	
 	// 전시
 	public PlayVO exhibitOne(ReservVO param);
-	public List<ExhibitVO> exhibitList(ReservVO param);
+	//public List<ExhibitVO> exhibitList(ReservVO param);
+
 
 
 }
