@@ -6,15 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
 <script>
-function reservForm(e){
+function reservForm(e) {	
 // 	if ("${play.playType} == 1") {
 // 		window.open('reservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
 // 		return false;
 // 	} else if ("${play.playType} == 2") {
-// 		window.open('exhibitreservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
+// 		window.open('exhibitReservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
 // 		return false;
 // 	}
-	window.open('exhibitReservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
+	window.open('reservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
  	return false;
 }
 </script>

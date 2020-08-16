@@ -34,7 +34,7 @@ public interface ReservService {
 
 
 	// 결제 창 넘어갈때 좌석 정보 넘기기
-	public TicketVO reservTicket(TicketVO ticket);
+	public TicketVO reservTicket(ReservVO param,TicketVO ticket);
 	
 	// 결제 한번에 실행하기
 	public String reservOne(HttpSession sess, ReservVO param, MemberVO member, TicketVO ticket);
@@ -43,9 +43,6 @@ public interface ReservService {
 	// 전시
 	public PlayVO exhibitOne(ReservVO param);
 	public List<ExhibitVO> exhibitList(ReservVO param);
-
-
-
 
 
 }

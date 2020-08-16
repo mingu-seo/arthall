@@ -60,7 +60,7 @@ public class User_ReservController {
 	@RequestMapping("/payment.do")
 	public String paymentForm(Model model, ReservVO param, TicketVO ticket) {
 		
-		TicketVO reservTicket = reservService.reservTicket(ticket);
+		TicketVO reservTicket = reservService.reservTicket(param, ticket);
 
 		model.addAttribute("vo", param);
 		model.addAttribute("ticket", reservTicket);

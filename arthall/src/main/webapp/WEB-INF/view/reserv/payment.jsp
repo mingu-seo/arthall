@@ -14,60 +14,82 @@
     <script src="<%= request.getContextPath() %>/js/payment.js" defer></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
-   	function check() {
-        if ($("input:radio[id='card']").is(":checked") == true) {
-          if ($("input:checkbox[id='cardAgree']").is(":checked") == true &&
-             $("#cardCorp option:selected").val() != null) {
-        	  if (confirm("결제하시겠습니까?")) {
-       		   $("#paymentForm").submit();
-       	   } else{
-       		   return;
-       	   }
-          } else {
-             alert("결제수단과 개인정보제공동의를 확인하십시오");
-              return;
-          }    
-       } else if ($("input:radio[id='smartphonePayment']").is(":checked") == true) {
-        if ($("input:checkbox[id='smartphonePaymentAgree']").is(":checked") == true &&
-           $("#smartphonePaymentCorp option:selected").val() != null   ) {
-        	if (confirm("결제하시겠습니까?")) {
-     		   $("#paymentForm").submit();
-     	   } else{
-     		   return;
-     	   }
-        } else {
-           alert("결제수단과 개인정보제공동의를 확인하십시오");
-            return;
-        }    
-     } else if ($("input:radio[id='bank']").is(":checked") == true) {
-        if ($("input:checkbox[id='bankAgree']").is(":checked") == true &&
-           $("#bankCorp option:selected").val() != null) {
-        	if (confirm("결제하시겠습니까?")) {
-     		   $("#paymentForm").submit();
-     	   } else{
-     		   return;
-     	   }
-        } else {
-           alert("결제수단과 개인정보제공동의를 확인하십시오");
-            return;
-        }    
-     } else if ($("input:radio[id='mobilePayment']").is(":checked") == true) {
-        if ($("input:checkbox[id='mobilePaymentAgree']").is(":checked") == true &&
-           $("#mobilePaymentCorp option:selected").val() != null) {
-        	if (confirm("결제하시겠습니까?")) {
-     		   $("#paymentForm").submit();
-     	   } else{
-     		   return;
-     	   }
-        } else {
-           alert("결제수단과 개인정보제공동의를 확인하십시오");
-            return;
-        }    
-     } else {
-        alert("결제방법을 선택하십시오");
-        return;   
-     }
-     }
+	function check() {
+		if ($("input:radio[id='card']").is(":checked") == true) {
+			if ($("input:checkbox[id='cardAgree']").is(":checked") == true &&
+				$("#cardCorp option:selected").text() != "카드사 선택") {
+					if (confirm("결제하시겠습니까?")) {
+						$("#paymentForm").submit();
+					} else {
+						return;
+					}
+			} else {
+				alert("결제수단과 개인정보제공동의를 확인하십시오");
+				return;
+			}    
+		} else if ($("input:radio[id='smartphonePayment']").is(":checked") == true) {
+			if ($("input:checkbox[id='smartphonePaymentAgree']").is(":checked") == true &&
+				$("#smartphonePaymentCorp option:selected").text() != "간편결제 선택") {
+        			if (confirm("결제하시겠습니까?")) {
+     		   			$("#paymentForm").submit();
+					} else {
+						return;
+					}
+        	} else {
+				alert("결제수단과 개인정보제공동의를 확인하십시오");
+				return;
+			}    
+		} else if ($("input:radio[id='bank']").is(":checked") == true) {
+			if ($("input:checkbox[id='bankAgree']").is(":checked") == true &&
+				$("#bankCorp option:selected").text() != "은행 선택") {
+					if (confirm("결제하시겠습니까?")) {
+						$("#paymentForm").submit();
+					} else {
+						return;
+					}
+			} else {
+				alert("결제수단과 개인정보제공동의를 확인하십시오");
+				return;
+			}    
+		} else if ($("input:radio[id='mobilePayment']").is(":checked") == true) {
+			if ($("input:checkbox[id='mobilePaymentAgree']").is(":checked") == true &&
+				$("#mobilePaymentCorp option:selected").text() != "통신사 선택") {
+					if (confirm("결제하시겠습니까?")) {
+						$("#paymentForm").submit();
+					} else {
+						return;
+					}
+			} else {
+				alert("결제수단과 개인정보제공동의를 확인하십시오");
+				return;
+			}    
+     	} else {
+        	alert("결제방법을 선택하십시오");
+        	return;   
+		}
+	}
+// 이거 안됨
+//    	function check() {
+//    		if ($("#cardCorp option:selected").text() == "카드사 선택" &&
+//    			$("#smartphonePaymentCorp option:selected").text() == "간편결제 선택" &&
+//    			$("#bankCorp option:selected").text() == "은행 선택" &&
+//    			$("#mobilePaymentCorp option:selected").text() == "카드사 선택") {
+//  	        alert("결제 수단을 선택하십시오");
+//  	   	} else if (
+// 			$("input:checkbox[id='cardAgree']").is(":checked") == false &&
+// 			$("input:checkbox[id='smartphonePaymentAgree']").is(":checked") == false &&
+// 			$("input:checkbox[id='bankAgree']").is(":checked") == false &&
+// 			$("input:checkbox[id='mobilePaymentAgree']").is(":checked") == false) {
+// 	        alert("개인정보제공동의를 확인하십시오");
+// 		} else {
+// 			if (confirm("결제하시겠습니까?")) {
+// 				$("#paymentForm").submit();
+// 			} else {
+// 				return;
+// 			}
+// 		}
+//    	}
+
     </script>
 
 </head>

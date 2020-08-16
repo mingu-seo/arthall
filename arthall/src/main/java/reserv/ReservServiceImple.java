@@ -83,68 +83,95 @@ public class ReservServiceImple implements ReservService{
 		return "redirect:myreserv.do";
 	}
 
-   
-   // 결제 창 넘어갈 때 좌석 정보 넘기기, 코드 더 짧게 안되나?
-   @Override
-   public TicketVO reservTicket(TicketVO ticket) {
+	@Override
+	public PlayVO playOne(ReservVO param) {
+		PlayVO playList = reservDao.play(param);
+		return playList;
+	}
+
+	@Override
+	public List<PerformVO> playList(ReservVO param) {
+		List<PerformVO> playList = reservDao.playList(param);
+		return playList;
+	}
+	
+	// 결제 창 넘어갈 때 좌석 정보 넘기기, 코드 더 짧게 안되나?
+	@Override
+	public TicketVO reservTicket(ReservVO param, TicketVO ticket) {
+	  
+	   PlayVO play = reservDao.play(param);
 	   
 	   int idx, idx1, idx2, idx3;
-
 	   
-	   if (ticket.getSeatType() != "" & ticket.getSeatType() != null) {
-		   idx = ticket.getSeatType().indexOf("/");
-		   idx1 = ticket.getSeatType().indexOf("매");
-		   idx2 = ticket.getSeatType().lastIndexOf(" ");
-		   idx3 = ticket.getSeatType().lastIndexOf("원");
+	   if (play.getPlayType() == 1) {
 		   
-		   // Vip석 + 개수 + "매수"       
-		   System.out.println(ticket.getSeatType().substring(0, idx) + " " + ticket.getSeatType().substring(idx+1, idx1) + "매");
-		   ticket.setSeatType(ticket.getSeatType().substring(0, idx) + " " + ticket.getSeatType().substring(idx+1, idx1) + "매");
+		   if (ticket.getSeatType() != "" & ticket.getSeatType() != null) {
+			   idx = ticket.getSeatType().indexOf("/");
+			   idx1 = ticket.getSeatType().indexOf("매");
+			   idx2 = ticket.getSeatType().lastIndexOf("석");
+			   idx3 = ticket.getSeatType().lastIndexOf("원");
+			   
+			   // Vip석 + 개수 + "매수"       
+			   System.out.println(ticket.getSeatType().substring(0, idx) + " " + ticket.getSeatType().substring(idx+1, idx1) + "매");
+			   ticket.setSeatType(ticket.getSeatType().substring(0, idx) + " " + ticket.getSeatType().substring(idx+1, idx1) + "매");
+		   }
+	
+		   if (ticket.getSeatType1() != "" & ticket.getSeatType1() != null ) {
+	    	  idx = ticket.getSeatType1().indexOf("/");
+	    	  idx1 = ticket.getSeatType1().indexOf("매");
+	    	  idx2 = ticket.getSeatType1().lastIndexOf("석");
+	    	  idx3 = ticket.getSeatType1().lastIndexOf("원");
+	    	  // R석 + 개수 + "매"
+	    	  System.out.println(ticket.getSeatType1().substring(0, idx) + " " + ticket.getSeatType1().substring(idx+1, idx1) + "매");
+	    	  ticket.setSeatType1(ticket.getSeatType1().substring(0, idx) + " " + ticket.getSeatType1().substring(idx+1, idx1) + "매");
+		   }
+	
+		   if (ticket.getSeatType2() != "" & ticket.getSeatType2() != null) {
+	    	  idx = ticket.getSeatType2().indexOf("/");
+	          idx1 = ticket.getSeatType2().indexOf("매");
+	          idx2 = ticket.getSeatType2().lastIndexOf("석");
+	          idx3 = ticket.getSeatType2().lastIndexOf("원");
+	          // S석 + 개수 + 매
+	          System.out.println(ticket.getSeatType2().substring(0, idx) + " " + ticket.getSeatType2().substring(idx+1, idx1) + "매");
+	          ticket.setSeatType2(ticket.getSeatType2().substring(0, idx) + " " + ticket.getSeatType2().substring(idx+1, idx1) + "매");
+		   }
+		   
+	   } else if (play.getPlayType() == 2) {
+		   if (ticket.getSeatType() != "" & ticket.getSeatType() != null) {
+			   idx = ticket.getSeatType().indexOf("/");
+			   idx1 = ticket.getSeatType().indexOf("매");
+			   idx2 = ticket.getSeatType().lastIndexOf(" ");
+			   idx3 = ticket.getSeatType().lastIndexOf("원");
+			   
+			   // Vip석 + 개수 + "매수"       
+			   System.out.println(ticket.getSeatType().substring(0, idx) + " " + ticket.getSeatType().substring(idx+1, idx1) + "매");
+			   ticket.setSeatType(ticket.getSeatType().substring(0, idx) + " " + ticket.getSeatType().substring(idx+1, idx1) + "매");
+		   }
+	
+		   if (ticket.getSeatType1() != "" & ticket.getSeatType1() != null ) {
+	    	  idx = ticket.getSeatType1().indexOf("/");
+	    	  idx1 = ticket.getSeatType1().indexOf("매");
+	    	  idx2 = ticket.getSeatType1().lastIndexOf(" ");
+	    	  idx3 = ticket.getSeatType1().lastIndexOf("원");
+	    	  // R석 + 개수 + "매"
+	    	  System.out.println(ticket.getSeatType1().substring(0, idx) + " " + ticket.getSeatType1().substring(idx+1, idx1) + "매");
+	    	  ticket.setSeatType1(ticket.getSeatType1().substring(0, idx) + " " + ticket.getSeatType1().substring(idx+1, idx1) + "매");
+		   }
+	
+		   if (ticket.getSeatType2() != "" & ticket.getSeatType2() != null) {
+	    	  idx = ticket.getSeatType2().indexOf("/");
+	          idx1 = ticket.getSeatType2().indexOf("매");
+	          idx2 = ticket.getSeatType2().lastIndexOf(" ");
+	          idx3 = ticket.getSeatType2().lastIndexOf("원");
+	          // S석 + 개수 + 매
+	          System.out.println(ticket.getSeatType2().substring(0, idx) + " " + ticket.getSeatType2().substring(idx+1, idx1) + "매");
+	          ticket.setSeatType2(ticket.getSeatType2().substring(0, idx) + " " + ticket.getSeatType2().substring(idx+1, idx1) + "매");
+		   }
 	   }
-
-	   if (ticket.getSeatType1() != "" & ticket.getSeatType1() != null ) {
-    	  idx = ticket.getSeatType1().indexOf("/");
-    	  idx1 = ticket.getSeatType1().indexOf("매");
-    	  idx2 = ticket.getSeatType1().lastIndexOf(" ");
-    	  idx3 = ticket.getSeatType1().lastIndexOf("원");
-    	  // R석 + 개수 + "매"
-    	  System.out.println(ticket.getSeatType1().substring(0, idx) + " " + ticket.getSeatType1().substring(idx+1, idx1) + "매");
-    	  ticket.setSeatType1(ticket.getSeatType1().substring(0, idx) + " " + ticket.getSeatType1().substring(idx+1, idx1) + "매");
-	   }
-
-	   if (ticket.getSeatType2() != "" & ticket.getSeatType2() != null) {
-    	  idx = ticket.getSeatType2().indexOf("/");
-          idx1 = ticket.getSeatType2().indexOf("매");
-          idx2 = ticket.getSeatType2().lastIndexOf(" ");
-          idx3 = ticket.getSeatType2().lastIndexOf("원");
-          // S석 + 개수 + 매
-          System.out.println(ticket.getSeatType2().substring(0, idx) + " " + ticket.getSeatType2().substring(idx+1, idx1) + "매");
-          ticket.setSeatType2(ticket.getSeatType2().substring(0, idx) + " " + ticket.getSeatType2().substring(idx+1, idx1) + "매");
-	   }
-
 	   return ticket;
    
-   }
+	}
 
-   
-
-   @Override
-   public PlayVO playOne(ReservVO param) {
-      PlayVO playList = reservDao.play(param);
-      return playList;
-   }
-   
-
-  
-   @Override
-   public List<PerformVO> playList(ReservVO param) {
-
-	   List<PerformVO> playList = reservDao.playList(param);
-	   return playList;
-	  
-   }
-   
-   
 
 
    // 예약번호 등 정보 넘기기
@@ -205,56 +232,105 @@ public class ReservServiceImple implements ReservService{
       ExhibitVO exhibit = reservDao.exhibitPrice(param);
       int idx, idx1, idx2, cnt, cnt1, cnt2;
       
-      System.out.println("좌석1");
-      if (ticket.getSeatType() != "") {
-    	  idx = ticket.getSeatType().indexOf(" ");
-    	  idx1 = ticket.getSeatType().indexOf("매");
-    	  idx2 = ticket.getSeatType().indexOf("");
-    	  cnt = Integer.parseInt(ticket.getSeatType().substring(idx+1,idx1));
-    	  for (int i = 0; i < cnt; i++) {
-    		  ticket.setSeatType(ticket.getSeatType().substring(0,idx2));
-    		  ticket.setReservNo(param.getReservNo()+"t"+i);
-    		  ticket.setPrice(exhibit.getPriceAdult());
-    		  ticket.setPay(param.getPay());
-    		  reservDao.reservTicket(ticket);
-    	  }
+      if (play.getPlayType() == 1) {
+	      System.out.println("좌석1");
+	      if (ticket.getSeatType() != "") {
+	    	  idx = ticket.getSeatType().indexOf(" ");
+	    	  idx1 = ticket.getSeatType().indexOf("매");
+	    	  idx2 = ticket.getSeatType().indexOf("석");
+	    	  cnt = Integer.parseInt(ticket.getSeatType().substring(idx+1,idx1));
+	    	  for (int i = 0; i < cnt; i++) {
+	    		  ticket.setSeatType(ticket.getSeatType().substring(0,idx2));
+	    		  ticket.setReservNo(param.getReservNo()+"t"+i);
+	    		  ticket.setPrice(perform.getPriceA());
+	    		  ticket.setPay(param.getPay());
+	    		  reservDao.reservTicket(ticket);
+	    	  }
+	      }
+	      System.out.println("좌석2");
+	      System.out.println(ticket.getSeatType1());
+	      if (ticket.getSeatType1() != "") {
+	    	  System.out.println("1");
+	    	  idx = ticket.getSeatType1().indexOf(" ");
+	    	  System.out.println("2");
+	    	  idx1 = ticket.getSeatType1().indexOf("매");
+	    	  System.out.println("3");
+	    	  idx2 = ticket.getSeatType1().indexOf("석");
+	    	  System.out.println("4");
+	    	  cnt1 = Integer.parseInt(ticket.getSeatType1().substring(idx+1,idx1));
+	    	  System.out.println("5");
+	    	  for (int i = 0; i < cnt1; i++) {
+	    		  ticket.setSeatType(ticket.getSeatType1().substring(0,idx2));
+	    		  ticket.setReservNo(param.getReservNo()+"t"+i);
+	    		  ticket.setPrice(perform.getPriceB());
+	    		  ticket.setPay(param.getPay());
+	    		  reservDao.reservTicket(ticket);
+	    	  }
+	      }
+	      System.out.println("좌석3");
+	      if (ticket.getSeatType2() != "") {
+	    	  idx = ticket.getSeatType2().indexOf(" ");
+	    	  idx1 = ticket.getSeatType2().indexOf("매");
+	    	  idx2 = ticket.getSeatType2().indexOf("석");
+	    	  cnt2 = Integer.parseInt(ticket.getSeatType2().substring(idx+1,idx1));
+	    	  for (int i = 0; i < cnt2; i++) {
+	    		  ticket.setSeatType(ticket.getSeatType2().substring(0,idx2));
+	    		  ticket.setReservNo(param.getReservNo()+"t"+i);
+	    		  ticket.setPrice(perform.getPriceC());
+	    		  ticket.setPay(param.getPay());
+	    		  reservDao.reservTicket(ticket);
+	    	  }
+	      }
+      } else if (play.getPlayType() == 2) {
+    	  System.out.println("좌석1");
+    	  if (ticket.getSeatType() != "") {
+	    	  idx = ticket.getSeatType().indexOf(" ");
+	    	  idx1 = ticket.getSeatType().indexOf("매");
+	    	  idx2 = ticket.getSeatType().indexOf(" ");
+	    	  cnt = Integer.parseInt(ticket.getSeatType().substring(idx+1,idx1));
+	    	  for (int i = 0; i < cnt; i++) {
+	    		  ticket.setSeatType(ticket.getSeatType().substring(0,idx2));
+	    		  ticket.setReservNo(param.getReservNo()+"t"+i);
+	    		  ticket.setPrice(exhibit.getPriceAdult());
+	    		  ticket.setPay(param.getPay());
+	    		  reservDao.reservTicket(ticket);
+	    	  }
+	      }
+	      System.out.println("좌석2");
+	      System.out.println(ticket.getSeatType1());
+	      if (ticket.getSeatType1() != "") {
+	    	  System.out.println("1");
+	    	  idx = ticket.getSeatType1().indexOf(" ");
+	    	  System.out.println("2");
+	    	  idx1 = ticket.getSeatType1().indexOf("매");
+	    	  System.out.println("3");
+	    	  idx2 = ticket.getSeatType1().indexOf(" ");
+	    	  System.out.println("4");
+	    	  cnt1 = Integer.parseInt(ticket.getSeatType1().substring(idx+1,idx1));
+	    	  System.out.println("5");
+	    	  for (int i = 0; i < cnt1; i++) {
+	    		  ticket.setSeatType(ticket.getSeatType1().substring(0,idx2));
+	    		  ticket.setReservNo(param.getReservNo()+"t"+i);
+	    		  ticket.setPrice(exhibit.getPriceTeenager());
+	    		  ticket.setPay(param.getPay());
+	    		  reservDao.reservTicket(ticket);
+	    	  }
+	      }
+	      System.out.println("좌석3");
+	      if (ticket.getSeatType2() != "") {
+	    	  idx = ticket.getSeatType2().indexOf(" ");
+	    	  idx1 = ticket.getSeatType2().indexOf("매");
+	    	  idx2 = ticket.getSeatType2().indexOf(" ");
+	    	  cnt2 = Integer.parseInt(ticket.getSeatType2().substring(idx+1,idx1));
+	    	  for (int i = 0; i < cnt2; i++) {
+	    		  ticket.setSeatType(ticket.getSeatType2().substring(0,idx2));
+	    		  ticket.setReservNo(param.getReservNo()+"t"+i);
+	    		  ticket.setPrice(exhibit.getPriceChildren());
+	    		  ticket.setPay(param.getPay());
+	    		  reservDao.reservTicket(ticket);
+	    	  }
+	      }	    	  
       }
-      System.out.println("좌석2");
-      System.out.println(ticket.getSeatType1());
-      if (ticket.getSeatType1() != "") {
-    	  System.out.println("1");
-    	  idx = ticket.getSeatType1().indexOf(" ");
-    	  System.out.println("2");
-    	  idx1 = ticket.getSeatType1().indexOf("매");
-    	  System.out.println("3");
-    	  idx2 = ticket.getSeatType1().indexOf("");
-    	  System.out.println("4");
-    	  cnt1 = Integer.parseInt(ticket.getSeatType1().substring(idx+1,idx1));
-    	  System.out.println("5");
-    	  for (int i = 0; i < cnt1; i++) {
-    		  ticket.setSeatType(ticket.getSeatType1().substring(0,idx2));
-    		  ticket.setReservNo(param.getReservNo()+"t"+i);
-    		  ticket.setPrice(exhibit.getPriceTeenager());
-    		  ticket.setPay(param.getPay());
-    		  reservDao.reservTicket(ticket);
-    	  }
-      }
-      System.out.println("좌석3");
-      if (ticket.getSeatType2() != "") {
-    	  idx = ticket.getSeatType2().indexOf(" ");
-    	  idx1 = ticket.getSeatType2().indexOf("매");
-    	  idx2 = ticket.getSeatType2().indexOf(" ");
-    	  cnt2 = Integer.parseInt(ticket.getSeatType2().substring(idx+1,idx1));
-    	  for (int i = 0; i < cnt2; i++) {
-    		  ticket.setSeatType(ticket.getSeatType2().substring(0,idx2));
-    		  ticket.setReservNo(param.getReservNo()+"t"+i);
-    		  ticket.setPrice(exhibit.getPriceChildren());
-    		  ticket.setPay(param.getPay());
-    		  reservDao.reservTicket(ticket);
-    	  }
-      }
-      
-      
       return "common/alert2";
       
    }
