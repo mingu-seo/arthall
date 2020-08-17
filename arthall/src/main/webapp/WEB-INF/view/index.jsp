@@ -108,7 +108,7 @@ function reservForm(e){
                         </div>
                         <div class="slide__show">
                             <ul class="show__showList cf">
-                            	<c:forEach var="play" items="${playList}" varStatus="vs" begin=1, end=11>
+                            	<c:forEach var="play" items="${playList}" varStatus="vs" begin="1" end="11">
 	                                <li class="showList__cont slide${vs.count}">
 	                                    <div class="cont__wrap">
 	                                        <div class="wrap__inner">
