@@ -24,7 +24,6 @@ public class User_ReservController {
 	private ReservService reservService;
 	
 	// 공연 예약 폼으로 이동
-	
 	@RequestMapping("/reservForm.do")
 	public String reservForm(Model model, ReservVO param) {
 		
