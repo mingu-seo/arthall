@@ -112,7 +112,7 @@ function reservForm(e){
 	                                <li class="showList__cont slide${vs.count}">
 	                                    <div class="cont__wrap">
 	                                        <div class="wrap__inner">
-	                                            <h3>뮤지컬 팬레터</h3>
+	                                            <h3>${play.playName}</h3>
 	                                            <p>충무아트센터 중극장 블랙 <br>2020.07.05~2020.08.31<br>매주 월요일 공연 없음</p>
 	                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
 	                                            <a href="#">상세정보</a>
