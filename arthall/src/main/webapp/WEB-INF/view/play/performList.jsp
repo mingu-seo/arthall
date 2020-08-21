@@ -11,6 +11,11 @@
 <title>충무아트센터 | 공연정보</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/perf-exhi_info.css">
 <script>
+function reservForm(playName){
+	window.open('../reservForm.do?playName='+playName, 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');return false
+}
+</script>
+<script>
 //1
 // 	$(function(){
 // 		for(i=0;i<${vo.totalCount};i++){
@@ -34,7 +39,6 @@
 // 	}
 </script>
 <script src="<%=request.getContextPath()%>/js/forEachPolyfill.js" defer></script>
-<script src="<%=request.getContextPath()%>/js/ticketingPopup.js" defer></script>
 <script src="<%=request.getContextPath()%>/js/header.js" defer></script>
 <script src="<%=request.getContextPath()%>/js/topBtn.js" defer></script>
 <script src="<%=request.getContextPath()%>/js/footerSiteOpen.js" defer></script>
@@ -94,7 +98,7 @@
 	                                        <span>${play.playSubType}</span>
 	                                    </div>
 	                                    <div class="perf_view_wrap_mh">
-	                                        <a href="javascript:;" class="ticketingBtn">예매하기</a>
+	                                        <a href="#" class="ticketingBtn" onclick="reservForm('${play.playName}')">예매하기</a>
 	                                        <a href="performance01.html">상세정보</a>
 	                                    </div>
 	                                </div>

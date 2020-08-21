@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
 <script>
-function reservForm(e){
-	window.open('reservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');return false
+function reservForm(playName){
+	window.open('reservForm.do?playName='+playName, 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');return false
 }
 </script>
 </head>
@@ -114,7 +114,7 @@ function reservForm(e){
 	                                        <div class="wrap__inner">
 	                                            <h3>${play.playName}</h3>
 	                                            <p>충무아트센터 중극장 블랙 <br>2020.07.05~2020.08.31<br>매주 월요일 공연 없음</p>
-	                                            <a href="javascript:;" class="ticketingBtn">예매하기</a>
+	                                            <a href="#" class="ticketingBtn" onclick="reservForm('${play.playName}')">예매하기</a>
 	                                            <a href="#">상세정보</a>
 	                                        </div>
 	                                    </div>

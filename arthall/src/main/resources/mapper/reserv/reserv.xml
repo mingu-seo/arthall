@@ -140,10 +140,10 @@
    <insert id="reservOne" parameterType="reserv.ReservVO">
       INSERT INTO reserv
          (reservNo, memberNo, name, reservDate, playNo, playName, playDate, time, hallNo, hallName, pay,
-         price, seat)
+         price, seat, filename)
       VALUES
          (#{reservNo}, #{memberNo}, #{name}, now(), #{playNo}, #{playName}, #{playDate},
-            #{time}, #{hallNo}, #{hallName}, #{pay}, #{price}, #{seat});
+            #{time}, #{hallNo}, #{hallName}, #{pay}, #{price}, #{seat}, #{filename});
       <selectKey keyProperty="no" resultType="Integer" order="AFTER">
          SELECT last_insert_id();
       </selectKey>

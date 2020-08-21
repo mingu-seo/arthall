@@ -219,6 +219,7 @@ public class ReservServiceImple implements ReservService{
 		param.setPrice(ticket.getPriceAll());
 		param.setSeat(ticket.getSeatType()+" "+ticket.getSeatType1()+" "+ticket.getSeatType2());
 		param.setSeat(param.getSeat().replace("  ", " ").trim());
+		param.setFilename(play.getFilename());
 
 		System.out.println("확인");
 		System.out.println(ticket.getPriceAll());

@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <%@ include file="/WEB-INF/view/include/headHtml.jsp"%>
     <title>충무아트센터 | 나의 예매 내역</title>
     <link rel="icon" sizes="16x16" type="image.png" href="<%=request.getContextPath() %>/img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
@@ -27,78 +28,9 @@
 
 <body>
     <div id="wrap">
-        <a href="#main" id="gomain">본문바로가기</a>
         <header>
-            <div class="header-inner cf">
-                <h1><a href="index.html"><span class="hidden">logo</span><img src="<%=request.getContextPath() %>/img/logo.png" alt="logo"></a>
-                </h1>
-
-                <div class="mobile">
-                    <a href="javascript:;" class="mobile__openBtn"><i class="fas fa-bars fa-3x"></i></a>
-                    <div class="right_nav">
-                        <ul class="tnb cf">
-                            <li><a href="./login.html">로그인</a></li>
-                            <li><a href="./join.html">회원가입</a></li>
-                            <li><a href="./mypage.html">마이페이지</a></li>
-                        </ul>
-                        <nav class="gnb">
-                            <ul class="cf">
-                                <li class="hover">
-                                    <a href="#"><span>충무아트센터 소개</span></a>
-                                    <ul>
-                                        <li><a href="#">기관 및 재단소개</a></li>
-                                        <li><a href="#">좌석배치도</a></li>
-                                        <li><a href="#">층별안내</a></li>
-                                        <li><a href="#">오시는길</a></li>
-                                        <li><a href="#">편의시설</a></li>
-                                        <li><a href="#">주차시설</a></li>
-                                    </ul>
-                                </li>
-                                <li class="hover">
-                                    <a href="calendar.html"><span>공연·전시·행사</span></a>
-                                    <ul>
-                                        <li><a href="calendar.html">캘린더</a></li>
-                                        <li><a href="perf_info.html">공연정보</a></li>
-                                        <li><a href="exhi_info.html">전시정보</a></li>
-                                        <li><a href="event_info.html">행사정보</a></li>
-                                    </ul>
-                                </li>
-                                <li class="hover">
-                                    <a href="notice.html"><span>뉴스·소식</span></a>
-                                    <ul>
-                                        <li><a href="notice.html">공지사항</a></li>
-                                        <li><a href="news.html">뉴스/이슈</a></li>
-                                    </ul>
-                                </li>
-                                <li class="hover">
-                                    <a href="rentalGuidance.html"><span>대관안내</span></a>
-                                    <ul>
-                                        <li><a href="rentalGuidance.html">대관절차</a></li>
-                                        <li><a href="rentalPlace.html">대관시설</a></li>
-                                        <li><a href="rentalApply.html">대관신청</a></li>
-                                    </ul>
-                                </li>
-                                <li class="hover">
-                                    <a href="faq.html"><span>고객센터</span></a>
-                                    <ul>
-                                        <li><a href="faq.html">자주하는 질문</a></li>
-                                        <li><a href="inquiry.html">1:1 문의</a></li>
-                                        <li><a href="etiquette.html">관람예절</a></li>
-                                        <li><a href="benefits.html">회원혜택</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <form class="search" action="action_page.php">
-                        <input type="search" name="search" class="t_box" placeholder="검색어를 입력해주세요">
-                        <button type="submit" class="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                    <a href="javascript:;" class="mobile__closeBtn"><i class="fas fa-times fa-3x"></i></a>
-                </div>
-            </div>
-        </header>
-
+			<%@ include file="/WEB-INF/view/include/top.jsp" %>
+		</header>
         <div class="sub__tit">
             <h2>나의 예매 내역</h2>
         </div>
@@ -124,7 +56,7 @@
                                 <c:forEach var="reservMy" items="${reservMy}">
                                 <div class="reserve__ticket cf">
                                     <figure class="ticket__imgContainer">
-                                        <img src="<%=request.getContextPath() %>/img/per/sub-pos-8.jpg" alt="지젤 포스터">
+                                        <img src='/upload/play/${reservMy.filename}'/>
                                     </figure>
                                     <article class="ticket__infoContainer">
                                         <h5 class="infoContainer__tit">공연이름 ${reservMy.playName}</h5>
@@ -135,6 +67,7 @@
                                             <li class="listContainer__listInfo cf">관람시간 <span>${reservMy.time}</span></li>
                                             <li class="listContainer__listInfo cf">입장권 <span>${reservMy.seat}</span></li>
                                             <li class="listContainer__listInfo cf">가격 <span>${reservMy.price}</span></li>
+                                            <li class="listContainer__listInfo cf">파일명 <span>${reservMy.filename}</span></li>
                                         </ul>
                                         <p class="infoContainer__timerContainer"><i class="fas fa-sync-alt fa-spin"></i><span class="timerContainer__timer">D-53</span></p>
                                         <p class="infoContainer__btnContainer"><a class="cancleBtn" onclick="cancle('${reservMy.reservNo}');">예매취소</a></p>

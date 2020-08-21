@@ -34,7 +34,6 @@ public class User_ReservController {
 		model.addAttribute("playList", playList);
 		model.addAttribute("play", playOne);
 		String pageName = "reserv/reservForm";
-		
 		return pageName;
 	}
 
