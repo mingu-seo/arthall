@@ -11,7 +11,7 @@ function logout() {
 </script>
 
  <div class="header-inner cf">
-                <h1><a href="<%=request.getContextPath()%>/"><span class="hidden">logo</span><img src="<%=request.getContextPath()%>/img/logo.png" alt="logo"></a>
+                <h1><a href="<%=request.getContextPath()%>/index.do"><span class="hidden">logo</span><img src="<%=request.getContextPath()%>/img/logo.png" alt="logo"></a>
                 </h1>
                 <div class="mobile">
                    <a href="javascript:;" class="mobile__openBtn"><i class="fas fa-bars fa-3x"></i></a>
