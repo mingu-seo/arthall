@@ -21,6 +21,7 @@
 		} else if ($("#resultBox__price").val() == "" || $("#resultBox__price").val() == "0원"){
 			alert("좌석을 선택하세요");
 		} else {
+			alert($('input[name=priceAll]').val());
 			if ($('#resultBox__vipClass').val() != ""){
 				$('input[name=seatType]').val('성인/'+$('#resultBox__vipClass').val());
 			}
@@ -30,10 +31,12 @@
 			if ($('#resultBox__sClass').val() != "") {
 				$('input[name=seatType2]').val('어린이/'+$('#resultBox__sClass').val());
 			}
+			if (typeof($('#resultBox__price').val()) == 'string') {
+				$('input[name=priceAll]').val($('#resultBox__price').val().replace('원', '').replace(/[^\d]+/g, ''));
+			}
 			$("#ticket__form").submit();
 		}
 	}
-	
 	</script>
 </head>
 
@@ -150,7 +153,7 @@
                                     <li class="cf">
                                         <label for="resultBox__date">날짜</label><input type="text" name="reservDate" id="resultBox__date" value="" required readonly>
                                     </li>
-                                    <c:if test="${play.playName != '가나다'}" >
+                                    <c:if test="${play.playType != 2}" >
                                     <li class="cf" >
                                         <label for="resultBox__time">시간</label><input type="text" name="time" id="resultBox__time" value="" required readonly>
                                     </li>

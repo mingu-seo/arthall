@@ -74,7 +74,7 @@ public class ReservServiceImple implements ReservService {
 	
 	
 	// User
-	// 공연
+	// 예매
 	@Override
 	public PlayVO playOne(ReservVO param) {
 
@@ -207,13 +207,7 @@ public class ReservServiceImple implements ReservService {
 		param.setPrice(ticket.getPriceAll());
 		param.setSeat(ticket.getSeatType()+" "+ticket.getSeatType1()+" "+ticket.getSeatType2() +" "+ticket.getSeatType3());
 		param.setSeat(param.getSeat().replace("  ", " ").trim());
-		param.setFilename(play.getFilename());
-
-		if (param.getPrice().contains("원") == false) {
-			param.setPrice(param.getPrice()+"원");
-		} 
-		param.setPrice(param.getPrice());
-		
+		param.setFilename(play.getFilename());	
 
 		// 예매 번호 생성
 		Date date = new Date();
@@ -236,14 +230,14 @@ public class ReservServiceImple implements ReservService {
 		}
 			
 		if (play.getPlayType() == 1) {
-			param.setReservNo("RM"+ num1 + num2 + num3 + num4);
+			param.setReservNo("RM" + num1 + num2 + num3 + num4);
 		} else if (play.getPlayType() == 2) {
 			param.setReservNo("RE" + num1 + num2 + num3 + num4);
 		}
       
 		reservDao.reservOne(param);
 		
-		PerformVO perform = reservDao.playPrice(param);
+		PerformVO perform = reservDao.playPPrice(param);
 		ExhibitVO exhibit = reservDao.playEPrice(param);
 
 		//티켓 번호 생성
@@ -260,24 +254,13 @@ public class ReservServiceImple implements ReservService {
 				for (i = 0; i < cnt; i++) {
 					ticket.setSeatType(ticket.getSeatType().substring(0,idx2));
 					ticket.setReservNo(param.getReservNo()+"t"+i);
-					ticket.setPrice(perform.getPriceA());
+					ticket.setPrice(perform.getPriceVip());
 					ticket.setPay(param.getPay());
 					reservDao.reservTicket(ticket);
-					System.out.println(i);
-					System.out.println(cnt);
-					System.out.println(ticket.getReservNo());
-					System.out.println(ticket.getSeatType());
-					System.out.println(ticket.getPay());
-					System.out.println(ticket.getPrice());
 				}
 
 			}
 			int j = i;
-			System.out.println("하나");
-			System.out.println(perform.getPriceA());
-			System.out.println(perform.getPriceB());
-			System.out.println(perform.getPriceC());
-			System.out.println(perform.getPriceD());
 			
 			if (ticket.getSeatType1().contains("매")) {
 				idx = ticket.getSeatType1().indexOf(" ");
@@ -287,23 +270,12 @@ public class ReservServiceImple implements ReservService {
 				for (i = j; i < j+cnt1; i++) {
 					ticket.setSeatType(ticket.getSeatType1().substring(0,idx2));
 					ticket.setReservNo(param.getReservNo()+"t"+i);
-					ticket.setPrice(perform.getPriceB());
+					ticket.setPrice(perform.getPriceR());
 					ticket.setPay(param.getPay());
 					reservDao.reservTicket(ticket);
-					System.out.println(i);
-					System.out.println(j+cnt1);
-					System.out.println(ticket.getReservNo());
-					System.out.println(ticket.getSeatType());
-					System.out.println(ticket.getPay());
-					System.out.println(ticket.getPrice());
 				}
 			}
 			j = i;
-			System.out.println("둘");
-			System.out.println(perform.getPriceA());
-			System.out.println(perform.getPriceB());
-			System.out.println(perform.getPriceC());
-			System.out.println(perform.getPriceD());
 
 			if (ticket.getSeatType2().contains("매")) {
 				idx = ticket.getSeatType2().indexOf(" ");
@@ -313,23 +285,12 @@ public class ReservServiceImple implements ReservService {
 				for (i = j; i < j+cnt2; i++) {
 					ticket.setSeatType(ticket.getSeatType2().substring(0,idx2));
 					ticket.setReservNo(param.getReservNo()+"t"+i);
-					ticket.setPrice(perform.getPriceC());
+					ticket.setPrice(perform.getPriceS());
 					ticket.setPay(param.getPay());
 					reservDao.reservTicket(ticket);
-					System.out.println(i);
-					System.out.println(j+cnt2);
-					System.out.println(ticket.getReservNo());
-					System.out.println(ticket.getSeatType());
-					System.out.println(ticket.getPay());
-					System.out.println(ticket.getPrice());
 				}
 			}
 			j = i;
-			System.out.println("셋");
-			System.out.println(perform.getPriceA());
-			System.out.println(perform.getPriceB());
-			System.out.println(perform.getPriceC());
-			System.out.println(perform.getPriceD());
 
 			if (ticket.getSeatType3().contains("매")) {
 				idx = ticket.getSeatType3().indexOf(" ");
@@ -339,7 +300,7 @@ public class ReservServiceImple implements ReservService {
 				for (i = j; i < j+cnt3; i++) {
 					ticket.setSeatType(ticket.getSeatType3().substring(0,idx2));
 					ticket.setReservNo(param.getReservNo()+"t"+i);
-					ticket.setPrice(perform.getPriceD());
+					ticket.setPrice(perform.getPriceWheel());
 					ticket.setPay(param.getPay());
 					reservDao.reservTicket(ticket);
 				}

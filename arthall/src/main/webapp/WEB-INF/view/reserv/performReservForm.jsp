@@ -14,32 +14,34 @@
     <script src="<%= request.getContextPath() %>/js/calrendar.js" defer></script>
     <script src="<%= request.getContextPath() %>/js/ticketing.js" defer></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script>
-function check(){
-	if ($("#resultBox__date").val() == ""){
-		alert("날짜를 선택하세요");
-	} else if ($("#resultBox__time").val() == ""){
-		alert("시간을 선택하세요");
-	} else if ($("#resultBox__price").val() == "" || $("#resultBox__price").val() == "0원"){
-		alert("좌석을 선택하세요");
-	} else {
-		if ($('#resultBox__vipClass').val() != ""){
-			$('input[name=seatType]').val('VIP석/'+$('#resultBox__vipClass').val());
+	<script>
+	function check(){
+		if ($("#resultBox__date").val() == ""){
+			alert("날짜를 선택하세요");
+		} else if ($("#resultBox__time").val() == ""){
+			alert("시간을 선택하세요");
+		} else if ($("#resultBox__price").val() == "" || $("#resultBox__price").val() == "0원"){
+			alert("좌석을 선택하세요");
+		} else {
+			if ($('#resultBox__vipClass').val() != ""){
+				$('input[name=seatType]').val('VIP석/'+$('#resultBox__vipClass').val());
+			}
+			if ($('#resultBox__rClass').val() != "") {
+				$('input[name=seatType1]').val('R석/'+$('#resultBox__rClass').val());
+			}
+			if ($('#resultBox__sClass').val() != "") {
+				$('input[name=seatType2]').val('S석/'+$('#resultBox__sClass').val());
+			}
+			if ($('#resultBox__wheelClass').val() != "") {
+				$('input[name=seatType3]').val('휠체어석/'+$('#resultBox__wheelClass').val());
+			}
+			if (typeof($('#resultBox__price').val()) == 'string') {
+				$('input[name=priceAll]').val($('#resultBox__price').val().replace('원', '').replace(/[^\d]+/g, ''));
+			}
+			$("#ticket__form").submit();
 		}
-		if ($('#resultBox__rClass').val() != "") {
-			$('input[name=seatType1]').val('R석/'+$('#resultBox__rClass').val());
-		}
-		if ($('#resultBox__sClass').val() != "") {
-			$('input[name=seatType2]').val('S석/'+$('#resultBox__sClass').val());
-		}
-		if ($('#resultBox__wheelClass').val() != "") {
-			$('input[name=seatType3]').val('휠체어석/'+$('#resultBox__wheelClass').val());
-		}
-		$("#ticket__form").submit();
 	}
-}
-
-</script>
+	</script>
 </head>
 
 <body>

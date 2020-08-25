@@ -8,15 +8,15 @@ public class TicketVO {
 	private String seatType1;
 	private String seatType2;
 	private String seatType3;
-	private String priceAll; // 전체 공연 가격, 이게 관리자에서 보일지 안보일지 모르겠는데 일단 user 입장에는 필요해서 만들어놓음
-	private String price; // 티켓 하나 가격
+	private int priceAll; // 전체 공연 가격, 이게 관리자에서 보일지 안보일지 모르겠는데 일단 user 입장에는 필요해서 만들어놓음
+	private int price; // 티켓 하나 가격
 	private String pay;
 	
 	
-	public String getPriceAll() {
+	public int getPriceAll() {
 		return priceAll;
 	}
-	public void setPriceAll(String priceAll) {
+	public void setPriceAll(int priceAll) {
 		this.priceAll = priceAll;
 	}
 	public String getSeatType1() {
@@ -61,13 +61,12 @@ public class TicketVO {
 	public void setSeatType(String seatType) {
 		this.seatType = seatType;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
-
 	
 	
 }

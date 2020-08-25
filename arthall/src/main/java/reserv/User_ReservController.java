@@ -18,60 +18,52 @@ public class User_ReservController {
 	
 	@Autowired
 	private ReservService reservService;
-
 	
-	// 공연 예약 폼으로 이동
-	@RequestMapping("/reservForm.do")
-	
-	public String reservForm(Model model, ReservVO param) {
-		PlayVO playOne = reservService.playOne(param);
-		System.out.println("플레이네임1" + param.getPlayName());
-		
-		List<PerformVO> playList = reservService.playList(param);
-
-		// 이거 perform에서 전시 시간 받아올라그랬는데 왜 안댐
-		model.addAttribute("playList", playList);
-		model.addAttribute("play", playOne);
-		System.out.println("플레이네임2" + param.getPlayName());
-		if (param.getPlayName() == "횽아") {
-			return "reserv/performReservForm";
-		} else {
-			System.out.println("플레이네임3" + param.getPlayName());
-			return "reserv/exhibitReservForm";
-		}
-	}
-
+//	// 공연/전시 예약 폼으로 이동
 //	@RequestMapping("/reservForm.do")
-//	
-//	public String ReservForm(Model model, ReservVO param) {
+//	public String reservForm(Model model, ReservVO param) {
 //		PlayVO playOne = reservService.playOne(param);
 //		System.out.println("플레이네임1" + param.getPlayName());
 //		
 //		List<PerformVO> playList = reservService.playList(param);
 //
+//		// 이거 perform에서 전시 시간 받아올라그랬는데 왜 안댐
 //		model.addAttribute("playList", playList);
 //		model.addAttribute("play", playOne);
 //		System.out.println("플레이네임2" + param.getPlayName());
-//		
-//		if (param.getPlayNo() == 1) {
-//			String pageName =  "reserv/performReservForm";
-//		} else if (param.getPlayNo() == 2){
+//		if (param.getPlayName() == "횽아") {
+//			return "reserv/performReservForm";
+//		} else {
 //			System.out.println("플레이네임3" + param.getPlayName());
-//			String pageName = "reserv/exhibitReservForm";
+//			return "reserv/exhibitReservForm";
 //		}
-//		return pageName;
 //	}
 //	
-//	// 전시 예약 폼으로 이동
-//	@RequestMapping("/exhibitReservForm.do")
-//	public String exhibitReservForm(Model model, ReservVO param) {
-//		
-//		PlayVO playOne = reservService.playOne(param);
-//		
-//		model.addAttribute("play", playOne);
-//		System.out.println("플레이네임3" + param.getPlayName());
-//		return "reserv/exhibitReservForm";
-//	}
+	
+	@RequestMapping("/performReservForm.do")
+	public String perfomrReservForm(Model model, ReservVO param) {
+		PlayVO playOne = reservService.playOne(param);
+		System.out.println("플레이네임1" + param.getPlayName());
+		
+		List<PerformVO> playList = reservService.playList(param);
+
+		model.addAttribute("playList", playList);
+		model.addAttribute("play", playOne);
+		System.out.println("플레이네임2" + param.getPlayName());
+
+		return "reserv/performReservForm";
+	}
+	
+	// 전시 예약 폼으로 이동
+	@RequestMapping("/exhibitReservForm.do")
+	public String exhibitReservForm(Model model, ReservVO param) {
+		
+		PlayVO playOne = reservService.playOne(param);
+		
+		model.addAttribute("play", playOne);
+		System.out.println("플레이네임3" + param.getPlayName());
+		return "reserv/exhibitReservForm";
+	}
 	
 	// 결제 창으로 이동
 	@RequestMapping("/payment.do")

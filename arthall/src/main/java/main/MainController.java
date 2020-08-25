@@ -33,7 +33,7 @@ public class MainController {
 		model.addAttribute("playList", playList);
 		
 		PlayVO play = new PlayVO();
-		play.setPlayName("가나다"); // 테스트 횽아 - 가나다
+		play.setPlayName("횽아"); // 테스트 횽아 - 가나다
 		model.addAttribute("play", play);
 		System.out.println("플레이넘버");
 		System.out.println(play.getPlayType());

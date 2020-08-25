@@ -59,7 +59,7 @@
                                         <img src='/upload/play/${reservMy.filename}'/>
                                     </figure>
                                     <article class="ticket__infoContainer">
-                                        <h5 class="infoContainer__tit">공연이름 ${reservMy.playName}</h5>
+                                        <h5 class="infoContainer__tit">${reservMy.playName}</h5>
                                         <ul class="infoContainer__listContainer">
                                             <li class="listContainer__listInfo cf">예매번호 <span>${reservMy.reservNo}</span></li>
                                             <li class="listContainer__listInfo cf">장소 <span>${reservMy.hallName}</span></li>
@@ -83,7 +83,7 @@
 	                                        <img src="<%=request.getContextPath() %>/img/per/sub-pos-8.jpg" alt="지젤 포스터">
 	                                    </figure>
 	                                    <article class="ticket__infoContainer">
-	                                        <h5 class="infoContainer__tit">공연이름 ${reservMyPass.playName}</h5>
+	                                        <h5 class="infoContainer__tit">${reservMyPass.playName}</h5>
 	                                        <ul class="infoContainer__listContainer">
 	                                           <li class="listContainer__listInfo cf">예매번호 <span>${reservMyPass.reservNo}</span></li>
 	                                            <li class="listContainer__listInfo cf">장소 <span>${reservMyPass.hallName}</span></li>
@@ -104,7 +104,7 @@
 	                                        <img src="<%=request.getContextPath() %>/img/per/sub-pos-8.jpg" alt="지젤 포스터">
 	                                    </figure>
 	                                    <article class="ticket__infoContainer">
-	                                        <h5 class="infoContainer__tit">공연이름 ${reservMyCancle.playName}</h5>
+	                                        <h5 class="infoContainer__tit">${reservMyCancle.playName}</h5>
 	                                        <ul class="infoContainer__listContainer">
 	                                           <li class="listContainer__listInfo cf">예매번호 <span>${reservMyCancle.reservNo}</span></li>
 	                                            <li class="listContainer__listInfo cf">장소 <span>${reservMyCancle.hallName}</span></li>

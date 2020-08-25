@@ -115,15 +115,9 @@
 		select * from perform WHERE playName = #{playName}
 	</select>
 
-	<select id="playPrice" parameterType="reserv.ReservVO" resultType="play.PerformVO">
+	<select id="playPPrice" parameterType="reserv.ReservVO" resultType="play.PerformVO">
 		select * from perform WHERE playName = #{playName} AND time = #{time}
 	</select>
-
-
-<!--    	전시   -->
-<!-- 	<select id="playEOne" parameterType="reserv.ReservVO" resultType="play.PlayVO"> -->
-<!-- 		select * from play WHERE playName = #{playName} -->
-<!--    	</select> -->
 
 	<select id="playEPrice" parameterType="reserv.ReservVO" resultType="play.ExhibitVO">
 		select * from exhibit WHERE playName = #{playName}
@@ -168,15 +162,15 @@
 	</select>
    
    
+   	<!-- 남은 공연 정보 -->
+	<select id="reservSess" parameterType="member.MemberVO" resultType="reserv.ReservVO">
+		SELECT * FROM reserv WHERE memberNo = #{no} and (playDate > now()) and (pay!="결제취소") ORDER BY playDate
+	</select>
+	
+	
 	<!-- 지난 공연 정보 -->
 	<select id="reservSessPass" parameterType="member.MemberVO" resultType="reserv.ReservVO">
-		SELECT * FROM reserv WHERE memberNo = #{no} and now() > playDate ORDER BY playDate desc 
-	</select>
-   
-   
-	<!-- 남은 공연 정보 -->
-	<select id="reservSess" parameterType="member.MemberVO" resultType="reserv.ReservVO">
-		SELECT * FROM reserv WHERE memberNo = #{no} and (playDate > now()) and (pay!="결제취소") ORDER BY playDate desc
+		SELECT * FROM reserv WHERE memberNo = #{no} and now() > playDate ORDER BY playDate
 	</select>
    
    

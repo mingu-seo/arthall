@@ -8,9 +8,9 @@ public class ExhibitVO extends util.Parameter{
 	private String playName;
 	private int playNo;
 	private String artist;
-	private String priceAdult;
-	private String priceTeenager;
-	private String priceChildren;
+	private int priceAdult;
+	private int priceTeenager;
+	private int priceChildren;
 	
 	public ExhibitVO(){
 		super.setPage(1);
@@ -49,28 +49,25 @@ public class ExhibitVO extends util.Parameter{
 		this.artist = artist;
 	}
 
-	public String getPriceAdult() {
+	public int getPriceAdult() {
 		return priceAdult;
 	}
 
-	public void setPriceAdult(String priceAdult) {
+	public void setPriceAdult(int priceAdult) {
 		this.priceAdult = priceAdult;
 	}
 
-	public String getPriceTeenager() {
+	public int getPriceTeenager() {
 		return priceTeenager;
 	}
 
-	public void setPriceTeenager(String priceTeenager) {
+	public void setPriceTeenager(int priceTeenager) {
 		this.priceTeenager = priceTeenager;
 	}
-
-	public String getPriceChildren() {
+	public int getPriceChildren() {
 		return priceChildren;
-
 	}
-	
-	public void setPriceChildren(String priceChildren) {
+	public void setPriceChildren(int priceChildren) {
 		this.priceChildren = priceChildren;
 	}
 

@@ -47,31 +47,21 @@ public class ReservDAO {
 	// User
 	// 공연/전시
 	public PlayVO play(ReservVO param) {
-    	System.out.println("나는 전시공연 다오");
 		return sqlSession.selectOne("reserv.playOne", param);
 	}
 
-
 	// 공연 회차별 정보
 	public List<PerformVO> playList(ReservVO param) {
-    	System.out.println("나는 공연 리스트 다오");
 		return sqlSession.selectList("reserv.playList", param);
 	}
    
 	// 공연 가격
-	public PerformVO playPrice(ReservVO param) {
-    	System.out.println("나는 공연 다오");
-		return sqlSession.selectOne("reserv.playPrice", param);
+	public PerformVO playPPrice(ReservVO param) {
+		return sqlSession.selectOne("reserv.playPPrice", param);
 	}
-	
-  	// 전시
-//   	public PlayVO playE(ReservVO param) {
-//   		return sqlSession.selectOne("reserv.playEOne", param);
-//    }
    	
    	// 전시 가격
     public ExhibitVO playEPrice(ReservVO param) {
-    	System.out.println("나는 전시 다오");
     	return sqlSession.selectOne("reserv.playEPrice", param);
     }
 

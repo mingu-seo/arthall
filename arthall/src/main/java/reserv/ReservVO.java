@@ -18,7 +18,7 @@ public class ReservVO extends Parameter {
 	private int hallNo;
 	private String hallName;
 	private String pay;
-	private String price;
+	private int price;
 	private String Seat;
 	private String startDate;
 	private String endDate;
@@ -112,10 +112,10 @@ public class ReservVO extends Parameter {
 	public void setPay(String pay) {
 		this.pay = pay;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String getSeat() {
