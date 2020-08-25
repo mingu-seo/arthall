@@ -5,11 +5,11 @@
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
+var oEditors = [];
 $(function() {
-	var oEditors = [];
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
-		elPlaceHolder: "contents", // textarea ID
+		elPlaceHolder: "ct", // textarea ID
 		sSkinURI: "<%=request.getContextPath()%>/smarteditor/SmartEditor2Skin.html",	
 		htParams : {
 			bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -27,10 +27,14 @@ $(function() {
 	});
 });
 
+function check() {
+	 oEditors.getById['ct'].exec('UPDATE_CONTENTS_FIELD',[]);
+}
+
 function delfile(){
 	$("#filespan").text("");
     //$("#filename").removeAttr("name");
-    $("#filename").val("noupdate");
+    $("#filename").remove();
     $("#delbtn").hide();
 }
 
@@ -55,7 +59,7 @@ function delfile(){
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="modify.do?no=${vo.no}" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="modify.do?no=${vo.no}" onsubmit="return check()" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -75,7 +79,7 @@ function delfile(){
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<textarea id="content" name="content" title="내용을 입력해주세요" style="width:100%;">${vo.content}</textarea>	
+											<textarea id="ct" name="content" title="내용을 입력해주세요" style="width:100%;">${vo.content}</textarea>	
 										</td>
 									</tr>
 									<tr>
@@ -88,8 +92,8 @@ function delfile(){
 										<c:if test="${vo.filename != null}">
 										<span id="filespan"><strong>원본파일 : ${vo.filename_org}</strong></span>
 										<input type="button" id="delbtn" onclick="delfile();" value="파일삭제" />
-											<input type="file" id="filename_tmp" name="filename_tmp" class="w100" />	
-											<input type="hidden" id="filename" name="filename" value="${vo.filename}" />
+										<input type="file" id="filename_tmp" name="filename_tmp" class="w100" />	
+										<input type="hidden" id="filename" name="filename" value="${vo.filename}" />
 										</c:if>
 										</td>
 									</tr>

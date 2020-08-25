@@ -3,12 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+
 <script>
+var oEditors = [];
 $(function() {
-	var oEditors = [];
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
-		elPlaceHolder: "contents", // textarea ID
+		elPlaceHolder: "ct", // textarea ID
 		sSkinURI: "<%=request.getContextPath()%>/smarteditor/SmartEditor2Skin.html",	
 		htParams : {
 			bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -26,7 +27,9 @@ $(function() {
 	});
 });
 
-
+function check() {
+	 oEditors.getById['ct'].exec('UPDATE_CONTENTS_FIELD',[]);
+}
 
 </script>
 </head>
@@ -48,7 +51,7 @@ $(function() {
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="bread">
-							<form method="post" name="frm" id="frm" action="write.do" enctype="multipart/form-data">
+							<form method="post" name="frm" id="frm" action="write.do" onsubmit="return check()" enctype="multipart/form-data">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
@@ -68,7 +71,7 @@ $(function() {
 									<tr>
 										<th scope="row"><label for="">*내용</label></th>
 										<td colspan="10">
-											<textarea id="content" name="content" title="내용을 입력해주세요" style="width:100%;"></textarea>	
+											<textarea id="ct" name="content" title="내용을 입력해주세요" style="width:100%;"></textarea>	
 										</td>
 									</tr>
 									<tr>

@@ -76,17 +76,17 @@ public class FaqServiceImple implements FaqService {
 		FileUtil fu = new FileUtil();
 		fu.fileUpload(file, req.getRealPath("/upload/board/faq/"));
 		
-		faqDao.view(param);
+		faqDao.modify(param);
 		
 		if (fu.fileName != null) { // 널이면 없는거
 			param.setFilename(fu.fileName); 
 			param.setFilename_org(file.getOriginalFilename());
 			faqDao.modifyFile(param);
-		} else if(param.getFilename().equals("noupdate")) {
+		} else if(param.getFilename() == null) {
 			param.setFilename(null); 
 			param.setFilename_org(null);
 			faqDao.modifyFile(param);
-		}
+		} 
 		
 		return "redirect:index.do";
 	}

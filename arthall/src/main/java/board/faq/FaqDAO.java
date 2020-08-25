@@ -15,11 +15,9 @@ public class FaqDAO {
 	public int count(FaqVO param) {
 		return sqlSession.selectOne("faq.count", param);
 	}
-	
 	public List<FaqVO> list(FaqVO param) {
 		return sqlSession.selectList("faq.list", param);
 	}
-	
 	public int write(FaqVO param) {
 		return sqlSession.insert("faq.write", param);
 	}
@@ -36,6 +34,4 @@ public class FaqDAO {
 	public int delete(int faqno) {
 		return sqlSession.delete("faq.delete", faqno);
 	}
-	
-	
 }
