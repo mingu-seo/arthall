@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reserv">
-
+	
+	<!-- Admin -->
 	<!-- 예매 목록에서 검색 -->
 	<select id="count" parameterType="reserv.ReservVO" resultType="Integer"> 
 	SELECT COUNT(*) FROM reserv
@@ -46,7 +47,7 @@
 	         </if>
 	      </where>
 	</select>
-
+	
 
 	<!-- 예매 목록 -->
 	<select id="list" parameterType="reserv.ReservVO" resultType="reserv.ReservVO">
@@ -104,101 +105,100 @@
 	</select>
    
    
-    <!-- 예매 취소 reserv-->
-   <update id="cancleReserv" parameterType="reserv.ReservVO">
-      UPDATE reserv SET
-         pay="결제취소"
-      WHERE reservNo=#{reservNo}
-   </update>
-   
-   
-   <!-- 예매 취소 ticket -->
-   <update id="cancleTicket" parameterType="reserv.ReservVO">
-      UPDATE ticket SET 
-         pay="결제취소" 
-      WHERE reservNo like '%${reservNo}%' 
-   </update>
-   
-   
-	<!--  -->  
-   <select id="playOne" parameterType="reserv.ReservVO" resultType="play.PlayVO">
-      select * from play WHERE playName = #{playName}
-   </select>
-   
-   
-   <!-- 여기 reservVO에 playName이 있고 이걸로 perform에서 조회하는거 -->
-   <select id="playList" parameterType="reserv.ReservVO" resultType="play.PerformVO">
-      select * from perform WHERE playName = #{playName}
-   </select>
-
-   <select id="playPrice" parameterType="reserv.ReservVO" resultType="play.PerformVO">
-      select * from perform WHERE playName = #{playName} AND time = #{time}
-   </select>
-
-   
-   <!-- 예매 정보 -->
-   <insert id="reservOne" parameterType="reserv.ReservVO">
-      INSERT INTO reserv
-         (reservNo, memberNo, name, reservDate, playNo, playName, playDate, time, hallNo, hallName, pay,
-         price, seat, filename)
-      VALUES
-         (#{reservNo}, #{memberNo}, #{name}, now(), #{playNo}, #{playName}, #{playDate},
-            #{time}, #{hallNo}, #{hallName}, #{pay}, #{price}, #{seat}, #{filename});
-      <selectKey keyProperty="no" resultType="Integer" order="AFTER">
-         SELECT last_insert_id();
-      </selectKey>
-   </insert>
-   
-   <!-- 티켓 정보 -->
-   <insert id="reservTicket" parameterType="reserv.TicketVO">
-      INSERT INTO ticket
-         (reservNo, seatType, price, pay)
-      VALUES
-         (#{reservNo}, #{seatType}, #{price}, #{pay});
-      <selectKey keyProperty="no" resultType="Integer" order="AFTER">
-         SELECT last_insert_id();
-      </selectKey>
-   </insert>
-   
-   
-   <!-- 홀정보 -->
-   <select id="hall" parameterType="reserv.ReservVO" resultType="reserv.HallVO">
-      SELECT * FROM hall WHERE hallName = #{hallName}
-   </select>
-   
-   
-   <!-- 마지막 예매 정보 -->
-   <select id="reservNumber" resultType="reserv.ReservVO">
-      SELECT * FROM reserv ORDER BY NO DESC LIMIT 1
-   </select>
-   
-   
-   <!-- 지난 공연 정보 -->
-   <select id="reservSessPass" parameterType="member.MemberVO" resultType="reserv.ReservVO">
-   	  SELECT * FROM reserv WHERE memberNo = #{no} and now() > playDate ORDER BY playDate desc 
-   </select>
-   
-   <!-- 남은 공연 정보 -->
-   <select id="reservSess" parameterType="member.MemberVO" resultType="reserv.ReservVO">
-   	  SELECT * FROM reserv WHERE memberNo = #{no} and (playDate > now()) and (pay!="결제취소") ORDER BY playDate desc
-   </select>
-   
-   <!-- 취소한 공연 정보 -->
-   <select id="reservSessCancle" parameterType="member.MemberVO" resultType="reserv.ReservVO">
-   	  SELECT * FROM reserv WHERE memberNo = #{no} and (playDate > now()) and (pay="결제취소") ORDER BY playDate desc
-   </select>
-   
-   
-   	<!-- 전시 -->  
-	<select id="exhibitOne" parameterType="reserv.ReservVO" resultType="play.PlayVO">
+	<!-- User -->
+	<!-- 공연 -->  
+	<select id="playOne" parameterType="reserv.ReservVO" resultType="play.PlayVO">
 		select * from play WHERE playName = #{playName}
-   	</select>
-   
-   	<select id="exhibitList" parameterType="reserv.ReservVO" resultType="play.ExhibitVO">
-		select * from exhibit WHERE playName = #{playName}
-   	</select>
+	</select>
 
-	<select id="exhibitPrice" parameterType="reserv.ReservVO" resultType="play.ExhibitVO">
+	<select id="playList" parameterType="reserv.ReservVO" resultType="play.PerformVO">
+		select * from perform WHERE playName = #{playName}
+	</select>
+
+	<select id="playPrice" parameterType="reserv.ReservVO" resultType="play.PerformVO">
+		select * from perform WHERE playName = #{playName} AND time = #{time}
+	</select>
+
+
+<!--    	전시   -->
+<!-- 	<select id="playEOne" parameterType="reserv.ReservVO" resultType="play.PlayVO"> -->
+<!-- 		select * from play WHERE playName = #{playName} -->
+<!--    	</select> -->
+
+	<select id="playEPrice" parameterType="reserv.ReservVO" resultType="play.ExhibitVO">
 		select * from exhibit WHERE playName = #{playName}
 	</select>
+   
+   
+   	<!-- 홀정보 -->
+	<select id="hall" parameterType="reserv.ReservVO" resultType="reserv.HallVO">
+		SELECT * FROM hall WHERE hallName = #{hallName}
+	</select>
+	
+	
+	<!-- 예매 정보 -->
+	<insert id="reservOne" parameterType="reserv.ReservVO">
+		INSERT INTO reserv
+			(reservNo, memberNo, name, reservDate, playNo, playName, playDate, time,
+				hallNo, hallName, pay, price, seat, filename)
+		VALUES
+			(#{reservNo}, #{memberNo}, #{name}, now(), #{playNo}, #{playName}, #{playDate},
+				#{time}, #{hallNo}, #{hallName}, #{pay}, #{price}, #{seat}, #{filename});
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT last_insert_id();
+		</selectKey>
+	</insert>
+	
+   
+	<!-- 티켓 정보 -->
+	<insert id="reservTicket" parameterType="reserv.TicketVO">
+		INSERT INTO ticket
+			(reservNo, seatType, price, pay)
+		VALUES
+			(#{reservNo}, #{seatType}, #{price}, #{pay});
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT last_insert_id();
+		</selectKey>
+	</insert>
+   
+   
+	<!-- 마지막 예매 정보 -->
+	<select id="reservNumber" resultType="reserv.ReservVO">
+		SELECT * FROM reserv ORDER BY NO DESC LIMIT 1
+	</select>
+   
+   
+	<!-- 지난 공연 정보 -->
+	<select id="reservSessPass" parameterType="member.MemberVO" resultType="reserv.ReservVO">
+		SELECT * FROM reserv WHERE memberNo = #{no} and now() > playDate ORDER BY playDate desc 
+	</select>
+   
+   
+	<!-- 남은 공연 정보 -->
+	<select id="reservSess" parameterType="member.MemberVO" resultType="reserv.ReservVO">
+		SELECT * FROM reserv WHERE memberNo = #{no} and (playDate > now()) and (pay!="결제취소") ORDER BY playDate desc
+	</select>
+   
+   
+	<!-- 취소한 공연 정보 -->
+	<select id="reservSessCancle" parameterType="member.MemberVO" resultType="reserv.ReservVO">
+		SELECT * FROM reserv WHERE memberNo = #{no} and (playDate > now()) and (pay="결제취소") ORDER BY playDate desc
+	</select>
+	
+	
+	<!-- 예매 취소 reserv-->
+	<update id="cancleReserv" parameterType="reserv.ReservVO">
+		UPDATE reserv SET
+			pay="결제취소"
+		WHERE reservNo=#{reservNo}
+	</update>
+   
+   
+	<!-- 예매 취소 ticket -->
+	<update id="cancleTicket" parameterType="reserv.ReservVO">
+		UPDATE ticket SET 
+			pay="결제취소" 
+		WHERE reservNo like '%${reservNo}%' 
+	</update>
+   
 </mapper>

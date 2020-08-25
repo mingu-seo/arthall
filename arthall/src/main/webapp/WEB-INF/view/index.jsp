@@ -6,8 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/include/headHtml.jsp" %>
 <script>
-function reservForm(playName){
-	window.open('reservForm.do?playName='+playName, 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');return false
+function reservForm(playName) {
+// 	alert("${play.playType}");
+// 	if ("${play.playName} == '횽아'") {
+//     	window.open('performReservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
+// 	} else if ("${play.playName} == '가나다'") {
+// 		window.open('exhibitReservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
+// 	}
+	window.open('reservForm.do?playName=${play.playName}', 'ticketing', 'toolbar = no, location = no, status = no, menubar = no, resizable = no, scrollbars = no, width = 1060, height = 845');
+	return false;
 }
 </script>
 </head>
@@ -43,7 +50,7 @@ function reservForm(playName){
                     <div class="textView">
                         <span>돌아온 창작뮤지컬의 전설!</span>
                         <h2>뮤지컬 프랑켄슈타인</h2>
-                        <p>공연기간 : <span>2020.07.10~2020.08.13</span><br>공연장소 : <span>충무아트센터 대극장</span></p>
+                        <p>공연기간 : <span>2020.07.10~2020.09.13</span><br>공연장소 : <span>충무아트센터 대극장</span></p>
                         <p class="cf"><a class="ticketingBtn" onclick="reservForm();">예매하기</a><a href="#">상세정보</a></p>
                     </div>
                 </div>

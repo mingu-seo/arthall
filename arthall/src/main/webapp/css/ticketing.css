@@ -193,10 +193,6 @@ main .main__content{
 }
 .calBtn > a.disable{opacity: 0.3; cursor: default;}
 
-
-
-
-
 .ticketBox__choose{
     height: 389px;
     padding: 0 30px;
@@ -221,14 +217,25 @@ main .main__content{
     display: none;
 }*/
 
-.timeInfo__timeTable .timeTable__list{
+.timeInfo__timeTable .timeTable__list {
     margin-bottom: 10px;
     padding: 10px 20px;
     text-align: left;
     border: 1px solid #ccc;
     cursor: pointer;
 }
+
+.timeInfo__timeTable .exhibitTimeTable {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    text-align: left;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
 .timeTable__list .list__Time{padding-left: 10px; font-size: 20px;}
+.exhibitTimeTable .list__Time{padding-left: 10px; font-size: 20px;}
+
 .timeTable__list p{
     margin-top: 10px;
     padding: 10px;
@@ -236,6 +243,14 @@ main .main__content{
     border-top: 1px solid #999;
     word-break: keep-all;
 }
+.exhibitTimeTable p{
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 12px;
+    border-top: 1px solid #999;
+    word-break: keep-all;
+}
+
 
 .timeInfo__timeTable .timeTable__list.active{
     background: #ffc4c4;

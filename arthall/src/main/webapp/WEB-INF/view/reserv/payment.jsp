@@ -220,6 +220,7 @@
                         <input type="hidden" name="seatType" value="${ticket.seatType}">
                         <input type="hidden" name="seatType1" value="${ticket.seatType1}">
                         <input type="hidden" name="seatType2" value="${ticket.seatType2}">
+                        <input type="hidden" name="seatType3" value="${ticket.seatType3}">
                             <fieldset>
                                 <legend>결제정보</legend>
                                 <p class="paymentForam__paymentInfo">
@@ -234,6 +235,9 @@
                                     </c:if>
                                     <c:if test="${ticket.seatType2 != ''}">
                                     	<span>${ticket.seatType2}</span><br>
+                                    </c:if>
+                                    <c:if test="${ticket.seatType3 != ''}">
+                                    	<span>${ticket.seatType3}</span><br>
                                     </c:if>
                                     <span>${ticket.priceAll}</span>
                                 </p>

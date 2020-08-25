@@ -7,6 +7,7 @@ public class TicketVO {
 	private String seatType;
 	private String seatType1;
 	private String seatType2;
+	private String seatType3;
 	private String priceAll; // 전체 공연 가격, 이게 관리자에서 보일지 안보일지 모르겠는데 일단 user 입장에는 필요해서 만들어놓음
 	private String price; // 티켓 하나 가격
 	private String pay;
@@ -30,8 +31,12 @@ public class TicketVO {
 	public void setSeatType2(String seatType2) {
 		this.seatType2 = seatType2;
 	}
-	
-	
+	public String getSeatType3() {
+		return seatType3;
+	}
+	public void setSeatType3(String seatType3) {
+		this.seatType3 = seatType3;
+	}
 	public int getNo() {
 		return no;
 	}
