@@ -54,7 +54,7 @@
 										<th scope="row"><label for="">이미지</label></th>
 										<td><img src="/upload/board/news/${data.filename}" width="200px"></td>
 										</c:if>
-									</tr>
+										</tr>
 								
  							
 					

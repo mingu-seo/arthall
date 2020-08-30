@@ -90,8 +90,6 @@ public class NoticeServiceImple implements NoticeService {
 	public NoticeVO view(NoticeVO param) {
 		
 		NoticeVO vo = noticeDao.view(param);
-		//vo.setContent(noticeDao.viewContent(param));
-		//return noticeDao.view(param);
 		return vo;
 	}
 
