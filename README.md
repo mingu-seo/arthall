@@ -244,6 +244,111 @@ AUTO_INCREMENT=26
 ;
 ``` 
 
+-member 200830_수정 황동민 notice 새로올림 
+```
+-- --------------------------------------------------------
+-- 호스트:                          127.0.0.1
+-- 서버 버전:                        10.5.4-MariaDB - mariadb.org binary distribution
+-- 서버 OS:                        Win64
+-- HeidiSQL 버전:                  11.0.0.5919
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- arthall 데이터베이스 구조 내보내기
+CREATE DATABASE IF NOT EXISTS `arthall` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `arthall`;
+
+-- 테이블 arthall.notice 구조 내보내기
+CREATE TABLE IF NOT EXISTS `notice` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `regDate` timestamp NULL DEFAULT NULL,
+  `readCnt` int(11) DEFAULT NULL,
+  `writer` varchar(50) DEFAULT NULL,
+  `filename` varchar(50) DEFAULT NULL,
+  `modDate` timestamp NULL DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `filename_org` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`no`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+
+-- 테이블 데이터 arthall.notice:~12 rows (대략적) 내보내기
+DELETE FROM `notice`;
+/*!40000 ALTER TABLE `notice` DISABLE KEYS */;
+INSERT INTO `notice` (`no`, `title`, `regDate`, `readCnt`, `writer`, `filename`, `modDate`, `content`, `filename_org`) VALUES
+	(38, '게시물 등록_1', '2020-08-16 23:07:37', 5, 'hdmin', '1597586857406.png', '2020-08-16 23:07:37', '<p>게시물 등록_1</p>', '게시판 목록.png'),
+	(39, '게시물 등록_2', '2020-08-16 23:28:03', 0, 'hdmin', NULL, '2020-08-16 23:28:03', '<p>게시물 등록_2&nbsp;</p>', ''),
+	(40, '게시물 등록_3', '2020-08-16 23:28:13', 0, 'hdmin', NULL, '2020-08-16 23:28:13', '<p>게시물 등록_4&nbsp;</p>', ''),
+	(41, '게시물 등록_5', '2020-08-16 23:28:22', 0, 'hdmin', NULL, '2020-08-16 23:28:22', '<p>게시물 등록_5&nbsp;</p>', ''),
+	(42, '게시물 등록_6', '2020-08-16 23:28:30', 0, 'hdmin', NULL, '2020-08-16 23:28:30', '<p>게시물 등록_6&nbsp;</p>', ''),
+	(43, '게시물 등록_7', '2020-08-16 23:28:37', 0, 'hdmin', NULL, '2020-08-16 23:28:37', '<p>게시물 등록_7&nbsp;</p>', ''),
+	(44, '게시물 등록_8', '2020-08-16 23:28:45', 1, 'hdmin', NULL, '2020-08-16 23:28:45', '<p>게시물 등록_8&nbsp;</p>', ''),
+	(45, '게시물 등록_9', '2020-08-16 23:28:52', 0, 'hdmin', NULL, '2020-08-16 23:28:52', '<p>게시물 등록_9&nbsp;</p>', ''),
+	(46, '게시물 등록_10', '2020-08-16 23:28:59', 0, 'hdmin', NULL, '2020-08-16 23:28:59', '<p>게시물 등록_10&nbsp;</p>', ''),
+	(47, '게시물 등록_11', '2020-08-16 23:29:07', 2, 'hdmin', NULL, '2020-08-16 23:29:07', '<p>게시물 등록_11&nbsp;</p>', ''),
+	(48, '게시물 등록_12', '2020-08-16 23:29:16', 6, 'hdmin', NULL, '2020-08-16 23:29:16', '<p>게시물 등록_12&nbsp;</p>', ''),
+	(49, 'asfdfsa', '2020-08-30 14:18:21', 0, 'hdmin', NULL, '2020-08-30 14:18:21', '<p>1123123</p>', '');
+/*!40000 ALTER TABLE `notice` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+
+``` 
+-member 200830_수정 황동민 news 새로올림 
+```
+-- --------------------------------------------------------
+-- 호스트:                          127.0.0.1
+-- 서버 버전:                        10.5.4-MariaDB - mariadb.org binary distribution
+-- 서버 OS:                        Win64
+-- HeidiSQL 버전:                  11.0.0.5919
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- arthall 데이터베이스 구조 내보내기
+CREATE DATABASE IF NOT EXISTS `arthall` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `arthall`;
+
+-- 테이블 arthall.news 구조 내보내기
+CREATE TABLE IF NOT EXISTS `news` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `regDate` timestamp NULL DEFAULT NULL,
+  `readCnt` int(11) DEFAULT NULL,
+  `writer` varchar(50) DEFAULT NULL,
+  `filename` varchar(50) DEFAULT NULL,
+  `modDate` timestamp NULL DEFAULT NULL,
+  `filename_org` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+-- 테이블 데이터 arthall.news:~1 rows (대략적) 내보내기
+DELETE FROM `news`;
+/*!40000 ALTER TABLE `news` DISABLE KEYS */;
+INSERT INTO `news` (`no`, `title`, `content`, `regDate`, `readCnt`, `writer`, `filename`, `modDate`, `filename_org`) VALUES
+	(7, 'sfasdf', '<p>sfasdf</p>', '2020-08-16 23:06:08', 1, 'hdmin', '1597586768778.png', '2020-08-16 23:06:08', '게시판 목록.png');
+/*!40000 ALTER TABLE `news` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+
+``` 
 예시)
 
 -테이블명
