@@ -139,7 +139,7 @@ function reservForm(playName, playType) {
                             <span>Notice</span>
                             <h2>최신소식</h2>
                             <p>충무아트센터의 <br> 최신소식을 알려드립니다.</p>
-                            <a href="#" class="notice__more"><i class="fas fa-plus fa-2x"></i></a>
+                            <a href="/board/notice/index.do" class="notice__more"><i class="fas fa-plus fa-2x"></i></a>
                         </div>
                         <div class="cont">
                             <table class="notice">
