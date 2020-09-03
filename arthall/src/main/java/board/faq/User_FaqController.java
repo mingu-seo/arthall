@@ -17,9 +17,10 @@ public class User_FaqController {
 	@RequestMapping("/board/faq/index.do")
 	public String list(Model model, HttpServletRequest req, FaqVO param) {		
 		
-		List<FaqVO> list = faqService.list(param);
 		
-		model.addAttribute("vo", param);
+		List<FaqVO> list = faqService.list_user(param);
+		
+		//model.addAttribute("vo", param);
 		model.addAttribute("list", list);
 		
 		return "board/faq/faq";

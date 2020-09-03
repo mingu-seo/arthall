@@ -18,6 +18,9 @@ public class FaqDAO {
 	public List<FaqVO> list(FaqVO param) {
 		return sqlSession.selectList("faq.list", param);
 	}
+	public List<FaqVO> list_user(FaqVO param) {
+		return sqlSession.selectList("faq.list_user", param);
+	}
 	public int write(FaqVO param) {
 		return sqlSession.insert("faq.write", param);
 	}

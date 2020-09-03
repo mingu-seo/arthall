@@ -33,6 +33,12 @@
 	 	ORDER BY no DESC LIMIT #{startRow}, #{size}
 	</select>
 	
+	<!-- 20200903 추가 -->
+	<select id="list_user" parameterType="board.faq.FaqVO" resultType="board.faq.FaqVO">
+		select * from faq
+	</select>
+	
+	
 	<!-- 20200724 추가 -->
 	<insert id="write" parameterType="board.faq.FaqVO" useGeneratedKeys="true">
 		INSERT INTO faq

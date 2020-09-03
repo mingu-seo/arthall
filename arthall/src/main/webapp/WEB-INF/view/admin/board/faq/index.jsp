@@ -73,7 +73,7 @@
 										<c:if test="${vo.totalCount == 0}">
 											<tbody>
 												<tr align="center" bgcolor="white">
-													<td colspan="4">게시글이 없습니다.</td>
+													<td colspan="5">게시글이 없습니다.</td>
 												</tr>
 											</tbody>
 										</c:if>

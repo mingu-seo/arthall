@@ -45,6 +45,14 @@ public class FaqServiceImple implements FaqService {
 	}
 	
 	@Override
+	public List<FaqVO> list_user(FaqVO param) {
+		
+		List<FaqVO> list = faqDao.list_user(param);
+		
+		return list;
+	}
+	
+	@Override
 	public String write(HttpServletRequest req, FaqVO param, MultipartFile file) {
 		HttpSession sess = req.getSession();
 		AdminVO sessVo = (AdminVO)sess.getAttribute("authAdmin");

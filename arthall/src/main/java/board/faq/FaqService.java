@@ -12,6 +12,9 @@ public interface FaqService {
 	// faq조회
 	public List<FaqVO> list(FaqVO param);
 	
+	// 유저에서faq조회
+	public List<FaqVO> list_user(FaqVO param);
+	
 	// faq 작성
 	public String write(HttpServletRequest req, FaqVO param, MultipartFile file);
 	
