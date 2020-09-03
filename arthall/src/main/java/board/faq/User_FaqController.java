@@ -14,7 +14,7 @@ public class User_FaqController {
 	@Autowired
 	private FaqService faqService; 
 	
-	@RequestMapping("/user/board/faq/index.do")
+	@RequestMapping("/board/faq/index.do")
 	public String list(Model model, HttpServletRequest req, FaqVO param) {		
 		
 		List<FaqVO> list = faqService.list(param);
@@ -22,6 +22,6 @@ public class User_FaqController {
 		model.addAttribute("vo", param);
 		model.addAttribute("list", list);
 		
-		return "admin/board/faq/tmp_user";
+		return "board/faq/faq";
 	}
 }
